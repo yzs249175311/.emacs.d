@@ -13,6 +13,8 @@
 (global-auto-revert-mode 1)
 
 (column-number-mode 1)
+(menu-bar-mode 0)
+(tool-bar-mode 0)
 (blink-cursor-mode 0)
 (setq use-dialog-box nil)
 
