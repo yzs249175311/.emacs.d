@@ -5,10 +5,6 @@
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8-unix)
 
-;;防止反复调用 package-refresh-contents 会影响加载速度
-(when (not package-archive-contents)
-  (package-refresh-contents))
-
 (setq make-backup-files nil)
 (setq backup-by-copying t)
 (setq create-lockfiles nil)
