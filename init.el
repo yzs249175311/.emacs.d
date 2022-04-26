@@ -11,7 +11,7 @@
 (package-initialize)
 (package-refresh-contents)
 
-(defvar my-packages '(afternoon-theme
+(defvar my-packages '(
                       evil))
 
 ;; install packages
@@ -32,7 +32,9 @@
 (require 'evil)
 (evil-mode 1)
 
-(load-theme 'afternoon t)
+(load-theme 'tango-dark t)
+
+(require 'yzs-emacs-org)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -40,12 +42,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   (quote
-    ("57e3f215bef8784157991c4957965aa31bac935aca011b29d7d8e113a652b693" default)))
- '(minibuffer-prompt-properties
-   (quote
-    (read-only t cursor-intangible t face minibuffer-prompt)))
- '(package-selected-packages (quote (slime evil))))
+   '("57e3f215bef8784157991c4957965aa31bac935aca011b29d7d8e113a652b693" default))
+ '(minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
+ '(org-agenda-files '("d:/NutStore/note/GTD/read.org"))
+ '(package-selected-packages '(slime evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

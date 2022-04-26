@@ -5,18 +5,26 @@
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8-unix)
 
+;;防止反复调用 package-refresh-contents 会影响加载速度
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
 (setq make-backup-files nil)
 (setq backup-by-copying t)
 (setq create-lockfiles nil)
 (setq auto-save-default nil)
+(setq visible-bell 0)
 
 (global-auto-revert-mode 1)
 
-(column-number-mode 1)
 (menu-bar-mode 0)
 (tool-bar-mode 0)
+(scroll-bar-mode 0)
+(column-number-mode 1)
 (blink-cursor-mode 0)
 (setq use-dialog-box nil)
+
+(recentf-mode 1)
 
 (progn
   (require 'dired-x)
@@ -57,8 +65,39 @@
   (setq icomplete-separator "\n")
   (setq icomplete-hide-common-prefix nil)
   (setq icomplete-in-buffer t)
-  (define-key icomplete-minibuffer-map (kbd "<right>") 'icomplete-forward-completions)
-  (define-key icomplete-minibuffer-map (kbd "<left>") 'icomplete-backward-completions))
+  (define-key icomplete-minibuffer-map (kbd "C-n") 'icomplete-forward-completions)
+  (define-key icomplete-minibuffer-map (kbd "C-p") 'icomplete-backward-completions))
+
+;; set default font
+(set-frame-font
+ (cond
+  ((string-equal system-type "windows-nt")
+   (if (member "Consolas" (font-family-list)) "Consolas" nil ))
+  ((string-equal system-type "darwin")
+   (if (member "Menlo" (font-family-list)) "Menlo-16" nil ))
+  ((string-equal system-type "gnu/linux")
+   (if (member "DejaVu Sans Mono" (font-family-list)) "DejaVu Sans Mono" nil ))
+  (t nil))
+ t t)
+
+;; set font for chinese characters
+(set-fontset-font
+ t
+ '(#x4e00 . #x9fff)
+ (cond
+  ((string-equal system-type "windows-nt")
+   (cond
+    ((member "Microsoft YaHei" (font-family-list)) "Microsoft YaHei")
+    ((member "Microsoft JhengHei" (font-family-list)) "Microsoft JhengHei")
+    ((member "SimHei" (font-family-list)) "SimHei")))
+  ((string-equal system-type "darwin")
+   (cond
+    ((member "Hei" (font-family-list)) "Hei")
+    ((member "Heiti SC" (font-family-list)) "Heiti SC")
+    ((member "Heiti TC" (font-family-list)) "Heiti TC")))
+  ((string-equal system-type "gnu/linux")
+   (cond
+    ((member "WenQuanYi Micro Hei" (font-family-list)) "WenQuanYi Micro Hei")))))
 
 (progn
   ;; make buffer switch command do suggestions, also for find-file command
@@ -78,7 +117,9 @@
   (setq ido-default-buffer-method 'selected-window)
   ;; stop ido from suggesting when naming new file
   (when (boundp 'ido-minor-mode-map-entry)
-    (define-key (cdr ido-minor-mode-map-entry) [remap write-file] nil)))
+    (define-key (cdr ido-minor-mode-map-entry) [remap write-file] nil))
+  (define-key ido-file-completion-map (kbd "C-n") 'ido-next-match)
+  (define-key ido-file-completion-map (kbd "C-p") 'ido-prev-match))
 
 ;; set highlighting brackets
 (show-paren-mode 1)
@@ -89,7 +130,7 @@
 (set-default 'tab-always-indent 'complete)
 ;; no mixed tab space
 (setq-default indent-tabs-mode nil)
- ; gnu emacs 23.1, 24.4.1 default is t
+                                        ; gnu emacs 23.1, 24.4.1 default is t
 
 ;; 4 is more popular than 8.
 (setq-default tab-width 4)
@@ -105,5 +146,8 @@
 
 ;; convenient
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+;;set global key
+(global-set-key (kbd "C-c C-f") 'recentf-open-files)
 
 (provide 'yzs-emacs-better-default)
