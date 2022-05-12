@@ -1,5 +1,5 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
-(require 'yzs-emacs-better-default)
+(require 'emacs-better-default)
 
 (when (>= emacs-major-version 24)
   (require 'package)
@@ -40,14 +40,19 @@
 )
 
 (use-package evil
-  :init
-  (evil-mode 1)
-  )
+  :init (progn
+          (setq evil-want-C-i-jump nil)
+          (evil-mode)
+          (cond 
+           ((string-equal system-type "windows-nt") (add-hook 'evil-normal-state-entry-hook '(lambda () (w32-set-ime-open-status nil))))))
+)
+
 
 (load-theme 'tango-dark t)
 
-(require 'yzs-emacs-code-config)
-(require 'yzs-emacs-org)
+(require 'emacs-code-config)
+(require 'emacs-replace-default)
+(require 'emacs-org-config)
 
 
 ;;----------------------------auto-generate-------------------------------------------
@@ -60,7 +65,7 @@
    '("57e3f215bef8784157991c4957965aa31bac935aca011b29d7d8e113a652b693" default))
  '(minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
  '(org-agenda-files '("d:/NutStore/note/GTD/read.org"))
- '(package-selected-packages '(evil)))
+ '(package-selected-packages '(embark-consult embark marginalia Buffer-menu evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -53,16 +53,16 @@
    'minibuffer-prompt-properties
    (quote (read-only t cursor-intangible t face minibuffer-prompt))))
 
-(progn
-  ;; minibuffer enhanced completion
-  (require 'icomplete)
-  (icomplete-mode 1)
-  ;; show choices vertically
-  (setq icomplete-separator "\n")
-  (setq icomplete-hide-common-prefix nil)
-  (setq icomplete-in-buffer t)
-  (define-key icomplete-minibuffer-map (kbd "C-n") 'icomplete-forward-completions)
-  (define-key icomplete-minibuffer-map (kbd "C-p") 'icomplete-backward-completions))
+;;(progn
+;;  ;; minibuffer enhanced completion
+;;  (require 'icomplete)
+;;  (icomplete-mode 1)
+;;  ;; show choices vertically
+;;  (setq icomplete-separator "\n")
+;;  (setq icomplete-hide-common-prefix nil)
+;;  (setq icomplete-in-buffer t)
+;;  (define-key icomplete-minibuffer-map (kbd "C-n") 'icomplete-forward-completions)
+;;  (define-key icomplete-minibuffer-map (kbd "C-p") 'icomplete-backward-completions))
 
 ;; set default font
 (set-frame-font
@@ -95,27 +95,27 @@
    (cond
     ((member "WenQuanYi Micro Hei" (font-family-list)) "WenQuanYi Micro Hei")))))
 
-(progn
-  ;; make buffer switch command do suggestions, also for find-file command
-  (require 'ido)
-  (ido-mode 1)
-
-  ;; show choices vertically
-  (if (version< emacs-version "25")
-      (setq ido-separator "\n")
-    (setf (nth 2 ido-decorations) "\n"))
-
-  ;; show any name that has the chars you typed
-  (setq ido-enable-flex-matching t)
-  ;; use current pane for newly opened file
-  (setq ido-default-file-method 'selected-window)
-  ;; use current pane for newly switched buffer
-  (setq ido-default-buffer-method 'selected-window)
-  ;; stop ido from suggesting when naming new file
-  (when (boundp 'ido-minor-mode-map-entry)
-    (define-key (cdr ido-minor-mode-map-entry) [remap write-file] nil))
-  (define-key ido-file-completion-map (kbd "C-n") 'ido-next-match)
-  (define-key ido-file-completion-map (kbd "C-p") 'ido-prev-match))
+;;(progn
+;;  ;; make buffer switch command do suggestions, also for find-file command
+;;  (require 'ido)
+;;  (ido-mode 1)
+;;
+;;  ;; show choices vertically
+;;  (if (version< emacs-version "25")
+;;      (setq ido-separator "\n")
+;;    (setf (nth 2 ido-decorations) "\n"))
+;;
+;;  ;; show any name that has the chars you typed
+;;  (setq ido-enable-flex-matching t)
+;;  ;; use current pane for newly opened file
+;;  (setq ido-default-file-method 'selected-window)
+;;  ;; use current pane for newly switched buffer
+;;  (setq ido-default-buffer-method 'selected-window)
+;;  ;; stop ido from suggesting when naming new file
+;;  (when (boundp 'ido-minor-mode-map-entry)
+;;    (define-key (cdr ido-minor-mode-map-entry) [remap write-file] nil))
+;;  (define-key ido-file-completion-map (kbd "C-n") 'ido-next-match)
+;;  (define-key ido-file-completion-map (kbd "C-p") 'ido-prev-match))
 
 ;; set highlighting brackets
 (show-paren-mode 1)
@@ -146,4 +146,4 @@
 ;;set global key
 (global-set-key (kbd "C-c C-f") 'recentf-open-files)
 
-(provide 'yzs-emacs-better-default)
+(provide 'emacs-better-default)

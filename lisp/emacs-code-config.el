@@ -16,4 +16,4 @@
   (:map html-mode-map
         ("M-/" . emmet-expand-yas)))
 
-(provide 'yzs-emacs-code-config)
+(provide 'emacs-code-config)
