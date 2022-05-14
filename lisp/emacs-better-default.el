@@ -2,6 +2,17 @@
 
 (setq inhibit-startup-screen t)
 
+;;set font size
+(set-face-attribute 'default nil :height 130)
+
+;;设置窗口大小
+(cond 
+ ((string-equal system-type "windows-nt") (progn 
+                                            (set-frame-position (selected-frame) 0 0)
+                                            (set-frame-width  (selected-frame) 140)
+                                            (set-frame-height (selected-frame) 45))))
+
+
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8-unix)
 
@@ -17,6 +28,7 @@
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (column-number-mode 1)
+(global-linum-mode 1)
 (blink-cursor-mode 0)
 (setq use-dialog-box nil)
 
@@ -24,6 +36,7 @@
 
 (progn
   (require 'dired-x)
+
   (setq dired-dwim-target t)
   ;; (cond
   ;;  ((string-equal system-type "gnu/linux") (setq dired-listing-switches "-al --time-style long-iso"))
@@ -63,6 +76,7 @@
 ;;  (setq icomplete-in-buffer t)
 ;;  (define-key icomplete-minibuffer-map (kbd "C-n") 'icomplete-forward-completions)
 ;;  (define-key icomplete-minibuffer-map (kbd "C-p") 'icomplete-backward-completions))
+
 
 ;; set default font
 (set-frame-font
@@ -144,6 +158,8 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;;set global key
-(global-set-key (kbd "C-c C-f") 'recentf-open-files)
+(global-set-key (kbd "C-h C-f") 'find-function)
+(global-set-key (kbd "C-h C-v") 'find-variable)
+(global-set-key (kbd "C-h C-f") 'find-function-on-key)
 
 (provide 'emacs-better-default)

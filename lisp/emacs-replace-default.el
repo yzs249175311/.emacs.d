@@ -15,7 +15,8 @@
   :bind
   ("C-s" . consult-line)
   ("C-x b" . consult-buffer)
-  ("C-c C-f" . consult-recent-file))
+  ("C-c C-f" . consult-recent-file)
+  ("C-c C-s" . consult-ripgrep))
 
 (use-package marginalia
   :init 
@@ -46,8 +47,8 @@
   :demand t ; only necessary if you have the hook below
   ;; if you want to have consult previews as you move around an
   ;; auto-updating embark collect buffer
+  :bind
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
-
 
 (provide 'emacs-replace-default)

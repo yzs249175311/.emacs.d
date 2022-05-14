@@ -45,13 +45,16 @@
           (evil-mode)
           (cond 
            ((string-equal system-type "windows-nt") (add-hook 'evil-normal-state-entry-hook '(lambda () (w32-set-ime-open-status nil))))))
+  :hook
+  (org-mode . (lambda () (setq evil-shift-width 2)))
 )
 
 
-(load-theme 'tango-dark t)
 
-(require 'emacs-code-config)
+(load-theme 'deeper-blue t)
+
 (require 'emacs-replace-default)
+(require 'emacs-code-config)
 (require 'emacs-org-config)
 
 
@@ -65,7 +68,7 @@
    '("57e3f215bef8784157991c4957965aa31bac935aca011b29d7d8e113a652b693" default))
  '(minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
  '(org-agenda-files '("d:/NutStore/note/GTD/read.org"))
- '(package-selected-packages '(embark-consult embark marginalia Buffer-menu evil)))
+ '(package-selected-packages '(eglot embark-consult embark marginalia Buffer-menu evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
