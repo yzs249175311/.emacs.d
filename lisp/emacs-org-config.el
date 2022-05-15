@@ -13,6 +13,7 @@
     (setq org-log-done 'time))
   :hook 
   (org-mode . org-indent-mode)
+  (org-mode . org-num-mode)
   )
 
 

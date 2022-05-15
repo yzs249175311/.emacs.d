@@ -4,9 +4,9 @@
   )
 
 (use-package yasnippet-snippets
-  :init
-  (yas-global-mode 1)
   :bind ("C-c i" . #'yas-insert-snippet)
+  :hook 
+  (flymake-mode . yas-global-mode)
   )
 
 (use-package emmet-mode
