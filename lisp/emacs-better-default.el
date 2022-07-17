@@ -21,6 +21,7 @@
 (setq create-lockfiles nil)
 (setq auto-save-default nil)
 (setq visible-bell 0)
+(setq scroll-step 1 scroll-margin 3)
 
 (global-auto-revert-mode 1)
 

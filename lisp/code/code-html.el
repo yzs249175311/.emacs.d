@@ -1,0 +1,31 @@
+(use-package emmet-mode
+  :bind (:map emmet-mode-keymap
+              ("M-/" . emmet-expand-yas)))
+
+(use-package company-web
+  :init (progn
+          (add-to-list 'company-backends 'company-web-html)))
+
+(use-package auto-rename-tag
+  :init 
+  :hook 
+  (web-mode . auto-rename-tag-mode)
+  (web-mode . yas-minor-mode)
+  (js-mode . yas-minor-mode)
+  (css-mode . yas-minor-mode)
+)
+
+(use-package web-mode
+  :init
+  (add-to-list 'auto-mode-alist 
+               '("\\.html?\\'" . web-mode))
+  :hook
+  (web-mode . (lambda ()
+                (set (make-local-variable 'company-backends) '(company-web-html company-files))))
+  (web-mode . yas-minor-mode))
+
+;; (defun open-html-in-server () 
+;;   (interactive)
+;;   (shell-command-to-string (format "browser-sync --server --file \"%s\"" (buffer-file-name))))
+
+(provide 'code-html)

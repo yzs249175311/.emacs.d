@@ -1,4 +1,5 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
+(add-to-list 'load-path "~/.emacs.d/lisp/code/")
 (require 'emacs-better-default)
 
 (when (>= emacs-major-version 24)
@@ -67,9 +68,9 @@
 
 
 
-(load-theme 'deeper-blue t)
+(load-theme 'leuven t)
 
-(require 'emacs-replace-default)
+(require 'emacs-basic-config)
 (require 'emacs-code-config)
 (require 'emacs-org-config)
 
@@ -85,7 +86,7 @@
  '(minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
  '(org-agenda-files '("d:/NutStore/note/GTD/read.org"))
  '(package-selected-packages
-   '(spinner gnu-elpa-keyring-update eglot embark-consult embark marginalia Buffer-menu evil))
+   '(treemacs spinner gnu-elpa-keyring-update eglot embark-consult embark marginalia Buffer-menu evil))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

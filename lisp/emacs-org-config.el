@@ -5,7 +5,6 @@
   (progn 
     (setq org-adapt-indentation t
           org-hide-leading-stars t)
-
     (setq org-src-fontify-natively t)
     (setq org-startup-folded nil)
     (setq org-return-follows-link t)
@@ -14,6 +13,7 @@
   :hook 
   (org-mode . org-indent-mode)
   (org-mode . org-num-mode)
+  (org-mode . yas-minor-mode)
   )
 
 

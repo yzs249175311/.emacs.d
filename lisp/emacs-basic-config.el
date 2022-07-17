@@ -51,4 +51,8 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
-(provide 'emacs-replace-default)
+(use-package treemacs
+  :bind
+  ("<f12>" . treemacs))
+
+(provide 'emacs-basic-config)
