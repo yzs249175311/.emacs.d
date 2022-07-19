@@ -1,5 +1,6 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'load-path "~/.emacs.d/lisp/code/")
+
 (require 'emacs-better-default)
 
 (when (>= emacs-major-version 24)
@@ -61,18 +62,16 @@
           (setq evil-undo-system 'undo-redo)
           (evil-mode)
           (cond 
-           ((string-equal system-type "windows-nt") (add-hook 'evil-normal-state-entry-hook '(lambda () (w32-set-ime-open-status nil))))))
+           ((string-equal system-type "windows-nt") (add-hook 'evil-normal-state-entry-hook (lambda () (w32-set-ime-open-status nil))))))
   :hook
   (org-mode . (lambda () (setq evil-shift-width 2)))
   )
 
 
-
-(load-theme 'leuven t)
-
 (require 'emacs-basic-config)
 (require 'emacs-code-config)
 (require 'emacs-org-config)
+(require 'emacs-custom-config)
 
 
 ;;----------------------------auto-generate-------------------------------------------

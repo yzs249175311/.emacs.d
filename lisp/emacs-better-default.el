@@ -3,9 +3,8 @@
 (setq inhibit-startup-screen t)
 
 ;;set font size
-(set-face-attribute 'default nil :height 130)
+(set-face-attribute 'default nil :height 140)
 
-;;设置窗口大小
 (cond 
  ((string-equal system-type "windows-nt") (progn 
                                             (set-frame-position (selected-frame) 0 0)
@@ -13,8 +12,32 @@
                                             (set-frame-height (selected-frame) 45))))
 
 
-(set-language-environment "UTF-8")
+;; (set-language-environment "utf-8")
 (set-default-coding-systems 'utf-8-unix)
+;; (prefer-coding-system 'utf-8)
+;; ;;;; 设置编辑环境
+;; ;; 设置为中文简体语言环境
+(set-language-environment 'Chinese-GB)
+
+;; ;; 设置emacs 使用 utf-8
+;; (setq locale-coding-system 'utf-8)
+;; ;; 设置键盘输入时的字符编码
+;; (set-keyboard-coding-system 'utf-8)
+;; (set-selection-coding-system 'utf-8)
+;; ;; 文件默认保存为 utf-8
+;; (set-buffer-file-coding-system 'utf-8)
+;; (set-default buffer-file-coding-system 'utf-8)
+;; (set-default-coding-systems 'utf-8)
+
+;; ;; 解决粘贴中文出现乱码的问题
+;; (set-clipboard-coding-system 'utf-8)
+;; ;; 终端中文乱码
+;; (set-terminal-coding-system 'utf-8)
+;; ;; (modify-coding-system-alist 'process "*" 'utf-8)
+;; (setq default-process-coding-system '(utf-8 . utf-8))
+;; ;; 解决文件目录的中文名乱码
+;; (setq-default pathname-coding-system 'utf-8)
+;; (set-file-name-coding-system 'utf-8)
 
 (setq make-backup-files nil)
 (setq backup-by-copying t)
@@ -31,6 +54,7 @@
 (column-number-mode 1)
 (global-linum-mode 1)
 (blink-cursor-mode 0)
+(global-hl-line-mode)
 (setq use-dialog-box nil)
 
 (recentf-mode 1)

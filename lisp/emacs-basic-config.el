@@ -55,4 +55,18 @@
   :bind
   ("<f12>" . treemacs))
 
+(use-package rainbow-delimiters
+  :hook
+  (web-mode . rainbow-delimiters-mode)
+  (html-mode . rainbow-delimiters-mode)
+  (css-mode . rainbow-delimiters-mode)
+  (js-mode . rainbow-delimiters-mode)
+  (emacs-lisp-mode . rainbow-delimiters-mode)
+  )
+
+(use-package leuven-theme
+  :init
+  (load-theme 'leuven-dark t)
+  )
+
 (provide 'emacs-basic-config)
