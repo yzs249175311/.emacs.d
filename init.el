@@ -60,6 +60,7 @@
   :init (progn
           (setq evil-want-C-i-jump nil)
           (setq evil-undo-system 'undo-redo)
+          (global-unset-key (kbd "C-v"))
           (evil-mode)
           (cond 
            ((string-equal system-type "windows-nt") (add-hook 'evil-normal-state-entry-hook (lambda () (w32-set-ime-open-status nil))))))
@@ -68,12 +69,12 @@
   :bind (:map evil-normal-state-map
               ("C-u" . evil-scroll-up)))
 
-
 (require 'emacs-basic-config)
 (require 'emacs-code-config)
 (require 'emacs-org-config)
 (require 'emacs-custom-config)
 (require 'emacs-ui-config)
+(require 'emacs-pyim-config)
 
 
 ;;----------------------------auto-generate-------------------------------------------
@@ -87,7 +88,7 @@
  '(minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
  '(org-agenda-files '("d:/NutStore/note/GTD/read.org"))
  '(package-selected-packages
-   '(treemacs spinner gnu-elpa-keyring-update eglot embark-consult embark marginalia Buffer-menu evil))
+   '(pyim-cregexp-utils treemacs spinner gnu-elpa-keyring-update eglot embark-consult embark marginalia Buffer-menu evil))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
