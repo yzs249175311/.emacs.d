@@ -37,6 +37,8 @@
   (setq lsp-keymap-prefix "C-c l")
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (web-mode . lsp)
+         (js-mode . lsp)
+         (css-mode . lsp)
          (web-mode . emmet-mode)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))

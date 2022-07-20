@@ -1,6 +1,8 @@
 (require 'package)
 
 (setq inhibit-startup-screen t)
+(setq initial-major-mode 'text-mode)
+(setq initial-scratch-message nil)
 
 ;;set font size
 (set-face-attribute 'default nil :height 140)

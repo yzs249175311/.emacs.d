@@ -65,6 +65,8 @@
            ((string-equal system-type "windows-nt") (add-hook 'evil-normal-state-entry-hook (lambda () (w32-set-ime-open-status nil))))))
   :hook
   (org-mode . (lambda () (setq evil-shift-width 2)))
+  :bind (:map evil-normal-state-local-map
+              ("C-u" . evil-scroll-up))
   )
 
 

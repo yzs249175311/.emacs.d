@@ -16,9 +16,12 @@
   ("C-s" . consult-line)
   ("C-x b" . consult-buffer)
   ("C-c C-f" . consult-recent-file)
-  ("C-c C-s" . consult-ripgrep))
+  ("C-c f s" . consult-ripgrep))
 
 (use-package marginalia
+  :bind (("M-A" . marginalia-cycle)
+         :map minibuffer-local-map
+         ("M-A" . marginalia-cycle))
   :init 
   (marginalia-mode))
 
@@ -27,14 +30,10 @@
   (("C-'" . embark-act)         ;; pick some comfortable binding
    ("C-;" . embark-dwim)        ;; good alternative: M-.
    ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
-
   :init
-
   ;; Optionally replace the key help with a completing-read interface
   (setq prefix-help-command #'embark-prefix-help-command)
-
   :config
-
   ;; Hide the mode line of the Embark live/completions buffers
   (add-to-list 'display-buffer-alist
                '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
