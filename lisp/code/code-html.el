@@ -2,9 +2,9 @@
   :bind (:map emmet-mode-keymap
               ("M-/" . emmet-expand-yas)))
 
-(use-package company-web
-  :init (progn
-          (add-to-list 'company-backends 'company-web-html)))
+;;(use-package company-web
+;;  :init (progn
+;;          (add-to-list 'company-backends 'company-web-html)))
 
 (use-package auto-rename-tag
   :hook 

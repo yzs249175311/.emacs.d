@@ -3,16 +3,20 @@
 
 (require 'emacs-better-default)
 
+(setq package-check-signature nil)
 (when (>= emacs-major-version 24)
   (require 'package)
   (setq package-archives
         '(
-          ;; ("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-          ;;           ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-          ;;           ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+          ;;("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+          ;;("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+          ;;("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
           ("melpa-cn" . "http://elpa.zilongshanren.com/melpa/")
           ("org-cn"   . "http://elpa.zilongshanren.com/org/")
           ("gnu-cn"   . "http://elpa.zilongshanren.com/gnu/")
+          ;;("non-gun-elpa" . "http://1.15.88.122/nongnu/")
+          ;;("melpa" . "https://melpa.org/packages/")
+          ;;("gnu" . "http://elpa.gnu.org/packages/")
           )))
 
 (package-initialize)
@@ -21,7 +25,10 @@
   (package-refresh-contents))
 
 (defvar my-packages '(
-                      use-package))
+                      use-package
+                      pyim
+                      pyim-basedict
+                      pyim-cregexp))
 
 ;; install packages
 (defun install-my-packages (my-packages)
@@ -60,7 +67,6 @@
   :init (progn
           (setq evil-want-C-i-jump nil)
           (setq evil-undo-system 'undo-redo)
-          (global-unset-key (kbd "C-v"))
           (evil-mode)
           (cond 
            ((string-equal system-type "windows-nt") (add-hook 'evil-normal-state-entry-hook (lambda () (w32-set-ime-open-status nil))))))
@@ -88,7 +94,7 @@
  '(minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
  '(org-agenda-files '("d:/NutStore/note/GTD/read.org"))
  '(package-selected-packages
-   '(pyim-cregexp-utils treemacs spinner gnu-elpa-keyring-update eglot embark-consult embark marginalia Buffer-menu evil))
+   '(gnu-elpa-keyring-update pyim-cregexp-utils treemacs spinner eglot embark-consult embark marginalia Buffer-menu evil))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
