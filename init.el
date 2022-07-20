@@ -65,15 +65,15 @@
            ((string-equal system-type "windows-nt") (add-hook 'evil-normal-state-entry-hook (lambda () (w32-set-ime-open-status nil))))))
   :hook
   (org-mode . (lambda () (setq evil-shift-width 2)))
-  :bind (:map evil-normal-state-local-map
-              ("C-u" . evil-scroll-up))
-  )
+  :bind (:map evil-normal-state-map
+              ("C-u" . evil-scroll-up)))
 
 
 (require 'emacs-basic-config)
 (require 'emacs-code-config)
 (require 'emacs-org-config)
 (require 'emacs-custom-config)
+(require 'emacs-ui-config)
 
 
 ;;----------------------------auto-generate-------------------------------------------

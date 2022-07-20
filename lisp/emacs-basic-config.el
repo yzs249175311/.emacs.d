@@ -63,9 +63,5 @@
   (emacs-lisp-mode . rainbow-delimiters-mode)
   )
 
-(use-package leuven-theme
-  :init
-  (load-theme 'leuven-dark t)
-  )
 
 (provide 'emacs-basic-config)
