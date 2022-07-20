@@ -16,7 +16,6 @@
 ;;  ("C-x p y a" . pyim-activate)
 ;;  ("C-x p y d" . pyim-deactivate)
 ;;  ("C-M-z " . pyim-toggle-input-ascii))
-
 (require 'pyim)
 (require 'pyim-basedict)
 (require 'pyim-cregexp-utils)

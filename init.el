@@ -3,7 +3,10 @@
 
 (require 'emacs-better-default)
 
-(setq package-check-signature nil)
+;;解决安装包失败的问题
+;;(setq package-check-signature nil)
+;;(gnu-elpa-keyring-update)
+
 (when (>= emacs-major-version 24)
   (require 'package)
   (setq package-archives
@@ -81,7 +84,6 @@
 (require 'emacs-custom-config)
 (require 'emacs-ui-config)
 (require 'emacs-pyim-config)
-
 
 ;;----------------------------auto-generate-------------------------------------------
 (custom-set-variables
