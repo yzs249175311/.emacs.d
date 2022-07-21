@@ -17,6 +17,7 @@
   (js-mode . yas-minor-mode)
   (css-mode . yas-minor-mode)
   (web-mode . yas-minor-mode)
+  (typescript-mode . yas-minor-mode)
 )
 
 ;; (use-package eglot
@@ -39,6 +40,7 @@
          (web-mode . lsp)
          (js-mode . lsp)
          (css-mode . lsp)
+         (typescript-mode . lsp)
          (web-mode . emmet-mode)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))

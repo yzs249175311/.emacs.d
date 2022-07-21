@@ -14,12 +14,12 @@
                                             (set-frame-height (selected-frame) 45))))
 
 
-;; (set-language-environment "utf-8")
+(set-language-environment "utf-8")
 (set-default-coding-systems 'utf-8-unix)
 ;; (prefer-coding-system 'utf-8)
 ;; ;;;; 设置编辑环境
 ;; ;; 设置为中文简体语言环境
-(set-language-environment 'Chinese-GB)
+;;(set-language-environment 'Chinese-GB)
 
 ;; ;; 设置emacs 使用 utf-8
 ;; (setq locale-coding-system 'utf-8)

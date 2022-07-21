@@ -41,8 +41,9 @@
 ;; 按 "C-<return>" 将光标前的 regexp 转换为可以搜索中文的 regexp.
 ;;(define-key minibuffer-local-map (kbd "C-<return>") 'pyim-cregexp-convert-at-point)
 
-;; 我使用全拼
-(pyim-default-scheme 'quanpin)
+;; 我使用双
+;;(pyim-default-scheme 'quanpin)
+(pyim-default-scheme 'pyim-shuangpin)
 (pyim-isearch-mode 1)
 
 ;;  ("C-x p y a" . pyim-activate)

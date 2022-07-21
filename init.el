@@ -81,9 +81,9 @@
 (require 'emacs-basic-config)
 (require 'emacs-code-config)
 (require 'emacs-org-config)
-(require 'emacs-custom-config)
 (require 'emacs-ui-config)
 (require 'emacs-pyim-config)
+(require 'emacs-custom-config)
 
 ;;----------------------------auto-generate-------------------------------------------
 (custom-set-variables
@@ -96,7 +96,7 @@
  '(minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
  '(org-agenda-files '("d:/NutStore/note/GTD/read.org"))
  '(package-selected-packages
-   '(gnu-elpa-keyring-update pyim-cregexp-utils treemacs spinner eglot embark-consult embark marginalia Buffer-menu evil))
+   '(typescript gnu-elpa-keyring-update pyim-cregexp-utils treemacs spinner eglot embark-consult embark marginalia Buffer-menu evil))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

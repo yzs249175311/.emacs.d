@@ -17,6 +17,11 @@
                '("\\.html?\\'" . web-mode))
   )
 
+(use-package typescript-mode
+  :config
+  (add-to-list 'auto-mode-alist
+               '("\\.ts\\'" . typescript-mode))
+  )
 ;; (defun open-html-in-server () 
 ;;   (interactive)
 ;;   (shell-command-to-string (format "browser-sync --server --file \"%s\"" (buffer-file-name))))
