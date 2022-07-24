@@ -69,7 +69,8 @@
   ;;  ((string-equal system-type "gnu/linux") (setq dired-listing-switches "-al --time-style long-iso"))
   ;;  ((string-equal system-type "darwin") (setq dired-listing-switches "-alh")))
   (setq dired-recursive-copies 'top)
-  (setq dired-recursive-deletes 'top))
+  (setq dired-recursive-deletes 'top)
+  (setq dired-kill-when-opening-new-dired-buffer t))
 
 (progn
   ;; no need to warn

@@ -15,6 +15,8 @@
    ((string-match "\.js$" file) (async-shell-command (concat "node " file)))
    ((string-match "\.ts$" file) (async-shell-command (concat "ts-node " file)))))
 
-(global-set-key (kbd "C-c o b") 'open-with-browser)
-(global-set-key (kbd "C-c r c") 'run-code)
+(global-set-key (kbd "C-c c o") 'open-with-browser)
+(global-set-key (kbd "C-c c c") 'run-code)
+(global-set-key (kbd "C-c e n") #'flymake-goto-next-error)
+(global-set-key (kbd "C-c e p") #'flymake-goto-prev-error)
 (provide 'emacs-custom-config)

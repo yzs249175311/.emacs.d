@@ -16,7 +16,8 @@
   ("C-s" . consult-line)
   ("C-x b" . consult-buffer)
   ("C-c C-f" . consult-recent-file)
-  ("C-c f s" . consult-ripgrep))
+  ("C-c f s" . consult-ripgrep)
+  ("C-c e u" . consult-flymake))
 
 (use-package marginalia
   :bind (("M-A" . marginalia-cycle)
@@ -50,9 +51,22 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
+;; (defun treemacs-toggle () 
+;;   (interactive)
+;;   (if (equal major-mode #'treemacs-mode)
+;;                    (treemacs-quit)
+;;                  (treemacs-select-window)))
+
 (use-package treemacs
+  :init 
+  (defun treemacs-toggle () 
+    (interactive)
+    (if (equal major-mode #'treemacs-mode)
+        (treemacs-quit)
+      (treemacs-select-window)))
   :bind
-  ("<f12>" . treemacs))
+  ("<f12>" . treemacs-toggle))
+
 
 (use-package rainbow-delimiters
   :hook
