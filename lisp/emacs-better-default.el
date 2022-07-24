@@ -183,11 +183,15 @@
 (electric-pair-mode 1)
 
 ;; convenient
-(defalias 'yes-or-no-p 'y-or-n-p)
+(if (>= emacs-major-version 28)
+    (setq use-short-answers t)
+  (defalias 'yes-or-no-p 'y-or-n-p))
 
 ;;set global key
 (global-set-key (kbd "C-h C-f") 'find-function)
 (global-set-key (kbd "C-h C-v") 'find-variable)
 (global-set-key (kbd "C-h C-f") 'find-function-on-key)
-
+;;flymake
+(global-set-key (kbd "C-c e n") #'flymake-goto-next-error)
+(global-set-key (kbd "C-c e p") #'flymake-goto-prev-error)
 (provide 'emacs-better-default)

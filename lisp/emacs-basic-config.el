@@ -17,7 +17,7 @@
   ("C-x b" . consult-buffer)
   ("C-c C-f" . consult-recent-file)
   ("C-c f s" . consult-ripgrep)
-  ("C-c e u" . consult-flymake))
+  ("C-c e l" . consult-flymake))
 
 (use-package marginalia
   :bind (("M-A" . marginalia-cycle)
@@ -28,9 +28,9 @@
 
 (use-package embark
   :bind
-  (("M-'" . embark-act)         ;; pick some comfortable binding
-   ("M-;" . embark-dwim)        ;; good alternative: M-.
-   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+  ("M-'" . embark-act)         ;; pick some comfortable binding
+  ("M-;" . embark-dwim)        ;; good alternative: M-.
+  ("C-h B" . embark-bindings) ;; alternative for `describe-bindings'
   :init
   ;; Optionally replace the key help with a completing-read interface
   (setq prefix-help-command #'embark-prefix-help-command)

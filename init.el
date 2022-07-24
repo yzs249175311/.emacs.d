@@ -11,8 +11,9 @@
     ))
 
 (require 'emacs-better-default)
+(require 'emacs-custom-config)
 
-;;解决gun安装包失败的问题
+;;解决使用msys2时gun安装包失败的问题
 ;;(setq package-check-signature nil)
 ;;(gnu-elpa-keyring-update)
 (setq package-gnupghome-dir nil)
@@ -94,7 +95,6 @@
 (require 'emacs-org-config)
 (require 'emacs-ui-config)
 (require 'emacs-pyim-config)
-(require 'emacs-custom-config)
 
 ;;----------------------------auto-generate-------------------------------------------
 (custom-set-variables
