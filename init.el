@@ -12,9 +12,10 @@
 
 (require 'emacs-better-default)
 
-;;解决安装包失败的问题
+;;解决gun安装包失败的问题
 ;;(setq package-check-signature nil)
 ;;(gnu-elpa-keyring-update)
+(setq package-gnupghome-dir nil)
 
 (when (>= emacs-major-version 24)
   (require 'package)
@@ -36,19 +37,20 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(
-                      use-package
-                      pyim
-                      pyim-basedict
-                      pyim-cregexp))
+(setq my-packages '(
+                    use-package
+                    pyim
+                    pyim-basedict
+                    ))
 
 ;; install packages
 (defun install-my-packages (my-packages)
-  (let ((my-package (car my-packages)))
-    (message "%s" my-package)
-    (unless (package-installed-p my-package)
-      (package-install my-package)
-      (install-my-packages (cdr my-packages)))))
+  (if my-packages 
+      (let ((my-package (car my-packages)))
+        (message "install %s" my-package)
+        (unless (package-installed-p my-package)
+          (package-install my-package))
+        (install-my-packages (cdr my-packages)))))
 
 (install-my-packages my-packages)
 
@@ -105,7 +107,7 @@
  '(minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
  '(org-agenda-files '("d:/NutStore/note/GTD/read.org"))
  '(package-selected-packages
-   '(typescript gnu-elpa-keyring-update pyim-cregexp-utils treemacs spinner eglot embark-consult embark marginalia Buffer-menu evil))
+   '(pyim-cregexp typescript gnu-elpa-keyring-update pyim-cregexp-utils treemacs spinner eglot embark-consult embark marginalia Buffer-menu evil))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
