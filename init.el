@@ -90,7 +90,7 @@
   :bind (:map evil-normal-state-map
               ("C-u" . evil-scroll-up)))
 
-(require 'emacs-basic-config)
+(require 'emacs-advance-config)
 (require 'emacs-code-config)
 (require 'emacs-org-config)
 (require 'emacs-ui-config)

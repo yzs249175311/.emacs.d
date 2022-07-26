@@ -78,4 +78,4 @@
   :hook
   (org-mode . visual-fill-column-mode))
 
-(provide 'emacs-basic-config)
+(provide 'emacs-advance-config)

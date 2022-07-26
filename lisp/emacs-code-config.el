@@ -1,4 +1,4 @@
-(require 'code-html)
+(require 'web-code)
 
 (use-package company
   :hook
@@ -12,8 +12,8 @@
 
 (use-package yasnippet-snippets
   :bind 
-  ("C-c y i" . #'yas-insert-snippet)
-  ("C-c y l" . #'yas-describe-tables)
+  (:map yas-minor-mode-map
+        ("C-c & C-t" . yas-describe-tables))
   :hook 
   (org-mode . yas-minor-mode)
   (js-mode . yas-minor-mode)

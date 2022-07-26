@@ -26,4 +26,4 @@
 ;;   (interactive)
 ;;   (shell-command-to-string (format "browser-sync --server --file \"%s\"" (buffer-file-name))))
 
-(provide 'code-html)
+(provide 'web-code)
