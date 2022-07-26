@@ -78,4 +78,12 @@
   :hook
   (org-mode . visual-fill-column-mode))
 
+
+(use-package which-key
+  :init
+  (setq which-key-show-early-on-C-h t
+        which-key-idle-delay 1)
+  (which-key-mode))
+
+
 (provide 'emacs-advance-config)
