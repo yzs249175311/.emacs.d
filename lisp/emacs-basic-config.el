@@ -8,7 +8,7 @@
 
 (use-package orderless
   :custom
-  (completion-styles '(orderless basic))
+  (completion-styles '(orderless))
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
 (use-package consult

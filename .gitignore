@@ -1,5 +1,6 @@
 /*
 
 !lisp/
-!init
+!init.el
 !.gitignore
+!snippets/

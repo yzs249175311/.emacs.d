@@ -11,7 +11,9 @@
   )
 
 (use-package yasnippet-snippets
-  :bind ("C-c i" . #'yas-insert-snippet)
+  :bind 
+  ("C-c y i" . #'yas-insert-snippet)
+  ("C-c y l" . #'yas-describe-tables)
   :hook 
   (org-mode . yas-minor-mode)
   (js-mode . yas-minor-mode)
