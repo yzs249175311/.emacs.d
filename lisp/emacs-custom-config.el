@@ -11,11 +11,12 @@
   (interactive "fchoice file:")
   (if (not file)
       (setq file buffer-file-name))
+  (message "run code: %s" file)
   (cond 
    ((string-match "\.js$" file) 
-    (shell-command-to-string (encode-coding-string (concat "node " file) 'gbk)))
+    (async-shell-command (encode-coding-string (concat "node " file) 'gbk)))
    ((string-match "\.ts$" file) 
-    (shell-command-to-string (encode-coding-string (concat "ts-node " file) 'gbk)))
+    (async-shell-command (encode-coding-string (concat "ts-node " file) 'gbk)))
    (t (message "Can't run this file"))))
 
 (defun open-directory(path) 

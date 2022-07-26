@@ -47,18 +47,12 @@
   :demand t ; only necessary if you have the hook below
   ;; if you want to have consult previews as you move around an
   ;; auto-updating embark collect buffer
-  :bind
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
-;; (defun treemacs-toggle () 
-;;   (interactive)
-;;   (if (equal major-mode #'treemacs-mode)
-;;                    (treemacs-quit)
-;;                  (treemacs-select-window)))
-
+;;目录树
 (use-package treemacs
-  :init 
+  :config
   (defun treemacs-toggle () 
     (interactive)
     (if (equal major-mode #'treemacs-mode)
@@ -67,7 +61,7 @@
   :bind
   ("<f12>" . treemacs-toggle))
 
-
+;;彩虹括号
 (use-package rainbow-delimiters
   :hook
   (web-mode . rainbow-delimiters-mode)
@@ -77,5 +71,11 @@
   (emacs-lisp-mode . rainbow-delimiters-mode)
   )
 
+;;更改内容显示宽度
+(use-package visual-fill-column
+  :init (setq visual-fill-column-width 120 
+              visual-fill-column-center-text t)
+  :hook
+  (org-mode . visual-fill-column-mode))
 
 (provide 'emacs-basic-config)
