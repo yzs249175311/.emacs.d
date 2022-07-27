@@ -77,9 +77,8 @@
   :hook
   (org-mode . (lambda () (setq evil-shift-width 2)))
   (helpful-mode . (lambda () (evil-local-set-key 'normal "q" 'quit-window)))
-  (treemac-mode . (lambda () 
-                    (evil-local-set-key 'normal (kbd "<return>") 'treemacs-RET-action)
-                    (evil-local-set-key 'normal (kbd "<tab>") 'treemacs-TAB-action)))
+  (treemacs-mode . (lambda () 
+                     (evil-local-set-key 'motion [remap evil-ret] 'treemacs-RET-action)))
   :bind (:map evil-normal-state-map
               ("C-u" . evil-scroll-up)))
 
