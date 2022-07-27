@@ -40,16 +40,20 @@
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l")
-  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-         (web-mode . lsp)
-         (js-mode . lsp)
-         (css-mode . lsp)
-         (typescript-mode . lsp)
-         (web-mode . emmet-mode)
-         ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp)
-;; optionally
+  :hook ;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+  (web-mode . lsp)
+  (js-mode . lsp)
+  (css-mode . lsp)
+  (typescript-mode . lsp)
+  ;; if you want which-key integration
+  (lsp-mode . lsp-enable-which-key-integration)
+  :commands lsp
+  )
 
+(use-package projectile
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :bind-keymap 
+  ("C-c p" . projectile-command-map))
 
 (provide 'emacs-code-config)

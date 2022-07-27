@@ -1,5 +1,6 @@
 (use-package vertico
-  :init (vertico-mode)
+  :defer nil
+  :config (vertico-mode)
   :bind (:map vertico-map
               ("C-n" . vertico-next)
               ("C-p" . vertico-previous))
@@ -16,7 +17,7 @@
   ("C-s" . consult-line)
   ("C-x b" . consult-buffer)
   ("C-c C-f" . consult-recent-file)
-  ("C-c f s" . consult-ripgrep)
+  ("C-c s r" . consult-ripgrep)
   ("C-c e l" . consult-flymake))
 
 (use-package marginalia
@@ -61,24 +62,6 @@
   :bind
   ("<f12>" . treemacs-toggle))
 
-;;彩虹括号
-(use-package rainbow-delimiters
-  :hook
-  (web-mode . rainbow-delimiters-mode)
-  (html-mode . rainbow-delimiters-mode)
-  (css-mode . rainbow-delimiters-mode)
-  (js-mode . rainbow-delimiters-mode)
-  (emacs-lisp-mode . rainbow-delimiters-mode)
-  )
-
-;;更改内容显示宽度
-(use-package visual-fill-column
-  :init (setq visual-fill-column-width 120 
-              visual-fill-column-center-text t)
-  :hook
-  (org-mode . visual-fill-column-mode))
-
-
 (use-package which-key
   :init
   (setq which-key-show-early-on-C-h t
@@ -93,5 +76,6 @@
   ([remap describe-command] . helpful-command)
   )
 
+(use-package magit)
 
 (provide 'emacs-advance-config)

@@ -1,6 +1,5 @@
 (use-package org
-  :bind (:map org-mode-map
-              ("C-c m a" . org-agenda))
+  :bind ("C-c o a" . org-agenda)
   :config 
   (progn 
     (setq org-adapt-indentation t

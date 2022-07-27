@@ -1,6 +1,9 @@
 (use-package emmet-mode
   :bind (:map emmet-mode-keymap
-              ("M-/" . emmet-expand-yas)))
+              ("M-/" . emmet-expand-yas))
+  :hook
+  (web-mode . emmet-mode)
+  )
 
 ;;(use-package company-web
 ;;  :init (progn
@@ -9,7 +12,7 @@
 (use-package auto-rename-tag
   :hook 
   (web-mode . auto-rename-tag-mode)
-)
+  )
 
 (use-package web-mode
   :init

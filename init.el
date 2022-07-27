@@ -1,6 +1,8 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'load-path "~/.emacs.d/lisp/code/")
 
+;;open debug
+(setq debug-on-error nil)
 
 (require 'emacs-better-default)
 (require 'emacs-custom-config)
@@ -23,9 +25,10 @@
           ;;("non-gun-elpa" . "http://1.15.88.122/nongnu/")
           ;;("melpa" . "https://melpa.org/packages/")
           ;;("gnu" . "http://elpa.gnu.org/packages/")
-          )))
+          ))
+  (package-initialize)
+)
 
-(package-initialize)
 ;;防止反复调用 package-refresh-contents 会影响加载速度
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -47,18 +50,7 @@
 
 (install-my-packages my-packages)
 
-;;-----------------------------custom config-------------------------------------------
-;; native-comp
-(when (and (fboundp 'native-comp-available-p)
-           (native-comp-available-p))
-  (progn
-    (setq native-comp-async-report-warnings-errors nil)
-    (setq comp-deferred-compilation t)
-    (add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory))
-    (setq package-native-compile t)
-    ))
-
-
+;;-----------------------------config-------------------------------------------
 ;;use-package config
 (eval-when-compile
   (require 'use-package)
@@ -72,15 +64,17 @@
           (setq evil-want-keybinding nil)
           (setq evil-want-C-i-jump nil)
           (setq evil-undo-system 'undo-redo)
-          (evil-mode)
           (cond 
            ((string-equal system-type "windows-nt") 
             (add-hook 'evil-normal-state-entry-hook (lambda () (w32-set-ime-open-status nil))))))
-  :hook
-  (org-mode . (lambda () (setq evil-shift-width 2)))
+  ;; :hook
   ;;(helpful-mode . (lambda () (evil-local-set-key 'normal "q" 'quit-window)))
   ;; (treemacs-mode . (lambda () 
   ;;                    (evil-local-set-key 'motion [remap evil-ret] 'treemacs-RET-action)))
+  :config
+  (evil-mode)
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
   :bind (:map evil-normal-state-map
               ("C-u" . evil-scroll-up)))
 
@@ -109,7 +103,7 @@
  '(org-agenda-files
    '("d:/NutStore/note/GTD/life.org" "d:/NutStore/note/GTD/read.org"))
  '(package-selected-packages
-   '(evil-collection helpful org-bullets visual-fill-column visual-fill color-theme-sanityinc-tomorrow pyim-cregexp typescript gnu-elpa-keyring-update pyim-cregexp-utils treemacs spinner eglot embark-consult embark marginalia Buffer-menu evil))
+   '(magit keycast projectile evil-collection helpful org-bullets visual-fill-column visual-fill color-theme-sanityinc-tomorrow pyim-cregexp typescript gnu-elpa-keyring-update pyim-cregexp-utils treemacs spinner eglot embark-consult embark marginalia Buffer-menu evil))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

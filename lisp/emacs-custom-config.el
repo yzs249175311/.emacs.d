@@ -46,11 +46,11 @@
            gcs-done))
 
 ;;key binding
-(global-set-key (kbd "C-c o b") 'open-with-browser)
-(global-set-key (kbd "C-c o d") 'open-directory)
+(global-set-key (kbd "C-c c b") 'open-with-browser)
+(global-set-key (kbd "C-c c d") 'open-directory)
 (global-set-key (kbd "C-c c c") 'run-code)
 
 ;;hook
-(add-hook 'emacs-startup-hook #'yzs/display-startup-time)
+(add-hook 'emacs-startup-hook 'yzs/display-startup-time)
 
 (provide 'emacs-custom-config)

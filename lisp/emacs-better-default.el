@@ -1,5 +1,6 @@
 (require 'package)
 
+;;open native-comp
 (when (and (fboundp 'native-comp-available-p)
            (native-comp-available-p))
   (progn
@@ -9,7 +10,7 @@
     (setq package-native-compile t)
     ))
 
-;;default is 800 kilobytes. 
+;;default is 800 kilobytes. 优化启动速度 
 (setq gc-cons-threshold (* 20 1000 1000))
 
 (setq inhibit-startup-screen t)
@@ -59,8 +60,9 @@
 (setq auto-save-default nil)
 (setq visible-bell 0)
 (setq scroll-step 1 scroll-margin 3)
+
 ;;(global-display-line-numbers-mode 1)
-;;(global-linum-mode 1)
+;;(global-linum-mode 1
 (global-auto-revert-mode 1)
 
 (menu-bar-mode 0)
