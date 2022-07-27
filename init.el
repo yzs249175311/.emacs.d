@@ -1,14 +1,6 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'load-path "~/.emacs.d/lisp/code/")
 
-(when (and (fboundp 'native-comp-available-p)
-           (native-comp-available-p))
-  (progn
-    (setq native-comp-async-report-warnings-errors nil)
-    (setq comp-deferred-compilation t)
-    (add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory))
-    (setq package-native-compile t)
-    ))
 
 (require 'emacs-better-default)
 (require 'emacs-custom-config)
@@ -66,10 +58,6 @@
     (setq package-native-compile t)
     ))
 
-;;define my function
-(defun yzs/open-init ()
-  (interactive)
-  (find-file "~/.emacs.d/init.el"))
 
 ;;use-package config
 (eval-when-compile
@@ -84,9 +72,14 @@
           (setq evil-undo-system 'undo-redo)
           (evil-mode)
           (cond 
-           ((string-equal system-type "windows-nt") (add-hook 'evil-normal-state-entry-hook (lambda () (w32-set-ime-open-status nil))))))
+           ((string-equal system-type "windows-nt") 
+            (add-hook 'evil-normal-state-entry-hook (lambda () (w32-set-ime-open-status nil))))))
   :hook
   (org-mode . (lambda () (setq evil-shift-width 2)))
+  (helpful-mode . (lambda () (evil-local-set-key 'normal "q" 'quit-window)))
+  (treemac-mode . (lambda () 
+                    (evil-local-set-key 'normal (kbd "<return>") 'treemacs-RET-action)
+                    (evil-local-set-key 'normal (kbd "<tab>") 'treemacs-TAB-action)))
   :bind (:map evil-normal-state-map
               ("C-u" . evil-scroll-up)))
 
@@ -109,7 +102,7 @@
  '(org-agenda-files
    '("d:/NutStore/note/GTD/life.org" "d:/NutStore/note/GTD/read.org"))
  '(package-selected-packages
-   '(org-bullets visual-fill-column visual-fill color-theme-sanityinc-tomorrow pyim-cregexp typescript gnu-elpa-keyring-update pyim-cregexp-utils treemacs spinner eglot embark-consult embark marginalia Buffer-menu evil))
+   '(helpful org-bullets visual-fill-column visual-fill color-theme-sanityinc-tomorrow pyim-cregexp typescript gnu-elpa-keyring-update pyim-cregexp-utils treemacs spinner eglot embark-consult embark marginalia Buffer-menu evil))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -3,12 +3,12 @@
   :bind (:map vertico-map
               ("C-n" . vertico-next)
               ("C-p" . vertico-previous))
-  :config 
-  (setq vertico-count 10))
+  :custom
+  (vertico-count 10))
 
 (use-package orderless
   :custom
-  (completion-styles '(orderless))
+  (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
 (use-package consult
@@ -84,6 +84,14 @@
   (setq which-key-show-early-on-C-h t
         which-key-idle-delay 1)
   (which-key-mode))
+
+(use-package helpful
+  :bind
+  ([remap describe-function] . helpful-function)
+  ([remap describe-key] . helpful-key)
+  ([remap describe-variable] . helpful-variable)
+  ([remap describe-command] . helpful-command)
+  )
 
 
 (provide 'emacs-advance-config)

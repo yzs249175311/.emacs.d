@@ -15,8 +15,8 @@
           org-hide-emphasis-markers t)
     ;;修改无序列表的符号 - 
     (font-lock-add-keywords 'org-mode 
-                          '(("^ *\\([-]\\) "
-                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "►")))))))
+                            '(("^ *\\([-]\\) "
+                               (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "►")))))))
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((js . t)))
@@ -24,11 +24,10 @@
   (org-mode . org-indent-mode)
   ;; (org-mode . org-num-mode)
   :custom
-  (setq org-capture-templates 
-        '(("r" "Read Books")
-          ("rb" "Books" entry (file+olp "d:/NutStore/note/GTD/read.org" "读书目录")
-           "\n** TODO %^{Book name} - %^{Author}" :kill-buffer t)))
-  )
+  (org-capture-templates 
+   '(("r" "Read Books")
+     ("rb" "Books" entry (file+olp "d:/NutStore/note/GTD/read.org" "读书目录")
+      "\n** TODO %^{Book name} - %^{Author}" :kill-buffer t))))
 
 (use-package org-bullets
   :hook

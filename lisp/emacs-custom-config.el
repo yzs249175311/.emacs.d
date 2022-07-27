@@ -1,3 +1,8 @@
+;;open my init.el file
+(defun yzs/open-init ()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+
 (defun open-with-browser () 
   "使用浏览器打开当前文件"
   (interactive)

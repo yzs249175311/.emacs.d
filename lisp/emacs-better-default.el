@@ -1,5 +1,14 @@
 (require 'package)
 
+(when (and (fboundp 'native-comp-available-p)
+           (native-comp-available-p))
+  (progn
+    (setq native-comp-async-report-warnings-errors nil)
+    (setq comp-deferred-compilation t)
+    (add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory))
+    (setq package-native-compile t)
+    ))
+
 (setq inhibit-startup-screen t)
 ;;(setq initial-major-mode 'text-mode)
 (setq initial-scratch-message nil)
@@ -47,14 +56,14 @@
 (setq auto-save-default nil)
 (setq visible-bell 0)
 (setq scroll-step 1 scroll-margin 3)
-
+;;(global-display-line-numbers-mode 1)
+;;(global-linum-mode 1)
 (global-auto-revert-mode 1)
 
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (column-number-mode 1)
-(global-linum-mode 1)
 (blink-cursor-mode 0)
 (global-hl-line-mode)
 (setq use-dialog-box nil)
