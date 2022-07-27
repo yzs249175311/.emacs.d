@@ -9,6 +9,9 @@
     (setq package-native-compile t)
     ))
 
+;;default is 800 kilobytes. 
+(setq gc-cons-threshold (* 20 1000 1000))
+
 (setq inhibit-startup-screen t)
 ;;(setq initial-major-mode 'text-mode)
 (setq initial-scratch-message nil)
@@ -196,11 +199,15 @@
     (setq use-short-answers t)
   (defalias 'yes-or-no-p 'y-or-n-p))
 
+
+;;key binding
 ;;set global key
 (global-set-key (kbd "C-h C-f") 'find-function)
 (global-set-key (kbd "C-h C-v") 'find-variable)
 (global-set-key (kbd "C-h C-f") 'find-function-on-key)
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 ;;flymake
 (global-set-key (kbd "C-c e n") #'flymake-goto-next-error)
 (global-set-key (kbd "C-c e p") #'flymake-goto-prev-error)
+
 (provide 'emacs-better-default)

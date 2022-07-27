@@ -67,7 +67,9 @@
   )
 
 (use-package evil
+  :defer nil
   :init (progn
+          (setq evil-want-keybinding nil)
           (setq evil-want-C-i-jump nil)
           (setq evil-undo-system 'undo-redo)
           (evil-mode)
@@ -76,11 +78,17 @@
             (add-hook 'evil-normal-state-entry-hook (lambda () (w32-set-ime-open-status nil))))))
   :hook
   (org-mode . (lambda () (setq evil-shift-width 2)))
-  (helpful-mode . (lambda () (evil-local-set-key 'normal "q" 'quit-window)))
-  (treemacs-mode . (lambda () 
-                     (evil-local-set-key 'motion [remap evil-ret] 'treemacs-RET-action)))
+  ;;(helpful-mode . (lambda () (evil-local-set-key 'normal "q" 'quit-window)))
+  ;; (treemacs-mode . (lambda () 
+  ;;                    (evil-local-set-key 'motion [remap evil-ret] 'treemacs-RET-action)))
   :bind (:map evil-normal-state-map
               ("C-u" . evil-scroll-up)))
+
+(use-package evil-collection
+  :defer nil
+  :after evil
+  :config
+  (evil-collection-init))
 
 (require 'emacs-advance-config)
 (require 'emacs-code-config)
@@ -101,7 +109,7 @@
  '(org-agenda-files
    '("d:/NutStore/note/GTD/life.org" "d:/NutStore/note/GTD/read.org"))
  '(package-selected-packages
-   '(helpful org-bullets visual-fill-column visual-fill color-theme-sanityinc-tomorrow pyim-cregexp typescript gnu-elpa-keyring-update pyim-cregexp-utils treemacs spinner eglot embark-consult embark marginalia Buffer-menu evil))
+   '(evil-collection helpful org-bullets visual-fill-column visual-fill color-theme-sanityinc-tomorrow pyim-cregexp typescript gnu-elpa-keyring-update pyim-cregexp-utils treemacs spinner eglot embark-consult embark marginalia Buffer-menu evil))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

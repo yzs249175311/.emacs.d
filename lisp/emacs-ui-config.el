@@ -1,5 +1,8 @@
-(use-package leuven-theme)
 (use-package color-theme-sanityinc-tomorrow)  
+
+;; (use-package all-the-icons
+;;   :if (display-graphic-p))
+
 (add-hook 'after-init-hook 
           #'(lambda ()
             (cond

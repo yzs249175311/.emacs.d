@@ -36,8 +36,21 @@
       (replace-regexp-in-string "/" "\\\\" (concat "explorer.exe " (expand-file-name path)))
       'gbk)))))
 
+(defun yzs/display-startup-time ()
+  "显示启动时间和垃圾包的数量"
+  (interactive)
+  (message "Emacs loaded in %s with %d garbage collections"
+           (format "%.2f secends" 
+                   (float-time 
+                    (time-subtract after-init-time before-init-time)))
+           gcs-done))
+
+;;key binding
 (global-set-key (kbd "C-c o b") 'open-with-browser)
 (global-set-key (kbd "C-c o d") 'open-directory)
 (global-set-key (kbd "C-c c c") 'run-code)
+
+;;hook
+(add-hook 'emacs-startup-hook #'yzs/display-startup-time)
 
 (provide 'emacs-custom-config)

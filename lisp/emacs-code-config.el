@@ -10,7 +10,9 @@
         ("C-M-i" . company-complete))
   )
 
+(use-package yasnippet)
 (use-package yasnippet-snippets
+  :after yasnippet
   :bind 
   (:map yas-minor-mode-map
         ("C-c & C-t" . yas-describe-tables))
