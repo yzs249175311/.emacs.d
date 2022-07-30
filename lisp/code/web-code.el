@@ -9,16 +9,15 @@
 ;;  :init (progn
 ;;          (add-to-list 'company-backends 'company-web-html)))
 
+(use-package web-mode
+  :mode ("\\.vue\\'" "\\.html?\\'")
+  )
+
 (use-package auto-rename-tag
   :hook 
   (web-mode . auto-rename-tag-mode)
   )
 
-(use-package web-mode
-  :init
-  (add-to-list 'auto-mode-alist 
-               '("\\.html?\\'" . web-mode))
-  )
 
 (use-package typescript-mode
   :config

@@ -22,7 +22,6 @@
           ("melpa-cn" . "http://elpa.zilongshanren.com/melpa/")
           ("org-cn"   . "http://elpa.zilongshanren.com/org/")
           ("gnu-cn"   . "http://elpa.zilongshanren.com/gnu/")
-          ;;("non-gun-elpa" . "http://1.15.88.122/nongnu/")
           ;;("melpa" . "https://melpa.org/packages/")
           ;;("gnu" . "http://elpa.gnu.org/packages/")
           ))
@@ -60,29 +59,35 @@
 
 (use-package evil
   :defer nil
-  :init (progn
-          (setq evil-want-keybinding nil)
-          (setq evil-want-C-i-jump nil)
-          (setq evil-undo-system 'undo-redo)
-          (cond 
-           ((string-equal system-type "windows-nt") 
-            (add-hook 'evil-normal-state-entry-hook (lambda () (w32-set-ime-open-status nil))))))
-  ;; :hook
-  ;;(helpful-mode . (lambda () (evil-local-set-key 'normal "q" 'quit-window)))
-  ;; (treemacs-mode . (lambda () 
-  ;;                    (evil-local-set-key 'motion [remap evil-ret] 'treemacs-RET-action)))
+  :init 
+  (progn
+    (setq evil-want-keybinding nil)
+    (setq evil-want-C-i-jump nil)
+    (setq evil-undo-system 'undo-redo)
+    (setq evil-want-C-u-scroll t))
+  (cond 
+   ((string-equal system-type "windows-nt") 
+    (add-hook 'evil-normal-state-entry-hook (lambda () (w32-set-ime-open-status nil)))))
   :config
   (evil-mode)
-  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-  :bind (:map evil-normal-state-map
-              ("C-u" . evil-scroll-up)))
 
-(use-package evil-collection
-  :defer nil
-  :after evil
-  :config
-  (evil-collection-init))
+  (setq evil-motion-state-modes 
+        (append '(
+                  treemacs-mode 
+                  magit-status-mode
+                  helpful-mode
+                  ) 
+                evil-motion-state-modes))
+  )
+
+;; (use-package evil-collection
+;;   :defer nil
+;;   :after evil
+;;   :config
+;;   (evil-collection-init)
+;;   :custom 
+;;   (evil-collection-setup-minibuffer t)
+;; )
 
 (require 'emacs-advance-config)
 (require 'emacs-code-config)
@@ -96,14 +101,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(sanityinc-tomorrow-eighties))
- '(custom-safe-themes
-   '("628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "82d2cac368ccdec2fcc7573f24c3f79654b78bf133096f9b40c20d97ec1d8016" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "57e3f215bef8784157991c4957965aa31bac935aca011b29d7d8e113a652b693" default))
- '(minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
  '(org-agenda-files
    '("d:/NutStore/note/GTD/life.org" "d:/NutStore/note/GTD/read.org"))
  '(package-selected-packages
-   '(magit keycast projectile evil-collection helpful org-bullets visual-fill-column visual-fill color-theme-sanityinc-tomorrow pyim-cregexp typescript gnu-elpa-keyring-update pyim-cregexp-utils treemacs spinner eglot embark-consult embark marginalia Buffer-menu evil))
+   '(modus-themes yasnippet-snippets which-key web-mode visual-fill-column vertico use-package typescript-mode treemacs rainbow-delimiters pyim-basedict pyim projectile org-bullets orderless marginalia magit lsp-mode leuven-theme keycast helpful evil-collection emmet-mode embark-consult eglot company-web color-theme-sanityinc-tomorrow auto-rename-tag))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

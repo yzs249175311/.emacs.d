@@ -15,10 +15,11 @@
     ;;修改无序列表的符号 - 
     (font-lock-add-keywords 'org-mode 
                             '(("^ *\\([-]\\) "
-                               (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "►")))))))
+                               (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "⇒")))))))
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((js . t)))
+   '((js . t)
+     (shell . t)))
   :hook 
   (org-mode . org-indent-mode)
   ;; (org-mode . org-num-mode)

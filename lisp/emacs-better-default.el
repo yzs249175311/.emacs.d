@@ -29,6 +29,8 @@
 
 (set-language-environment "utf-8")
 (set-default-coding-systems 'utf-8-unix)
+;;解决python代码解码错误的问题，与treemacs有关
+(setenv "PYTHONIOENCODING" "utf-8")
 ;; (prefer-coding-system 'utf-8)
 ;; ;;;; 设置编辑环境
 ;; ;; 设置为中文简体语言环境
@@ -71,6 +73,7 @@
 (column-number-mode 1)
 (blink-cursor-mode 0)
 (global-hl-line-mode)
+(auto-save-visited-mode 1)
 (setq use-dialog-box nil)
 
 (recentf-mode 1)

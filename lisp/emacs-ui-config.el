@@ -1,8 +1,3 @@
-(use-package color-theme-sanityinc-tomorrow)  
-
-;; (use-package all-the-icons
-;;   :if (display-graphic-p))
-
 ;;彩虹括号
 (use-package rainbow-delimiters
   :hook
@@ -20,27 +15,32 @@
   :hook
   (org-mode . visual-fill-column-mode))
 
-(use-package keycast
-  :defer nil
-  :config
-  (keycast-mode))
+(use-package modus-themes
+  :init
+  ;; Add all your customizations prior to loading the themes
+  (setq modus-themes-italic-constructs t
+        modus-themes-bold-constructs t
+        modus-themes-mode-line '(accented borderless (padding . 4) (height . 0.9))
+        modus-themes-hl-line '(accented)
+        modus-themes-paren-match '(bold intense)
 
-;; (use-package doom-modeline
-;;   :after keycast
-;;   :init
-;;   (add-to-list 'global-mode-string '("" keycast-mode-line))
-;;   (doom-modeline-mode t)
-;;   :custom-face
-;;   (mode-line ((t (:height 0.9))))
-;;   (mode-line-inactive ((t (:height 0.9))))
-;;   )
+        modus-themes-org-blocks 'gray-background ; {nil,'gray-background,'tinted-background}
+
+        modus-themes-headings ; this is an alist: read the manual or its doc string
+        '((1 . (overline background variable-pitch 1.3))
+          (2 . (rainbow overline 1.2))
+          (3 . (rainbow overline 1.1))
+          (t . (semibold))))
+  ;; Load the theme files before enabling a theme
+  (modus-themes-load-themes)
+  :bind ("<f5>" . modus-themes-toggle))
 
 ;;-------------------------hook-----------------------------------
 (add-hook 'after-init-hook 
           #'(lambda ()
             (cond
-             ((string-equal system-type "gnu/linux") (load-theme 'tsdh-dark t))
-             ((string-equal system-type "windows-nt") (load-theme 'sanityinc-tomorrow-eighties t)))
-            ))
-
+             ;;((string-equal system-type "gnu/linux") (load-theme 'tsdh-dark t))
+             ((string-equal system-type "gnu/linux") (modus-themes-load-vivendi))
+             ((string-equal system-type "windows-nt") (modus-themes-load-vivendi))
+)))
 (provide 'emacs-ui-config)
