@@ -17,14 +17,6 @@
 ;;(setq initial-major-mode 'text-mode)
 (setq initial-scratch-message nil)
 
-;;set font size
-(set-face-attribute 'default nil :height 140)
-
-(cond 
- ((string-equal system-type "windows-nt") (progn 
-                                            (set-frame-position (selected-frame) 0 0)
-                                            (set-frame-width  (selected-frame) 140)
-                                            (set-frame-height (selected-frame) 45))))
 
 
 (set-language-environment "utf-8")
@@ -111,80 +103,15 @@
    'minibuffer-prompt-properties
    (quote (read-only t cursor-intangible t face minibuffer-prompt))))
 
-;;(progn
-;;  ;; minibuffer enhanced completion
-;;  (require 'icomplete)
-;;  (icomplete-mode 1)
-;;  ;; show choices vertically
-;;  (setq icomplete-separator "\n")
-;;  (setq icomplete-hide-common-prefix nil)
-;;  (setq icomplete-in-buffer t)
-;;  (define-key icomplete-minibuffer-map (kbd "C-n") 'icomplete-forward-completions)
-;;  (define-key icomplete-minibuffer-map (kbd "C-p") 'icomplete-backward-completions))
-
-
-;; set default font
-(set-frame-font
- (cond
-  ((string-equal system-type "windows-nt")
-   (if (member "Consolas" (font-family-list)) "Consolas" nil ))
-  ((string-equal system-type "darwin")
-   (if (member "Menlo" (font-family-list)) "Menlo-16" nil ))
-  ((string-equal system-type "gnu/linux")
-   (if (member "DejaVu Sans Mono" (font-family-list)) "DejaVu Sans Mono" nil ))
-  (t nil))
- t t)
-
-;; set font for chinese characters
-(set-fontset-font
- t
- '(#x4e00 . #x9fff)
- (cond
-  ((string-equal system-type "windows-nt")
-   (cond
-    ((member "Microsoft YaHei" (font-family-list)) "Microsoft YaHei")
-    ((member "Microsoft JhengHei" (font-family-list)) "Microsoft JhengHei")
-    ((member "SimHei" (font-family-list)) "SimHei")))
-  ((string-equal system-type "darwin")
-   (cond
-    ((member "Hei" (font-family-list)) "Hei")
-    ((member "Heiti SC" (font-family-list)) "Heiti SC")
-    ((member "Heiti TC" (font-family-list)) "Heiti TC")))
-  ((string-equal system-type "gnu/linux")
-   (cond
-    ((member "WenQuanYi Micro Hei" (font-family-list)) "WenQuanYi Micro Hei")))))
-
-;;(progn
-;;  ;; make buffer switch command do suggestions, also for find-file command
-;;  (require 'ido)
-;;  (ido-mode 1)
-;;
-;;  ;; show choices vertically
-;;  (if (version< emacs-version "25")
-;;      (setq ido-separator "\n")
-;;    (setf (nth 2 ido-decorations) "\n"))
-;;
-;;  ;; show any name that has the chars you typed
-;;  (setq ido-enable-flex-matching t)
-;;  ;; use current pane for newly opened file
-;;  (setq ido-default-file-method 'selected-window)
-;;  ;; use current pane for newly switched buffer
-;;  (setq ido-default-buffer-method 'selected-window)
-;;  ;; stop ido from suggesting when naming new file
-;;  (when (boundp 'ido-minor-mode-map-entry)
-;;    (define-key (cdr ido-minor-mode-map-entry) [remap write-file] nil))
-;;  (define-key ido-file-completion-map (kbd "C-n") 'ido-next-match)
-;;  (define-key ido-file-completion-map (kbd "C-p") 'ido-prev-match))
-
 ;; set highlighting brackets
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis)
 
 (electric-indent-mode 0)
 
-(set-default 'tab-always-indent 'complete)
+;;(set-default 'tab-always-indent t)
 ;; no mixed tab space
-(setq-default indent-tabs-mode nil)
+;;(setq-default indent-tabs-mode t)
                                         ; gnu emacs 23.1, 24.4.1 default is t
 
 ;; 4 is more popular than 8.
@@ -199,14 +126,57 @@
 
 (electric-pair-mode 1)
 
+(defun yzs/set-font-faces() 
+  ;; set default font
+  (set-frame-font
+   (cond
+    ((string-equal system-type "windows-nt")
+     (if (member "Consolas" (font-family-list)) "Consolas" nil ))
+    ((string-equal system-type "darwin")
+     (if (member "Menlo" (font-family-list)) "Menlo-16" nil ))
+    ((string-equal system-type "gnu/linux")
+     (if (member "DejaVu Sans Mono" (font-family-list)) "DejaVu Sans Mono" nil ))
+    (t nil))
+   t t)
+
+  ;; set font for chinese characters
+  (set-fontset-font
+   t
+   '(#x4e00 . #x9fff)
+   (cond
+    ((string-equal system-type "windows-nt")
+     (cond
+      ((member "Microsoft YaHei" (font-family-list)) "Microsoft YaHei")
+      ((member "Microsoft JhengHei" (font-family-list)) "Microsoft JhengHei")
+      ((member "SimHei" (font-family-list)) "SimHei")))
+    ((string-equal system-type "darwin")
+     (cond
+      ((member "Hei" (font-family-list)) "Hei")
+      ((member "Heiti SC" (font-family-list)) "Heiti SC")
+      ((member "Heiti TC" (font-family-list)) "Heiti TC")))
+    ((string-equal system-type "gnu/linux")
+     (cond
+      ((member "WenQuanYi Micro Hei" (font-family-list)) "WenQuanYi Micro Hei")))))
+
+  ;;set font size
+
+  (cond 
+   ((string-equal system-type "windows-nt") (progn 
+                                              (set-frame-position (selected-frame) 0 0)
+                                              (set-frame-width  (selected-frame) 140)
+                                              (set-frame-height (selected-frame) 45))))
+
+  (set-face-attribute 'default nil :height 140)
+  )
+
 ;; convenient
 (if (>= emacs-major-version 28)
     (setq use-short-answers t)
   (defalias 'yes-or-no-p 'y-or-n-p))
 
 
-;;key binding
-;;set global key
+;; binding
+;; set global key
 (global-set-key (kbd "C-h C-f") 'find-function)
 (global-set-key (kbd "C-h C-v") 'find-variable)
 (global-set-key (kbd "C-h C-f") 'find-function-on-key)
@@ -214,5 +184,15 @@
 ;;flymake
 (global-set-key (kbd "C-c e n") #'flymake-goto-next-error)
 (global-set-key (kbd "C-c e p") #'flymake-goto-prev-error)
+
+
+;; hook
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (with-selected-frame frame
+                  (yzs/set-font-faces))))
+  (add-hook 'modus-themes-after-load-theme-hook 'yzs/set-font-faces)
+  )
 
 (provide 'emacs-better-default)
