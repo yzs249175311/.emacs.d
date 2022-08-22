@@ -76,6 +76,11 @@
   ([remap describe-command] . helpful-command)
   )
 
+
 (use-package magit)
+
+(use-package flycheck
+  :hook
+  (after-init . global-flycheck-mode))
 
 (provide 'emacs-advance-config)

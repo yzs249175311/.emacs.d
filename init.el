@@ -4,7 +4,7 @@
 ;;open debug
 (setq debug-on-error nil)
 
-(require 'emacs-better-default)
+(require 'emacs-default-config)
 (require 'emacs-custom-config)
 
 ;;解决使用msys2时gun安装包失败的问题
@@ -57,38 +57,7 @@
   (setq use-package-always-defer t)
   )
 
-(use-package evil
-  :defer nil
-  :init 
-  (progn
-    (setq evil-want-keybinding nil)
-    (setq evil-want-C-i-jump nil)
-    (setq evil-undo-system 'undo-redo)
-    (setq evil-want-C-u-scroll t))
-  (cond 
-   ((string-equal system-type "windows-nt") 
-    (add-hook 'evil-normal-state-entry-hook (lambda () (w32-set-ime-open-status nil)))))
-  :config
-  (evil-mode)
-
-  (setq evil-motion-state-modes 
-        (append '(
-                  treemacs-mode 
-                  magit-status-mode
-                  helpful-mode
-                  ) 
-                evil-motion-state-modes))
-  )
-
-;; (use-package evil-collection
-;;   :defer nil
-;;   :after evil
-;;   :config
-;;   (evil-collection-init)
-;;   :custom 
-;;   (evil-collection-setup-minibuffer t)
-;; )
-
+(require 'emacs-evil-config)
 (require 'emacs-advance-config)
 (require 'emacs-code-config)
 (require 'emacs-org-config)
@@ -106,7 +75,7 @@
  '(org-agenda-files
    '("d:/NutStore/note/GTD/life.org" "d:/NutStore/note/GTD/read.org"))
  '(package-selected-packages
-   '(modus-themes yasnippet-snippets which-key web-mode visual-fill-column vertico use-package typescript-mode treemacs rainbow-delimiters pyim-basedict pyim projectile org-bullets orderless marginalia magit lsp-mode leuven-theme keycast helpful evil-collection emmet-mode embark-consult eglot company-web color-theme-sanityinc-tomorrow auto-rename-tag))
+   '(flycheck modus-themes yasnippet-snippets which-key web-mode visual-fill-column vertico use-package typescript-mode treemacs rainbow-delimiters pyim-basedict pyim projectile org-bullets orderless marginalia magit lsp-mode leuven-theme keycast helpful evil-collection emmet-mode embark-consult eglot company-web color-theme-sanityinc-tomorrow auto-rename-tag))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

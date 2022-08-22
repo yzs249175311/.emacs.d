@@ -25,17 +25,6 @@
         ("C-c & C-t" . yas-describe-tables))
 )
 
-;; (use-package eglot
-;;   :hook
-;;   (web-mode . eglot-ensure)
-;;   :bind
-;;   (:map eglot-mode-map
-;;         ("<tab>" . #'company-complete)
-;;         ("C-c e n" . #'flymake-goto-next-error)
-;;         ("C-c e p" . #'flymake-goto-prev-error)
-;;         ("C-c e f" . #'eglot-format)
-;;         ("C-c e r" . #'eglot-rename)))
-
 
 (use-package lsp-mode
   :init

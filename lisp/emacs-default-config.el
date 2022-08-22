@@ -181,9 +181,6 @@
 (global-set-key (kbd "C-h C-v") 'find-variable)
 (global-set-key (kbd "C-h C-f") 'find-function-on-key)
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-;;flymake
-(global-set-key (kbd "C-c e n") #'flymake-goto-next-error)
-(global-set-key (kbd "C-c e p") #'flymake-goto-prev-error)
 
 ;; hook
 (if (daemonp)
@@ -194,4 +191,4 @@
   (add-hook 'modus-themes-after-load-theme-hook 'yzs/set-font-faces)
   )
 
-(provide 'emacs-better-default)
+(provide 'emacs-default-config)
