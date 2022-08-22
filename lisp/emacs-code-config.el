@@ -10,18 +10,19 @@
         ("C-M-i" . company-complete))
   )
 
-(use-package yasnippet)
-(use-package yasnippet-snippets
-  :after yasnippet
-  :bind 
-  (:map yas-minor-mode-map
-        ("C-c & C-t" . yas-describe-tables))
-  :hook 
+(use-package yasnippet
+  :hook
   (org-mode . yas-minor-mode)
   (js-mode . yas-minor-mode)
   (css-mode . yas-minor-mode)
   (web-mode . yas-minor-mode)
   (typescript-mode . yas-minor-mode)
+  )
+(use-package yasnippet-snippets
+  :after yasnippet
+  :bind 
+  (:map yas-minor-mode-map
+        ("C-c & C-t" . yas-describe-tables))
 )
 
 ;; (use-package eglot

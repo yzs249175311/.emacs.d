@@ -185,7 +185,6 @@
 (global-set-key (kbd "C-c e n") #'flymake-goto-next-error)
 (global-set-key (kbd "C-c e p") #'flymake-goto-prev-error)
 
-
 ;; hook
 (if (daemonp)
     (add-hook 'after-make-frame-functions
