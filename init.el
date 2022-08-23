@@ -75,7 +75,7 @@
  '(org-agenda-files
    '("d:/NutStore/note/GTD/life.org" "d:/NutStore/note/GTD/read.org"))
  '(package-selected-packages
-   '(evil-surround flycheck modus-themes yasnippet-snippets which-key web-mode visual-fill-column vertico use-package typescript-mode treemacs rainbow-delimiters pyim-basedict pyim projectile org-bullets orderless marginalia magit lsp-mode leuven-theme keycast helpful evil-collection emmet-mode embark-consult eglot company-web color-theme-sanityinc-tomorrow auto-rename-tag))
+   '(lsp-ui evil-surround flycheck modus-themes yasnippet-snippets which-key web-mode visual-fill-column vertico use-package typescript-mode treemacs rainbow-delimiters pyim-basedict pyim projectile org-bullets orderless marginalia magit lsp-mode leuven-theme keycast helpful evil-collection emmet-mode embark-consult eglot company-web color-theme-sanityinc-tomorrow auto-rename-tag))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
