@@ -22,7 +22,8 @@
   :after yasnippet
   :bind 
   (:map yas-minor-mode-map
-        ("C-c & C-t" . yas-describe-tables))
+        ("C-c & C-t" . yas-describe-tables)
+		("M-/" . yas-expand))
 )
 
 

@@ -33,4 +33,8 @@
   ;;(define-key evil-motion-state-map (kbd "RET") nil)
   )
 
+(use-package evil-surround
+  :init
+  (global-evil-surround-mode 1))
+
 (provide 'emacs-evil-config)

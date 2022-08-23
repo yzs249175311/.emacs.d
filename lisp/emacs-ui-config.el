@@ -21,9 +21,9 @@
   (setq modus-themes-italic-constructs t
         modus-themes-bold-constructs t
         modus-themes-mode-line '(accented borderless (padding . 10) (height . 0.9))
-        modus-themes-hl-line '(accented intense)
+        modus-themes-hl-line '(intense)
         modus-themes-paren-match '(bold intense)
-		modus-themes-region '(bg-only)
+		modus-themes-region '(bg-only intense accented)
 		modus-themes-syntax '(alt-syntax yellow-comments green-strings)
 
         modus-themes-org-blocks 'gray-background ; {nil,'gray-background,'tinted-background}
