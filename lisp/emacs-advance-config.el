@@ -7,16 +7,9 @@
   :custom
   (vertico-count 10))
 
-(use-package vertico-posframe
-  :init
-  (setq vertico-posframe-parameters
-		'((left-fringe . 8)
-		  (right-fringe . 8)))
-  (vertico-posframe-mode 1))
-
 (use-package orderless
   :custom
-  (completion-styles '(substring orderless basic))
+  (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
 (use-package consult
