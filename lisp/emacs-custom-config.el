@@ -3,7 +3,7 @@
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
-(defun open-with-browser () 
+(defun yzs/open-file-in-browser () 
   "使用浏览器打开当前文件"
   (interactive)
   (if buffer-file-name
@@ -11,7 +11,16 @@
        ((string-equal system-type "windows-nt") 
         (shell-command-to-string (encode-coding-string (format "MicrosoftEdge.exe %s" buffer-file-name) 'gbk))))))
 
-(defun run-code (file)
+(defun yzs/open-file-in-live-server (file)
+  "创建服务器打开此文件,需要使用npm安装browser-sync"
+  (interactive "fchoice-file:")
+  (if (not file)
+      (setq file buffer-file-name))
+  (if file
+	  (async-shell-command (encode-coding-string (format "Browser-sync start -s -w %s" file) 'gbk)))
+  )
+
+(defun yzs/run-code (file)
   "运行代码,支持javascript,typescript"
   (interactive "fchoice file:")
   (if (not file)
@@ -24,7 +33,8 @@
     (async-shell-command (encode-coding-string (concat "ts-node " file) 'gbk)))
    (t (message "Can't run this file"))))
 
-(defun open-directory(path) 
+
+(defun yzs/open-directory(path) 
   "打开目标文件夹"
   (interactive "DOpen Directory:")
   (if (not path)
@@ -46,9 +56,10 @@
            gcs-done))
 
 ;;key binding
-(global-set-key (kbd "C-c c b") 'open-with-browser)
-(global-set-key (kbd "C-c c d") 'open-directory)
-(global-set-key (kbd "C-c c c") 'run-code)
+(global-set-key (kbd "C-c c b") 'yzs/open-file-in-browser)
+(global-set-key (kbd "C-c c d") 'yzs/open-directory)
+(global-set-key (kbd "C-c c c") 'yzs/run-code)
+(global-set-key (kbd "C-c c s") 'yzs/open-file-in-live-server)
 
 ;;hook
 (add-hook 'emacs-startup-hook 'yzs/display-startup-time)

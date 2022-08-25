@@ -107,7 +107,7 @@
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis)
 
-(electric-indent-mode 0)
+(electric-indent-mode 1)
 
 ;;(set-default 'tab-always-indent t)
 ;; no mixed tab space
