@@ -20,11 +20,9 @@
   )
 (use-package yasnippet-snippets
   :after yasnippet
-  :bind 
+  :bind
   (:map yas-minor-mode-map
-        ("C-c & C-t" . yas-describe-tables)
-		("M-/" . yas-expand))
-)
+		("M-/" . yas-expand)))
 
 
 (use-package lsp-mode
@@ -43,19 +41,23 @@
 
 (use-package lsp-ui
   :init
-  (setq lsp-ui-sideline-show-hover t
+  (setq lsp-ui-sideline-show-hover nil
 		lsp-ui-sideline-show-code-actions t
 		lsp-ui-doc-position 'top
 		lsp-ui-doc-show-with-cursor t
-		lsp-ui-imenu-auto-refresh 'after-save)
+		lsp-ui-imenu-auto-refresh 'after-save
+		lsp-ui-doc-delay 2)
+  :config
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
-  )
+  :bind
+  (:map lsp-ui-mode-map
+		("C-c l T m" . 'lsp-ui-imenu)))
 
 (use-package projectile
   :diminish projectile-mode
   :config (projectile-mode)
-  :bind-keymap 
+  :bind-keymap
   ("C-c p" . projectile-command-map))
 
 (provide 'emacs-code-config)

@@ -5,6 +5,7 @@
     (setq org-adapt-indentation t
           org-hide-leading-stars t
           org-src-fontify-natively t
+		  org-src-tab-acts-natively t
           org-startup-folded nil
           org-return-follows-link t
           org-startup-truncated nil

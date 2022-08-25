@@ -3,6 +3,7 @@
               ("M-/" . emmet-expand-yas))
   :hook
   (web-mode . emmet-mode)
+  (css-mode . emmet-mode)
   )
 
 ;;(use-package company-web
