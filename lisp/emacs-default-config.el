@@ -21,6 +21,12 @@
 
 (set-language-environment "utf-8")
 (set-default-coding-systems 'utf-8-unix)
+(if (equal system-type "windows-nt")
+	(progn
+	  (setq-default pathname-coding-system 'gbk)
+	  (set-file-name-coding-system 'gbk)
+	  ))
+;; ;; 解决文件目录的中文名乱码
 ;;解决python代码解码错误的问题，与treemacs有关
 (setenv "PYTHONIOENCODING" "utf-8")
 ;; (prefer-coding-system 'utf-8)
@@ -44,9 +50,6 @@
 ;; (set-terminal-coding-system 'utf-8)
 ;; ;; (modify-coding-system-alist 'process "*" 'utf-8)
 ;; (setq default-process-coding-system '(utf-8 . utf-8))
-;; ;; 解决文件目录的中文名乱码
-(setq-default pathname-coding-system 'gbk)
-(set-file-name-coding-system 'gbk)
 
 (setq make-backup-files nil)
 (setq backup-by-copying t)

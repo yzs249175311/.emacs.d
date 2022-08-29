@@ -1,4 +1,8 @@
 ;;open my init.el file
+(cond
+ ((string-equal system-type "gnu/linux") (setq yzs/encode 'utf-8))
+ ((string-equal system-type "windows-nt") (setq yzs/encode 'gbk)))
+
 (defun yzs/open-init ()
   (interactive)
   (find-file "~/.emacs.d/init.el"))
@@ -9,7 +13,7 @@
   (if buffer-file-name
       (cond 
        ((string-equal system-type "windows-nt") 
-        (shell-command-to-string (encode-coding-string (format "MicrosoftEdge.exe %s" buffer-file-name) 'gbk))))))
+        (shell-command-to-string (encode-coding-string (format "MicrosoftEdge.exe %s" buffer-file-name) yzs/encode))))))
 
 (defun yzs/open-file-in-live-server (dir startPath)
   "创建服务器打开此文件,需要使用npm安装browser-sync"
@@ -21,7 +25,7 @@
 		(format "Browser-sync start -s \"%s\" -w \"%s\" --startPath \"%s\""
 				dir
 				startPath
-				(substring startPath (length dir))) 'gbk))))
+				(substring startPath (length dir))) yzs/encode))))
 
 (defun yzs/run-code (file)
   "运行代码,支持javascript,typescript"
@@ -31,9 +35,9 @@
   (message "run code: %s" file)
   (cond 
    ((string-match "\.js$" file) 
-    (async-shell-command (encode-coding-string (concat "node " file) 'gbk)))
+    (async-shell-command (encode-coding-string (concat "node " file) yzs/encode)))
    ((string-match "\.ts$" file) 
-    (async-shell-command (encode-coding-string (concat "ts-node " file) 'gbk)))
+    (async-shell-command (encode-coding-string (concat "ts-node " file) yzs/encode)))
    (t (message "Can't run this file"))))
 
 
