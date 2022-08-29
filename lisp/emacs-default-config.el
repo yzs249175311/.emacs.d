@@ -40,9 +40,9 @@
 ;; (set-keyboard-coding-system 'utf-8)
 ;; (set-selection-coding-system 'utf-8)
 ;; ;; 文件默认保存为 utf-8
-;; (set-buffer-file-coding-system 'utf-8)
+ (set-buffer-file-coding-system 'utf-8)
 ;; (set-default buffer-file-coding-system 'utf-8)
-;; (set-default-coding-systems 'utf-8)
+ (set-default-coding-systems 'utf-8)
 
 ;; ;; 解决粘贴中文出现乱码的问题
 ;; (set-clipboard-coding-system 'utf-8)

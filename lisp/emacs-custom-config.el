@@ -1,8 +1,18 @@
-;;open my init.el file
+;;------------------ init config begin-------------------------------;;
+(setq use-wsl-p t)
+
 (cond
  ((string-equal system-type "gnu/linux") (setq yzs/encode 'utf-8))
  ((string-equal system-type "windows-nt") (setq yzs/encode 'gbk)))
 
+;;------------------ init config begin-------------------------------;;
+(defun yzs/tool/path-wsl-to-windows (str)
+  (if use-wsl-p
+	  (replace-regexp-in-string "\/mnt\/\\(\\w+\\)" "\\1\:" str)
+	(str))
+  )
+
+;;open my init.el file
 (defun yzs/open-init ()
   (interactive)
   (find-file "~/.emacs.d/init.el"))
@@ -11,9 +21,12 @@
   "使用浏览器打开当前文件"
   (interactive)
   (if buffer-file-name
-      (cond 
-       ((string-equal system-type "windows-nt") 
-        (shell-command-to-string (encode-coding-string (format "MicrosoftEdge.exe %s" buffer-file-name) yzs/encode))))))
+	  (cond 
+	   ((string-equal system-type "windows-nt") 
+		(shell-command-to-string (encode-coding-string (format "MicrosoftEdge.exe %s" buffer-file-name) yzs/encode)))
+	   ((string-equal system-type "gnu/linux") 
+		(shell-command-to-string (encode-coding-string (format "MicrosoftEdge.exe %s" (yzs/tool/path-wsl-to-windows buffer-file-name)) yzs/encode))))
+	))
 
 (defun yzs/open-file-in-live-server (dir startPath)
   "创建服务器打开此文件,需要使用npm安装browser-sync"
@@ -31,13 +44,13 @@
   "运行代码,支持javascript,typescript"
   (interactive "fchoice file:")
   (if (not file)
-      (setq file buffer-file-name))
+	  (setq file buffer-file-name))
   (message "run code: %s" file)
   (cond 
    ((string-match "\.js$" file) 
-    (async-shell-command (encode-coding-string (concat "node " file) yzs/encode)))
+	(async-shell-command (encode-coding-string (concat "node " file) yzs/encode)))
    ((string-match "\.ts$" file) 
-    (async-shell-command (encode-coding-string (concat "ts-node " file) yzs/encode)))
+	(async-shell-command (encode-coding-string (concat "ts-node " file) yzs/encode)))
    (t (message "Can't run this file"))))
 
 
@@ -45,22 +58,29 @@
   "打开目标文件夹"
   (interactive "DOpen Directory:")
   (if (not path)
-      (setq path default-directory))
+	  (setq path default-directory))
+  (message "open directory:%s" (expand-file-name path))
   (cond 
    ((string-equal system-type "windows-nt") 
-    (shell-command-to-string
-     (encode-coding-string 
-      (replace-regexp-in-string "/" "\\\\" (concat "explorer.exe " (expand-file-name path)))
-      'gbk)))))
+	(shell-command-to-string
+	 (encode-coding-string 
+	  (replace-regexp-in-string "/" "\\\\" (concat "explorer.exe " (expand-file-name path)))
+	  yzs/encode)))
+   ((string-equal system-type "gnu/linux") 
+	(shell-command-to-string
+	 (encode-coding-string 
+	  (replace-regexp-in-string "/" "\\\\\\\\" (concat "explorer.exe " (yzs/tool/path-wsl-to-windows path)))
+	  yzs/encode)))
+   ))
 
 (defun yzs/display-startup-time ()
   "显示启动时间和垃圾包的数量"
   (interactive)
   (message "Emacs loaded in %s with %d garbage collections"
-           (format "%.2f secends" 
-                   (float-time 
-                    (time-subtract after-init-time before-init-time)))
-           gcs-done))
+		   (format "%.2f secends" 
+				   (float-time 
+					(time-subtract after-init-time before-init-time)))
+		   gcs-done))
 
 ;;key binding
 (global-set-key (kbd "C-c c b") 'yzs/open-file-in-browser)
