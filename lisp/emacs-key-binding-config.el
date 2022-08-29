@@ -16,4 +16,11 @@
  "!" '(:which-key "flycheck")
  )
 
+(general-define-key
+ :prefix "C-c"
+ :states '(normal insert)
+ :keymaps 'global-map
+ "c" '(:which-key "Custom")
+ )
+
 (provide 'emacs-key-binding-config)

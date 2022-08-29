@@ -20,7 +20,8 @@
 
 (defun yzs/evil-key-config () 
   (define-key evil-motion-state-map (kbd "RET") nil)
-  (define-key evil-motion-state-map (kbd "?") nil))
+  (define-key evil-motion-state-map (kbd "?") nil)
+  (define-key evil-window-map (kbd "q") 'evil-delete-buffer))
 
 (use-package evil
   :defer nil

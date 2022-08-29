@@ -40,7 +40,7 @@
 
 ;; install packages
 (defun install-my-packages (my-packages)
-  (if my-packages 
+  (if my-packages
       (let ((my-package (car my-packages)))
         (message "install %s" my-package)
         (unless (package-installed-p my-package)
@@ -76,7 +76,7 @@
  '(org-agenda-files
    '("d:/NutStore/note/GTD/life.org" "d:/NutStore/note/GTD/read.org"))
  '(package-selected-packages
-   '(general lsp-ui evil-surround flycheck modus-themes yasnippet-snippets which-key web-mode visual-fill-column vertico use-package typescript-mode treemacs rainbow-delimiters pyim-basedict pyim projectile org-bullets orderless marginalia magit lsp-mode leuven-theme keycast helpful evil-collection emmet-mode embark-consult eglot company-web color-theme-sanityinc-tomorrow auto-rename-tag))
+   '(general lsp-ui evil-surround flycheck yasnippet-snippets which-key web-mode visual-fill-column vertico use-package typescript-mode treemacs rainbow-delimiters pyim-basedict pyim org-bullets orderless leuven-theme keycast emmet-mode eglot company-web color-theme-sanityinc-tomorrow))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -45,8 +45,8 @@
 ;; ;; (modify-coding-system-alist 'process "*" 'utf-8)
 ;; (setq default-process-coding-system '(utf-8 . utf-8))
 ;; ;; 解决文件目录的中文名乱码
-;; (setq-default pathname-coding-system 'utf-8)
-;; (set-file-name-coding-system 'utf-8)
+(setq-default pathname-coding-system 'gbk)
+(set-file-name-coding-system 'gbk)
 
 (setq make-backup-files nil)
 (setq backup-by-copying t)
@@ -59,6 +59,7 @@
 ;;(global-linum-mode 1
 (global-auto-revert-mode 1)
 
+(winner-mode 1)
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
@@ -180,7 +181,6 @@
 (global-set-key (kbd "C-h C-f") 'find-function)
 (global-set-key (kbd "C-h C-v") 'find-variable)
 (global-set-key (kbd "C-h C-f") 'find-function-on-key)
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;; hook
 (if (daemonp)

@@ -11,14 +11,17 @@
        ((string-equal system-type "windows-nt") 
         (shell-command-to-string (encode-coding-string (format "MicrosoftEdge.exe %s" buffer-file-name) 'gbk))))))
 
-(defun yzs/open-file-in-live-server (file)
+(defun yzs/open-file-in-live-server (dir startPath)
   "创建服务器打开此文件,需要使用npm安装browser-sync"
-  (interactive "fchoice-file:")
-  (if (not file)
-      (setq file buffer-file-name))
-  (if file
-	  (async-shell-command (encode-coding-string (format "Browser-sync start -s -w %s" file) 'gbk)))
-  )
+  (interactive "Dchoose a dir for server root:\nfchoose a file for startPath:")
+  (message "Start Live Server\nDIR:%s\nstartPath:%s" dir startPath)
+  (if (and dir startPath) 
+	  (async-shell-command
+	   (encode-coding-string
+		(format "Browser-sync start -s \"%s\" -w \"%s\" --startPath \"%s\""
+				dir
+				startPath
+				(substring startPath (length dir))) 'gbk))))
 
 (defun yzs/run-code (file)
   "运行代码,支持javascript,typescript"

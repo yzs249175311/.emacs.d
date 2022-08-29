@@ -4,11 +4,13 @@
   :hook
   (after-init . global-company-mode)
   (web-mode . (lambda ()
-                (set (make-local-variable 'company-backends) '(company-web-html company-files))))
+				(define-key web-mode-map (kbd "C-'") 'company-web-html)
+                (set (make-local-variable 'company-backends) '(company-web-html))))
   :bind
   (:map company-mode-map
         ("C-M-i" . company-complete))
   )
+(use-package company-web)
 
 (use-package yasnippet
   :hook

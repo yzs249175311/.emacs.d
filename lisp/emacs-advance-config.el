@@ -17,8 +17,7 @@
   ("C-s" . consult-line)
   ("C-x b" . consult-buffer)
   ("C-c C-f" . consult-recent-file)
-  ("C-c s r" . consult-ripgrep)
-  ("C-c e l" . consult-flymake))
+  ("C-c s r" . consult-ripgrep))
 
 (use-package marginalia
   :bind (("M-A" . marginalia-cycle)
