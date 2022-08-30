@@ -168,7 +168,12 @@
    ((string-equal system-type "windows-nt") (progn 
                                               (set-frame-position (selected-frame) 0 0)
                                               (set-frame-width  (selected-frame) 140)
-                                              (set-frame-height (selected-frame) 40))))
+                                              (set-frame-height (selected-frame) 40)))
+   ((string-equal system-type "gnu/linux") (progn 
+											  (set-frame-position (selected-frame) 100 100)
+											  (set-frame-width  (selected-frame) 140)
+											  (set-frame-height (selected-frame) 40)))
+   )
 
   (set-face-attribute 'default nil :height 140)
   )
