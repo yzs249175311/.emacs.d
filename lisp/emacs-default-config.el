@@ -19,13 +19,16 @@
 
 
 
+;;language envirment
 (set-language-environment "utf-8")
 (set-default-coding-systems 'utf-8-unix)
+
 (if (equal system-type "windows-nt")
 	(progn
 	  (setq-default pathname-coding-system 'gbk)
 	  (set-file-name-coding-system 'gbk)
 	  ))
+
 ;; ;; 解决文件目录的中文名乱码
 ;;解决python代码解码错误的问题，与treemacs有关
 (setenv "PYTHONIOENCODING" "utf-8")
@@ -58,8 +61,8 @@
 (setq visible-bell 0)
 (setq scroll-step 1 scroll-margin 3)
 
-;;(global-display-line-numbers-mode 1)
-;;(global-linum-mode 1
+(global-display-line-numbers-mode 1)
+;;(global-linum-mode 1)
 (global-auto-revert-mode 1)
 
 (winner-mode 1)
@@ -146,24 +149,26 @@
   ;; set font for chinese characters
   (set-fontset-font
    t
-   '(#x4e00 . #x9fff)
+   'han
    (cond
-    ((string-equal system-type "windows-nt")
-     (cond
-      ((member "Microsoft YaHei" (font-family-list)) "Microsoft YaHei")
-      ((member "Microsoft JhengHei" (font-family-list)) "Microsoft JhengHei")
-      ((member "SimHei" (font-family-list)) "SimHei")))
-    ((string-equal system-type "darwin")
-     (cond
-      ((member "Hei" (font-family-list)) "Hei")
-      ((member "Heiti SC" (font-family-list)) "Heiti SC")
-      ((member "Heiti TC" (font-family-list)) "Heiti TC")))
-    ((string-equal system-type "gnu/linux")
-     (cond
-      ((member "WenQuanYi Micro Hei" (font-family-list)) "WenQuanYi Micro Hei")))))
+	((string-equal system-type "windows-nt")
+	 (cond
+	  ((member "Microsoft YaHei" (font-family-list)) "Microsoft YaHei")
+	  ((member "Microsoft JhengHei" (font-family-list)) "Microsoft JhengHei")
+	  ((member "SimHei" (font-family-list)) "SimHei")))
+	((string-equal system-type "darwin")
+	 (cond
+	  ((member "Hei" (font-family-list)) "Hei")
+	  ((member "Heiti SC" (font-family-list)) "Heiti SC")
+	  ((member "Heiti TC" (font-family-list)) "Heiti TC")))
+	((string-equal system-type "gnu/linux")
+	 (cond
+	  ((member "WenQuanYi Micro Hei" (font-family-list)) "WenQuanYi Micro Hei")))))
+  
 
   ;;set font size
 
+  (set-face-attribute 'default nil :height 140)
   (cond 
    ((string-equal system-type "windows-nt") (progn 
                                               (set-frame-position (selected-frame) 0 0)
@@ -171,11 +176,11 @@
                                               (set-frame-height (selected-frame) 40)))
    ((string-equal system-type "gnu/linux") (progn 
 											  (set-frame-position (selected-frame) 100 100)
-											  (set-frame-width  (selected-frame) 140)
-											  (set-frame-height (selected-frame) 40)))
+											  (set-frame-width  (selected-frame) 200)
+											  (set-frame-height (selected-frame) 60)
+											  (global-text-scale-adjust 10)))
    )
 
-  (set-face-attribute 'default nil :height 140)
   )
 
 ;; convenient
