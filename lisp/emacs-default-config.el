@@ -23,7 +23,7 @@
 (set-language-environment "utf-8")
 (set-default-coding-systems 'utf-8-unix)
 
-(if (equal system-type "windows-nt")
+(if (string-equal system-type "windows-nt")
 	(progn
 	  (setq-default pathname-coding-system 'gbk)
 	  (set-file-name-coding-system 'gbk)
@@ -44,7 +44,7 @@
 ;; (set-selection-coding-system 'utf-8)
 ;; ;; 文件默认保存为 utf-8
  (set-buffer-file-coding-system 'utf-8)
-;; (set-default buffer-file-coding-system 'utf-8)
+ (set-default buffer-file-coding-system 'utf-8)
  (set-default-coding-systems 'utf-8)
 
 ;; ;; 解决粘贴中文出现乱码的问题
@@ -133,12 +133,15 @@
 
 (electric-pair-mode 1)
 
-(defun yzs/set-font-faces() 
-  ;; set default font
+(defun yzs/set-font-faces () 
+  ;;set default font
   (set-frame-font
    (cond
     ((string-equal system-type "windows-nt")
-     (if (member "Consolas" (font-family-list)) "Consolas" nil ))
+	 (cond
+	  ((member "更纱黑体 Mono SC Nerd" (font-family-list)) "更纱黑体 Mono SC Nerd Bold")
+	  ((member "JetBrains Mono NL" (font-family-list)) "JetBrains Mono NL")
+	  ((member "Consolas" (font-family-list)) "JetBrains Mono NL")))
     ((string-equal system-type "darwin")
      (if (member "Menlo" (font-family-list)) "Menlo-16" nil ))
     ((string-equal system-type "gnu/linux")
@@ -150,6 +153,7 @@
   (set-fontset-font
    t
    'han
+  ;;'han
    (cond
 	((string-equal system-type "windows-nt")
 	 (cond
@@ -164,10 +168,10 @@
 	((string-equal system-type "gnu/linux")
 	 (cond
 	  ((member "WenQuanYi Micro Hei" (font-family-list)) "WenQuanYi Micro Hei")))))
-  
+
+  ;;(set-frame-font "-outline-JetBrains Mono-bold-italic-normal-mono-*-*-*-*-c-*-iso10646-1")
 
   ;;set font size
-
   (set-face-attribute 'default nil :height 140)
   (cond 
    ((string-equal system-type "windows-nt") (progn 
