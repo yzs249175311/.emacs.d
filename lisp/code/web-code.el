@@ -1,9 +1,6 @@
 (use-package emmet-mode
   :bind (:map emmet-mode-keymap
               ("M-/" . emmet-expand-yas))
-  :hook
-  (web-mode . emmet-mode)
-  (css-mode . emmet-mode)
   )
 
 ;;(use-package company-web
