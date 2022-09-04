@@ -110,7 +110,7 @@
    'minibuffer-prompt-properties
    (quote (read-only t cursor-intangible t face minibuffer-prompt))))
 
-;; set highlighting brackets
+;; set 
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis)
 
@@ -142,10 +142,17 @@
 	  ((member "更纱黑体 Mono SC Nerd" (font-family-list)) "更纱黑体 Mono SC Nerd Bold")
 	  ((member "JetBrains Mono NL" (font-family-list)) "JetBrains Mono NL")
 	  ((member "Consolas" (font-family-list)) "JetBrains Mono NL")))
+
     ((string-equal system-type "darwin")
-     (if (member "Menlo" (font-family-list)) "Menlo-16" nil ))
+	 (cond
+	  ((member "Menlo"  (font-family-list)) "Menlo-16")))
+
     ((string-equal system-type "gnu/linux")
-     (if (member "DejaVu Sans Mono" (font-family-list)) "DejaVu Sans Mono" nil ))
+	 (cond
+	  ((member "JetBrains Mono"  (font-family-list)) "JetBrains Mono")
+	  ((member "Sarasa UI J"  (font-family-list)) "Sarasa UI J")
+	  ((member "DejaVu Sans Mono"  (font-family-list)) "DejaVu Sans Mono")))
+
     (t nil))
    t t)
 
