@@ -65,6 +65,7 @@
 ;;(global-linum-mode 1)
 (global-auto-revert-mode 1)
 
+
 (winner-mode 1)
 (menu-bar-mode 0)
 (tool-bar-mode 0)
@@ -188,7 +189,7 @@
    ((string-equal system-type "gnu/linux") (progn 
 											  (set-frame-position (selected-frame) 100 100)
 											  (set-frame-width  (selected-frame) 200)
-											  (set-frame-height (selected-frame) 60)
+											  (set-frame-height (selected-frame) 40)
 											  (global-text-scale-adjust 10)))
    )
 

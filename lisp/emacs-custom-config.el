@@ -82,6 +82,18 @@
 					(time-subtract after-init-time before-init-time)))
 		   gcs-done))
 
+(defun yzs/resize-frame ()
+  "重新调整frame"
+  (interactive)
+  (cond 
+   ((string-equal system-type "windows-nt") (progn 
+											  (set-frame-position (selected-frame) 0 0)
+											  (set-frame-width  (selected-frame) 140)
+											  (set-frame-height (selected-frame) 40)))
+   ((string-equal system-type "gnu/linux") (progn 
+											 (set-frame-position (selected-frame) 100 100)
+											 (set-frame-width  (selected-frame) 160)
+											 (set-frame-height (selected-frame) 40)))))
 ;;key binding
 (global-set-key (kbd "C-c c b") 'yzs/open-file-in-browser)
 (global-set-key (kbd "C-c c d") 'yzs/open-directory)
