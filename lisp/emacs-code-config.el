@@ -45,6 +45,7 @@
   :init
   (setq lsp-ui-sideline-show-hover nil
 		lsp-ui-sideline-show-code-actions t
+		lsp-ui-sideline-show-diagnostics t
 		lsp-ui-doc-position 'top
 		lsp-ui-doc-show-with-cursor t
 		lsp-ui-imenu-auto-refresh 'after-save
@@ -54,7 +55,8 @@
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
   :bind
   (:map lsp-ui-mode-map
-		("C-c l T m" . 'lsp-ui-imenu)))
+		("C-c l T m" . 'lsp-ui-imenu)
+		))
 
 (use-package projectile
   :diminish projectile-mode

@@ -13,7 +13,7 @@
  :prefix "C-c"
  :states '(normal insert)
  :keymaps 'flycheck-mode-map
- "!" '(:which-key "flycheck")
+ "!" '(:which-key "check")
  )
 
 (general-define-key

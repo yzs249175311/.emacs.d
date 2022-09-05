@@ -12,7 +12,6 @@
 				  treemacs-mode 
 				  magit-status-mode
 				  helpful-mode
-				  flycheck-error-list-mode
 				  ) 
 				evil-emacs-state-modes
 				evil-motion-state-modes))

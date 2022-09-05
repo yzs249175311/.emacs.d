@@ -67,6 +67,8 @@
         which-key-idle-delay 1)
   (which-key-mode))
 
+(use-package flycheck)
+
 (use-package helpful
   :bind
   ([remap describe-function] . helpful-function)
@@ -75,11 +77,6 @@
   ([remap describe-command] . helpful-command)
   )
 
-
 (use-package magit)
-
-(use-package flycheck
-  :hook
-  (after-init . global-flycheck-mode))
 
 (provide 'emacs-advance-config)
