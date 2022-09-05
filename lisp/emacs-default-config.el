@@ -20,19 +20,21 @@
 
 
 ;;language envirment
-(set-language-environment "utf-8")
-(set-default-coding-systems 'utf-8-unix)
-
 (if (string-equal system-type "windows-nt")
 	(progn
-	  (setq-default pathname-coding-system 'gbk)
-	  (set-file-name-coding-system 'gbk)
-	  ))
+	  (prefer-coding-system 'utf-8)
+	  )
+  (progn
+	(prefer-coding-system 'utf-8)
+	))
+
+(set-language-environment "utf-8")
+(set-default-coding-systems 'utf-8-unix)
 
 ;; ;; 解决文件目录的中文名乱码
 ;;解决python代码解码错误的问题，与treemacs有关
 (setenv "PYTHONIOENCODING" "utf-8")
-;; (prefer-coding-system 'utf-8)
+
 ;; ;;;; 设置编辑环境
 ;; ;; 设置为中文简体语言环境
 ;;(set-language-environment 'Chinese-GB)
@@ -43,9 +45,9 @@
 ;; (set-keyboard-coding-system 'utf-8)
 ;; (set-selection-coding-system 'utf-8)
 ;; ;; 文件默认保存为 utf-8
- (set-buffer-file-coding-system 'utf-8)
- (set-default buffer-file-coding-system 'utf-8)
- (set-default-coding-systems 'utf-8)
+;; (set-buffer-file-coding-system 'utf-8)
+;; (set-default buffer-file-coding-system 'utf-8)
+;; (set-default-coding-systems 'utf-8)
 
 ;; ;; 解决粘贴中文出现乱码的问题
 ;; (set-clipboard-coding-system 'utf-8)
