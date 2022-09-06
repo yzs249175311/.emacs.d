@@ -38,6 +38,7 @@
   (js-mode . lsp)
   (css-mode . lsp)
   (typescript-mode . lsp)
+  (lsp-mode . hs-minor-mode)
   ;; if you want which-key integration
   (lsp-mode . lsp-enable-which-key-integration)
   :commands lsp
