@@ -48,9 +48,9 @@
   (message "run code: %s" file)
   (cond 
    ((string-match "\.js$" file) 
-	(async-shell-command (encode-coding-string (concat "node.exe " file) yzs/encode)))
+	(async-shell-command (encode-coding-string (concat "node " file) yzs/encode)))
    ((string-match "\.ts$" file) 
-	(async-shell-command (encode-coding-string (concat "ts-node.exe " file) yzs/encode)))
+	(async-shell-command (encode-coding-string (concat "ts-node " file) yzs/encode)))
    (t (message "Can't run this file"))))
 
 
