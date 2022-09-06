@@ -136,6 +136,9 @@
 
 (electric-pair-mode 1)
 
+;;代码折叠
+(add-to-list 'hs-special-modes-alist '(web-mode  "{\\|<[^/>]+?" "}\\|</[^/>]*[^/]>" "<!--" web-mode-forward-sexp nil))
+
 (defun yzs/set-font-faces () 
   ;;set default font
   (set-frame-font

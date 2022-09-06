@@ -9,6 +9,8 @@
   :bind
   (:map company-mode-map
         ("C-M-i" . company-complete))
+  :config
+  (setq company-minimum-prefix-length 1)
   )
 (use-package company-web)
 
