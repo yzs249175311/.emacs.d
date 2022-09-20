@@ -1,5 +1,5 @@
 ;;------------------ init config begin-------------------------------;;
-(setq use-wsl-p t)
+(setq use-wsl-p nil)
 
 (cond
  ((string-equal system-type "gnu/linux") (setq yzs/encode 'utf-8))
@@ -9,7 +9,7 @@
 (defun yzs/tool/path-wsl-to-windows (str)
   (if use-wsl-p
 	  (replace-regexp-in-string "\/mnt\/\\(\\w+\\)" "\\1\:" str)
-	(str))
+	str)
   )
 
 ;;open my init.el file
@@ -25,7 +25,7 @@
 	   ((string-equal system-type "windows-nt") 
 		(shell-command-to-string (encode-coding-string (format "MicrosoftEdge.exe %s" buffer-file-name) yzs/encode)))
 	   ((string-equal system-type "gnu/linux") 
-		(shell-command-to-string (encode-coding-string (format "MicrosoftEdge.exe %s" (yzs/tool/path-wsl-to-windows buffer-file-name)) yzs/encode))))
+		(shell-command-to-string (encode-coding-string (format "microsoft-edge-stable %s" (yzs/tool/path-wsl-to-windows buffer-file-name)) yzs/encode))))
 	))
 
 (defun yzs/open-file-in-live-server (dir startPath)

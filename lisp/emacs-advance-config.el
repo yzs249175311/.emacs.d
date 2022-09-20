@@ -59,7 +59,7 @@
         (treemacs-quit)
       (treemacs-select-window)))
   :bind
-  ("<f12>" . treemacs-toggle))
+  ("C-c c t t" . treemacs-toggle))
 
 (use-package which-key
   :init
