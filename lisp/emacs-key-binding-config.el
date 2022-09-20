@@ -31,17 +31,9 @@
 
 (general-define-key
  :states '(normal insert motion emacs)
- "<left>" 'windmove-left
- "<right>" 'windmove-right
- "<up>" 'windmove-up
- "<down>" 'windmove-down
- "S-<left>" 'evil-window-decrease-width
- "S-<right>" 'evil-window-increase-width
- "S-<up>" 'evil-window-increase-height
- "S-<down>" 'evil-window-decrease-height
- "M-<left>" 'evil-window-move-far-left
- "M-<right>" 'evil-window-move-far-right
- "M-<up>" 'evil-window-move-very-top
- "M-<down>" 'evil-window-move-very-bottom
+ "<left>" 'evil-window-decrease-width
+ "<right>" 'evil-window-increase-width
+ "<up>" 'evil-window-increase-height
+ "<down>" 'evil-window-decrease-height
  )
 (provide 'emacs-key-binding-config)
