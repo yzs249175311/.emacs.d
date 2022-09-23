@@ -10,7 +10,7 @@
   (:map company-mode-map
         ("C-M-i" . company-complete))
   :config
-  (setq company-minimum-prefix-length 1)
+  (setq company-minimum-prefix-length 3)
   )
 (use-package company-web)
 

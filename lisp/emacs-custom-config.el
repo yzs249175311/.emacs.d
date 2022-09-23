@@ -35,7 +35,7 @@
   (if (and dir startPath) 
 	  (async-shell-command
 	   (encode-coding-string
-		(format "Browser-sync start -s \"%s\" -w \"%s\" --startPath \"%s\""
+		(format "browser-sync start -s \"%s\" -w \"%s\" --startPath \"%s\""
 				dir
 				startPath
 				(substring startPath (length dir))) yzs/encode))))
