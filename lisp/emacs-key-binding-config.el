@@ -21,6 +21,7 @@
  :states '(normal insert)
  :keymaps 'global-map
  "c" '(:which-key "Custom")
+ "o" '(:which-key "Org-roam")
  )
 
 (general-define-key
@@ -36,4 +37,14 @@
  "<up>" 'evil-window-increase-height
  "<down>" 'evil-window-decrease-height
  )
+
+(general-define-key
+ :states '(normal insert motion emacs)
+ :prefix "C-c o"
+ "f" 'org-roam-node-find
+ "i" 'org-roam-node-insert
+ "t" 'org-roam-buffer-toggle
+ "c" 'org-id-get-create
+ "g" 'org-roam-ui-mode)
+
 (provide 'emacs-key-binding-config)

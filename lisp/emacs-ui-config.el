@@ -29,9 +29,9 @@
         modus-themes-org-blocks 'gray-background ; {nil,'gray-background,'tinted-background}
 
         modus-themes-headings ; this is an alist: read the manual or its doc string
-        '((1 . (overline background variable-pitch 1.3))
-          (2 . (rainbow overline 1.2))
-          (3 . (rainbow overline 1.1))
+        '((1 . (rainbow variable-pitch 1.3))
+          (2 . (rainbow  1.2))
+          (3 . (rainbow  1.1))
           (t . (semibold))))
   ;; Load the theme files before enabling a theme
   (modus-themes-load-themes)
