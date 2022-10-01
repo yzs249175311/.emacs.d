@@ -2,7 +2,7 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/code/")
 
 ;;open debug
-(setq debug-on-error t)
+(setq debug-on-error nil)
 
 (require 'emacs-default-config)
 (require 'emacs-custom-config)
