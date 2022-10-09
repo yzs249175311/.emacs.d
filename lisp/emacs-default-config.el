@@ -129,6 +129,23 @@
 ;;代码折叠
 (add-to-list 'hs-special-modes-alist '(web-mode  "{\\|<[^/>]+?" "}\\|</[^/>]*[^/]>" "<!--" web-mode-forward-sexp nil))
 
+
+
+;;设置窗口
+(cond 
+ ((string-equal system-type "windows-nt")
+  (mapc '(lambda (elm) (push elm default-frame-alist))
+		'((height . 45)
+		  (width . 160)
+		  (left . 25)
+		  (top . 25))))
+ ((string-equal system-type "gnu/linux")
+  (mapc '(lambda (elm) (push elm default-frame-alist))
+	  '((height . 45)
+		(width . 200)
+		(left . 25)
+		(top . 25)))))
+
 (defun yzs/set-font-faces () 
   ;;set default font
   (set-frame-font
@@ -187,12 +204,6 @@
   ;; 											  (set-frame-height (selected-frame) 40)
   ;; 											  (global-text-scale-adjust 10)))
   ;; )
-
-  (mapc '(lambda (elm) (push elm default-frame-alist))
-		'((height . 45)
-		  (width . 200)
-		  (left . 25)
-		  (top . 25)))
 
   )
 
