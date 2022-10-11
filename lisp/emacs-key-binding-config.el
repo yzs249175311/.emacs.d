@@ -30,13 +30,13 @@
  "c c" 'comment-line
  )
 
-(general-define-key
- :states '(normal insert motion emacs)
- "<left>" 'evil-window-decrease-width
- "<right>" 'evil-window-increase-width
- "<up>" 'evil-window-increase-height
- "<down>" 'evil-window-decrease-height
- )
+;; (general-define-key
+;;  :states '(normal insert motion emacs)
+;;  "<left>" 'evil-window-decrease-width
+;;  "<right>" 'evil-window-increase-width
+;;  "<up>" 'evil-window-increase-height
+;;  "<down>" 'evil-window-decrease-height
+;;  )
 
 (general-define-key
  :states '(normal insert motion emacs)
