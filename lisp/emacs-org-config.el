@@ -11,7 +11,7 @@
           org-startup-truncated nil
           org-log-done t
           org-log-into-drawer t
-          org-ellipsis " ▼"
+          org-ellipsis " ⤵"
           org-hide-emphasis-markers t
 		  ;; org-html-head-include-default-style nil
 		  org-html-head-extra "<style>

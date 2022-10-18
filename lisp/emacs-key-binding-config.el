@@ -45,6 +45,8 @@
  "i" 'org-roam-node-insert
  "t" 'org-roam-buffer-toggle
  "c" 'org-id-get-create
- "g" 'org-roam-ui-mode)
+ "g" 'org-roam-ui-mode
+ "s" 'org-roam-db-sync
+ )
 
 (provide 'emacs-key-binding-config)
