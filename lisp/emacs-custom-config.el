@@ -33,12 +33,13 @@
   (interactive "Dchoose a dir for server root:\nfchoose a file for startPath:")
   (message "Start Live Server\nDIR:%s\nstartPath:%s" dir startPath)
   (if (and dir startPath) 
-	  (async-shell-command
-	   (encode-coding-string
-		(format "browser-sync start -s \"%s\" -w \"%s\" --startPath \"%s\""
-				dir
-				startPath
-				(substring startPath (length dir))) yzs/encode))))
+	  (let ((edir (expand-file-name dir)) (estartPath (expand-file-name startPath)))
+		(async-shell-command
+		 (encode-coding-string
+		  (format "browser-sync start -s \"%s\" -w \"%s\" --startPath \"%s\""
+				  edir
+				  estartPath
+				  (substring estartPath (length edir))) yzs/encode)))))
 
 (defun yzs/run-code (file)
   "运行代码,支持javascript,typescript"
