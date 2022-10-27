@@ -1,8 +1,14 @@
-(add-to-list 'load-path "~/.emacs.d/lisp/")
-(add-to-list 'load-path "~/.emacs.d/lisp/code/")
+(require 'package)
 
-;;open debug
+;;debug
 (setq debug-on-error nil)
+
+(mapc (lambda (dir) (add-to-list 'load-path dir))
+	  '(
+		"~/.emacs.d/lisp/"
+		"~/.emacs.d/lisp/code"
+		"~/.emacs.d/lisp/default"
+		))
 
 (require 'emacs-default-config)
 (require 'emacs-custom-config)
@@ -15,37 +21,37 @@
 (when (>= emacs-major-version 24)
   (require 'package)
   (setq package-archives
-        '(
-          ;;("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-          ;;("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-          ;;("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-          ("melpa-cn" . "http://elpa.zilongshanren.com/melpa/")
-          ("org-cn"   . "http://elpa.zilongshanren.com/org/")
-          ("gnu-cn"   . "http://elpa.zilongshanren.com/gnu/")
-          ;;("melpa" . "https://melpa.org/packages/")
-          ;;("gnu" . "http://elpa.gnu.org/packages/")
-          ))
+		'(
+		  ;;("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+		  ;;("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+		  ;;("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+		  ("melpa-cn" . "http://elpa.zilongshanren.com/melpa/")
+		  ("org-cn"   . "http://elpa.zilongshanren.com/org/")
+		  ("gnu-cn"   . "http://elpa.zilongshanren.com/gnu/")
+		  ;;("melpa" . "https://melpa.org/packages/")
+		  ;;("gnu" . "http://elpa.gnu.org/packages/")
+		  ))
   (package-initialize)
-)
+  )
 
 ;;防止反复调用 package-refresh-contents 会影响加载速度
 (when (not package-archive-contents)
   (package-refresh-contents))
 
 (setq my-packages '(
-                    use-package
-                    pyim
-                    pyim-basedict
-                    ))
+					use-package
+					pyim
+					pyim-basedict
+					))
 
 ;; install packages
 (defun install-my-packages (my-packages)
   (if my-packages
-      (let ((my-package (car my-packages)))
-        (message "install %s" my-package)
-        (unless (package-installed-p my-package)
-          (package-install my-package))
-        (install-my-packages (cdr my-packages)))))
+	  (let ((my-package (car my-packages)))
+		(message "install %s" my-package)
+		(unless (package-installed-p my-package)
+		  (package-install my-package))
+		(install-my-packages (cdr my-packages)))))
 
 (install-my-packages my-packages)
 

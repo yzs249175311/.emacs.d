@@ -1,5 +1,3 @@
-(require 'web-code)
-
 (use-package company
   :hook
   (after-init . global-company-mode)
@@ -36,6 +34,7 @@
   :hook ;; replace XXX-mode with concrete major-mode(e. g. python-mode)
   (web-mode . lsp)
   (js-mode . lsp)
+  (javascript-mode . lsp)
   (css-mode . lsp)
   (typescript-mode . lsp)
   (lsp-mode . hs-minor-mode)
@@ -66,5 +65,7 @@
   :config (projectile-mode)
   :bind-keymap
   ("C-c p" . projectile-command-map))
+
+(require 'code-web)
 
 (provide 'emacs-code-config)

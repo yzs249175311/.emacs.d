@@ -1,5 +1,3 @@
-(require 'package)
-
 ;;open native-comp
 (when (and (fboundp 'native-comp-available-p)
            (native-comp-available-p))
@@ -9,6 +7,7 @@
     (add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory))
     (setq package-native-compile t)
     ))
+
 
 ;;default is 800 kilobytes. 优化启动速度 
 (setq gc-cons-threshold (* 20 1000 1000))
@@ -58,9 +57,8 @@
 (blink-cursor-mode 0)
 (global-hl-line-mode)
 (auto-save-visited-mode 1)
-(setq use-dialog-box nil)
-
 (recentf-mode 1)
+(setq use-dialog-box nil)
 
 (progn
   (require 'dired-x)
@@ -104,7 +102,7 @@
 ;;(set-default 'tab-always-indent t)
 ;; no mixed tab space
 ;;(setq-default indent-tabs-mode t)
-                                        ; gnu emacs 23.1, 24.4.1 default is t
+					; gnu emacs 23.1, 24.4.1 default is t
 
 ;; 4 is more popular than 8.
 (setq-default tab-width 4)
@@ -127,45 +125,45 @@
 (cond 
  ((string-equal system-type "windows-nt")
   (mapc '(lambda (elm) (push elm default-frame-alist))
-		'((height . 45)
-		  (width . 160)
-		  (left . 25)
-		  (top . 25))))
+	'((height . 45)
+	  (width . 160)
+	  (left . 25)
+	  (top . 25))))
  ((string-equal system-type "gnu/linux")
   (mapc '(lambda (elm) (push elm default-frame-alist))
-	  '((height . 45)
-		(width . 200)
-		(left . 25)
-		(top . 25)))))
+	'((height . 45)
+	  (width . 200)
+	  (left . 25)
+	  (top . 25)))))
 
 (defun yzs/set-font-faces () 
   ;;set default font
   (set-frame-font
    (cond
     ((string-equal system-type "windows-nt")
-	 (cond
-	  ((member "更纱黑体 Mono SC Nerd Bold" (font-family-list)) "更纱黑体 Mono SC Nerd Bold")
-	  ((member "JetBrains Mono NL" (font-family-list)) "JetBrains Mono NL")
-	  ((member "Consolas" (font-family-list)) "JetBrains Mono NL")))
+     (cond
+      ((member "更纱黑体 Mono SC Nerd Bold" (font-family-list)) "更纱黑体 Mono SC Nerd Bold")
+      ((member "JetBrains Mono NL" (font-family-list)) "JetBrains Mono NL")
+      ((member "Consolas" (font-family-list)) "JetBrains Mono NL")))
 
     ((string-equal system-type "darwin")
-	 (cond
-	  ((member "Menlo"  (font-family-list)) "Menlo-16")))
+     (cond
+      ((member "Menlo"  (font-family-list)) "Menlo-16")))
 
     ((string-equal system-type "gnu/linux")
-	 (cond
+     (cond
+	  ((font-info "等距更紗黑體 CL Nerd Font") "等距更紗黑體 CL Nerd Font")
+	  ((member "JetBrainsMono Nerd Font Mono" (font-family-list)) "JetBrainsMono Nerd Font Mono")
 	  ((member "Sarasa Mono J" (font-family-list)) "Sarasa Mono J")
-	  ((member "JetBrains Mono"  (font-family-list)) "JetBrains Mono")
-	  ((member "Sarasa UI J"  (font-family-list)) "Sarasa UI J")
 	  ((member "DejaVu Sans Mono"  (font-family-list)) "DejaVu Sans Mono")))
-    (t nil))
+	(t nil))
    t t)
 
   ;; set font for chinese characters
   (set-fontset-font
    t
    'han
-  ;;'han
+   ;;'han
    (cond
 	((string-equal system-type "windows-nt")
 	 (cond
@@ -179,9 +177,8 @@
 	  ((member "Heiti TC" (font-family-list)) "Heiti TC")))
 	((string-equal system-type "gnu/linux")
 	 (cond
-	  ((member "WenQuanYi Micro Hei" (font-family-list)) "WenQuanYi Micro Hei")))))
-
-  ;;(set-frame-font "-outline-JetBrains Mono-bold-italic-normal-mono-*-*-*-*-c-*-iso10646-1")
+	  ((member "WenQuanYi Micro Hei" (font-family-list)) "WenQuanYi Micro Hei")
+	  ))))
 
   ;;set font size
   (set-face-attribute 'default nil :height 120)
@@ -201,7 +198,7 @@
 
 ;; convenient
 (if (>= emacs-major-version 28)
-    (setq use-short-answers t)
+	(setq use-short-answers t)
   (defalias 'yes-or-no-p 'y-or-n-p))
 
 
@@ -213,11 +210,13 @@
 
 ;; hook
 (if (daemonp)
-    (add-hook 'after-make-frame-functions
-              (lambda (frame)
-                (with-selected-frame frame
-                  (yzs/set-font-faces))))
+	(add-hook 'after-make-frame-functions
+			  (lambda (frame)
+				(with-selected-frame frame
+				  (yzs/set-font-faces))))
   (add-hook 'modus-themes-after-load-theme-hook 'yzs/set-font-faces)
   )
+
+(require 'default-prettify-symbols)
 
 (provide 'emacs-default-config)

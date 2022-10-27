@@ -52,4 +52,4 @@
   :init
   (setq lsp-typescript-suggest-auto-imports nil))
 ;;vue config end
-(provide 'web-code)
+(provide 'code-web)
