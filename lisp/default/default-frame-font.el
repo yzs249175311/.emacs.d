@@ -59,28 +59,18 @@
 
   ;;set font size
   (set-face-attribute 'default nil :height 120)
-  ;; (cond 
-  ;;  ((string-equal system-type "windows-nt") (progn 
-  ;;                                             (set-frame-position (selected-frame) 0 0)
-  ;;                                             (set-frame-width  (selected-frame) 140)
-  ;;                                             (set-frame-height (selected-frame) 40)))
-  ;;  ((string-equal system-type "gnu/linux") (progn 
-  ;; 											  (set-frame-position (selected-frame) 100 100)
-  ;; 											  (set-frame-width  (selected-frame) 200)
-  ;; 											  (set-frame-height (selected-frame) 40)
-  ;; 											  (global-text-scale-adjust 10)))
-  ;; )
-
   )
 
-;; hook
+;; 判断是否使用了deamon和判断是否使用的是终端
 (if (daemonp)
 	(add-hook 'after-make-frame-functions
 			  (lambda (frame)
 				(with-selected-frame frame
 				  (yzs/set-font-faces))))
   ;; (add-hook 'modus-themes-after-load-theme-hook 'yzs/set-font-faces)
-  (add-hook 'after-init-hook 'yzs/set-font-faces)
+  (cond
+   ((string-equal window-system "nil"))
+   (t (add-hook 'after-init-hook 'yzs/set-font-faces)))
   )
 
 (provide 'default-frame-font)

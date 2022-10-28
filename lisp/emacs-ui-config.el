@@ -38,13 +38,20 @@
 ;;   :bind ("<f5>" . modus-themes-toggle))
 
 ;; ;;-------------------------hook-----------------------------------
-;; (add-hook 'after-init-hook 
-;;           #'(lambda ()
-;;             (cond
-;;              ((string-equal system-type "gnu/linux") (modus-themes-load-vivendi))
-;;              ((string-equal system-type "windows-nt") (modus-themes-load-vivendi))
-;; )))
+(add-hook 'after-init-hook 
+		  #'(lambda ()
+			  (cond
+			   ;; ((string-equal system-type "gnu/linux") (modus-themes-load-vivendi))
+			   ;; ((string-equal system-type "windows-nt") (modus-themes-load-vivendi))
 
-(load-theme 'leuven t)
+			   ((string-equal system-type "gnu/linux")
+				(cond
+				 ((string-equal window-system "x") (load-theme 'leuven t))
+				 ((string-equal window-system nil) (load-theme 'wombat t))
+				 ))
+
+			   ((string-equal system-type "windows-nt") (modus-themes-load-vivendi))
+
+			   )))
 
 (provide 'emacs-ui-config)
