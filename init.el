@@ -77,11 +77,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("dd33f81b8d9895e727d56ad05ba6c2a90b5c400e80701f788a4542055f1fd838" default))
  '(package-selected-packages
    '(general lsp-ui evil-surround yasnippet-snippets which-key web-mode visual-fill-column vertico use-package typescript-mode treemacs rainbow-delimiters pyim-basedict pyim org-bullets orderless leuven-theme keycast emmet-mode eglot company-web color-theme-sanityinc-tomorrow))
- '(warning-suppress-types '((use-package))))
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

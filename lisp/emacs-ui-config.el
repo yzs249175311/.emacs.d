@@ -15,34 +15,36 @@
   :hook
   (org-mode . visual-fill-column-mode))
 
-(use-package modus-themes
-  :init
-  ;; Add all your customizations prior to loading the themes
-  (setq modus-themes-italic-constructs t
-        modus-themes-bold-constructs t
-        modus-themes-mode-line '(accented borderless (padding . 10) (height . 0.9))
-        modus-themes-hl-line '(intense)
-        modus-themes-paren-match '(bold intense)
-		modus-themes-region '(bg-only intense accented)
-		modus-themes-syntax '(alt-syntax yellow-comments green-strings)
+;; (use-package modus-themes
+;;   :init
+;;   ;; Add all your customizations prior to loading the themes
+;;   (setq modus-themes-italic-constructs t
+;;         modus-themes-bold-constructs t
+;;         modus-themes-mode-line '(accented borderless (padding . 10) (height . 0.9))
+;;         modus-themes-hl-line '(intense)
+;;         modus-themes-paren-match '(bold intense)
+;; 		modus-themes-region '(bg-only intense accented)
+;; 		modus-themes-syntax '(alt-syntax yellow-comments green-strings)
 
-        modus-themes-org-blocks 'gray-background ; {nil,'gray-background,'tinted-background}
+;;         modus-themes-org-blocks 'gray-background ; {nil,'gray-background,'tinted-background}
 
-        modus-themes-headings ; this is an alist: read the manual or its doc string
-        '((1 . (rainbow variable-pitch 1.3))
-          (2 . (rainbow  1.2))
-          (3 . (rainbow  1.1))
-          (t . (semibold))))
-  ;; Load the theme files before enabling a theme
-  (modus-themes-load-themes)
-  :bind ("<f5>" . modus-themes-toggle))
+;;         modus-themes-headings ; this is an alist: read the manual or its doc string
+;;         '((1 . (rainbow variable-pitch 1.3))
+;;           (2 . (rainbow  1.2))
+;;           (3 . (rainbow  1.1))
+;;           (t . (semibold))))
+;;   ;; Load the theme files before enabling a theme
+;;   (modus-themes-load-themes)
+;;   :bind ("<f5>" . modus-themes-toggle))
 
-;;-------------------------hook-----------------------------------
-(add-hook 'after-init-hook 
-          #'(lambda ()
-            (cond
-             ;;((string-equal system-type "gnu/linux") (load-theme 'tsdh-dark t))
-             ((string-equal system-type "gnu/linux") (modus-themes-load-vivendi))
-             ((string-equal system-type "windows-nt") (modus-themes-load-vivendi))
-)))
+;; ;;-------------------------hook-----------------------------------
+;; (add-hook 'after-init-hook 
+;;           #'(lambda ()
+;;             (cond
+;;              ((string-equal system-type "gnu/linux") (modus-themes-load-vivendi))
+;;              ((string-equal system-type "windows-nt") (modus-themes-load-vivendi))
+;; )))
+
+(load-theme 'leuven t)
+
 (provide 'emacs-ui-config)
