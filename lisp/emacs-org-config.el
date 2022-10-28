@@ -22,13 +22,13 @@
                               </style>"
 		  )
     ;;修改无序列表的符号 - 
-    (font-lock-add-keywords 'org-mode 
-                            '(("^ *\\([-]\\) "
-                               (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "⇒")))))))
+	(font-lock-add-keywords 'org-mode 
+							'(("^ *\\([-]\\) " (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "☛"))))
+							  ("^ *\\([+]\\) " (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "☞")))))))
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((js . t)
-     (shell . t)))
+	 (shell . t)))
 
   :hook 
   (org-mode . org-indent-mode)
@@ -36,12 +36,15 @@
   :custom
   (org-capture-templates 
    '(("r" "Read Books")
-     ("rb" "Books" entry (file+olp "d:/NutStore/note/GTD/read.org" "读书目录")
-      "\n** TODO %^{Book name} - %^{Author}" :kill-buffer t))))
+	 ("rb" "Books" entry (file+olp "d:/NutStore/note/GTD/read.org" "读书目录")
+	  "\n** TODO %^{Book name} - %^{Author}" :kill-buffer t))))
 
 (use-package org-bullets
   :hook
   (org-mode . org-bullets-mode)
+  :custom
+  ;; (org-bullets-bullet-list '("㊎" "㊍" "㊌" "㊋" "㊏"))
+  (org-bullets-bullet-list '("❋" "✥" "✤" "✣" "✢"))
   )
 
 (use-package htmlize)
@@ -54,16 +57,16 @@
   (org-mode . org-roam-db-autosync-mode))
 
 (use-package org-roam-ui
-    :after org-roam ;; or :after org
-;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-;;         a hookable mode anymore, you're advised to pick something yourself
-;;         if you don't care about startup time, use
-;;  :hook (after-init . org-roam-ui-mode)
-    :config
-    (setq org-roam-ui-sync-theme t
-          org-roam-ui-follow t
-          org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start t))
+  :after org-roam ;; or :after org
+  ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+  ;;         a hookable mode anymore, you're advised to pick something yourself
+  ;;         if you don't care about startup time, use
+  ;;  :hook (after-init . org-roam-ui-mode)
+  :config
+  (setq org-roam-ui-sync-theme t
+		org-roam-ui-follow t
+		org-roam-ui-update-on-save t
+		org-roam-ui-open-on-start t))
 
 
 ;; begin 
@@ -95,7 +98,7 @@ See also `yzs/setup-file' and `yzs/setup-file-keyword'"
 			 "\n") "\n")))
 
 (add-hook 'org-export-before-processing-hook
-      'yzs/org-export-setup-files)
+		  'yzs/org-export-setup-files)
 
 ;; end
 

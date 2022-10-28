@@ -17,16 +17,18 @@
 									   ("&&" . "∧")
 									   ("||" . "∨")))
 
-(defvar-local yzs/symbols-org-mode '(("TODO" . "")
-									 ("WAIT" . "")        
-									 ("DONE" . "")
-									 ("[ ]" . "")
-									 ("[X]" . "")
-									 ("[-]" . "")
-									 ("#+BEGIN_SRC" . "")
+(defvar-local yzs/symbols-org-mode '(
+									 ;; ("TODO" . "")
+									 ;; ("WAIT" . "")        
+									 ;; ("DONE" . "")
+									 ("[ ]" . "☒")
+									 ("[X]" . "☑")
+									 ("[-]" . "☐")
+									 ("#+BEGIN_SRC" . "卐")
 									 ("#+END_SRC" . "―")
-									 ("#+begin_src" . "")
-									 ("#+end_src" . "―")))
+									 ("#+begin_src" . "卐")
+									 ("#+end_src" . "―")
+									 ))
 
 (defmacro yzs/add-prettify-symbols-to-mode (mode-hook &rest symbols-list)
   "add-prettify-symbols-to-mode"

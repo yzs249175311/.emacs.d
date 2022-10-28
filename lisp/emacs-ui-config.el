@@ -47,7 +47,7 @@
 			   ((string-equal system-type "gnu/linux")
 				(cond
 				 ((string-equal window-system "x") (load-theme 'leuven t))
-				 ((string-equal window-system nil) (load-theme 'wombat t))
+				 ((string-equal window-system nil) (load-theme 'whiteboard t))
 				 ))
 
 			   ((string-equal system-type "windows-nt") (modus-themes-load-vivendi))
