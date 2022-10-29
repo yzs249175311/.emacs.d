@@ -34,6 +34,7 @@
 
   :hook 
   (org-mode . org-indent-mode)
+  (org-babel-after-execute . org-redisplay-inline-images)
   ;; (org-mode . org-num-mode)
   :custom
   (org-capture-templates 

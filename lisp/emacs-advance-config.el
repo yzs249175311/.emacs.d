@@ -10,7 +10,7 @@
 (use-package orderless
   :custom
   (completion-styles '(basic orderless))
-  (completion-category-overrides '((file (styles basic partial-completion)))))
+  )
 
 (use-package consult
   :bind
@@ -20,9 +20,8 @@
   ("C-c s r" . consult-ripgrep))
 
 (use-package marginalia
-  :bind (("M-A" . marginalia-cycle)
-         :map minibuffer-local-map
-         ("M-A" . marginalia-cycle))
+  :bind (:map minibuffer-local-map
+		 ("M-A" . marginalia-cycle))
   :init 
   (marginalia-mode))
 
