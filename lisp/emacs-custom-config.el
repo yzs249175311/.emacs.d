@@ -55,24 +55,38 @@
    (t (message "Can't run this file"))))
 
 
-(defun yzs/open-directory(path) 
-  "打开目标文件夹"
-  (interactive "DOpen Directory:")
-  (if (not path)
-	  (setq path default-directory))
-  (message "open directory:%s" (expand-file-name path))
-  (cond 
-   ((string-equal system-type "windows-nt") 
-	(shell-command-to-string
-	 (encode-coding-string 
-	  (replace-regexp-in-string "/" "\\\\" (concat "explorer.exe " (expand-file-name path)))
-	  yzs/encode)))
-   ((string-equal system-type "gnu/linux") 
-	(shell-command-to-string
-	 (encode-coding-string 
-	  (replace-regexp-in-string "/" "\\\\\\\\" (concat "explorer.exe " (yzs/tool/path-wsl-to-windows path)))
-	  yzs/encode)))
-   ))
+;; (defun yzs/open-directory(path) 
+;;   "打开目标文件夹"
+;;   (interactive "DOpen Directory:")
+;;   (if (not path)
+;; 	  (setq path default-directory))
+;;   (message "open directory:%s" (expand-file-name path))
+;;   (cond 
+;;    ((string-equal system-type "windows-nt") 
+;; 	(shell-command-to-string
+;; 	 (encode-coding-string 
+;; 	  (replace-regexp-in-string "/" "\\\\" (concat "explorer.exe " (expand-file-name path)))
+;; 	  yzs/encode)))
+;;    ((string-equal system-type "gnu/linux") 
+;; 	(shell-command-to-string
+;; 	 (encode-coding-string 
+;; 	  (replace-regexp-in-string "/" "\\\\\\\\" (concat "explorer.exe " (yzs/tool/path-wsl-to-windows path)))
+;; 	  yzs/encode)))
+;;    ))
+
+(defun yzs/open-directory(file)
+  "Open FILE externally using the default application of the system."
+  (interactive "fOpen externally: ")
+  (if (and (eq system-type 'windows-nt)
+		   (fboundp 'w32-shell-execute))
+	  (shell-command-to-string (encode-coding-string (replace-regexp-in-string "/" "\\\\"
+																			   (format "explorer.exe %s" (file-name-directory (expand-file-name file)))) 'gbk))
+	(call-process (pcase system-type
+					('darwin "open")
+					('cygwin "cygstart")
+					(_ "xdg-open"))
+				  nil 0 nil
+				  (file-name-directory (expand-file-name file)))))
 
 (defun yzs/display-startup-time ()
   "显示启动时间和垃圾包的数量"
@@ -95,11 +109,6 @@
 											 (set-frame-position (selected-frame) 100 100)
 											 (set-frame-width  (selected-frame) 160)
 											 (set-frame-height (selected-frame) 40)))))
-;;key binding
-(global-set-key (kbd "C-c c b") 'yzs/open-file-in-browser)
-(global-set-key (kbd "C-c c d") 'yzs/open-directory)
-(global-set-key (kbd "C-c c c") 'yzs/run-code)
-(global-set-key (kbd "C-c c s") 'yzs/open-file-in-live-server)
 
 ;;hook
 (add-hook 'emacs-startup-hook 'yzs/display-startup-time)

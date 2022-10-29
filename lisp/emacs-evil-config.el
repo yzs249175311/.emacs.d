@@ -16,7 +16,13 @@
 				  ) 
 				evil-emacs-state-modes
 				evil-motion-state-modes))
-  (setq evil-emacs-state-modes nil))
+  (setq evil-emacs-state-modes nil)
+  (setq evil-normal-state-modes
+		(append evil-normal-state-modes
+				'(
+				  grep-mode
+				  )))
+  )
 
 (defun yzs/evil-key-config () 
   (define-key evil-motion-state-map (kbd "RET") nil)
