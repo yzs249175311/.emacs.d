@@ -42,6 +42,7 @@
  "c" 'org-id-get-create
  "g" 'org-roam-ui-mode
  "s" 'org-roam-db-sync
+ "r" 'org-redisplay-inline-images
  )
 
 ;; Custom

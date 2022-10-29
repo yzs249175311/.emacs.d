@@ -12,6 +12,7 @@
           org-log-done t
           org-log-into-drawer t
           org-ellipsis " ⤵"
+		  org-plantuml-jar-path (expand-file-name "~/.emacs.d/.cache/plantuml.jar")
           org-hide-emphasis-markers t
 		  ;; org-html-head-include-default-style nil
 		  org-html-head-extra "<style>
@@ -28,7 +29,8 @@
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((js . t)
-	 (shell . t)))
+	 (shell . t)
+	 (plantuml . t)))
 
   :hook 
   (org-mode . org-indent-mode)

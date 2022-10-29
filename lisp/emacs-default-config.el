@@ -117,21 +117,14 @@
 (electric-pair-mode 1)
 
 ;;代码折叠
-(add-to-list 'hs-special-modes-alist '(web-mode  "{\\|<[^/>]+?" "}\\|</[^/>]*[^/]>" "<!--" web-mode-forward-sexp nil))
+;; (add-to-list 'hs-special-modes-alist '(web-mode  "{\\|<[^/>]+?" "}\\|</[^/>]*[^/]>" "<!--" web-mode-forward-sexp nil))
+(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 
 
 ;; convenient
 (if (>= emacs-major-version 28)
 	(setq use-short-answers t)
   (defalias 'yes-or-no-p 'y-or-n-p))
-
-
-;; binding
-;; set global key
-(global-set-key (kbd "C-h C-f") 'find-function)
-(global-set-key (kbd "C-h C-v") 'find-variable)
-(global-set-key (kbd "C-h C-f") 'find-function-on-key)
-
 
 (require 'default-frame-font)
 (require 'default-prettify-symbols)
