@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: src_plantuml
+# key: <uml
+# --
+
+#+begin_src plantuml :file
+ @startuml 
+
+ @enduml
+#+end_src

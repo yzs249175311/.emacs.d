@@ -2,6 +2,7 @@
   :bind ("C-c o a" . org-agenda)
   :config 
   (progn 
+	(setq org-confirm-babel-evaluate nil)
     (setq org-adapt-indentation t
           org-hide-leading-stars t
           org-src-fontify-natively t
@@ -22,10 +23,12 @@
                                     li{max-width:800px;}
                               </style>"
 		  )
+
     ;;修改无序列表的符号 - 
 	(font-lock-add-keywords 'org-mode 
 							'(("^ *\\([-]\\) " (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "☛"))))
 							  ("^ *\\([+]\\) " (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "☞")))))))
+
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((js . t)
@@ -70,6 +73,8 @@
 		org-roam-ui-follow t
 		org-roam-ui-update-on-save t
 		org-roam-ui-open-on-start t))
+
+(use-package plantuml-mode)
 
 
 ;; begin 

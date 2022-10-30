@@ -54,8 +54,10 @@
 	  ((member "Heiti TC" (font-family-list)) "Heiti TC")))
 	((string-equal system-type "gnu/linux")
 	 (cond
+	  ((font-info "文泉驿等宽微米黑") "文泉驿等宽微米黑")
 	  ((member "WenQuanYi Micro Hei" (font-family-list)) "WenQuanYi Micro Hei")
-	  ))))
+	  ))
+	))
 
   ;;set font size
   (set-face-attribute 'default nil :height 120)

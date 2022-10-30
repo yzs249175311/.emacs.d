@@ -10,7 +10,7 @@
 
 ;;更改内容显示宽度
 (use-package visual-fill-column
-  :init (setq visual-fill-column-width 120 
+  :init (setq visual-fill-column-width 140 
               visual-fill-column-center-text t)
   :hook
   (org-mode . visual-fill-column-mode))
@@ -36,6 +36,29 @@
 ;;   ;; Load the theme files before enabling a theme
 ;;   (modus-themes-load-themes)
 ;;   :bind ("<f5>" . modus-themes-toggle))
+(use-package doom-modeline
+  :hook (after-init . doom-modeline-mode))
+
+(use-package all-the-icons)
+
+(use-package nyan-mode
+  :init
+  (nyan-mode 1))
+
+(use-package doom-themes
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-one") ; use "doom-colors" for less minimal icon theme
+  (doom-themes-treemacs-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
 
 ;; ;;-------------------------hook-----------------------------------
 (add-hook 'after-init-hook 
@@ -46,11 +69,11 @@
 
 			   ((string-equal system-type "gnu/linux")
 				(cond
-				 ((string-equal window-system "x") (load-theme 'leuven t))
+				 ((string-equal window-system "x") (load-theme 'doom-one t))
 				 ((string-equal window-system nil) (load-theme 'whiteboard t))
 				 ))
 
-			   ((string-equal system-type "windows-nt") (modus-themes-load-vivendi))
+			   ((string-equal system-type "windows-nt") (load-theme 'doom-one t))
 
 			   )))
 
