@@ -3,31 +3,34 @@
   :config 
   (progn 
 	(setq org-confirm-babel-evaluate nil)
-    (setq org-adapt-indentation t
-          org-hide-leading-stars t
-          org-src-fontify-natively t
+	(setq org-adapt-indentation t
+		  org-hide-leading-stars t
+		  org-src-fontify-natively t
 		  org-src-tab-acts-natively t
-          org-startup-folded nil
-          org-return-follows-link t
-          org-startup-truncated nil
-          org-log-done t
-          org-log-into-drawer t
-          org-ellipsis " ⤵"
+		  org-startup-folded nil
+		  org-return-follows-link t
+		  org-startup-truncated nil
+		  org-log-done t
+		  org-log-into-drawer t
+		  org-ellipsis " ⤵"
 		  org-plantuml-jar-path (expand-file-name "~/.emacs.d/.cache/plantuml.jar")
-          org-hide-emphasis-markers t
+		  org-hide-emphasis-markers t
 		  ;; org-html-head-include-default-style nil
 		  org-html-head-extra "<style>
-                                    pre.src{background:#343131;color:white;}
-                                    #content{max-width:1800px;}
-                                    p{max-width:800px;}
-                                    li{max-width:800px;}
-                              </style>"
-		  )
+									pre.src{background:#343131;color:white;}
+									#content{max-width:1800px;}
+									p{max-width:800px;}
+									li{max-width:800px;}
+							  </style>"
+		  ))
 
-    ;;修改无序列表的符号 - 
-	(font-lock-add-keywords 'org-mode 
-							'(("^ *\\([-]\\) " (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "☛"))))
-							  ("^ *\\([+]\\) " (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "☞")))))))
+	;;修改无序列表的符号 - 
+	(if (display-graphic-p)
+		(font-lock-add-keywords 'org-mode 
+								'(("^ *\\([-]\\) " (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "☛"))))
+								  ("^ *\\([+]\\) " (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "☞"))))))
+	  )
+	
 
   (org-babel-do-load-languages
    'org-babel-load-languages
@@ -46,11 +49,13 @@
 	  "\n** TODO %^{Book name} - %^{Author}" :kill-buffer t))))
 
 (use-package org-bullets
+  :if (display-graphic-p)
   :hook
   (org-mode . org-bullets-mode)
-  :custom
-  ;; (org-bullets-bullet-list '("㊎" "㊍" "㊌" "㊋" "㊏"))
-  (org-bullets-bullet-list '("❋" "✥" "✤" "✣" "✢"))
+  :config
+  (if (display-graphic-p)
+	  (setq org-bullets-bullet-list '("❋" "✥" "✤" "✣" "✢"))
+	(setq org-bullets-bullet-list '("金" "木" "水" "火" "土")))
   )
 
 (use-package htmlize)

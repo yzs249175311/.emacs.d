@@ -24,10 +24,14 @@
 									 ("[ ]" . "☒")
 									 ("[X]" . "☑")
 									 ("[-]" . "☐")
-									 ("#+BEGIN_SRC" . "※")
+									 ("#+BEGIN_SRC" . "🍉")
 									 ("#+END_SRC" . "―")
-									 ("#+begin_src" . "※")
+									 ("#+begin_src" . "🍉")
 									 ("#+end_src" . "―")
+									 ("#+begin_example" . "📝")
+									 ("#+end_example" . "―")
+									 ("#+BEGIN_EXAMPLE" . "📝")
+									 ("#+END_EXAMPLE" . "―")
 									 ))
 
 (defmacro yzs/add-prettify-symbols-to-mode (mode-hook &rest symbols-list)
@@ -39,9 +43,11 @@
 								(setq prettify-symbols-alist
 									  (append prettify-symbols-alist (eval symbol-item)))))
 						  (prettify-symbols-mode 1))))
-
-(yzs/add-prettify-symbols-to-mode 'org-mode-hook yzs/symbols-org-mode)
-
-(yzs/add-prettify-symbols-to-mode 'lsp-mode-hook nil)
+(if (display-graphic-p)
+	(progn
+	  (yzs/add-prettify-symbols-to-mode 'org-mode-hook yzs/symbols-org-mode)
+	  (yzs/add-prettify-symbols-to-mode 'corfu-mode-hook nil)
+	  )
+  )
 
 (provide 'default-prettify-symbols)

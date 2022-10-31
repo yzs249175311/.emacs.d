@@ -48,6 +48,9 @@
 ;;(global-linum-mode 1)
 (global-auto-revert-mode 1)
 
+;;abbrev-mode
+(setq-default abbrev-mode t)
+(setq abbrev-file-name (expand-file-name "~/.emacs.d/abbrev_defs"))
 
 (winner-mode 1)
 (menu-bar-mode 0)

@@ -78,8 +78,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(general lsp-ui evil-surround yasnippet-snippets which-key web-mode visual-fill-column vertico use-package typescript-mode treemacs rainbow-delimiters pyim-basedict pyim org-bullets orderless leuven-theme keycast emmet-mode eglot company-web color-theme-sanityinc-tomorrow))
- )
+   '(general lsp-ui evil-surround yasnippet-snippets which-key web-mode visual-fill-column vertico use-package typescript-mode treemacs rainbow-delimiters pyim-basedict pyim org-bullets orderless leuven-theme keycast emmet-mode company-web )))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

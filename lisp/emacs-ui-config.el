@@ -44,6 +44,7 @@
 
 (use-package all-the-icons-dired
   :if (display-graphic-p)
+  :after all-the-icons
   :hook
   (dired-mode . all-the-icons-dired-mode)
   )

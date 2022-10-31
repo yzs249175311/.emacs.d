@@ -69,8 +69,6 @@
 		which-key-idle-delay 1)
   (which-key-mode))
 
-(use-package flycheck)
-
 (use-package helpful
   :bind
   ([remap describe-function] . helpful-function)
