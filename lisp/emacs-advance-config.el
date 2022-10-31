@@ -91,6 +91,7 @@
 		'("\\*Messages\\*"
 		  "Output\\*$"
 		  "\\*Async Shell Command\\*"
+		  "\\*Completions\\*"
 		  help-mode
 		  compilation-mode
 		  help-mode
@@ -101,6 +102,6 @@
 		  "^\\*term.*\\*$"   term-mode   
 		  "^\\*vterm.*\\*$"  vterm-mode ))
   (popper-mode +1)
-  (popper-echo-mode +1)) 
+  (popper-echo-mode +1))
 
 (provide 'emacs-advance-config)

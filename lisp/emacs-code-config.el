@@ -6,10 +6,13 @@
                 (set (make-local-variable 'company-backends) '(company-web-html))))
   :bind
   (:map company-mode-map
-        ("C-M-i" . company-complete))
+        ("C-M-i" . company-complete)
+		("C-M-/" . company-dabbrev-code))
+  (:map company-active-map
+		([remap evil-normal-state] . company-abort))
   :config
-  (setq company-minimum-prefix-length 3)
-  )
+  (setq company-minimum-prefix-length 3))
+
 (use-package company-web)
 
 (use-package yasnippet
@@ -20,11 +23,9 @@
   (web-mode . yas-minor-mode)
   (typescript-mode . yas-minor-mode)
   )
+
 (use-package yasnippet-snippets
-  :after yasnippet
-  :bind
-  (:map yas-minor-mode-map
-		("M-/" . yas-expand)))
+  :after yasnippet)
 
 
 (use-package lsp-mode

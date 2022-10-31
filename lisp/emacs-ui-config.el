@@ -39,7 +39,14 @@
 (use-package doom-modeline
   :hook (after-init . doom-modeline-mode))
 
-(use-package all-the-icons)
+(use-package all-the-icons
+  :if (display-graphic-p))
+
+(use-package all-the-icons-dired
+  :if (display-graphic-p)
+  :hook
+  (dired-mode . all-the-icons-dired-mode)
+  )
 
 (use-package nyan-mode
   :init
@@ -55,7 +62,7 @@
   ;; Enable custom neotree theme (all-the-icons must be installed!)
   (doom-themes-neotree-config)
   ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-one") ; use "doom-colors" for less minimal icon theme
+  (setq doom-themes-treemacs-theme "doom-colors") ; use "doom-colors" for less minimal icon theme
   (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
