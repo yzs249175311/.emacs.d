@@ -57,7 +57,7 @@
   :config
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+		doom-themes-enable-italic t) ; if nil, italics is universally disabled
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
   ;; Enable custom neotree theme (all-the-icons must be installed!)
@@ -77,11 +77,11 @@
 
 			   ((string-equal system-type "gnu/linux")
 				(cond
-				 ((string-equal window-system "x") (load-theme 'doom-one t))
+				 ((string-equal window-system "x") (load-theme 'doom-badger t))
 				 ((string-equal window-system nil) (load-theme 'whiteboard t))
 				 ))
 
-			   ((string-equal system-type "windows-nt") (load-theme 'doom-one t))
+			   ((string-equal system-type "windows-nt") (load-theme 'doom-badger t))
 
 			   )))
 
