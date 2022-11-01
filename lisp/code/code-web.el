@@ -17,7 +17,7 @@
   )
 
 (use-package auto-rename-tag
-  :hook 
+  :hook
   (web-mode . auto-rename-tag-mode)
   )
 
@@ -28,5 +28,4 @@
                '("\\.ts\\'" . typescript-mode))
   )
 
-;;vue config end
 (provide 'code-web)

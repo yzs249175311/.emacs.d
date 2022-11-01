@@ -3,7 +3,8 @@
   :config (vertico-mode)
   :bind (:map vertico-map
               ("C-n" . vertico-next)
-              ("C-p" . vertico-previous))
+              ("C-p" . vertico-previous)
+			  ("ESC" . minibuffer-keyboard-quit))
   :custom
   (vertico-count 10))
 

@@ -12,15 +12,15 @@
 									   (">>=" . "≫=")
 									   ("<=<" . "↢")
 									   (">=>" . "↣")
-									   ("!" . "￢")
+									   ;; ("!" . "￢")
 									   ("function" . "ƒ")
 									   ("&&" . "∧")
 									   ("||" . "∨")))
 
 (defvar-local yzs/symbols-org-mode '(
-									 ;; ("TODO" . "")
-									 ;; ("WAIT" . "")        
-									 ;; ("DONE" . "")
+									 ("TODO" . "")
+									 ("WAIT" . "")
+									 ("DONE" . "")
 									 ("[ ]" . "☒")
 									 ("[X]" . "☑")
 									 ("[-]" . "☐")
@@ -35,7 +35,7 @@
 									 ))
 
 (defmacro yzs/add-prettify-symbols-to-mode (mode-hook &rest symbols-list)
-  "add-prettify-symbols-to-mode"
+  "Add Prettify Symbols To Mode "
   `(add-hook ,mode-hook (lambda ()
 						  (setq prettify-symbols-alist (default-value  'prettify-symbols-alist))
 						  (if (listp (quote ,symbols-list))

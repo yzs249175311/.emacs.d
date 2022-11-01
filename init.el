@@ -38,22 +38,22 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(setq my-packages '(
-					use-package
-					pyim
-					pyim-basedict
-					))
+(setq yzs/my-packages '(
+						use-package
+						pyim
+						pyim-basedict
+						))
 
 ;; install packages
-(defun install-my-packages (my-packages)
+(defun yzs/install-my-packages (my-packages)
   (if my-packages
 	  (let ((my-package (car my-packages)))
 		(message "install %s" my-package)
 		(unless (package-installed-p my-package)
 		  (package-install my-package))
-		(install-my-packages (cdr my-packages)))))
+		(yzs/install-my-packages (cdr my-packages)))))
 
-(install-my-packages my-packages)
+(yzs/install-my-packages yzs/my-packages)
 
 ;;-----------------------------config-------------------------------------------
 ;;use-package config
