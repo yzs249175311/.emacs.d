@@ -16,6 +16,7 @@
  "c" '(:which-key "Custom")
  "o" '(:which-key "Org")
  "!" '(:which-key "check")
+ "g" '(:which-key "Git")
  )
 
 (general-define-key
@@ -54,6 +55,17 @@
  "c" 'yzs/run-code
  "s" 'yzs/open-file-in-live-server
  "o" 'yzs/open-file-in-system
+ )
+
+;; Git
+(general-define-key
+ :states '(normal insert motion emacs)
+ :prefix "C-c g"
+ "n" 'git-gutter:next-hunk
+ "p" 'git-gutter:previous-hunk
+ "r" 'git-gutter:revert-hunk
+ "t" 'git-gutter:toggle
+ "v" 'git-gutter:popup-hunk
  )
 
 (provide 'emacs-key-binding-config)
