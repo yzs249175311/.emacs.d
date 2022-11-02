@@ -43,14 +43,8 @@
 (setq auto-save-default nil)
 (setq visible-bell 0)
 (setq scroll-step 1 scroll-margin 3)
+(setq use-dialog-box nil)
 
-(global-display-line-numbers-mode 1)
-;;(global-linum-mode 1)
-(global-auto-revert-mode 1)
-
-;;abbrev-mode
-(setq-default abbrev-mode t)
-(setq abbrev-file-name (expand-file-name "~/.emacs.d/abbrev_defs"))
 
 (winner-mode 1)
 (menu-bar-mode 0)
@@ -61,7 +55,19 @@
 (global-hl-line-mode)
 (auto-save-visited-mode 1)
 (recentf-mode 1)
-(setq use-dialog-box nil)
+(electric-indent-mode 1)
+(global-display-line-numbers-mode 1)
+;;(global-linum-mode 1)
+(global-auto-revert-mode 1)
+
+;;abbrev-mode
+(setq-default abbrev-mode t)
+(setq abbrev-file-name (expand-file-name "~/.emacs.d/abbrev_defs"))
+
+;; set 
+(show-paren-mode 1)
+(setq show-paren-style 'parenthesis)
+
 
 (progn
   (require 'dired-x)
@@ -96,11 +102,13 @@
    'minibuffer-prompt-properties
    (quote (read-only t cursor-intangible t face minibuffer-prompt))))
 
-;; set 
-(show-paren-mode 1)
-(setq show-paren-style 'parenthesis)
-
-(electric-indent-mode 1)
+;;; esc always quits
+(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+(global-set-key [escape] 'keyboard-quit)
 
 ;;(set-default 'tab-always-indent t)
 ;; no mixed tab space

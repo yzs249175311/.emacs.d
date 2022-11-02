@@ -1,16 +1,18 @@
 (use-package vertico
-  :defer nil
-  :config (vertico-mode)
+  :init (vertico-mode)
   :bind (:map vertico-map
-              ("C-n" . vertico-next)
-              ("C-p" . vertico-previous)
-			  ("ESC" . minibuffer-keyboard-quit))
+			  ("C-n" . vertico-next)
+			  ("C-p" . vertico-previous)
+			  ;; 不知道为什么使用 "ESC" 的方式绑定会导致很多键无法使用
+			  ;; 参考:https://emacs.stackexchange.com/questions/14755/how-to-remove-bindings-to-the-esc-prefix-key
+			  ([escape] . keyboard-escape-quit)
+			  ("?" . #'minibuffer-completion-help))
   :custom
   (vertico-count 10))
 
 (use-package orderless
   :custom
-  (completion-styles '(basic orderless))
+  (completion-styles '(substring basic orderless))
   )
 
 (use-package consult
@@ -22,7 +24,7 @@
 
 (use-package marginalia
   :bind (:map minibuffer-local-map
-		 ("M-A" . marginalia-cycle))
+			  ("M-A" . marginalia-cycle))
   :init 
   (marginalia-mode))
 
