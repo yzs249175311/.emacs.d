@@ -5,7 +5,8 @@
   (cond 
    ((string-equal system-type "windows-nt") 
 	(add-hook 'evil-normal-state-entry-hook (lambda () (w32-set-ime-open-status nil))))
-   ))
+   ((string-equal system-type "gnu/linux")
+	(add-hook 'evil-normal-state-entry-hook (lambda () (call-process "fcitx5-remote" nil 0 nil "-c"))))))
 
 (defun yzs/evil-config () 
   (setq evil-motion-state-modes 
