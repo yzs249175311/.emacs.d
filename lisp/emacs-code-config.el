@@ -18,6 +18,8 @@
               ("S-TAB"   . corfu-previous)
               ([backtab] . corfu-previous)
               ("S-<return>" . corfu-insert)
+			  ([remap evil-complete-next] . corfu-next)
+			  ([remap evil-complete-previous] . corfu-previous)
 			  ([remap evil-force-normal-state] . corfu-quit)
               )
 
