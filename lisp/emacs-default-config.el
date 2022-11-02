@@ -19,13 +19,13 @@
 ;;language envirment
 (set-language-environment 'utf-8)
 (set-default-coding-systems 'utf-8-unix)
-(set-buffer-file-coding-system 'utf-8-unix)
-(set-clipboard-coding-system 'utf-8-unix)
-(set-file-name-coding-system 'utf-8-unix)
-(set-next-selection-coding-system 'utf-8-unix)
-(set-selection-coding-system 'utf-8-unix)
-(set-terminal-coding-system 'utf-8-unix)
-(setq locale-coding-system 'utf-8-unix)
+;; (set-buffer-file-coding-system 'utf-8-unix)
+;; (set-clipboard-coding-system 'utf-8-unix)
+;; (set-file-name-coding-system 'utf-8-unix)
+;; (set-next-selection-coding-system 'utf-8-unix)
+;; (set-selection-coding-system 'utf-8-unix)
+;; (set-terminal-coding-system 'utf-8-unix)
+;; (setq locale-coding-system 'utf-8-unix)
 (if (string-equal system-type "windows-nt")
 	(progn
 	  (prefer-coding-system 'utf-8-auto)
@@ -103,6 +103,8 @@
    (quote (read-only t cursor-intangible t face minibuffer-prompt))))
 
 ;;; esc always quits
+;; 不知道为什么使用 "ESC" 的方式绑定会导致很多键无法使用
+;; 参考:https://emacs.stackexchange.com/questions/14755/how-to-remove-bindings-to-the-esc-prefix-key
 (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
