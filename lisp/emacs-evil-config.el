@@ -21,6 +21,7 @@
 		(append evil-normal-state-modes
 				'(
 				  grep-mode
+				  shell-mode
 				  )))
   )
 

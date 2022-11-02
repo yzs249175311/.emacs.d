@@ -53,6 +53,7 @@
  "d" 'yzs/open-directory
  "c" 'yzs/run-code
  "s" 'yzs/open-file-in-live-server
+ "o" 'yzs/open-file-in-system
  )
 
 (provide 'emacs-key-binding-config)

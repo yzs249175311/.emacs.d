@@ -25,8 +25,21 @@
 	   ((string-equal system-type "windows-nt") 
 		(shell-command-to-string (encode-coding-string (format "MicrosoftEdge.exe %s" buffer-file-name) yzs/encode)))
 	   ((string-equal system-type "gnu/linux") 
-		(shell-command-to-string (encode-coding-string (format "microsoft-edge-stable %s" (yzs/tool/path-wsl-to-windows buffer-file-name)) yzs/encode))))
-	))
+		(shell-command-to-string (encode-coding-string (format "microsoft-edge-stable %s" (yzs/tool/path-wsl-to-windows buffer-file-name)) yzs/encode))))))
+
+(defun yzs/open-file-in-system (file)
+  (interactive "fOpen File In System:")
+  (message "Open the file in system:%s" file)
+  (if (and (eq system-type 'windows-nt)
+		   (fboundp 'w32-shell-execute))
+	  (shell-command-to-string (encode-coding-string (replace-regexp-in-string "/" "\\\\"
+																			   (format "%s" (expand-file-name file))) 'gbk))
+	(call-process (pcase system-type
+					('darwin "open")
+					('cygwin "cygstart")
+					(_ "xdg-open"))
+				  nil 0 nil
+				  (expand-file-name file))))
 
 (defun yzs/open-file-in-live-server (dir startPath)
   "创建服务器打开此文件,需要使用npm安装browser-sync"
@@ -45,7 +58,7 @@
   "运行代码,支持javascript,typescript"
   (interactive "fchoice file:")
   (if (not file)
-	  (setq file buffer-file-name))
+	  (setq-local file buffer-file-name))
   (message "run code: %s" file)
   (cond 
    ((string-match "\.js$" file) 
