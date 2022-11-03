@@ -13,10 +13,10 @@
   ;; Optionally use TAB for cycling, default is `corfu-complete'.
   :bind (:map corfu-map
               ("M-SPC" . corfu-insert-separator)
-              ("TAB"     . corfu-next)
-              ([tab]     . corfu-next)
-              ("S-TAB"   . corfu-previous)
-              ([backtab] . corfu-previous)
+              ("TAB"     . corfu-complete)
+              ([tab]     . corfu-complete)
+              ("S-TAB"   . corfu-reset)
+              ([backtab] . corfu-reset)
               ("S-<return>" . corfu-insert)
 			  ([remap evil-complete-next] . corfu-next)
 			  ([remap evil-complete-previous] . corfu-previous)

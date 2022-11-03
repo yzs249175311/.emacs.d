@@ -1,6 +1,6 @@
 (use-package org
   :bind ("C-c o a" . org-agenda)
-  :config 
+  :config
   (progn 
 	(setq org-confirm-babel-evaluate nil)
 	(setq org-adapt-indentation t
@@ -24,24 +24,25 @@
 							  </style>"
 		  ))
 
-	;;修改无序列表的符号 - 
-	(if (display-graphic-p)
-		(font-lock-add-keywords 'org-mode 
-								'(("^ *\\([-]\\) " (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "☛"))))
-								  ("^ *\\([+]\\) " (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "☞"))))))
-	  )
-	
+  ;;修改无序列表的符号 - 
+  (if (display-graphic-p)
+	  (font-lock-add-keywords 'org-mode
+							  '(("^ *\\([-]\\) " (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "☛"))))
+								("^ *\\([+]\\) " (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "☞"))))))
+	)
 
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((js . t)
 	 (shell . t)
 	 (plantuml . t)))
-
+  (add-hook 'org-mode-hook (lambda ()
+							 (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+							 (add-to-list 'completion-at-point-functions #'cape-file)
+							 ))
   :hook 
   (org-mode . org-indent-mode)
   (org-babel-after-execute . org-redisplay-inline-images)
-  ;; (org-mode . org-num-mode)
   :custom
   (org-capture-templates 
    '(("r" "Read Books")

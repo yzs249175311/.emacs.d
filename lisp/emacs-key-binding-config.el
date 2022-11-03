@@ -18,7 +18,7 @@
  "c c" 'yzs/run-code
  "c s" 'yzs/open-file-in-live-server
  "c o" 'yzs/open-file-in-system
- "c o" '(:which-key "Org")
+ "o" '(:which-key "Org")
  "o f" 'org-roam-node-find
  "o i" 'org-roam-node-insert
  "o t" 'org-roam-buffer-toggle
@@ -33,6 +33,7 @@
  "g r" 'git-gutter:revert-hunk
  "g t" 'git-gutter:toggle
  "g v" 'git-gutter:popup-hunk
+ "g a" 'git-gutter:stage-hunk
  )
 
 (general-define-key
