@@ -72,7 +72,11 @@
   ;;(add-to-list 'completion-at-point-functions #'cape-dict)
   ;;(add-to-list 'completion-at-point-functions #'cape-symbol)
   ;;(add-to-list 'completion-at-point-functions #'cape-line)
-)
+  (add-hook 'org-mode-hook (lambda ()
+							 (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+							 (add-to-list 'completion-at-point-functions #'cape-file)
+							 ))
+  )
 
 (use-package flycheck
   :init
@@ -115,8 +119,21 @@
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l")
   (defun yzs/lsp-mode-setup-completion ()
-    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
-          '(orderless))) ;; Configure orderless
+	(setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+		  '(orderless))) ;; Configure orderless
+  ;; same definition as mentioned earlier
+  (advice-add 'json-parse-string :around
+			  (lambda (orig string &rest rest)
+				(apply orig (s-replace "\\u0000" "" string)
+					   rest)))
+
+  ;; minor changes: saves excursion and uses search-forward instead of re-search-forward
+  (advice-add 'json-parse-buffer :around
+			  (lambda (oldfn &rest args)
+				(save-excursion 
+				  (while (search-forward "\\u0000" nil t)
+					(replace-match "" nil t)))
+				(apply oldfn args)))
   :custom
   (lsp-completion-provider :none)
   :hook ;; replace XXX-mode with concrete major-mode(e. g. python-mode)

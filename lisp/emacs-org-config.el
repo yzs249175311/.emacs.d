@@ -36,10 +36,7 @@
    '((js . t)
 	 (shell . t)
 	 (plantuml . t)))
-  (add-hook 'org-mode-hook (lambda ()
-							 (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-							 (add-to-list 'completion-at-point-functions #'cape-file)
-							 ))
+  
   :hook 
   (org-mode . org-indent-mode)
   (org-babel-after-execute . org-redisplay-inline-images)
