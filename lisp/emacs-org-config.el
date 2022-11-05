@@ -36,7 +36,9 @@
    '((js . t)
 	 (shell . t)
 	 (plantuml . t)))
-  
+
+  (add-hook 'org-agenda-mode-hook (lambda () (evil-define-key 'motion 'org-agenda-mode-map (kbd "SPC") org-agenda-mode-map))) 
+
   :hook 
   (org-mode . org-indent-mode)
   (org-babel-after-execute . org-redisplay-inline-images)
