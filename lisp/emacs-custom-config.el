@@ -1,5 +1,9 @@
 ;;------------------ init config begin-------------------------------;;
 (setq use-wsl-p nil)
+(setq yzs/which-system-open-command (pcase system-type
+									  ('darwin "open")
+									  ('cygwin "cygstart")
+									  (_ "xdg-open")))
 
 (cond
  ((string-equal system-type "gnu/linux") (setq yzs/encode 'utf-8))
@@ -34,10 +38,7 @@
 		   (fboundp 'w32-shell-execute))
 	  (shell-command-to-string (encode-coding-string (replace-regexp-in-string "/" "\\\\"
 																			   (format "%s" (expand-file-name file))) 'gbk))
-	(call-process (pcase system-type
-					('darwin "open")
-					('cygwin "cygstart")
-					(_ "xdg-open"))
+	(call-process yzs/which-system-open-command
 				  nil 0 nil
 				  (expand-file-name file))))
 
@@ -67,7 +68,6 @@
 	(async-shell-command (encode-coding-string (concat "ts-node " file) yzs/encode)))
    (t (message "Can't run this file"))))
 
-
 ;; (defun yzs/open-directory(path) 
 ;;   "打开目标文件夹"
 ;;   (interactive "DOpen Directory:")
@@ -94,10 +94,7 @@
 		   (fboundp 'w32-shell-execute))
 	  (shell-command-to-string (encode-coding-string (replace-regexp-in-string "/" "\\\\"
 																			   (format "explorer.exe %s" (file-name-directory (expand-file-name file)))) 'gbk))
-	(call-process (pcase system-type
-					('darwin "open")
-					('cygwin "cygstart")
-					(_ "xdg-open"))
+	(call-process yzs/which-system-open-command
 				  nil 0 nil
 				  (file-name-directory (expand-file-name file)))))
 

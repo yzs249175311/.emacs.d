@@ -30,8 +30,9 @@
   ("M-'" . embark-act)         ;; pick some comfortable binding
   ("M-;" . embark-dwim)        ;; good alternative: M-.
   ("C-h B" . embark-bindings) ;; alternative for `describe-bindings'
-  (:map embark-file-map
-		("E" . yzs/open-directory))
+  (:map embark-meta-map
+		("<f1>" . yzs/open-directory)
+		("<f2>" . yzs/open-file-in-system))
   :config
   ;; Hide the mode line of the Embark live/completions buffers
   (add-to-list 'display-buffer-alist

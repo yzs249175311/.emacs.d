@@ -28,6 +28,7 @@
   (if (display-graphic-p)
 	  (font-lock-add-keywords 'org-mode
 							  '(("^ *\\([-]\\) " (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "☛"))))
+
 								("^ *\\([+]\\) " (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "☞"))))))
 	)
 
@@ -36,6 +37,11 @@
    '((js . t)
 	 (shell . t)
 	 (plantuml . t)))
+
+  (setq org-file-apps (reverse (append org-file-apps
+									   `(("\\.epub\\'" . ,(format "%s %s" yzs/which-system-open-command "%s"))
+										 ("\\.pdf\\'" . ,(format "%s %s" yzs/which-system-open-command "%s"))
+										 ))))
 
   (add-hook 'org-agenda-mode-hook (lambda () (evil-define-key 'motion 'org-agenda-mode-map (kbd "SPC") org-agenda-mode-map))) 
 
