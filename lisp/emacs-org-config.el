@@ -38,9 +38,15 @@
 	 (shell . t)
 	 (plantuml . t)))
 
+  (setq yzs/org/org-open-file (pcase system-type
+							('windows-nt 'system)
+							('darwin "open %s")
+							('cygwin "cygstart %s")
+							(_ "xdg-open %s")))
+
   (setq org-file-apps (reverse (append org-file-apps
-									   `(("\\.epub\\'" . ,(format "%s %s" yzs/which-system-open-command "%s"))
-										 ("\\.pdf\\'" . ,(format "%s %s" yzs/which-system-open-command "%s"))
+									   `(("\\.epub\\'" . ,yzs/org/org-open-file)
+										 ("\\.pdf\\'" . ,yzs/org/org-open-file)
 										 ))))
 
   (add-hook 'org-agenda-mode-hook (lambda () (evil-define-key 'motion 'org-agenda-mode-map (kbd "SPC") org-agenda-mode-map))) 
