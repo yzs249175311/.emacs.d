@@ -1,55 +1,58 @@
 (use-package org
-  :bind ("C-c o a" . org-agenda)
   :config
-  (progn 
-	(setq org-confirm-babel-evaluate nil)
-	(setq org-adapt-indentation t
-		  org-hide-leading-stars t
-		  org-src-fontify-natively t
-		  org-src-tab-acts-natively t
-		  org-startup-folded nil
-		  org-return-follows-link t
-		  org-startup-truncated nil
-		  org-log-done t
-		  org-log-into-drawer t
-		  org-ellipsis " ⤵"
-		  org-plantuml-jar-path (expand-file-name "~/.emacs.d/.cache/plantuml.jar")
-		  org-hide-emphasis-markers t
-		  ;; org-html-head-include-default-style nil
-		  org-html-head-extra "<style>
+  (setq org-adapt-indentation t
+		org-hide-leading-stars t
+		org-src-fontify-natively t
+		org-src-tab-acts-natively t
+		org-startup-folded nil
+		org-return-follows-link t
+		org-startup-truncated nil
+		org-log-done t
+		org-log-into-drawer t
+		org-ellipsis " ⤵"
+		org-plantuml-jar-path (expand-file-name "~/.emacs.d/.cache/plantuml.jar")
+		org-hide-emphasis-markers t
+		;; org-html-head-include-default-style nil
+		org-html-head-extra "<style>
 									pre.src{background:#343131;color:white;}
 									#content{max-width:1800px;}
 									p{max-width:800px;}
 									li{max-width:800px;}
 							  </style>"
-		  ))
+		)
+
+  ;;org refile
+  (setq org-refile-targets (mapcar #'(lambda (target) `(,target :maxlevel . 1))
+								   org-agenda-files))
 
   ;;修改无序列表的符号 - 
   (if (display-graphic-p)
 	  (font-lock-add-keywords 'org-mode
 							  '(("^ *\\([-]\\) " (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "☛"))))
-
 								("^ *\\([+]\\) " (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "☞"))))))
 	)
 
+  ;;org babel
+  (setq org-confirm-babel-evaluate nil)
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((js . t)
 	 (shell . t)
 	 (plantuml . t)))
 
-  (setq yzs/org/org-open-file (pcase system-type
-							('windows-nt 'system)
-							('darwin "open %s")
-							('cygwin "cygstart %s")
-							(_ "xdg-open %s")))
+
+  (setq-local yzs/org/org-open-file (pcase system-type
+									  ('windows-nt 'system)
+									  ('darwin "open %s")
+									  ('cygwin "cygstart %s")
+									  (_ "xdg-open %s")))
 
   (setq org-file-apps (reverse (append org-file-apps
 									   `(("\\.epub\\'" . ,yzs/org/org-open-file)
 										 ("\\.pdf\\'" . ,yzs/org/org-open-file)
 										 ))))
 
-  (add-hook 'org-agenda-mode-hook (lambda () (evil-define-key 'motion 'org-agenda-mode-map (kbd "SPC") org-agenda-mode-map))) 
+  (add-hook 'org-agenda-mode-hook (lambda () (evil-define-key '(motion normal) 'org-agenda-mode-map (kbd "SPC") org-agenda-mode-map))) 
 
   :hook 
   (org-mode . org-indent-mode)
@@ -66,8 +69,7 @@
   (org-mode . org-bullets-mode)
   :config
   (if (display-graphic-p)
-	  (setq org-bullets-bullet-list '("❋" "✥" "✤" "✣" "✢"))
-	(setq org-bullets-bullet-list '("金" "木" "水" "火" "土")))
+	  (setq org-bullets-bullet-list '("❋" "✥" "✤" "✣" "✢")))
   )
 
 (use-package htmlize)

@@ -26,6 +26,7 @@
  "o g" 'org-roam-ui-mode
  "o s" 'org-roam-db-sync
  "o r" 'org-redisplay-inline-images
+ "o a" 'org-agenda
  "!" '(:which-key "Check")
  "g" '(:which-key "Git")
  "g n" 'git-gutter:next-hunk
@@ -33,7 +34,7 @@
  "g r" 'git-gutter:revert-hunk
  "g t" 'git-gutter:toggle
  "g v" 'git-gutter:popup-hunk
- "g a" 'git-gutter:stage-hunk
+ "g s" 'git-gutter:stage-hunk
  )
 
 (general-define-key
