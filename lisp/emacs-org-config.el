@@ -16,8 +16,8 @@
 		org-html-head-extra "<style>
 									pre.src{background:#343131;color:white;}
 									#content{max-width:1800px;}
-									p{max-width:800px;}
-									li{max-width:800px;}
+									p{max-width:1600px;}
+									li{max-width:1600px;}
 							  </style>"
 		)
 
