@@ -58,6 +58,8 @@
   (org-mode . org-indent-mode)
   (org-babel-after-execute . org-redisplay-inline-images)
   :custom
+  (org-enforce-todo-dependencies t)
+  (org-track-ordered-property-with-tag t)
   (org-capture-templates 
    '(("r" "Read Books")
 	 ("rb" "Books" entry (file+olp "d:/NutStore/note/GTD/read.org" "读书目录")
