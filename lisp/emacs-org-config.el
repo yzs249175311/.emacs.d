@@ -74,6 +74,10 @@
 
 (use-package htmlize)
 
+(use-package ox-reveal
+  :config
+  (setq org-reveal-hlevel 2))
+
 (use-package org-roam
   :init 
   (setq find-file-visit-truename t)

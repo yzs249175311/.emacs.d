@@ -172,6 +172,8 @@
   :bind-keymap
   ("C-x p" . projectile-command-map))
 
+(use-package yaml-mode)
+
 (require 'code-web)
 
 (provide 'emacs-code-config)
