@@ -98,6 +98,15 @@
 				  nil 0 nil
 				  (file-name-directory (expand-file-name file)))))
 
+(defun yzs/program-exists-p (program dir-list)
+  (let ((flag nil) (dir (car dir-list)))
+	(unless (not dir)
+	  (if (file-exists-p (concat dir "/" program))
+		  (setq flag t)
+		(setq flag (yzs/program-exists-p program (cdr dir-list)))))
+	flag)
+  )
+
 (defun yzs/display-startup-time ()
   "显示启动时间和垃圾包的数量"
   (interactive)
