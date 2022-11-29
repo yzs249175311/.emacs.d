@@ -13,7 +13,7 @@
  :states '(normal insert motion emacs)
  :keymaps 'global-map
  "c" '(:which-key "Custom")
- "c b" 'yzs/open-file-in-browser
+ ;; "c b" 'yzs/open-file-in-browser
  "c d" 'yzs/open-directory
  "c c" 'yzs/run-code
  "c s" 'yzs/open-file-in-live-server
@@ -52,5 +52,13 @@
  "." 'repeat
  "c c" 'comment-line
  )
+
+(general-define-key
+ :states '(motion normal)
+ :keymaps 'dired-mode-map
+ "h" 'dired-up-directory
+ "l" 'dired-find-file
+ )
+
 
 (provide 'emacs-key-binding-config)

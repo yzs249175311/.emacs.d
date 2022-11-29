@@ -21,15 +21,15 @@
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
-(defun yzs/open-file-in-browser () 
-  "使用浏览器打开当前文件"
-  (interactive)
-  (if buffer-file-name
-	  (cond 
-	   ((string-equal system-type "windows-nt") 
-		(shell-command-to-string (encode-coding-string (format "MicrosoftEdge.exe %s" buffer-file-name) yzs/encode)))
-	   ((string-equal system-type "gnu/linux") 
-		(shell-command-to-string (encode-coding-string (format "microsoft-edge-stable %s" (yzs/tool/path-wsl-to-windows buffer-file-name)) yzs/encode))))))
+;; (defun yzs/open-file-in-browser () 
+;;   "使用浏览器打开当前文件"
+;;   (interactive)
+;;   (if buffer-file-name
+;; 	  (cond 
+;; 	   ((string-equal system-type "windows-nt") 
+;; 		(shell-command-to-string (encode-coding-string (format "MicrosoftEdge.exe %s" buffer-file-name) yzs/encode)))
+;; 	   ((string-equal system-type "gnu/linux") 
+;; 		(shell-command-to-string (encode-coding-string (format "microsoft-edge-stable %s" (yzs/tool/path-wsl-to-windows buffer-file-name)) yzs/encode))))))
 
 (defun yzs/open-file-in-system (file)
   (interactive "fOpen File In System:")
