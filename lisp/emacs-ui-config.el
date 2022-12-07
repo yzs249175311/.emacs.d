@@ -77,11 +77,11 @@
 
 			   ((string-equal system-type "gnu/linux")
 				(cond
-				 ((string-equal window-system "x") (load-theme 'doom-flatwhite t))
-				 ((string-equal window-system nil) (load-theme 'doom-flatwhite t))
+				 ((string-equal window-system "x") (load-theme 'doom-ir-black t))
+				 ((string-equal window-system nil) (load-theme 'doom-ir-black t))
 				 ))
 
-			   ((string-equal system-type "windows-nt") (load-theme 'doom-flatwhite t))
+			   ((string-equal system-type "windows-nt") (load-theme 'doom-ir-black t))
 
 			   )))
 

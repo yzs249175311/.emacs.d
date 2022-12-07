@@ -14,6 +14,9 @@
   :mode ("\\.vue\\'" "\\.html?\\'")
   :config
   (add-to-list 'hs-special-modes-alist '(web-mode  "{\\|<[^/>]+?" "}\\|</[^/>]*[^/]>" "<!--" web-mode-forward-sexp nil))
+  :bind
+  (:map web-mode-map
+		("M-;" . nil))
   )
 
 (use-package auto-rename-tag

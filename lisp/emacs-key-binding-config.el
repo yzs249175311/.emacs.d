@@ -2,6 +2,12 @@
 
 (general-define-key
  :states '(normal insert motion emacs)
+ :keymaps 'global-map
+ "<f5>" 'yzs/run-code
+ )
+
+(general-define-key
+ :states '(normal insert motion emacs)
  "C-M-<left>" 'evil-window-decrease-width
  "C-M-<right>" 'evil-window-increase-width
  "C-M-<up>" 'evil-window-increase-height
@@ -51,6 +57,16 @@
  :states '(motion normal)
  "." 'repeat
  "c c" 'comment-line
+ )
+
+(general-define-key
+ :prefix "g"
+ :states '(motion normal)
+ :keymap 'lsp-mode-map
+ "r" 'lsp-ui-peek-find-references
+ "d" 'lsp-ui-peek-find-definitions
+ "l" 'lsp-ui-imenu
+ "! l" 'lsp-ui-flycheck-list
  )
 
 (general-define-key

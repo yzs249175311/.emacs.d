@@ -29,7 +29,7 @@
 
     ((string-equal system-type "gnu/linux")
      (cond
-	  ((font-info "等距更紗黑體 CL Nerd Font") "等距更紗黑體 CL Nerd Font:size=31")
+	  ((font-info "等距更紗黑體 CL Nerd Font") "等距更紗黑體 CL Nerd Font")
 	  ((member "JetBrainsMono Nerd Font Mono" (font-family-list)) "JetBrainsMono Nerd Font Mono")
 	  ((member "Sarasa Mono J" (font-family-list)) "Sarasa Mono J")
 	  ((member "DejaVu Sans Mono"  (font-family-list)) "DejaVu Sans Mono")))

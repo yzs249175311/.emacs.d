@@ -61,6 +61,7 @@
 	(if (equal major-mode #'treemacs-mode)
 		(treemacs-quit)
 	  (treemacs-select-window)))
+  (setq treemacs-width 28)
   :bind
   ("<f12>" . treemacs-toggle))
 
