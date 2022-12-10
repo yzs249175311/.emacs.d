@@ -10,7 +10,7 @@
 
 ;;更改内容显示宽度
 (use-package visual-fill-column
-  :init (setq visual-fill-column-width 100 
+  :init (setq visual-fill-column-width 120 
               visual-fill-column-center-text t)
   :hook
   (org-mode . visual-fill-column-mode))
@@ -77,11 +77,11 @@
 
 			   ((string-equal system-type "gnu/linux")
 				(cond
-				 ((string-equal window-system "x") (load-theme 'doom-ir-black t))
-				 ((string-equal window-system nil) (load-theme 'doom-ir-black t))
+				 ((string-equal window-system "x") (load-theme 'doom-oceanic-next t))
+				 ((string-equal window-system nil) (load-theme 'doom-oceanic-next t))
 				 ))
 
-			   ((string-equal system-type "windows-nt") (load-theme 'doom-ir-black t))
+			   ((string-equal system-type "windows-nt") (load-theme 'doom-oceanic-next t))
 
 			   )))
 

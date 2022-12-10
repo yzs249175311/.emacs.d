@@ -21,9 +21,11 @@
 							  </style>"
 		)
 
-  ;;org refile
-  (setq org-refile-targets (mapcar #'(lambda (target) `(,target :maxlevel . 1))
-								   org-agenda-files))
+
+  (setq org-refile-targets '(
+							 (nil :maxlevel . 2)
+							 (org-agenda-files :maxlevel . 2)
+							 ))
 
   ;;修改无序列表的符号 - 
   (if (display-graphic-p)

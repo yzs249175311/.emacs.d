@@ -60,7 +60,7 @@
 	))
 
   ;;set font size
-  (set-face-attribute 'default nil :height 120)
+  (set-face-attribute 'default nil :height 100)
   )
 
 ;; 判断是否使用了deamon和判断是否使用的是终端
