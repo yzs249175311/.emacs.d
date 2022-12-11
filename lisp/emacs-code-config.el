@@ -5,7 +5,7 @@
   (corfu-auto t)                   ; Enable auto completion
   (corfu-auto-prefix 2)            ; Enable auto completion
   (corfu-auto-delay 0.1)           ; Enable auto completion
-  (corfu-quit-at-boundary nil)
+  (corfu-quit-at-boundary 'separator)
   (corfu-echo-documentation 0.25)   ; Enable auto completion
   (corfu-preview-current 'insert)   ; Do not preview current candidate
   (corfu-preselect-first nil)
@@ -18,6 +18,7 @@
               ("S-TAB"   . corfu-reset)
               ([backtab] . corfu-reset)
               ("S-<return>" . corfu-insert)
+			  ("DEL" . corfu-quit)
               ("RET" . nil)
 			  ([remap evil-complete-next] . corfu-next)
 			  ([remap evil-complete-previous] . corfu-previous)

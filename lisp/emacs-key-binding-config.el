@@ -15,6 +15,12 @@
  )
 
 (general-define-key
+ :states '(normal motion)
+ ")" 'evil-paste-pop-next
+ "(" 'evil-paste-pop
+ )
+
+(general-define-key
  :prefix "C-c"
  :states '(normal insert motion emacs)
  :keymaps 'global-map

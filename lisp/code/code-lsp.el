@@ -6,18 +6,18 @@
 	(setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
 		  '(orderless))) ;; Configure orderless
   ;; same definition as mentioned earlier
-  (advice-add 'json-parse-string :around
-			  (lambda (orig string &rest rest)
-				(apply orig (s-replace "\\u0000" "" string)
-					   rest)))
+  ;; (advice-add 'json-parse-string :around
+  ;; 			  (lambda (orig string &rest rest)
+  ;; 				(apply orig (s-replace "\\u0000" "" string)
+  ;; 					   rest)))
 
-  ;; minor changes: saves excursion and uses search-forward instead of re-search-forward
-  (advice-add 'json-parse-buffer :around
-			  (lambda (oldfn &rest args)
-				(save-excursion 
-				  (while (search-forward "\\u0000" nil t)
-					(replace-match "" nil t)))
-				(apply oldfn args)))
+  ;; ;; minor changes: saves excursion and uses search-forward instead of re-search-forward
+  ;; (advice-add 'json-parse-buffer :around
+  ;; 			  (lambda (oldfn &rest args)
+  ;; 				(save-excursion 
+  ;; 				  (while (search-forward "\\u0000" nil t)
+  ;; 					(replace-match "" nil t)))
+  ;; 				(apply oldfn args)))
   :custom
   (lsp-completion-provider :none)
   (lsp-typescript-suggest-auto-imports nil)
