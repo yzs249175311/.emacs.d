@@ -112,7 +112,7 @@
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 (global-set-key [escape] 'keyboard-quit)
 
-;;(set-default 'tab-always-indent t)
+(set-default 'tab-always-indent t)
 ;; no mixed tab space
 ;;(setq-default indent-tabs-mode t)
 					; gnu emacs 23.1, 24.4.1 default is t
