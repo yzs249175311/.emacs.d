@@ -13,10 +13,11 @@
 
 (defun yzs/evil-config () 
   (setq evil-motion-state-modes 
-		(append '(
+		(append '( 
 				  treemacs-mode 
 				  magit-status-mode
 				  helpful-mode
+				  lsp-treemacs-error-list-mode
 				  ) 
 				evil-emacs-state-modes
 				evil-motion-state-modes))
@@ -48,5 +49,11 @@
 (use-package evil-surround
   :init
   (global-evil-surround-mode 1))
+
+(use-package evil-mc
+  :after evil
+  :init
+  (global-evil-mc-mode 1) 
+  )
 
 (provide 'emacs-evil-config)

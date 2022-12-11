@@ -96,7 +96,6 @@
 		  "\\*Completions\\*"
 		  help-mode
 		  compilation-mode
-		  help-mode
 		  helpful-mode
 		  compilation-mode
 		  "^\\*eshell.*\\*$" eshell-mode 

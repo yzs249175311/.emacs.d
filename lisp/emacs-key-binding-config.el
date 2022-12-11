@@ -43,6 +43,7 @@
  "g s" 'git-gutter:stage-hunk
  )
 
+
 (general-define-key
  :prefix "C-c"
  :states '(normal insert)
@@ -63,9 +64,9 @@
  :prefix "g"
  :states '(motion normal)
  :keymap 'lsp-mode-map
- "r" 'lsp-ui-peek-find-references
+ "l r" 'lsp-ui-peek-find-references
+ "l e" 'lsp-treemacs-errors-list
  "d" 'lsp-ui-peek-find-definitions
- "l" 'lsp-ui-imenu
  "! l" 'lsp-ui-flycheck-list
  )
 
