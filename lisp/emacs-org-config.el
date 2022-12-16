@@ -1,5 +1,10 @@
 (use-package org
   :config
+
+  (setq org-link-parameters
+		(append (assoc-delete-all "file+sys" org-link-parameters)
+				(list (cons "file+sys" (list :complete (lambda () (concat "file+sys:" (read-file-name "File+sys:"))))))))
+
   (setq org-adapt-indentation t
 		org-hide-leading-stars t
 		org-src-fontify-natively t
@@ -49,7 +54,7 @@
 									  ('cygwin "cygstart %s")
 									  (_ "xdg-open %s")))
 
-  (setq org-file-apps (reverse (append org-file-apps
+  (setq org-file-apps (reverse (append (reverse org-file-apps)
 									   `(("\\.epub\\'" . ,yzs/org/org-open-file)
 										 ("\\.pdf\\'" . ,yzs/org/org-open-file)
 										 ))))
