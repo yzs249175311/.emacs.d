@@ -41,12 +41,11 @@
  "o a" 'org-agenda
  "!" '(:which-key "Check")
  "g" '(:which-key "Git")
- "g n" 'git-gutter:next-hunk
- "g p" 'git-gutter:previous-hunk
- "g r" 'git-gutter:revert-hunk
- "g t" 'git-gutter:toggle
- "g v" 'git-gutter:popup-hunk
- "g s" 'git-gutter:stage-hunk
+ "g n" 'diff-hl-next-hunk
+ "g p" 'diff-hl-previous-hunk
+ "g r" 'diff-hl-revert-hunk
+ "g s" 'diff-hl-stage-current-hunk
+ "g v" 'diff-hl-show-hunk
  )
 
 
