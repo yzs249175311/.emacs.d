@@ -64,7 +64,7 @@
   )
 
 (require 'emacs-evil-config)
-(require 'emacs-advance-config)
+(require 'emacs-better-config)
 (require 'emacs-code-config)
 (require 'emacs-org-config)
 (require 'emacs-ui-config)
