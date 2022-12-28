@@ -34,20 +34,19 @@
 									 ("#+END_EXAMPLE" . "―")
 									 ))
 
-(defmacro yzs/add-prettify-symbols-to-mode (mode-hook &rest symbols-list)
+(defmacro yzs/add-prettify-symbols-to-mode (mode &rest symbols-list)
   "Add Prettify Symbols To Mode "
-  `(add-hook ,mode-hook (lambda ()
-						  (setq prettify-symbols-alist (default-value  'prettify-symbols-alist))
-						  (if (listp (quote ,symbols-list))
-							  (dolist (symbol-item  ',symbols-list)
-								(setq prettify-symbols-alist
-									  (append prettify-symbols-alist (eval symbol-item)))))
-						  (prettify-symbols-mode 1))))
-(if (display-graphic-p)
-	(progn
-	  (yzs/add-prettify-symbols-to-mode 'org-mode-hook yzs/symbols-org-mode)
-	  (yzs/add-prettify-symbols-to-mode 'corfu-mode-hook nil)
-	  )
+  `(add-hook (intern (concat (symbol-name ,mode) "-hook"))
+			 #'(lambda ()
+				 (setq prettify-symbols-alist (default-value 'prettify-symbols-alist))
+				 (when (listp ',symbols-list)
+				   (setq prettify-symbols-alist
+						 (append prettify-symbols-alist ,@symbols-list)))
+				 (prettify-symbols-mode 1))))
+
+(when (display-graphic-p)
+  (yzs/add-prettify-symbols-to-mode 'org-mode yzs/symbols-org-mode)
+  (yzs/add-prettify-symbols-to-mode 'corfu-mode nil)
   )
 
 (provide 'default-prettify-symbols)
