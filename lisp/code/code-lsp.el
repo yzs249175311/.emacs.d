@@ -20,7 +20,7 @@
   ;; 				(apply oldfn args)))
   :custom
   (lsp-completion-provider :none)
-  (lsp-typescript-suggest-auto-imports nil)
+  ;; (lsp-typescript-suggest-auto-imports nil)
   :hook ;; replace XXX-mode with concrete major-mode(e. g. python-mode)
   (web-mode . lsp)
   (js-mode . lsp)

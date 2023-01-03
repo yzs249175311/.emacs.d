@@ -1,6 +1,8 @@
 (use-package flycheck
   :init
-  (global-flycheck-mode 1))
+  (global-flycheck-mode 1)
+  :hook
+  (org-mode . (lambda () (flycheck-mode -1))))
 
 ;; (use-package company
 ;;   :hook
