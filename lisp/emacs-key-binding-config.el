@@ -62,6 +62,8 @@
  :prefix "g"
  :states '(motion normal)
  "." 'repeat
+ "+" 'evil-numbers/inc-at-pt
+ "-" 'evil-numbers/dec-at-pt
  "c c" 'comment-line
  )
 

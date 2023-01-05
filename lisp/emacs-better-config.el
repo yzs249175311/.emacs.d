@@ -8,7 +8,7 @@
   (corfu-quit-at-boundary 'separator)
   (corfu-echo-documentation 0.25)   ; Enable auto completion
   (corfu-preview-current 'insert)   ; Do not preview current candidate
-  (corfu-preselect-first nil)
+  (corfu-preselect-first t)
 
   ;; Optionally use TAB for cycling, default is `corfu-complete'.
   :bind (:map corfu-map
@@ -18,7 +18,7 @@
               ("S-TAB"   . corfu-reset)
               ([backtab] . corfu-reset)
               ("S-<return>" . corfu-insert)
-			  ("DEL" . corfu-quit)
+			  ;; ("DEL" . corfu-quit)
               ("RET" . nil)
 			  ([remap evil-complete-next] . corfu-next)
 			  ([remap evil-complete-previous] . corfu-previous)

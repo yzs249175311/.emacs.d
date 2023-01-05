@@ -5,6 +5,7 @@
   (cond 
    ((string-equal system-type "windows-nt") 
 	(add-hook 'evil-normal-state-entry-hook (lambda () (w32-set-ime-open-status nil))))
+
    ((string-equal system-type "gnu/linux")
 	(cond
 	 ((yzs/program-exists-p "fcitx5-remote" exec-path)
@@ -32,7 +33,7 @@
 
 (defun yzs/evil-key-config () 
   (define-key evil-motion-state-map (kbd "RET") nil)
-  (define-key evil-motion-state-map (kbd "?") nil)
+  ;; (define-key evil-motion-state-map (kbd "?") nil)
   (define-key evil-window-map (kbd "q") 'evil-delete-buffer))
 
 (use-package evil
@@ -55,5 +56,7 @@
   :init
   (global-evil-mc-mode 1) 
   )
+
+(use-package evil-numbers)
 
 (provide 'emacs-evil-config)
