@@ -59,6 +59,7 @@
 (global-display-line-numbers-mode 1)
 ;;(global-linum-mode 1)
 (global-auto-revert-mode 1)
+;; (global-visual-line-mode 1)
 
 ;;abbrev-mode
 (setq-default abbrev-mode t)

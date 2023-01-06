@@ -5,7 +5,7 @@
  "<f5>" 'yzs/run-code
  )
 (general-define-key
- :states 'normal
+ :states '(normal motion)
  "SPC" (general-simulate-key "C-c"))
 
 (general-define-key
@@ -20,6 +20,9 @@
  "c c" 'yzs/run-code
  "c s" 'yzs/open-file-in-live-server
  "c o" 'yzs/open-file-in-system
+ "f" '(:which-key "File")
+ "f f" 'find-file
+ "f r" 'recentf-open-files
  "g" '(:which-key "Git")
  "g g" 'magit
  "g n" 'diff-hl-next-hunk
