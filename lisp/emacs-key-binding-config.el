@@ -1,9 +1,50 @@
 (use-package general)
 
 (general-define-key
- :states '(normal insert motion emacs)
- :keymaps 'global-map
+ :states '(motion normal emacs insert)
  "<f5>" 'yzs/run-code
+ )
+(general-define-key
+ :states 'normal
+ "SPC" (general-simulate-key "C-c"))
+
+(general-define-key
+ :prefix "C-c"
+ :states '(normal insert motion emacs)
+ "b b" 'consult-buffer
+ "b k" 'kill-buffer
+ "b B" 'list-buffers
+ "c" '(:which-key "Custom")
+ ;; "c b" 'yzs/open-file-in-browser
+ "c d" 'yzs/open-directory
+ "c c" 'yzs/run-code
+ "c s" 'yzs/open-file-in-live-server
+ "c o" 'yzs/open-file-in-system
+ "g" '(:which-key "Git")
+ "g g" 'magit
+ "g n" 'diff-hl-next-hunk
+ "g p" 'diff-hl-previous-hunk
+ "g r" 'diff-hl-revert-hunk
+ "g s" 'diff-hl-stage-current-hunk
+ "g v" 'diff-hl-show-hunk
+ "o" '(:which-key "Org")
+ "o f" 'org-roam-node-find
+ "o i" 'org-roam-node-insert
+ "o t" 'org-roam-buffer-toggle
+ "o c" 'org-id-get-create
+ "o g" 'org-roam-ui-mode
+ "o s" 'org-roam-db-sync
+ "o r" 'org-redisplay-inline-images
+ "o a" 'org-agenda
+ "p" '(:keymap projectile-command-map :which-key "Projectile" :package projectile)
+ "s" '(:which-key "Search-Switch")
+ "s r" 'consult-ripgrep
+ "s g" 'consult-grep
+ "s m" 'consult-bookmark
+ "s i" 'consult-imenu
+ "s t" 'consult-theme
+ "t" '(:keymap tab-prefix-map :which-key "Tab" :package projectile)
+ "w" '(:keymap evil-window-map :which-key "Window") 
  )
 
 (general-define-key
@@ -20,33 +61,6 @@
  "(" 'evil-paste-pop
  )
 
-(general-define-key
- :prefix "C-c"
- :states '(normal insert motion emacs)
- :keymaps 'global-map
- "c" '(:which-key "Custom")
- ;; "c b" 'yzs/open-file-in-browser
- "c d" 'yzs/open-directory
- "c c" 'yzs/run-code
- "c s" 'yzs/open-file-in-live-server
- "c o" 'yzs/open-file-in-system
- "o" '(:which-key "Org")
- "o f" 'org-roam-node-find
- "o i" 'org-roam-node-insert
- "o t" 'org-roam-buffer-toggle
- "o c" 'org-id-get-create
- "o g" 'org-roam-ui-mode
- "o s" 'org-roam-db-sync
- "o r" 'org-redisplay-inline-images
- "o a" 'org-agenda
- "!" '(:which-key "Check")
- "g" '(:which-key "Git")
- "g n" 'diff-hl-next-hunk
- "g p" 'diff-hl-previous-hunk
- "g r" 'diff-hl-revert-hunk
- "g s" 'diff-hl-stage-current-hunk
- "g v" 'diff-hl-show-hunk
- )
 
 
 (general-define-key
@@ -83,6 +97,5 @@
  "h" 'dired-up-directory
  "l" 'dired-find-file
  )
-
 
 (provide 'emacs-key-binding-config)

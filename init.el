@@ -1,5 +1,3 @@
-(require 'package)
-
 ;;debug
 (setq debug-on-error nil)
 

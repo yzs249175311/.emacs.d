@@ -44,22 +44,24 @@
 (use-package cape
   ;; Bind dedicated completion commands
   ;; Alternative prefix keys: C-c p, M-p, M-+, ...
-  :bind (("C-c p p" . completion-at-point) ;; capf
-         ("C-c p t" . complete-tag)        ;; etags
-         ("C-c p d" . cape-dabbrev)        ;; or dabbrev-completion
-         ("C-c p h" . cape-history)
-         ("C-c p f" . cape-file)
-         ("C-c p k" . cape-keyword)
-         ("C-c p s" . cape-symbol)
-         ("C-c p a" . cape-abbrev)
-         ("C-c p i" . cape-ispell)
-         ("C-c p l" . cape-line)
-         ("C-c p w" . cape-dict)
-         ("C-c p \\" . cape-tex)
-         ("C-c p _" . cape-tex)
-         ("C-c p ^" . cape-tex)
-         ("C-c p &" . cape-sgml)
-         ("C-c p r" . cape-rfc1345))
+  :bind (
+		 ;; ("C-c p p" . completion-at-point) ;; capf
+         ;; ("C-c p t" . complete-tag)        ;; etags
+         ;; ("C-c p d" . cape-dabbrev)        ;; or dabbrev-completion
+         ;; ("C-c p h" . cape-history)
+         ;; ("C-c p f" . cape-file)
+         ;; ("C-c p k" . cape-keyword)
+         ;; ("C-c p s" . cape-symbol)
+         ;; ("C-c p a" . cape-abbrev)
+         ;; ("C-c p i" . cape-ispell)
+         ;; ("C-c p l" . cape-line)
+         ;; ("C-c p w" . cape-dict)
+         ;; ("C-c p \\" . cape-tex)
+         ;; ("C-c p _" . cape-tex)
+         ;; ("C-c p ^" . cape-tex)
+         ;; ("C-c p &" . cape-sgml)
+         ;; ("C-c p r" . cape-rfc1345)
+		 )
   :init
   ;; Add `completion-at-point-functions', used by `completion-at-point'.
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
@@ -85,7 +87,8 @@
   :bind (:map vertico-map
 			  ("C-n" . vertico-next)
 			  ("C-p" . vertico-previous)
-			  ("?" . #'minibuffer-completion-help))
+			  ("M-n" . vertico-scroll-up)
+			  ("M-p" . vertico-scroll-down))
   :custom
   (vertico-count 10))
 
@@ -97,9 +100,7 @@
 (use-package consult
   :bind
   ("C-s" . consult-line)
-  ("C-x b" . consult-buffer)
-  ("C-c C-f" . consult-recent-file)
-  ("C-c s r" . consult-ripgrep))
+  ("C-x b" . consult-buffer))
 
 (use-package marginalia
   :bind (:map minibuffer-local-map
@@ -149,9 +150,7 @@
 
 (use-package projectile
   :diminish projectile-mode
-  :config (projectile-mode)
-  :bind-keymap
-  ("C-x p" . projectile-command-map))
+  :config (projectile-mode))
 
 ;;目录树
 (use-package treemacs
@@ -180,7 +179,11 @@
   ([remap describe-symbol] . helpful-symbol)
   )
 
-(use-package magit)
+(use-package magit
+  :hook
+  (magit-status-mode . (lambda ()
+						 (evil-define-key 'motion magit-status-mode-map (kbd "?") 'magit-dispatch))))
+
 (use-package git-gutter
   :init (global-git-gutter-mode +1))
 (use-package diff-hl

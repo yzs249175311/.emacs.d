@@ -77,11 +77,11 @@
 
 			   ((string-equal system-type "gnu/linux")
 				(cond
-				 ((string-equal window-system "x") (load-theme 'doom-badger t))
+				 ((string-equal window-system "x") (load-theme 'doom-one t))
 				 ((string-equal window-system nil) (load-theme 'doom-badger t))
 				 ))
 
-			   ((string-equal system-type "windows-nt") (load-theme 'doom-badger t))
+			   ((string-equal system-type "windows-nt") (load-theme 'doom-one t))
 
 			   )))
 

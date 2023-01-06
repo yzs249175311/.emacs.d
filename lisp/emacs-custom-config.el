@@ -1,4 +1,4 @@
-;;------------------ init config begin-------------------------------;;
+;;------------------ init variable -------------------------------;;
 (setq use-wsl-p nil)
 (setq yzs/which-system-open-command (pcase system-type
 									  ('darwin "open")
@@ -10,6 +10,7 @@
  ((string-equal system-type "windows-nt") (setq yzs/encode 'gbk)))
 
 ;;------------------ init config begin-------------------------------;;
+
 (defun yzs/tool/path-wsl-to-windows (str)
   (if use-wsl-p
 	  (replace-regexp-in-string "\/mnt\/\\(\\w+\\)" "\\1\:" str)
@@ -131,5 +132,6 @@
 
 ;;hook
 (add-hook 'emacs-startup-hook 'yzs/display-startup-time)
+
 
 (provide 'emacs-custom-config)
