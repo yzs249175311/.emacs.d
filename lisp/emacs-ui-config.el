@@ -69,6 +69,10 @@
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
+(when (version< emacs-version "29")
+  (use-package leuven-theme)
+  )
+
 ;; ;;-------------------------hook-----------------------------------
 (add-hook 'after-init-hook 
 		  #'(lambda ()
@@ -78,11 +82,11 @@
 
 			   ((string-equal system-type "gnu/linux")
 				(cond
-				 ((string-equal window-system "x") (load-theme 'leuven t))
+				 ((string-equal window-system "x") (load-theme 'leuven-dark t))
 				 ((string-equal window-system nil) (load-theme 'doom-badger t))
 				 ))
 
-			   ((string-equal system-type "windows-nt") (load-theme 'leuven t))
+			   ((string-equal system-type "windows-nt") (load-theme 'leuven-dark t))
 
 			   )))
 
