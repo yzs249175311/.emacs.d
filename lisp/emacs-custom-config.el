@@ -45,7 +45,7 @@
 
 (defun yzs/open-file-in-live-server (dir startPath)
   "创建服务器打开此文件,需要使用npm安装browser-sync"
-  (interactive "Dchoose a dir for server root:\nfchoose a file for startPath:")
+  (interactive "DChoose a dir for server root:\nfChoose a file for startPath:")
   (message "Start Live Server\nDIR:%s\nstartPath:%s" dir startPath)
   (if (and dir startPath) 
 	  (let ((edir (expand-file-name dir)) (estartPath (expand-file-name startPath)))
@@ -58,8 +58,8 @@
 
 (defun yzs/run-code (file)
   "运行代码,支持javascript,typescript"
-  (interactive "fchoice file:")
-  (if (not file)
+  (interactive "fChoice file:")
+  (unless (file-exists-p file)
 	  (setq-local file buffer-file-name))
   (message "run code: %s" file)
   (cond 
@@ -67,6 +67,19 @@
 	(async-shell-command (encode-coding-string (concat "node " file) yzs/encode)))
    ((string-match "\.ts$" file) 
 	(async-shell-command (encode-coding-string (concat "ts-node " file) yzs/encode)))
+   (t (message "Can't run this file"))))
+
+(defun yzs/run-code-deamon (file)
+  "运行代码,支持javascript,typescript"
+  (interactive "fChoice file:")
+  (unless (file-exists-p file)
+	  (setq-local file buffer-file-name))
+  (message "run code: %s" file)
+  (cond 
+   ((string-match "\.js$" file) 
+	(async-shell-command (encode-coding-string (concat "nodemon " file) yzs/encode)))
+   ((string-match "\.ts$" file) 
+	(async-shell-command (encode-coding-string (concat "nodemon " file) yzs/encode)))
    (t (message "Can't run this file"))))
 
 ;; (defun yzs/open-directory(path) 

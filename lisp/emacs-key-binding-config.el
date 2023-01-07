@@ -2,15 +2,18 @@
 
 (general-define-key
  :states '(motion normal emacs insert)
- "<f5>" 'yzs/run-code
+ "<f5>" '(:which-key "Run")
+ "<f5> r" 'yzs/run-code
+ "<f5> d" 'yzs/run-code-deamon
+ "SPC" '(:which-key "Custom-Key")
  )
-(general-define-key
- :states '(normal motion)
- "SPC" (general-simulate-key "C-c"))
+;; (general-define-key
+;;  :states '(normal motion)
+;;  "SPC" (geneal-simulate-key "C-c"))
 
 (general-define-key
- :prefix "C-c"
- :states '(normal insert motion emacs)
+ :prefix "SPC"
+ :states '(normal motion)
  "b b" 'consult-buffer
  "b k" 'kill-buffer
  "b B" 'list-buffers
@@ -30,6 +33,18 @@
  "g r" 'diff-hl-revert-hunk
  "g s" 'diff-hl-stage-current-hunk
  "g v" 'diff-hl-show-hunk
+ "l" '(:which-key "Lsp")
+ "l a" '(:which-key "Action")
+ "l a r" 'lsp-bridge-rename
+ "l a a" 'lsp-bridge-code-action
+ "l e" '(:which-key "Error")
+ "l e n" 'lsp-bridge-diagnostic-jump-next
+ "l e p" 'lsp-bridge-diagnostic-jump-prev
+ "l e l" 'lsp-bridge-diagnostic-list
+ "l f" '(:which-key "Find")
+ "l f d" 'lsp-bridge-find-def
+ "l f r" 'lsp-bridge-find-references
+ "l f i" 'lsp-bridge-find-impl
  "o" '(:which-key "Org")
  "o f" 'org-roam-node-find
  "o i" 'org-roam-node-insert

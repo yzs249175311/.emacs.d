@@ -1,45 +1,45 @@
-;; (use-package corfu
-;;   ;; Optional customizations
-;;   :custom
-;;   (corfu-cycle t)                  ; Allows cycling through candidates
-;;   (corfu-auto t)                   ; Enable auto completion
-;;   (corfu-auto-prefix 2)            ; Enable auto completion
-;;   (corfu-auto-delay 0)           ; Enable auto completion
-;;   (corfu-quit-at-boundary 'separator)
-;;   (corfu-echo-documentation 0.25)   ; Enable auto completion
-;;   (corfu-preview-current 'insert)   ; Do not preview current candidate
-;;   (corfu-preselect-first t)
+(use-package corfu
+  ;; Optional customizations
+  :custom
+  (corfu-cycle t)                  ; Allows cycling through candidates
+  (corfu-auto nil)                   ; Enable auto completion
+  (corfu-auto-prefix 2)            ; Enable auto completion
+  (corfu-auto-delay 0)           ; Enable auto completion
+  (corfu-quit-at-boundary 'separator)
+  (corfu-echo-documentation 0.25)   ; Enable auto completion
+  (corfu-preview-current 'insert)   ; Do not preview current candidate
+  (corfu-preselect-first t)
 
-;;   ;; Optionally use TAB for cycling, default is `corfu-complete'.
-;;   :bind (:map corfu-map
-;;               ("M-SPC" . corfu-insert-separator)
-;;               ("TAB"     . corfu-complete)
-;;               ([tab]     . corfu-complete)
-;;               ("S-TAB"   . corfu-reset)
-;;               ([backtab] . corfu-reset)
-;;               ("S-<return>" . corfu-insert)
-;; 			  ;; ("DEL" . corfu-quit)
-;;               ("RET" . nil)
-;; 			  ([remap evil-complete-next] . corfu-next)
-;; 			  ([remap evil-complete-previous] . corfu-previous)
-;; 			  ([remap evil-force-normal-state] . corfu-quit)
-;;               )
+  ;; Optionally use TAB for cycling, default is `corfu-complete'.
+  :bind (:map corfu-map
+              ("M-SPC" . corfu-insert-separator)
+              ("TAB"     . corfu-complete)
+              ([tab]     . corfu-complete)
+              ("S-TAB"   . corfu-reset)
+              ([backtab] . corfu-reset)
+              ("S-<return>" . corfu-insert)
+			  ;; ("DEL" . corfu-quit)
+              ("RET" . nil)
+			  ([remap evil-complete-next] . corfu-next)
+			  ([remap evil-complete-previous] . corfu-previous)
+			  ([remap evil-force-normal-state] . corfu-quit)
+              )
 
-;;   :init
-;;   (global-corfu-mode)
-;;   (defun corfu-enable-always-in-minibuffer ()
-;; 	"Enable Corfu in the minibuffer if Vertico/Mct are not active."
-;; 	(unless (or (bound-and-true-p mct--active)
-;; 				(bound-and-true-p vertico--input))
-;; 	  ;; (setq-local corfu-auto nil) Enable/disable auto completion
-;; 	  (corfu-mode 1)))
-;;   (add-hook 'minibuffer-setup-hook #'corfu-enable-always-in-minibuffer 1) (corfu-history-mode)
-;;   :config
-;;   (add-hook 'eshell-mode-hook
-;; 			(lambda () (setq-local corfu-quit-at-boundary t
-;; 								   corfu-quit-no-match t
-;; 								   corfu-auto nil)
-;; 			  (corfu-mode))))
+  :init
+  (global-corfu-mode)
+  (defun corfu-enable-always-in-minibuffer ()
+	"Enable Corfu in the minibuffer if Vertico/Mct are not active."
+	(unless (or (bound-and-true-p mct--active)
+				(bound-and-true-p vertico--input))
+	  ;; (setq-local corfu-auto nil) Enable/disable auto completion
+	  (corfu-mode 1)))
+  (add-hook 'minibuffer-setup-hook #'corfu-enable-always-in-minibuffer 1) (corfu-history-mode)
+  :config
+  (add-hook 'eshell-mode-hook
+			(lambda () (setq-local corfu-quit-at-boundary t
+								   corfu-quit-no-match t
+								   corfu-auto nil)
+			  (corfu-mode))))
 
 (use-package cape
   ;; Bind dedicated completion commands

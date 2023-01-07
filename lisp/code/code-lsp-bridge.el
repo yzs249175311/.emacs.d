@@ -10,7 +10,9 @@
   (:map acm-mode-map
 		("RET" . nil))
   :custom
-  (lsp-bridge-enable-hover-diagnostic t))
+  (lsp-bridge-enable-hover-diagnostic t)
+  (acm-enable-doc nil)
+  )
 
 ;; (use-package popon
 ;;   :ensure nil
