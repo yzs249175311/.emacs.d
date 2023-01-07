@@ -8,8 +8,6 @@
 		"~/.emacs.d/lisp/default"
 		))
 
-(require 'emacs-default-config)
-(require 'emacs-custom-config)
 
 ;;解决使用msys2时gun安装包失败的问题
 ;;(setq package-check-signature nil)
@@ -38,8 +36,6 @@
 
 (setq yzs/my-packages '(
 						use-package
-						pyim
-						pyim-basedict
 						))
 
 ;; install packages
@@ -53,6 +49,8 @@
 
 (yzs/install-my-packages yzs/my-packages)
 
+(require 'emacs-default-config)
+(require 'emacs-custom-config)
 ;;-----------------------------config-------------------------------------------
 ;;use-package config
 (eval-when-compile
