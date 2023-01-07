@@ -23,9 +23,12 @@
 
 ;; (use-package company-web)
 
+
 (use-package yaml-mode)
+(use-package markdown-mode)
 
 (require 'code-web)
-(require 'code-lsp)
+;; (require 'code-lsp)
+(require 'code-lsp-bridge)
 
 (provide 'emacs-code-config)
