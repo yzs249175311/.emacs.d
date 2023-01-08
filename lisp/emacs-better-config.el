@@ -12,18 +12,18 @@
 
   ;; Optionally use TAB for cycling, default is `corfu-complete'.
   :bind (:map corfu-map
-              ("M-SPC" . corfu-insert-separator)
-              ("TAB"     . corfu-complete)
-              ([tab]     . corfu-complete)
-              ("S-TAB"   . corfu-reset)
-              ([backtab] . corfu-reset)
-              ("S-<return>" . corfu-insert)
+			  ("M-SPC" . corfu-insert-separator)
+			  ("TAB"     . corfu-complete)
+			  ([tab]     . corfu-complete)
+			  ("S-TAB"   . corfu-reset)
+			  ([backtab] . corfu-reset)
+			  ("S-<return>" . corfu-insert)
 			  ;; ("DEL" . corfu-quit)
-              ("RET" . nil)
+			  ("RET" . nil)
 			  ([remap evil-complete-next] . corfu-next)
 			  ([remap evil-complete-previous] . corfu-previous)
 			  ([remap evil-force-normal-state] . corfu-quit)
-              )
+			  )
 
   :init
   (global-corfu-mode)
@@ -46,21 +46,21 @@
   ;; Alternative prefix keys: C-c p, M-p, M-+, ...
   :bind (
 		 ;; ("C-c p p" . completion-at-point) ;; capf
-         ;; ("C-c p t" . complete-tag)        ;; etags
-         ;; ("C-c p d" . cape-dabbrev)        ;; or dabbrev-completion
-         ;; ("C-c p h" . cape-history)
-         ;; ("C-c p f" . cape-file)
-         ;; ("C-c p k" . cape-keyword)
-         ;; ("C-c p s" . cape-symbol)
-         ;; ("C-c p a" . cape-abbrev)
-         ;; ("C-c p i" . cape-ispell)
-         ;; ("C-c p l" . cape-line)
-         ;; ("C-c p w" . cape-dict)
-         ;; ("C-c p \\" . cape-tex)
-         ;; ("C-c p _" . cape-tex)
-         ;; ("C-c p ^" . cape-tex)
-         ;; ("C-c p &" . cape-sgml)
-         ;; ("C-c p r" . cape-rfc1345)
+		 ;; ("C-c p t" . complete-tag)        ;; etags
+		 ;; ("C-c p d" . cape-dabbrev)        ;; or dabbrev-completion
+		 ;; ("C-c p h" . cape-history)
+		 ;; ("C-c p f" . cape-file)
+		 ;; ("C-c p k" . cape-keyword)
+		 ;; ("C-c p s" . cape-symbol)
+		 ;; ("C-c p a" . cape-abbrev)
+		 ;; ("C-c p i" . cape-ispell)
+		 ;; ("C-c p l" . cape-line)
+		 ;; ("C-c p w" . cape-dict)
+		 ;; ("C-c p \\" . cape-tex)
+		 ;; ("C-c p _" . cape-tex)
+		 ;; ("C-c p ^" . cape-tex)
+		 ;; ("C-c p &" . cape-sgml)
+		 ;; ("C-c p r" . cape-rfc1345)
 		 )
   :init
   ;; Add `completion-at-point-functions', used by `completion-at-point'.
@@ -113,15 +113,51 @@
   ("M-'" . embark-act)         ;; pick some comfortable binding
   ("M-;" . embark-dwim)        ;; good alternative: M-.
   ("C-h B" . embark-bindings) ;; alternative for `describe-bindings'
-  (:map embark-meta-map
-		("<f1>" . yzs/open-directory)
-		("<f2>" . yzs/open-file-in-system))
   :config
   ;; Hide the mode line of the Embark live/completions buffers
   (add-to-list 'display-buffer-alist
 			   '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
 				 nil
-				 (window-parameters (mode-line-format . none)))))
+				 (window-parameters (mode-line-format . none))))
+
+  (defun embark-which-key-indicator ()
+	"An embark indicator that displays keymaps using which-key.
+The which-key help message will show the type and value of the
+current target followed by an ellipsis if there are further
+targets."
+	(lambda (&optional keymap targets prefix)
+	  (if (null keymap)
+		  (which-key--hide-popup-ignore-command)
+		(which-key--show-keymap
+		 (if (eq (plist-get (car targets) :type) 'embark-become)
+			 "Become"
+		   (format "Act on %s '%s'%s"
+				   (plist-get (car targets) :type)
+				   (embark--truncate-target (plist-get (car targets) :target))
+				   (if (cdr targets) "…" "")))
+		 (if prefix
+			 (pcase (lookup-key keymap prefix 'accept-default)
+			   ((and (pred keymapp) km) km)
+			   (_ (key-binding prefix 'accept-default)))
+		   keymap)
+		 nil nil t (lambda (binding)
+					 (not (string-suffix-p "-argument" (cdr binding))))))))
+
+  (setq embark-indicators
+		'(embark-which-key-indicator
+		  embark-highlight-indicator
+		  embark-isearch-highlight-indicator))
+
+  (defun embark-hide-which-key-indicator (fn &rest args)
+	"Hide the which-key indicator immediately when using the completing-read prompter."
+	(which-key--hide-popup-ignore-command)
+	(let ((embark-indicators
+		   (remq #'embark-which-key-indicator embark-indicators)))
+	  (apply fn args)))
+
+  (advice-add #'embark-completing-read-prompter
+			  :around #'embark-hide-which-key-indicator)
+  )
 
 ;; Consult users will also want the embark-consult package.
 (use-package embark-consult

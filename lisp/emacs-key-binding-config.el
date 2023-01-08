@@ -45,6 +45,8 @@
  "l f d" 'lsp-bridge-find-def
  "l f r" 'lsp-bridge-find-references
  "l f i" 'lsp-bridge-find-impl
+ "l s" '(:which-key "Show")
+ "l s d" 'lsp-bridge-popup-documentation
  "o" '(:which-key "Org")
  "o f" 'org-roam-node-find
  "o i" 'org-roam-node-insert
