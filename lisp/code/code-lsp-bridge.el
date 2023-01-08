@@ -9,6 +9,8 @@
   :bind
   (:map acm-mode-map
 		("RET" . nil))
+  :config
+  (add-to-list 'lsp-bridge-single-lang-server-mode-list '(json-mode . "vscode-json-language-server"))
   :custom
   (lsp-bridge-enable-hover-diagnostic t)
   (acm-enable-doc nil)

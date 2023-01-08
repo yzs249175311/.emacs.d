@@ -59,4 +59,10 @@
 
 (use-package evil-numbers)
 
+(use-package evil-easymotion
+  :init
+  (evilem-default-keybindings "s")
+  (evil-define-key '(motion normal) global-map (kbd "s") evilem-map)
+  )
+
 (provide 'emacs-evil-config)

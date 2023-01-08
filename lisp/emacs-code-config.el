@@ -23,7 +23,6 @@
 
 ;; (use-package company-web)
 
-
 (use-package yaml-mode)
 (use-package markdown-mode)
 

@@ -102,11 +102,8 @@
 (general-define-key
  :prefix "g"
  :states '(motion normal)
- :keymap 'lsp-mode-map
- "l r" 'lsp-ui-peek-find-references
- "l e" 'lsp-treemacs-errors-list
- "d" 'lsp-ui-peek-find-definitions
- "! l" 'lsp-ui-flycheck-list
+ :keymaps 'lsp-bridge-mode-map
+ "d" 'lsp-bridge-find-def
  )
 
 (general-define-key
