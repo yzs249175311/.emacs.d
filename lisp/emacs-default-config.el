@@ -79,7 +79,9 @@
   ;;  ((string-equal system-type "darwin") (setq dired-listing-switches "-alh")))
   (setq dired-recursive-copies 'top)
   (setq dired-recursive-deletes 'top)
-  (setq dired-kill-when-opening-new-dired-buffer t))
+  (setq dired-kill-when-opening-new-dired-buffer t)
+  (define-key dired-mode-map (kbd "SPC") nil)
+  )
 
 (progn
   ;; no need to warn

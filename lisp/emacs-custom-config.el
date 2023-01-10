@@ -5,9 +5,10 @@
 									  ('cygwin "cygstart")
 									  (_ "xdg-open")))
 
-(cond
- ((string-equal system-type "gnu/linux") (setq yzs/encode 'utf-8))
- ((string-equal system-type "windows-nt") (setq yzs/encode 'gbk)))
+(setq yzs/encode
+	  (pcase system-type
+	   ('windows-nt 'gbk)
+	   (t 'utf-8)))
 
 ;;------------------ init config begin-------------------------------;;
 

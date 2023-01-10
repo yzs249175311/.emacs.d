@@ -49,8 +49,6 @@
 
 (yzs/install-my-packages yzs/my-packages)
 
-(require 'emacs-default-config)
-(require 'emacs-custom-config)
 ;;-----------------------------config-------------------------------------------
 ;;use-package config
 (eval-when-compile
@@ -73,6 +71,9 @@
 		  (eval-print-last-sexp)))
 	  (load bootstrap-file nil 'nomessage)))
   )
+
+(require 'emacs-default-config)
+(require 'emacs-custom-config)
 
 (require 'emacs-evil-config)
 (require 'emacs-better-config)

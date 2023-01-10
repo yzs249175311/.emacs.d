@@ -7,9 +7,6 @@
  "<f5> d" 'yzs/run-code-deamon
  "SPC" '(:which-key "Custom-Key")
  )
-;; (general-define-key
-;;  :states '(normal motion)
-;;  "SPC" (geneal-simulate-key "C-c"))
 
 (general-define-key
  :prefix "SPC"
@@ -26,6 +23,7 @@
  "f" '(:which-key "File")
  "f f" 'find-file
  "f r" 'recentf-open-files
+ "f h" 'yzs/open-init
  "g" '(:which-key "Git")
  "g g" 'magit
  "g n" 'diff-hl-next-hunk
@@ -55,14 +53,15 @@
  "o g" 'org-roam-ui-mode
  "o s" 'org-roam-db-sync
  "o r" 'org-redisplay-inline-images
- "o a" 'org-agenda
+ "o A" 'org-agenda
  "p" '(:keymap projectile-command-map :which-key "Projectile" :package projectile)
- "s" '(:which-key "Search-Switch")
+ "s" '(:which-key "Switch-Search")
  "s r" 'consult-ripgrep
  "s g" 'consult-grep
  "s m" 'consult-bookmark
  "s i" 'consult-imenu
  "s t" 'consult-theme
+ "s b" 'consult-buffer
  "t" '(:keymap tab-prefix-map :which-key "Tab" :package projectile)
  "w" '(:keymap evil-window-map :which-key "Window") 
  )
@@ -99,13 +98,6 @@
  "+" 'evil-numbers/inc-at-pt
  "-" 'evil-numbers/dec-at-pt
  "c c" 'comment-line
- )
-
-(general-define-key
- :prefix "g"
- :states '(motion normal)
- :keymaps 'lsp-bridge-mode-map
- "d" 'lsp-bridge-find-def
  )
 
 (general-define-key

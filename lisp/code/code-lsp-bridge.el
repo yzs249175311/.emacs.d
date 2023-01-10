@@ -14,7 +14,7 @@
 	(interactive)
 	"Hide completion if cursor in string area."
 	(or
-	 (memq major-mode '(typescript-mode javascript-mode js-mode js2-mode emacs-lisp-mode))
+	 (memq major-mode '(typescript-mode javascript-mode js-mode js2-mode web-mode))
 	 ;; Allow sdcv completion in string area
 	 acm-enable-search-sdcv-words
 	 ;; Allow volar popup completion menu in string.
