@@ -21,11 +21,13 @@
 		  ;;("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
 		  ;;("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
 		  ;;("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-		  ("melpa-cn" . "http://elpa.zilongshanren.com/melpa/")
-		  ("org-cn"   . "http://elpa.zilongshanren.com/org/")
-		  ("gnu-cn"   . "http://elpa.zilongshanren.com/gnu/")
+		  ("melpa-cn" . "http://1.15.88.122/melpa/")
+		  ;; ("org-cn"   . "http://1.15.88.122/org/")
+		  ("gnu-cn"   . "http://1.15.88.122/gnu/")
+		  ("nongnu" . "http://1.15.88.122/nongnu/")
 		  ;;("melpa" . "https://melpa.org/packages/")
 		  ;;("gnu" . "http://elpa.gnu.org/packages/")
+		  ("org" . "http://1.15.88.122/org/")
 		  ))
   (package-initialize)
   )
@@ -56,21 +58,21 @@
   (setq use-package-always-ensure t)
   (setq use-package-always-defer t)
 
-;; use straight.el
-  (progn
-	(defvar bootstrap-version)
-	(let ((bootstrap-file
-		   (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-		  (bootstrap-version 6))
-	  (unless (file-exists-p bootstrap-file)
-		(with-current-buffer
-			(url-retrieve-synchronously
-			 "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
-			 'silent 'inhibit-cookies)
-		  (goto-char (point-max))
-		  (eval-print-last-sexp)))
-	  (load bootstrap-file nil 'nomessage)))
-  )
+  ;; use straight.el
+  (unless (featurep 'straight)
+	(progn
+	  (defvar bootstrap-version)
+	  (let ((bootstrap-file
+			 (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+			(bootstrap-version 6))
+		(unless (file-exists-p bootstrap-file)
+		  (with-current-buffer
+			  (url-retrieve-synchronously
+			   "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+			   'silent 'inhibit-cookies)
+			(goto-char (point-max))
+			(eval-print-last-sexp)))
+		(load bootstrap-file nil 'nomessage)))))
 
 (require 'emacs-default-config)
 (require 'emacs-custom-config)

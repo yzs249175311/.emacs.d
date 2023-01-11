@@ -1,4 +1,6 @@
 (use-package org
+  :init
+  (setq yzs/org-agenda-files (directory-files  "~/Nutstore Files/note/GTD/" t ".org$"))
   :config
   (setq org-adapt-indentation t
 		org-hide-leading-stars t
@@ -7,11 +9,25 @@
 		org-startup-folded nil
 		org-return-follows-link t
 		org-startup-truncated nil
-		org-log-done t
+		;; org-log-done t
 		org-log-into-drawer t
-		org-ellipsis " ⤵"
-		org-plantuml-jar-path (expand-file-name "~/.emacs.d/.cache/plantuml.jar")
+		org-insert-heading-respect-content t
+
 		org-hide-emphasis-markers t
+		;; org-ellipsis " ⤵"
+		org-ellipsis "…"
+		org-pretty-entities t
+
+		;; Agenda styling
+		org-agenda-tags-column 0
+		org-agenda-block-separator ?─
+		org-agenda-time-grid
+		'((daily today require-timed)
+		  (800 1000 1200 1400 1600 1800 2000)
+		  " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
+		org-agenda-current-time-string
+		"⭠ now ─────────────────────────────────────────────────"
+		org-plantuml-jar-path (expand-file-name "~/.emacs.d/.cache/plantuml.jar")
 		;; org-html-head-include-default-style nil
 		org-html-head-extra "<style>
 									pre.src{background:#343131;color:white;}
@@ -49,32 +65,24 @@
 									  ('cygwin "cygstart %s")
 									  (_ "xdg-open %s")))
 
+  ;; org open file by app
   (setq org-file-apps (reverse (append org-file-apps
 									   `(("\\.epub\\'" . ,yzs/org/org-open-file)
 										 ("\\.pdf\\'" . ,yzs/org/org-open-file)
 										 ))))
 
-  (add-hook 'org-agenda-mode-hook (lambda () (evil-define-key '(motion normal) 'org-agenda-mode-map (kbd "SPC") org-agenda-mode-map))) 
-
   :hook 
   (org-mode . org-indent-mode)
   (org-babel-after-execute . org-redisplay-inline-images)
+
   :custom
   (org-enforce-todo-dependencies t)
   (org-track-ordered-property-with-tag t)
   (org-capture-templates 
    '(("r" "Read Books")
 	 ("rb" "Books" entry (file+olp "d:/NutStore/note/GTD/read.org" "读书目录")
-	  "\n** TODO %^{Book name} - %^{Author}" :kill-buffer t))))
-
-(use-package org-bullets
-  :if (display-graphic-p)
-  :hook
-  (org-mode . org-bullets-mode)
-  :config
-  (if (display-graphic-p)
-	  (setq org-bullets-bullet-list '("❋" "✥" "✤" "✣" "✢")))
-  )
+	  "\n** TODO %^{Book name} - %^{Author}" :kill-buffer t)))
+  (org-agenda-files yzs/org-agenda-files))
 
 (use-package htmlize)
 

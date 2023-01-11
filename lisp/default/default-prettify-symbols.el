@@ -47,7 +47,8 @@
 
 (when (display-graphic-p)
   (yzs/add-prettify-symbols-to-mode 'org-mode yzs/symbols-org-mode)
-  (yzs/add-prettify-symbols-to-mode 'corfu-mode nil)
+  (yzs/add-prettify-symbols-to-mode 'emacs-lisp-mode nil)
+  ;; (yzs/add-prettify-symbols-to-mode 'corfu-mode nil)
   )
 
 (provide 'default-prettify-symbols)

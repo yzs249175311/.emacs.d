@@ -53,6 +53,7 @@
  "o g" 'org-roam-ui-mode
  "o s" 'org-roam-db-sync
  "o r" 'org-redisplay-inline-images
+ "o a" 'org-agenda-list
  "o A" 'org-agenda
  "p" '(:keymap projectile-command-map :which-key "Projectile" :package projectile)
  "s" '(:which-key "Switch-Search")
@@ -64,8 +65,10 @@
  "s b" 'consult-buffer
  "t" '(:keymap tab-prefix-map :which-key "Tab" :package projectile)
  "w" '(:keymap evil-window-map :which-key "Window") 
- )
+ "&" '(:keymap yas-minor-mode-map :which-key "Yasnippet")
+)
 
+;; evil global
 (general-define-key
  :states '(normal insert motion emacs)
  "C-M-<left>" 'evil-window-decrease-width
@@ -80,17 +83,6 @@
  "(" 'evil-paste-pop
  )
 
-
-
-(general-define-key
- :prefix "C-c"
- :states '(normal insert)
- :keymaps 'yas-minor-mode-map
- "y" '(:which-key "yasnippet")
- "y i" 'yas-insert-snippet
- "y t" 'yas-describe-tables
- )
-
 (general-define-key
  :prefix "g"
  :states '(motion normal)
@@ -100,11 +92,30 @@
  "c c" 'comment-line
  )
 
+;; dired 
 (general-define-key
  :states '(motion normal)
  :keymaps 'dired-mode-map
  "h" 'dired-up-directory
  "l" 'dired-find-file
+ )
+
+;; org
+(general-define-key
+ :prefix "SPC"
+ :states '(motion normal)
+ :keymaps '(org-agenda-mode-map)
+ "m" '(:keymap org-agenda-mode-map :which-key "Major")
+ )
+
+;;yasnippet
+(general-define-key
+ :prefix "SPC"
+ :states '(motion normal)
+ :keymaps 'yas-minor-mode-map
+ "& i" 'yas-insert-snippet
+ "& n" 'yas-new-snippet
+ "& v" 'yas-visit-snippet-file
  )
 
 (provide 'emacs-key-binding-config)

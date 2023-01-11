@@ -8,7 +8,7 @@
 (setq yzs/encode
 	  (pcase system-type
 	   ('windows-nt 'gbk)
-	   (t 'utf-8)))
+	   (_ 'utf-8)))
 
 ;;------------------ init config begin-------------------------------;;
 

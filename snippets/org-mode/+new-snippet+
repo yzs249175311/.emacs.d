@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: template
+# key: tem_
+# --
+
+#+title: $1
+#+author: ${2:yzs}
+#+date: $3
+
+* $4
