@@ -250,28 +250,12 @@ targets."
   (popper-echo-mode +1))
 (use-package posframe)
 
-(use-package go-translate
-  :config
-  (setq gts-translate-list '(("en" "zh")))
-  ;; (setq gts-default-translator (gts-translator :engines (gts-bing-engine)))
-  (setq gts-default-translator
-		(gts-translator
-		 :picker (gts-prompt-picker)
-		 :engines
-		 (list
-		  (gts-bing-engine)
-		  ;; (gts-google-engine)
-		  ;;(gts-google-rpc-engine)
-		  ;; (gts-deepl-engine :auth-key [YOUR_AUTH_KEY] :pro nil)
-		  ;; (gts-google-engine :parser (gts-google-summary-parser))
-		  ;;(gts-google-engine :parser (gts-google-parser))
-		  ;;(gts-google-rpc-engine :parser (gts-google-rpc-summary-parser))
-		  ;; (gts-google-rpc-engine :parser (gts-google-rpc-parser))
-		  ;; (gts-youdao-dict-engine)
-		  ;; (gts-stardict-engine)
-		  )
-		 :render (gts-posframe-pop-render)))
+(use-package google-translate
+  :custom
+  (google-translate-default-source-language "en")
+  (google-translate-default-target-language "zh-CN")
   :bind
-  ("C-c c t" . 'gts-do-translate))
+  ("C-c c t" . 'google-translate-at-point)
+  ("C-c c T" . 'google-translate-query-translate))
 
 (provide 'emacs-better-config)

@@ -27,7 +27,7 @@
 		  ("nongnu" . "http://1.15.88.122/nongnu/")
 		  ;;("melpa" . "https://melpa.org/packages/")
 		  ;;("gnu" . "http://elpa.gnu.org/packages/")
-		  ("org" . "http://1.15.88.122/org/")
+		  ;; ("org" . "http://1.15.88.122/org/")
 		  ))
   (package-initialize)
   )

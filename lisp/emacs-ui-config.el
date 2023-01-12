@@ -11,7 +11,7 @@
 ;;更改内容显示宽度
 (use-package visual-fill-column
   :init
-  (setq visual-fill-column-width 120 
+  (setq visual-fill-column-width 140 
         visual-fill-column-center-text t)
   (global-visual-fill-column-mode 1)
   )

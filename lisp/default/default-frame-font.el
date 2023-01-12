@@ -15,28 +15,31 @@
 
 (defun yzs/set-font-faces () 
   ;;set default font
-  (set-frame-font
-   (cond
-    ((string-equal system-type "windows-nt")
-     (cond
-      ((font-info "更纱黑体 Mono SC Nerd-12.0:bold") "更纱黑体 Mono SC Nerd-12.0:bold")
-      ((member "JetBrains Mono NL" (font-family-list)) "JetBrains Mono NL")
-      ((member "Consolas" (font-family-list)) "JetBrains Mono NL")))
+  (if (member "Noto Sans Mono CJK SC" (font-family-list))
+	  (set-frame-font "Noto Sans Mono CJK SC" t t)
+	(set-frame-font
+	 (cond
+	  ((string-equal system-type "windows-nt")
+	   (cond
+		((font-info "更纱黑体 Mono SC Nerd-12.0:bold") "更纱黑体 Mono SC Nerd-12.0:bold")
+		((member "JetBrains Mono NL" (font-family-list)) "JetBrains Mono NL")
+		((member "Consolas" (font-family-list)) "JetBrains Mono NL")))
 
-    ((string-equal system-type "darwin")
-     (cond
-      ((member "Menlo"  (font-family-list)) "Menlo-16")))
+	  ((string-equal system-type "darwin")
+	   (cond
+		((member "Menlo"  (font-family-list)) "Menlo-16")))
 
-    ((string-equal system-type "gnu/linux")
-     (cond
-	  ((font-info "等距更紗黑體 CL Nerd Font") "等距更紗黑體 CL Nerd Font")
-	  ((member "JetBrainsMono Nerd Font Mono" (font-family-list)) "JetBrainsMono Nerd Font Mono")
-	  ((member "Sarasa Mono J" (font-family-list)) "Sarasa Mono J")
-	  ((member "DejaVu Sans Mono"  (font-family-list)) "DejaVu Sans Mono")))
-	(t nil))
-   t t)
-
-  ;; set font for chinese characters
+	  ((string-equal system-type "gnu/linux")
+	   (cond
+		((font-info "等距更紗黑體 CL Nerd Font") "等距更紗黑體 CL Nerd Font")
+		((member "JetBrainsMono Nerd Font Mono" (font-family-list)) "JetBrainsMono Nerd Font Mono")
+		((member "Sarasa Mono J" (font-family-list)) "Sarasa Mono J")
+		((member "DejaVu Sans Mono"  (font-family-list)) "DejaVu Sans Mono")))
+	  (t nil))
+	 t t)
+	)
+  
+;;  set font for chinese characters
   (set-fontset-font
    t
    'han
