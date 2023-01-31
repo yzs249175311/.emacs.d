@@ -19,9 +19,9 @@
 									   ))
 
 (defvar-local yzs/symbols-org-mode '(
-									 ("TODO" . "")
-									 ("WAIT" . "")
-									 ("DONE" . "")
+									 ;; ("TODO" . "")
+									 ;; ("WAIT" . "")
+									 ;; ("DONE" . "")
 									 ("[ ]" . "")
 									 ("[X]" . "")
 									 ("[-]" . "")

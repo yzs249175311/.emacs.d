@@ -1,13 +1,13 @@
 ;;设置窗口
 (cond 
  ((string-equal system-type "windows-nt")
-  (mapc '(lambda (elm) (push elm default-frame-alist))
+  (mapc #'(lambda (elm) (push elm default-frame-alist))
 	'((height . 45)
 	  (width . 160)
 	  (left . 25)
 	  (top . 25))))
  ((string-equal system-type "gnu/linux")
-  (mapc '(lambda (elm) (push elm default-frame-alist))
+  (mapc #'(lambda (elm) (push elm default-frame-alist))
 	'((height . 45)
 	  (width . 200)
 	  (left . 25)
