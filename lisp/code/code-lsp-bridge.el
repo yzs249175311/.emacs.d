@@ -44,7 +44,8 @@
   (acm-enable-tabnine t)
   :bind
   (:map lsp-bridge-mode-map
-		("M-/" . 'lsp-bridge-popup-complete-menu))
+		("M-/" . 'lsp-bridge-popup-complete-menu)
+		([remap evil-goto-definition] . 'lsp-bridge-find-def))
   )
 
 (provide 'code-lsp-bridge)

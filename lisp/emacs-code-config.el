@@ -24,7 +24,9 @@
 ;; (use-package company-web)
 
 (use-package yaml-mode)
+(use-package json-mode)
 (use-package markdown-mode)
+(use-package yuck-mode)
 
 (require 'code-web)
 ;; (require 'code-lsp)

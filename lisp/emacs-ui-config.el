@@ -69,26 +69,35 @@
 ;;   ;; Corrects (and improves) org-mode's native fontification.
 ;;   ;; (doom-themes-org-config)
 ;;   )
+(use-package color-theme-sanityinc-tomorrow)
 
 (when (version< emacs-version "29")
   (use-package leuven-theme)
   )
 
-;; ;;-------------------------hook-----------------------------------
+;;-------------------------custom-----------------------------------
+(defun yzs/emacs-ui-config-theme ()
+  (load-theme 'sanityinc-tomorrow-night t)
+  (custom-set-faces
+   '(org-block ((t (:background "black"))))
+   )
+  )
+
+;;-------------------------hook-----------------------------------
+
+;; select theme
 (add-hook 'after-init-hook 
 		  #'(lambda ()
 			  (cond
-			   ;; ((string-equal system-type "gnu/linux") (modus-themes-load-vivendi))
-			   ;; ((string-equal system-type "windows-nt") (modus-themes-load-vivendi))
-
 			   ((string-equal system-type "gnu/linux")
 				(cond
-				 ((string-equal window-system "x") (load-theme 'leuven t))
-				 ((string-equal window-system nil) (load-theme 'doom-badger t))
+				 ((string-equal window-system "x") (yzs/emacs-ui-config-theme))
+				 ((string-equal window-system nil) (yzs/emacs-ui-config-theme))
 				 ))
 
-			   ((string-equal system-type "windows-nt") (load-theme 'leuven t))
+			   ((string-equal system-type "windows-nt") (yzs/emacs-ui-config-theme))
 
 			   )))
+
 
 (provide 'emacs-ui-config)
