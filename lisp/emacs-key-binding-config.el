@@ -35,6 +35,7 @@
  "l a" '(:which-key "Action")
  "l a r" 'lsp-bridge-rename
  "l a a" 'lsp-bridge-code-action
+ "l a f" 'lsp-bridge-code-format
  "l e" '(:which-key "Error")
  "l e n" 'lsp-bridge-diagnostic-jump-next
  "l e p" 'lsp-bridge-diagnostic-jump-prev

@@ -195,10 +195,10 @@ targets."
   :config
   (defun treemacs-toggle () 
 	(interactive)
-	(if (equal major-mode #'treemacs-mode)
+	(if (equal major-mode 'treemacs-mode)
 		(treemacs-quit)
 	  (treemacs-select-window)))
-  (setq treemacs-width 28)
+  (setq treemacs-width 35)
   :bind
   ("<f12>" . treemacs-toggle))
 
@@ -257,5 +257,11 @@ targets."
   :bind
   ("C-c c t" . 'google-translate-at-point)
   ("C-c c T" . 'google-translate-query-translate))
+
+(use-package vterm
+  :bind
+  (:map vterm-mode-map
+		("M-;" . nil)
+		("M-'" . nil)))
 
 (provide 'emacs-better-config)
