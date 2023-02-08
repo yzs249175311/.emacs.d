@@ -14,33 +14,31 @@
 	  (top . 25)))))
 
 (defun yzs/set-font-faces () 
-  ;;set default font
-  (if (member "Noto Sans Mono CJK SC" (font-family-list))
-	  (set-frame-font t t)
-	)
-  
-  
+  ;;set font and size
   (set-frame-font
-   (cond
-	((string-equal system-type "windows-nt")
-	 (cond
-	  ((font-info "更纱黑体 Mono SC Nerd-12.0:bold") "更纱黑体 Mono SC Nerd-12.0:bold")
-	  ((member "JetBrains Mono NL" (font-family-list)) "JetBrains Mono NL")
-	  ((member "Consolas" (font-family-list)) "JetBrains Mono NL")))
+   (font-spec :name
+			  (cond
+			   ((string-equal system-type "windows-nt")
+				(cond
+				 ((font-info "更纱黑体 Mono SC Nerd-12.0:bold") "更纱黑体 Mono SC Nerd-12.0")
+				 ((member "JetBrains Mono NL" (font-family-list)) "JetBrains Mono NL")
+				 ((member "Consolas" (font-family-list)) "JetBrains Mono NL")))
 
-	((string-equal system-type "darwin")
-	 (cond
-	  ((member "Menlo"  (font-family-list)) "Menlo-16")))
+			   ((string-equal system-type "darwin")
+				(cond
+				 ((member "Menlo"  (font-family-list)) "Menlo-16")))
 
-	((string-equal system-type "gnu/linux")
-	 (cond
-	  ((member "VictorMono Nerd Font" (font-family-list)) "VictorMono Nerd Font")
-	  ((member "Noto Sans Mono CJK SC" (font-family-list)) "Noto Sans Mono CJK SC")
-	  ((font-info "等距更紗黑體 CL Nerd Font") "等距更紗黑體 CL Nerd Font")
-	  ((member "JetBrainsMono Nerd Font Mono" (font-family-list)) "JetBrainsMono Nerd Font Mono")
-	  ((member "Sarasa Mono J" (font-family-list)) "Sarasa Mono J")
-	  ((member "DejaVu Sans Mono"  (font-family-list)) "DejaVu Sans Mono")))
-	(t nil))
+			   ((string-equal system-type "gnu/linux")
+				(cond
+				 ((member "VictorMono Nerd Font" (font-family-list)) "VictorMono Nerd Font")
+				 ((member "Noto Sans Mono CJK SC" (font-family-list)) "Noto Sans Mono CJK SC")
+				 ((font-info "等距更紗黑體 CL Nerd Font") "等距更紗黑體 CL Nerd Font")
+				 ((member "JetBrainsMono Nerd Font Mono" (font-family-list)) "JetBrainsMono Nerd Font Mono")
+				 ((member "Sarasa Mono J" (font-family-list)) "Sarasa Mono J")
+				 ((member "DejaVu Sans Mono"  (font-family-list)) "DejaVu Sans Mono")))
+			   (t (frame-parameter nil 'font)))
+			  :size 30
+			  )
    t t)
 
   ;;  set font for chinese characters
@@ -67,7 +65,7 @@
 	  ))))
 
   ;;set font size
-  (set-face-attribute 'default nil :height 100)
+  ;; (set-face-attribute 'default nil :height 100)
   )
 
 ;; 判断是否使用了deamon和判断是否使用的是终端

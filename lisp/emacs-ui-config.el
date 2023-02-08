@@ -77,11 +77,12 @@
 
 ;;-------------------------custom-----------------------------------
 (defun yzs/emacs-ui-config-theme ()
+  ;; (load-theme 'sanityinc-tomorrow-night t)
   (load-theme 'sanityinc-tomorrow-night t)
   (custom-set-faces
    '(org-block ((t (:background "black"))))
-   )
-  )
+   '(line-number-current-line ((t (:foreground "gold"))))
+   ))
 
 ;;-------------------------hook-----------------------------------
 

@@ -74,6 +74,7 @@
 			(eval-print-last-sexp)))
 		(load bootstrap-file nil 'nomessage)))))
 
+(require 'emacs-ui-config)
 (require 'emacs-default-config)
 (require 'emacs-custom-config)
 
@@ -81,7 +82,6 @@
 (require 'emacs-better-config)
 (require 'emacs-code-config)
 (require 'emacs-org-config)
-(require 'emacs-ui-config)
 (require 'emacs-pyim-config)
 (require 'emacs-key-binding-config)
 
