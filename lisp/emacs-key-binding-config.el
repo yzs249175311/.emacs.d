@@ -11,6 +11,7 @@
 (general-define-key
  :prefix "SPC"
  :states '(normal motion)
+ "SPC" 'execute-extended-command
  "b b" 'consult-buffer
  "b k" 'kill-buffer
  "b B" 'list-buffers

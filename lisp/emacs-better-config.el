@@ -246,8 +246,18 @@ targets."
 		  "^\\*shell.*\\*$"  shell-mode  
 		  "^\\*term.*\\*$"   term-mode   
 		  "^\\*vterm.*\\*$"  vterm-mode ))
+
+  (defun yzs/popper--fit-window-height (win)
+	(fit-window-to-buffer
+	 win
+	 (floor (frame-height) 2)
+	 (floor (frame-height) 3)
+	 ))
   (popper-mode +1)
-  (popper-echo-mode +1))
+  (popper-echo-mode +1)
+  :custom
+  (popper-window-height 'yzs/popper--fit-window-height))
+
 (use-package posframe)
 
 (use-package google-translate

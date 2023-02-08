@@ -44,7 +44,6 @@
   (evil-mode)
   (yzs/evil-config)
   (yzs/evil-key-config)
-  ;;(define-key evil-motion-state-map (kbd "RET") nil)
   )
 
 (use-package evil-surround

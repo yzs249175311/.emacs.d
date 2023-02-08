@@ -1,6 +1,9 @@
 (use-package org
   :init
-  (setq yzs/org-agenda-files (directory-files  "~/Nutstore Files/note/GTD/" t ".org$"))
+  (let ((dir "~/Nutstore Files/note/GTD/"))
+	(when (file-exists-p dir)
+	  (setq yzs/org-agenda-files (directory-files dir t ".org$"))
+	  ))
   :config
   (setq org-adapt-indentation t
 		org-hide-leading-stars t
