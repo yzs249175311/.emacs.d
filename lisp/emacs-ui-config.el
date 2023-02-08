@@ -89,16 +89,20 @@
 ;; select theme
 (add-hook 'after-init-hook 
 		  #'(lambda ()
-			  (cond
-			   ((string-equal system-type "gnu/linux")
-				(cond
-				 ((string-equal window-system "x") (yzs/emacs-ui-config-theme))
-				 ((string-equal window-system nil) (yzs/emacs-ui-config-theme))
-				 ))
 
-			   ((string-equal system-type "windows-nt") (yzs/emacs-ui-config-theme))
+			  ;; (cond
+			  ;;  ((string-equal system-type "gnu/linux")
+			  ;; 	(cond
+			  ;; 	 ((string-equal window-system "x") (yzs/emacs-ui-config-theme))
+			  ;; 	 ((string-equal window-system nil) (yzs/emacs-ui-config-theme))
+			  ;; 	 ))
 
-			   )))
+			  ;;  ((string-equal system-type "windows-nt") ))
+
+			  (if (display-graphic-p)
+				  (yzs/emacs-ui-config-theme)
+				(yzs/emacs-ui-config-theme))
+			  ))
 
 
 (provide 'emacs-ui-config)

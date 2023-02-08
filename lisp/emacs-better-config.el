@@ -1,4 +1,23 @@
+(use-package company
+  :if (null (display-graphic-p))
+  :hook
+  (after-init . global-company-mode)
+
+  ;; (web-mode . (lambda ()
+  ;;               (add-to-list 'company-backends 'company-web-html)
+  ;; 				(add-to-list 'company-backends 'company-yasnippet)
+  ;; 				))
+  :bind
+  (:map company-mode-map
+        ("C-M-i" . company-complete)
+		("C-M-/" . company-dabbrev-code))
+  (:map company-active-map
+		([remap evil-normal-state] . company-abort))
+  :config
+  (setq company-minimum-prefix-length 3))
+
 (use-package corfu
+  :if (null (display-graphic-p))
   ;; Optional customizations
   :custom
   (corfu-cycle t)                  ; Allows cycling through candidates
@@ -172,6 +191,7 @@ targets."
   :init
   (setq wgrep-auto-save-buffer t))
 
+
 (use-package yasnippet
   :init
   (yas-global-mode 1)
@@ -247,16 +267,15 @@ targets."
 		  "^\\*term.*\\*$"   term-mode   
 		  "^\\*vterm.*\\*$"  vterm-mode ))
 
-  (defun yzs/popper--fit-window-height (win)
-	(fit-window-to-buffer
-	 win
-	 (floor (frame-height) 2)
-	 (floor (frame-height) 3)
-	 ))
   (popper-mode +1)
   (popper-echo-mode +1)
   :custom
-  (popper-window-height 'yzs/popper--fit-window-height))
+  (popper-window-height (lambda (win)
+						  (fit-window-to-buffer
+						   win
+						   (floor (frame-height) 2)
+						   (floor (frame-height) 3)
+						   ))))
 
 (use-package posframe)
 

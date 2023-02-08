@@ -1,4 +1,5 @@
 (use-package lsp-bridge
+  :if (display-graphic-p)
   :ensure nil
   :after yasnippet
   :load-path "~/.emacs.d/straight/repos/lsp-bridge/acm"
