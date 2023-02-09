@@ -54,22 +54,21 @@
   :init
   (nyan-mode 1))
 
-;; (use-package doom-themes
-;;   :config
-;;   ;; Global settings (defaults)
-;;   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-;; 		doom-themes-enable-italic t) ; if nil, italics is universally disabled
-;;   ;; Enable flashing mode-line on errors
-;;   (doom-themes-visual-bell-config)
-;;   ;; Enable custom neotree theme (all-the-icons must be installed!)
-;;   ;; (doom-themes-neotree-config)
-;;   ;; or for treemacs users
-;;   (setq doom-themes-treemacs-theme "doom-colors") ; use "doom-colors" for less minimal icon theme
-;;   (doom-themes-treemacs-config)
-;;   ;; Corrects (and improves) org-mode's native fontification.
-;;   ;; (doom-themes-org-config)
-;;   )
-(use-package color-theme-sanityinc-tomorrow)
+(use-package doom-themes
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+		doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  ;; (doom-themes-neotree-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-colors") ; use "doom-colors" for less minimal icon theme
+  (doom-themes-treemacs-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  ;; (doom-themes-org-config)
+  )
 
 (when (version< emacs-version "29")
   (use-package leuven-theme)
@@ -78,11 +77,13 @@
 ;;-------------------------custom-----------------------------------
 (defun yzs/emacs-ui-config-theme ()
   ;; (load-theme 'sanityinc-tomorrow-night t)
-  (load-theme 'sanityinc-tomorrow-night t)
+  (load-theme 'doom-tomorrow-night t)
   (custom-set-faces
-   '(org-block ((t (:background "black"))))
+   '(org-block ((t (:background "gray9"))))
    '(line-number-current-line ((t (:foreground "gold"))))
-   ))
+   ;; `(line-number ((t (:background ,(face-background 'default)))))
+   )
+  )
 
 ;;-------------------------hook-----------------------------------
 
