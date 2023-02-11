@@ -1,4 +1,4 @@
-;;------------------ init variable -------------------------------;;
+;;------------------ define variable -------------------------------;;
 (setq use-wsl-p nil)
 (setq yzs/which-system-open-command (pcase system-type
 									  ('darwin "open")
@@ -7,10 +7,29 @@
 
 (setq yzs/encode
 	  (pcase system-type
-	   ('windows-nt 'gbk)
-	   (_ 'utf-8)))
+		('windows-nt 'gbk)
+		(_ 'utf-8)))
 
-;;------------------ init config begin-------------------------------;;
+(setq yzs/filetype-run-command-alist '(
+									   ("js" . "node")
+									   ("ts" . "ts-node")
+									   ))
+
+(setq yzs/filetype-run-command-daemon-alist '(
+											  ("js" . "nodemon")
+											  ("ts" . "nodemon")
+											  ))
+;;------------------ define macro -------------------------------;;
+
+;;------------------ define function -------------------------------;;
+
+(defun yzs/get-filetype-run-command (file &optional num)
+  "获取运行文件的命令: num的1:表示普通执行, 2:表示使用deamon的方式执行"
+  (alist-get (file-name-extension file)
+			 (pcase num
+			  (1 yzs/filetype-run-command-alist)
+			  (2 yzs/filetype-run-command-daemon-alist))
+			   nil nil 'equal))
 
 (defun yzs/tool/path-wsl-to-windows (str)
   (if use-wsl-p
@@ -34,6 +53,7 @@
 ;; 		(shell-command-to-string (encode-coding-string (format "microsoft-edge-stable %s" (yzs/tool/path-wsl-to-windows buffer-file-name)) yzs/encode))))))
 
 (defun yzs/open-file-in-system (file)
+  "用操作系统默认的方式打开文件"
   (interactive "fOpen File In System:")
   (message "Open the file in system:%s" file)
   (if (and (eq system-type 'windows-nt)
@@ -57,31 +77,18 @@
 				  estartPath
 				  (substring estartPath (length edir))) yzs/encode)))))
 
-(defun yzs/run-code (file)
-  "运行代码,支持javascript,typescript"
-  (interactive "fChoice file:")
-  (unless (file-exists-p file)
-	  (setq-local file buffer-file-name))
-  (message "run code: %s" file)
-  (cond 
-   ((string-match "\.js$" file) 
-	(async-shell-command (encode-coding-string (concat "node " file) yzs/encode)))
-   ((string-match "\.ts$" file) 
-	(async-shell-command (encode-coding-string (concat "ts-node " file) yzs/encode)))
-   (t (message "Can't run this file"))))
 
-(defun yzs/run-code-deamon (file)
+(defun yzs/run-code (prefix file)
   "运行代码,支持javascript,typescript"
-  (interactive "fChoice file:")
+  (interactive "p\nfChoice file:")
   (unless (file-exists-p file)
-	  (setq-local file buffer-file-name))
+	(setq-local file buffer-file-name))
   (message "run code: %s" file)
-  (cond 
-   ((string-match "\.js$" file) 
-	(async-shell-command (encode-coding-string (concat "nodemon " file) yzs/encode)))
-   ((string-match "\.ts$" file) 
-	(async-shell-command (encode-coding-string (concat "nodemon " file) yzs/encode)))
-   (t (message "Can't run this file"))))
+  (let ((command (yzs/get-filetype-run-command file prefix)))
+	(if (and command (stringp command))
+		(async-shell-command (encode-coding-string (concat command " " file) yzs/encode))
+	  (message "Can't run this file")))
+  )
 
 ;; (defun yzs/open-directory(path) 
 ;;   "打开目标文件夹"
