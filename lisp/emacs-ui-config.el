@@ -77,9 +77,9 @@
 ;;-------------------------custom-----------------------------------
 (defun yzs/emacs-ui-config-theme ()
   ;; (load-theme 'sanityinc-tomorrow-night t)
-  (load-theme 'doom-tomorrow-night t)
+  (load-theme 'doom-one t)
   (custom-set-faces
-   '(org-block ((t (:background "gray9"))))
+   ;; '(org-block ((t (:background "gray9"))))
    '(line-number-current-line ((t (:foreground "gold"))))
    ;; `(line-number ((t (:background ,(face-background 'default)))))
    )

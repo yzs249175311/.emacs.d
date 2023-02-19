@@ -12,7 +12,7 @@
 		org-startup-folded nil
 		org-return-follows-link t
 		org-startup-truncated nil
-		;; org-log-done t
+		org-log-done t
 		org-log-into-drawer t
 		org-insert-heading-respect-content t
 
@@ -32,12 +32,14 @@
 		"⭠ now ─────────────────────────────────────────────────"
 		org-plantuml-jar-path (expand-file-name "~/.emacs.d/.cache/plantuml.jar")
 		;; org-html-head-include-default-style nil
-		org-html-head-extra "<style>
-									pre.src{background:#343131;color:white;}
-									#content{max-width:1800px;}
-									p{max-width:1600px;}
-									li{max-width:1600px;}
-							  </style>"
+
+		;; org-html-head-extra "<style>
+		;; 							pre.src{background:#343131;color:white;}
+		;; 							#content{max-width:1800px;}
+		;; 							p{max-width:1600px;}
+		;; 							li{max-width:1600px;}
+		;; 					  </style>"
+
 		)
 
 
@@ -117,7 +119,7 @@
 
 ;; begin 
 ;; add "#+setupfile:" to every .org buffer
-(defcustom yzs/setup-file '("https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup")
+(defcustom yzs/setup-file '("https://yzs249175311.github.io/org-html-theme-dull/org-html-theme-dull.setup")
   "list of string with setup file or functions.
 
 Functions must take care of keyword themselves and must return
@@ -143,8 +145,7 @@ See also `yzs/setup-file' and `yzs/setup-file-keyword'"
 			 yzs/setup-file
 			 "\n") "\n")))
 
-(add-hook 'org-export-before-processing-hook
-		  'yzs/org-export-setup-files)
+(add-hook 'org-export-before-processing-hook 'yzs/org-export-setup-files)
 
 ;; end
 

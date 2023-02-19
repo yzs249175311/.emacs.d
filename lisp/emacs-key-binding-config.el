@@ -13,6 +13,7 @@
  :states '(normal motion)
  "SPC" 'execute-extended-command
  "b b" 'consult-buffer
+ "b p" 'consult-project-buffer
  "b k" 'kill-buffer
  "b B" 'list-buffers
  "c" '(:which-key "Custom")
