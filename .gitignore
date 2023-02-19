@@ -4,3 +4,4 @@
 !init.el
 !.gitignore
 !snippets/
+!site-lisp/
