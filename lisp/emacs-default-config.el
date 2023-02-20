@@ -26,13 +26,10 @@
 ;; (set-selection-coding-system 'utf-8-unix)
 ;; (set-terminal-coding-system 'utf-8-unix)
 ;; (setq locale-coding-system 'utf-8-unix)
-(if (string-equal system-type "windows-nt")
+(when (string-equal system-type "windows-nt")
 	(progn
 	  (prefer-coding-system 'utf-8-auto)
-	  )
-  (progn
-	(prefer-coding-system 'utf-8-auto)
-	))
+	  ))
 
 ;;解决python代码解码错误的问题，与treemacs有关
 (setenv "PYTHONIOENCODING" "utf-8")
@@ -118,7 +115,7 @@
 (set-default 'tab-always-indent t)
 ;; no mixed tab space
 ;;(setq-default indent-tabs-mode t)
-					; gnu emacs 23.1, 24.4.1 default is t
+										; gnu emacs 23.1, 24.4.1 default is t
 
 ;; 4 is more popular than 8.
 (setq-default tab-width 4)
