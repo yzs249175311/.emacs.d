@@ -6,6 +6,7 @@
 		"~/.emacs.d/lisp/"
 		"~/.emacs.d/lisp/code"
 		"~/.emacs.d/lisp/default"
+		"~/.emacs.d/lisp/custom"
 		))
 
 

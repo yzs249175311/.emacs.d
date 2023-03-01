@@ -1,3 +1,5 @@
+(require 'custom-run-code-command)
+
 ;;------------------ define variable -------------------------------;;
 (setq use-wsl-p nil)
 (setq yzs/which-system-open-command (pcase system-type
@@ -10,26 +12,21 @@
 		('windows-nt 'gbk)
 		(_ 'utf-8)))
 
-(setq yzs/filetype-run-command-alist '(
-									   ("js" . "node")
-									   ("ts" . "ts-node")
-									   ))
-
-(setq yzs/filetype-run-command-daemon-alist '(
-											  ("js" . "nodemon")
-											  ("ts" . "nodemon")
-											  ))
 ;;------------------ define macro -------------------------------;;
 
 ;;------------------ define function -------------------------------;;
 
-(defun yzs/get-filetype-run-command (file &optional num)
-  "获取运行文件的命令: num的1:表示普通执行, 2:表示使用deamon的方式执行"
-  (alist-get (file-name-extension file)
-			 (pcase num
-			  (1 yzs/filetype-run-command-alist)
-			  (2 yzs/filetype-run-command-daemon-alist))
-			   nil nil 'equal))
+(defun yzs/get-run-code-command (file)
+  (let (
+		(command (alist-get 
+				  (file-name-extension file)
+				  yzs/run-code-command-alist
+				  nil nil 'equal
+				  )))
+	(if (fboundp command)
+		(funcall command file)
+	  nil))
+  )
 
 (defun yzs/tool/path-wsl-to-windows (str)
   (if use-wsl-p
@@ -83,10 +80,11 @@
   (interactive "p\nfChoice file:")
   (unless (file-exists-p file)
 	(setq-local file buffer-file-name))
-  (message "run code: %s" file)
-  (let ((command (yzs/get-filetype-run-command file prefix)))
-	(if (and command (stringp command))
-		(async-shell-command (encode-coding-string (concat command " " file) yzs/encode))
+  (message "Run file: %s" file)
+  (let ((command (yzs/get-run-code-command file)))
+	(message "Try to run command:%s" command)
+	(if (stringp command)
+		(async-shell-command (encode-coding-string command yzs/encode))
 	  (message "Can't run this file")))
   )
 
