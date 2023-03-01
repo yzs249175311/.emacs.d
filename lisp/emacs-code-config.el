@@ -8,6 +8,8 @@
 (use-package json-mode)
 (use-package markdown-mode)
 (use-package yuck-mode)
+(use-package dockerfile-mode)
+
 (require 'code-web)
 
 (if (display-graphic-p)

@@ -30,7 +30,7 @@
 		  " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
 		org-agenda-current-time-string
 		"⭠ now ─────────────────────────────────────────────────"
-		org-plantuml-jar-path (expand-file-name "~/.emacs.d/.cache/plantuml.jar")
+		org-plantuml-jar-path (expand-file-name "~/.emacs.d/.cache/org-uml/plantuml.jar")
 		;; org-html-head-include-default-style nil
 
 		;; org-html-head-extra "<style>
