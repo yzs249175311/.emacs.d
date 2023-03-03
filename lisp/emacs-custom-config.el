@@ -136,6 +136,21 @@
 					(time-subtract after-init-time before-init-time)))
 		   gcs-done))
 
+(defun yzs/toggle-proxy()
+  (interactive)
+  (if (bound-and-true-p url-proxy-services)
+	  (progn
+		(setq url-proxy-services nil)
+		(message "Disable proxy"))
+
+	(progn
+	  (setq url-proxy-services
+			'(("https" . "localhost:7890")
+			  ("http" . "localhost:7890")))
+	  (message "Enable proxy")))
+  )
+
+
 (defun yzs/resize-frame ()
   "重新调整frame"
   (interactive)

@@ -1,8 +1,9 @@
 (use-package org
   :init
   (let ((dir "~/Nutstore Files/note/GTD/"))
-	(when (file-exists-p dir)
+	(if (file-exists-p dir)
 	  (setq yzs/org-agenda-files (directory-files dir t ".org$"))
+	  (setq yzs/org-agenda-files nil)
 	  ))
   :config
   (setq org-adapt-indentation t
@@ -16,11 +17,10 @@
 		org-log-into-drawer t
 		org-insert-heading-respect-content t
 
-		org-hide-emphasis-markers t
+		org-hide-emphasis-markers nil
 		;; org-ellipsis " ⤵"
 		org-ellipsis "…"
-		org-pretty-entities t
-
+		org-pretty-entities nil
 		;; Agenda styling
 		org-agenda-tags-column 0
 		org-agenda-block-separator ?─
@@ -115,9 +115,16 @@
 		org-roam-ui-open-on-start t))
 
 (use-package plantuml-mode)
+(use-package cdlatex
+  :hook
+  (org-mode . #'turn-on-org-cdlatex)
+  (LaTeX-mode . #'turn-on-cdlatex)
+  :bind
+  (:map cdlatex-mode-map
+		("TAB" . nil)
+		("C-<return>" . nil)))
+(use-package auctex)
 
-
-;; begin 
 ;; add "#+setupfile:" to every .org buffer
 (defcustom yzs/setup-file '("https://yzs249175311.github.io/org-html-theme-dull/org-html-theme-dull.setup")
   "list of string with setup file or functions.

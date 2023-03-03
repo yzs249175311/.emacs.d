@@ -17,7 +17,7 @@
   (setq company-minimum-prefix-length 3))
 
 (use-package corfu
-  :if (null (display-graphic-p))
+  :if (display-graphic-p)
   ;; Optional customizations
   :custom
   (corfu-cycle t)                  ; Allows cycling through candidates
