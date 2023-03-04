@@ -11,6 +11,7 @@
 (general-define-key
  :prefix "SPC"
  :states '(normal motion)
+ :map 'global-map
  "SPC" 'execute-extended-command
  "b b" 'consult-buffer
  "b p" 'consult-project-buffer
@@ -22,6 +23,9 @@
  "c c" 'yzs/run-code
  "c s" 'yzs/open-file-in-live-server
  "c o" 'yzs/open-file-in-system
+ "c p" 'yzs/toggle-proxy
+ "c t" 'google-translate-at-point
+ "c T" 'google-translate-query-translate
  "f" '(:which-key "File")
  "f f" 'find-file
  "f r" 'recentf-open-files
