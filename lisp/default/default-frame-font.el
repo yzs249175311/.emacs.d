@@ -37,7 +37,7 @@
 				 ((member "Sarasa Mono J" (font-family-list)) "Sarasa Mono J")
 				 ((member "DejaVu Sans Mono"  (font-family-list)) "DejaVu Sans Mono")))
 			   (t (frame-parameter nil 'font)))
-			  :size 30
+			  :size 24
 			  )
    t t)
 

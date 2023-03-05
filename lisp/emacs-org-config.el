@@ -16,7 +16,7 @@
 		org-log-done t
 		org-log-into-drawer t
 		org-insert-heading-respect-content t
-
+		org-export-with-broken-links t
 		org-hide-emphasis-markers nil
 		;; org-ellipsis " ⤵"
 		org-ellipsis "…"
