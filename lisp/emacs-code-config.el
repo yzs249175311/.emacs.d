@@ -12,9 +12,10 @@
 
 (require 'code-web)
 
-(if (display-graphic-p)
-	(require 'code-lsp-bridge)
-  (require 'code-lsp)
-  )
+;; (if (display-graphic-p)
+;; 	(require 'code-lsp-bridge)
+;;   (require 'code-lsp)
+;;   )
+(require 'code-lsp)
 
 (provide 'emacs-code-config)

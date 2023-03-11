@@ -21,7 +21,7 @@
   ;; Optional customizations
   :custom
   (corfu-cycle t)                  ; Allows cycling through candidates
-  (corfu-auto nil)                   ; Enable auto completion
+  (corfu-auto t)                   ; Enable auto completion
   (corfu-auto-prefix 2)            ; Enable auto completion
   (corfu-auto-delay 0)           ; Enable auto completion
   (corfu-quit-at-boundary 'separator)

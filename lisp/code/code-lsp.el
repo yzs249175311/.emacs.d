@@ -27,6 +27,8 @@
   (javascript-mode . lsp)
   (css-mode . lsp)
   (typescript-mode . lsp)
+  (c-mode . lsp)
+  (c++-mode . lsp)
   (lsp-mode . hs-minor-mode)
   (lsp-completion-mode . yzs/lsp-mode-setup-completion)
   ;; if you want which-key integration
