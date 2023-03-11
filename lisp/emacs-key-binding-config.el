@@ -32,26 +32,26 @@
  "f h" 'yzs/open-init
  "g" '(:which-key "Git")
  "g g" 'magit
- "g n" 'diff-hl-next-hunk
- "g p" 'diff-hl-previous-hunk
- "g r" 'diff-hl-revert-hunk
- "g s" 'diff-hl-stage-current-hunk
- "g v" 'diff-hl-show-hunk
- "l" '(:which-key "Lsp")
- "l a" '(:which-key "Action")
- "l a r" 'lsp-bridge-rename
- "l a a" 'lsp-bridge-code-action
- "l a f" 'lsp-bridge-code-format
- "l e" '(:which-key "Error")
- "l e n" 'lsp-bridge-diagnostic-jump-next
- "l e p" 'lsp-bridge-diagnostic-jump-prev
- "l e l" 'lsp-bridge-diagnostic-list
- "l f" '(:which-key "Find")
- "l f d" 'lsp-bridge-find-def
- "l f r" 'lsp-bridge-find-references
- "l f i" 'lsp-bridge-find-impl
- "l s" '(:which-key "Show")
- "l s d" 'lsp-bridge-popup-documentation
+ "g n" 'git-gutter:next-hunk
+ "g p" 'git-gutter:previous-hunk
+ "g r" 'git-gutter:revert-hunk
+ "g s" 'git-gutter:stage-hunk
+ "g =" 'git-gutter:popup-hunk
+ "l" '(:keymap lsp-command-map :package lsp-mode :wk "Lsp")
+ ;; "l a" '(:which-key "Action")
+ ;; "l a r" 'lsp-bridge-rename
+ ;; "l a a" 'lsp-bridge-code-action
+ ;; "l a f" 'lsp-bridge-code-format
+ ;; "l e" '(:which-key "Error")
+ ;; "l e n" 'lsp-bridge-diagnostic-jump-next
+ ;; "l e p" 'lsp-bridge-diagnostic-jump-prev
+ ;; "l e l" 'lsp-bridge-diagnostic-list
+ ;; "l f" '(:which-key "Find")
+ ;; "l f d" 'lsp-bridge-find-def
+ ;; "l f r" 'lsp-bridge-find-references
+ ;; "l f i" 'lsp-bridge-find-impl
+ ;; "l s" '(:which-key "Show")
+ ;; "l s d" 'lsp-bridge-popup-documentation
  "o" '(:which-key "Org")
  "o f" 'org-roam-node-find
  "o i" 'org-roam-node-insert
@@ -73,7 +73,7 @@
  "t" '(:keymap tab-prefix-map :which-key "Tab" :package projectile)
  "w" '(:keymap evil-window-map :which-key "Window") 
  "&" '(:keymap yas-minor-mode-map :which-key "Yasnippet")
-)
+ )
 
 ;; evil global
 (general-define-key

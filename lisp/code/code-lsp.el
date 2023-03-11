@@ -48,10 +48,13 @@
   :config
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+  (define-key lsp-ui-mode-map [remap evil-goto-definition] #'lsp-ui-peek-find-definitions)
+  (define-key lsp-ui-mode-map [remap evil-insert-resume] #'lsp-ui-peek-find-references)
   :bind
-  (:map lsp-ui-mode-map
+  (:map lsp-mode-map
 		("C-c l T m" . 'lsp-ui-imenu)
-		))
+		)
+  )
 
 (use-package lsp-treemacs
   :hook

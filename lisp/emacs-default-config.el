@@ -52,7 +52,8 @@
 (global-hl-line-mode)
 (auto-save-visited-mode 1)
 (recentf-mode 1)
-(electric-indent-mode 1)
+;; (electric-indent-mode 1)
+(electric-pair-mode 1)
 (global-display-line-numbers-mode 1)
 ;;(global-linum-mode 1)
 (global-auto-revert-mode 1)
@@ -127,7 +128,6 @@
 
 (setq shift-select-mode nil)
 
-(electric-pair-mode 1)
 
 ;;代码折叠
 ;; (add-to-list 'hs-special-modes-alist '(web-mode  "{\\|<[^/>]+?" "}\\|</[^/>]*[^/]>" "<!--" web-mode-forward-sexp nil))

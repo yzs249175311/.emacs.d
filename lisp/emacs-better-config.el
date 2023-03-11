@@ -243,10 +243,12 @@ targets."
 						 (evil-define-key 'motion magit-status-mode-map (kbd "?") 'magit-dispatch))))
 
 (use-package git-gutter
-  :init (global-git-gutter-mode +1))
-(use-package diff-hl
-  :init
-  (global-diff-hl-mode))
+  :init (global-git-gutter-mode +1)
+  :custom
+  (git-gutter:window-width 1)
+  (git-gutter:modified-sign "☁")
+  (git-gutter:added-sign "☀")
+  (git-gutter:deleted-sign "☂"))
 
 (use-package popper
   :bind (("C-`"   . popper-toggle-latest)
@@ -292,5 +294,9 @@ targets."
   (:map vterm-mode-map
 		("M-;" . nil)
 		("M-'" . nil)))
+
+(use-package aggressive-indent
+  :init
+  (global-aggressive-indent-mode 1))
 
 (provide 'emacs-better-config)
