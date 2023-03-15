@@ -28,7 +28,8 @@
  "c T" 'google-translate-query-translate
  "f" '(:which-key "File")
  "f f" 'find-file
- "f r" 'recentf-open-files
+ "f r" 'recentf
+ "f s" 'save-buffer
  "f h" 'yzs/open-init
  "g" '(:which-key "Git")
  "g g" 'magit
@@ -70,10 +71,11 @@
  "s i" 'consult-imenu
  "s t" 'consult-theme
  "s b" 'consult-buffer
- "t" '(:keymap tab-prefix-map :which-key "Tab" :package projectile)
+ "t" '(:keymap tab-prefix-map :which-key "Tab")
  "w" '(:keymap evil-window-map :which-key "Window") 
  "&" '(:keymap yas-minor-mode-map :which-key "Yasnippet")
  )
+
 
 ;; evil global
 (general-define-key
@@ -94,8 +96,6 @@
  :prefix "g"
  :states '(motion normal)
  "." 'repeat
- "+" 'evil-numbers/inc-at-pt
- "-" 'evil-numbers/dec-at-pt
  "c c" 'comment-line
  )
 

@@ -295,8 +295,4 @@ targets."
 		("M-;" . nil)
 		("M-'" . nil)))
 
-(use-package aggressive-indent
-  :init
-  (global-aggressive-indent-mode 1))
-
 (provide 'emacs-better-config)

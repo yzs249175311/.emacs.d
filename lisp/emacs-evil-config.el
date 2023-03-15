@@ -56,12 +56,18 @@
   (global-evil-mc-mode 1) 
   )
 
-(use-package evil-numbers)
-
 (use-package evil-easymotion
   :init
   (evilem-default-keybindings "s")
   (evil-define-key '(motion normal) global-map (kbd "s") evilem-map)
   )
+
+(use-package  evil-escape
+  :init
+  ;; (setq-default evil-escape-key-sequence "jk")
+  (setq-default evil-escape-delay 0.2)
+  (evil-escape-mode)
+  )
+
 
 (provide 'emacs-evil-config)

@@ -20,6 +20,7 @@
 				(apply oldfn args)))
   :custom
   (lsp-completion-provider :none)
+  (lsp-auto-execute-action nil)
   ;; (lsp-typescript-suggest-auto-imports nil)
   :hook ;; replace XXX-mode with concrete major-mode(e. g. python-mode)
   (web-mode . lsp)
@@ -40,7 +41,7 @@
   :init
   (setq lsp-ui-sideline-show-hover nil
 		lsp-ui-sideline-show-code-actions nil
-		lsp-ui-sideline-show-diagnostics nil
+		lsp-ui-sideline-show-diagnostics t
 		lsp-ui-doc-position 'top
 		lsp-ui-doc-show-with-cursor t
 		lsp-ui-imenu-auto-refresh 'after-save
@@ -60,6 +61,14 @@
   :hook
   (lsp-mode . lsp-treemacs-sync-mode)
   )
+
+(use-package consult-lsp
+  :requires (consult lsp-mode)
+  :bind
+  (:map lsp-command-map
+		("C e" . consult-lsp-diagnostics)
+		("C s" . consult-lsp-symbols)
+		("C f" . consult-lsp-file-symbols)))
 
 
 
