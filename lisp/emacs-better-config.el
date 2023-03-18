@@ -1,5 +1,5 @@
 (use-package company
-  :if (null (display-graphic-p))
+  ;; :if (null (display-graphic-p))
   :hook
   (after-init . global-company-mode)
 
@@ -17,13 +17,14 @@
   (setq company-minimum-prefix-length 3))
 
 (use-package corfu
-  :if (display-graphic-p)
+  ;; :if (null (display-graphic-p))
+  :if nil
   ;; Optional customizations
   :custom
   (corfu-cycle t)                  ; Allows cycling through candidates
   (corfu-auto t)                   ; Enable auto completion
   (corfu-auto-prefix 2)            ; Enable auto completion
-  (corfu-auto-delay 0)           ; Enable auto completion
+  (corfu-auto-delay 1)           ; Enable auto completion
   (corfu-quit-at-boundary 'separator)
   (corfu-echo-documentation 0.25)   ; Enable auto completion
   (corfu-preview-current 'insert)   ; Do not preview current candidate

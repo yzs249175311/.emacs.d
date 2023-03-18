@@ -19,7 +19,7 @@
 					(replace-match "" nil t)))
 				(apply oldfn args)))
   :custom
-  (lsp-completion-provider :none)
+  ;; (lsp-completion-provider :none)
   (lsp-auto-execute-action nil)
   ;; (lsp-typescript-suggest-auto-imports nil)
   :hook ;; replace XXX-mode with concrete major-mode(e. g. python-mode)

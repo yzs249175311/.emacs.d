@@ -54,7 +54,10 @@
 (recentf-mode 1)
 ;; (electric-indent-mode 1)
 (electric-pair-mode 1)
-(global-display-line-numbers-mode 1)
+
+(setq-default display-line-numbers-type 'relative)
+(global-display-line-numbers-mode t)
+
 ;;(global-linum-mode 1)
 (global-auto-revert-mode 1)
 ;; (global-visual-line-mode 1)
@@ -138,6 +141,7 @@
 (add-hook 'web-mode-hook 'hs-minor-mode)
 (add-hook 'typescript-mode-hook 'hs-minor-mode)
 
+(add-to-list 'auto-mode-alist '("\\.cjs\\'" . js-mode))
 
 ;; convenient
 (if (>= emacs-major-version 28)
