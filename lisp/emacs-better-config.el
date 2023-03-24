@@ -1,20 +1,23 @@
 (use-package company
   ;; :if (null (display-graphic-p))
+  :init
+  (setq orderless-component-separator "[ &]")
   :hook
   (after-init . global-company-mode)
-
-  ;; (web-mode . (lambda ()
-  ;;               (add-to-list 'company-backends 'company-web-html)
-  ;; 				(add-to-list 'company-backends 'company-yasnippet)
-  ;; 				))
   :bind
   (:map company-mode-map
+        ("M-/" . company-complete)
         ("C-M-i" . company-complete)
 		("C-M-/" . company-dabbrev-code))
   (:map company-active-map
-		([remap evil-normal-state] . company-abort))
+		([remap evil-normal-state] . company-abort)
+		("TAB" . company-complete-selection)
+		("<tab>" . company-complete-selection)
+		("C-h" . nil)
+		("RET" . nil)
+		("<return>" . nil))
   :config
-  (setq company-minimum-prefix-length 3))
+  (setq company-minimum-prefix-length 2))
 
 (use-package corfu
   ;; :if (null (display-graphic-p))
@@ -84,17 +87,17 @@
 		 )
   :init
   ;; Add `completion-at-point-functions', used by `completion-at-point'.
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  ;; (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-file)
   ;;(add-to-list 'completion-at-point-functions #'cape-history)
-  ;;(add-to-list 'completion-at-point-functions #'cape-keyword)
+  ;; (add-to-list 'completion-at-point-functions #'cape-keyword)
   ;;(add-to-list 'completion-at-point-functions #'cape-tex)
   ;;(add-to-list 'completion-at-point-functions #'cape-sgml)
   ;; (add-to-list 'completion-at-point-functions #'cape-rfc1345)
   ;; (add-to-list 'completion-at-point-functions #'cape-abbrev)
   ;;(add-to-list 'completion-at-point-functions #'cape-ispell)
   ;;(add-to-list 'completion-at-point-functions #'cape-dict)
-  ;;(add-to-list 'completion-at-point-functions #'cape-symbol)
+  ;; (add-to-list 'completion-at-point-functions #'cape-symbol)
   ;;(add-to-list 'completion-at-point-functions #'cape-line)
   (add-hook 'org-mode-hook (lambda ()
 							 (add-to-list 'completion-at-point-functions #'cape-dabbrev)
@@ -103,7 +106,8 @@
   )
 
 (use-package vertico
-  :init (vertico-mode)
+  :init
+  (vertico-mode)
   :bind (:map vertico-map
 			  ("C-n" . vertico-next)
 			  ("C-p" . vertico-previous)
@@ -112,15 +116,21 @@
   :custom
   (vertico-count 10))
 
+(use-package vertico-posframe
+  :if (display-graphic-p)
+  :init
+  (vertico-posframe-mode 1))
+
 (use-package orderless
   :custom
-  (completion-styles '(substring basic orderless))
+  (completion-styles '(substring orderless basic))
+  (orderless-matching-styles '(orderless-prefixes orderless-literal orderless-regexp ))
   )
 
 (use-package consult
   :bind
-  ("C-s" . consult-line)
-  ("C-x b" . consult-buffer))
+  ([remap isearch-forward] . consult-line)
+  ([remap switch-to-buffer] . consult-buffer))
 
 (use-package marginalia
   :bind (:map minibuffer-local-map
@@ -197,11 +207,11 @@ targets."
   :init
   (yas-global-mode 1)
   :hook
-  (org-mode . yas-minor-mode)
-  (js-mode . yas-minor-mode)
-  (css-mode . yas-minor-mode)
-  (web-mode . yas-minor-mode)
-  (typescript-mode . yas-minor-mode)
+  (org-mode . yas-minor-mode-on)
+  (js-mode . yas-minor-mode-on)
+  (css-mode . yas-minor-mode-on)
+  (web-mode . yas-minor-mode-on)
+  (typescript-mode . yas-minor-mode-on)
   )
 
 (use-package yasnippet-snippets
@@ -280,6 +290,10 @@ targets."
 						   (floor (frame-height) 3)
 						   ))))
 
+(use-package popwin
+  :init
+  (popwin-mode 1))
+
 (use-package posframe)
 
 (use-package google-translate
@@ -294,6 +308,7 @@ targets."
   :bind
   (:map vterm-mode-map
 		("M-;" . nil)
-		("M-'" . nil)))
+		("M-'" . nil)
+		("M-`" . nil)))
 
 (provide 'emacs-better-config)

@@ -9,6 +9,8 @@
 (use-package markdown-mode)
 (use-package yuck-mode)
 (use-package dockerfile-mode)
+(use-package typescript-mode
+  :mode "\\.ts\\'")
 
 (require 'code-web)
 
@@ -16,6 +18,7 @@
 ;; 	(require 'code-lsp-bridge)
 ;;   (require 'code-lsp)
 ;;   )
+
 (require 'code-lsp)
 
 (provide 'emacs-code-config)

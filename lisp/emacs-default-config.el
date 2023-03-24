@@ -52,7 +52,7 @@
 (global-hl-line-mode)
 (auto-save-visited-mode 1)
 (recentf-mode 1)
-;; (electric-indent-mode 1)
+(electric-indent-mode 1)
 (electric-pair-mode 1)
 
 (setq-default display-line-numbers-type 'relative)
@@ -105,6 +105,10 @@
   (customize-set-variable
    'minibuffer-prompt-properties
    (quote (read-only t cursor-intangible t face minibuffer-prompt))))
+
+(setq read-file-name-completion-ignore-case t
+	  read-buffer-completion-ignore-case t
+	  completion-ignore-case t)
 
 ;;; esc always quits
 ;; 不知道为什么使用 "ESC" 的方式绑定会导致很多键无法使用

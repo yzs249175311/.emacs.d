@@ -63,5 +63,10 @@
   (evil-escape-mode)
   )
 
+(use-package evil-matchit
+  :init
+  (global-evil-matchit-mode 1))
+
+
 
 (provide 'emacs-evil-config)

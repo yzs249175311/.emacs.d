@@ -15,7 +15,8 @@
  "SPC" 'execute-extended-command
  "b b" 'consult-buffer
  "b p" 'consult-project-buffer
- "b k" 'kill-buffer
+ "b k" 'kill-current-buffer
+ "b K" 'kill-buffer-and-window
  "b B" 'list-buffers
  "c" '(:which-key "Custom")
  ;; "c b" 'yzs/open-file-in-browser
