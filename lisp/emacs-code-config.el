@@ -11,6 +11,9 @@
 (use-package dockerfile-mode)
 (use-package typescript-mode
   :mode "\\.ts\\'")
+(use-package nov
+  :mode ( "\\.epub\\'" . nov-mode))
+
 
 (require 'code-web)
 

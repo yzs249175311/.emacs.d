@@ -29,6 +29,8 @@
 				  grep-mode
 				  shell-mode
 				  )))
+  (setq avy-all-windows nil
+		avy-background t)
   )
 
 (use-package evil

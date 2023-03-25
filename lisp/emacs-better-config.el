@@ -133,13 +133,16 @@
   ([remap switch-to-buffer] . consult-buffer))
 
 (use-package marginalia
-  :bind (:map minibuffer-local-map
+  :bind
+  (:map minibuffer-local-map
 			  ("M-A" . marginalia-cycle))
   :init 
   (marginalia-mode))
 
 (use-package embark
   :bind
+  (:map embark-region-map
+		("SPC" . nil))
   ("M-'" . embark-act)         ;; pick some comfortable binding
   ("M-;" . embark-dwim)        ;; good alternative: M-.
   ("C-h B" . embark-bindings) ;; alternative for `describe-bindings'
@@ -302,7 +305,9 @@ targets."
   (google-translate-default-target-language "zh-CN")
   :bind
   ("C-c c t" . 'google-translate-at-point)
-  ("C-c c T" . 'google-translate-query-translate))
+  ("C-c c T" . 'google-translate-query-translate)
+  (:map embark-region-map
+		("SPC t" . 'google-translate-at-point)))
 
 (use-package vterm
   :bind
