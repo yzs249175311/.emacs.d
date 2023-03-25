@@ -87,19 +87,6 @@
  "C-M-<down>" 'evil-window-decrease-height
  )
 
-(general-define-key
- :states '(normal motion)
- ")" 'evil-paste-pop-next
- "(" 'evil-paste-pop
- )
-
-(general-define-key
- :prefix "g"
- :states '(motion normal)
- "." 'repeat
- "c c" 'comment-line
- )
-
 ;; dired 
 (general-define-key
  :states '(motion normal)

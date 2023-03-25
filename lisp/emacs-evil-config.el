@@ -31,11 +31,6 @@
 				  )))
   )
 
-(defun yzs/evil-key-config () 
-  (define-key evil-motion-state-map (kbd "RET") nil)
-  ;; (define-key evil-motion-state-map (kbd "?") nil)
-  (define-key evil-window-map (kbd "q") 'evil-delete-buffer))
-
 (use-package evil
   :defer nil
   :init 
@@ -43,7 +38,22 @@
   :config
   (evil-mode)
   (yzs/evil-config)
-  (yzs/evil-key-config)
+  :bind
+  (:map evil-window-map
+		("q" . evil-delete-buffer))
+  (:map evil-motion-state-map
+		("RET" . nil))
+
+  (:map evil-normal-state-map
+		("s" . nil)
+		("s f" . evil-avy-goto-char-2)
+		("s j" . evil-avy-goto-line)
+		("s k" . evil-avy-goto-line)
+		("s s" . evil-avy-goto-char-timer)
+		(")" . evil-paste-pop-next)
+		("(" . evil-paste-pop)
+		("g" . nil)
+		("g c c" . comment-line))
   )
 
 (use-package evil-surround
