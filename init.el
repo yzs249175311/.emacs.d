@@ -1,5 +1,5 @@
 ;;debug
-(setq debug-on-error nil)
+(setq debugj-on-error nil)
 
 (mapc (lambda (dir) (add-to-list 'load-path dir))
 	  '(

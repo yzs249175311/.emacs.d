@@ -26,6 +26,8 @@
   (setq evil-normal-state-modes
 		(append evil-normal-state-modes
 				'(
+				  occur-mode
+				  occur-edit-mode
 				  grep-mode
 				  shell-mode
 				  )))

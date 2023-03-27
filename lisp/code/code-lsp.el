@@ -22,18 +22,26 @@
   ;; 				(apply oldfn args)))
 
   :custom
-  ;; (lsp-completion-provider :none)
+  (lsp-completion-provider :none)
   (lsp-auto-execute-action nil)
   (lsp-typescript-suggest-auto-imports nil)
 
   :hook ;; replace XXX-mode with concrete major-mode(e. g. python-mode)
   (web-mode . lsp)
   (js-mode . lsp)
+  (js-ts-mode . lsp)
   (javascript-mode . lsp)
   (css-mode . lsp)
+  (css-ts-mode . lsp)
   (typescript-mode . lsp)
+  (typescript-ts-mode . lsp)
   (c-mode . lsp)
+  (c-ts-mode . lsp)
   (c++-mode . lsp)
+  (c++-ts-mode . lsp)
+  (json-mode . lsp)
+  (jsonc-mode . lsp)
+  (json-ts-mode . lsp)
   (lsp-mode . hs-minor-mode)
   ;; (lsp-completion-mode . yzs/lsp-mode-setup-completion)
   ;; if you want which-key integration
@@ -55,11 +63,14 @@
   :bind
   (:map lsp-mode-map
 		("C-c l T m" . lsp-ui-imenu)
+		)
+  (:map lsp-ui-mode-map
 		([remap xref-find-references] . lsp-ui-peek-find-references)
 		([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
 		([remap evil-goto-definition] . lsp-ui-peek-find-definitions)
-		([remap evil-insert-resume] . lsp-ui-peek-find-references)
-		))
+		)
+  (:map evil-normal-state-map
+		("g i" . lsp-ui-peek-find-references)))
 
 (use-package lsp-treemacs
   :hook

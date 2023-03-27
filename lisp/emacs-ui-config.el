@@ -40,16 +40,6 @@
 (use-package doom-modeline
   :hook (after-init . doom-modeline-mode))
 
-(use-package all-the-icons
-  :if (display-graphic-p))
-
-(use-package all-the-icons-dired
-  :if (display-graphic-p)
-  :after all-the-icons
-  :hook
-  (dired-mode . all-the-icons-dired-mode)
-  )
-
 (use-package nyan-mode
   :init
   (nyan-mode 1))

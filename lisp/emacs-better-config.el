@@ -1,12 +1,11 @@
 (use-package company
-  ;; :if (null (display-graphic-p))
+  :if (null (display-graphic-p))
   :init
   (setq orderless-component-separator "[ &]")
   :hook
   (after-init . global-company-mode)
   :bind
   (:map company-mode-map
-        ("M-/" . company-complete)
         ("C-M-i" . company-complete)
 		("C-M-/" . company-dabbrev-code))
   (:map company-active-map
@@ -20,14 +19,13 @@
   (setq company-minimum-prefix-length 2))
 
 (use-package corfu
-  ;; :if (null (display-graphic-p))
-  :if nil
+  :if (display-graphic-p)
   ;; Optional customizations
   :custom
   (corfu-cycle t)                  ; Allows cycling through candidates
   (corfu-auto t)                   ; Enable auto completion
   (corfu-auto-prefix 2)            ; Enable auto completion
-  (corfu-auto-delay 1)           ; Enable auto completion
+  (corfu-auto-delay 0)           ; Enable auto completion
   (corfu-quit-at-boundary 'separator)
   (corfu-echo-documentation 0.25)   ; Enable auto completion
   (corfu-preview-current 'insert)   ; Do not preview current candidate
@@ -50,6 +48,7 @@
 
   :init
   (global-corfu-mode)
+  (corfu-popupinfo-mode)
   (defun corfu-enable-always-in-minibuffer ()
 	"Enable Corfu in the minibuffer if Vertico/Mct are not active."
 	(unless (or (bound-and-true-p mct--active)
@@ -63,6 +62,34 @@
 								   corfu-quit-no-match t
 								   corfu-auto nil)
 			  (corfu-mode))))
+
+(use-package kind-icon
+  :after corfu
+  :init
+  (setq completion-in-region-function
+   		(kind-icon-enhance-completion completion-in-region-function))
+  :custom
+  (kind-icon-default-face 'corfu-default) ; to compute blended backgrounds correctly
+  (kind-icon-use-icons . nil)
+  (kind-icon-blend-background . nil)
+  :config
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+
+(use-package all-the-icons
+  :if (display-graphic-p))
+
+(use-package all-the-icons-dired
+  :if (display-graphic-p)
+  :after all-the-icons
+  :hook
+  (dired-mode . all-the-icons-dired-mode)
+  )
+
+(use-package all-the-icons-completion
+  :init
+  (all-the-icons-completion-mode)
+  (add-hook 'marginalia-mode-hook #'all-the-icons-completion-marginalia-setup)
+  )
 
 (use-package cape
   ;; Bind dedicated completion commands
@@ -122,8 +149,11 @@
   (vertico-posframe-mode 1))
 
 (use-package orderless
+  :init
+  (setq completion-styles '(orderless basic)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles . (partial-completion)))))
   :custom
-  (completion-styles '(substring orderless basic))
   (orderless-matching-styles '(orderless-prefixes orderless-literal orderless-regexp ))
   )
 
@@ -139,13 +169,13 @@
   :init 
   (marginalia-mode))
 
-(use-package embark
+(use-package embark						;
   :bind
-  (:map embark-region-map
-		("SPC" . nil))
   ("M-'" . embark-act)         ;; pick some comfortable binding
   ("M-;" . embark-dwim)        ;; good alternative: M-.
   ("C-h B" . embark-bindings) ;; alternative for `describe-bindings'
+  (:map embark-region-map
+		("SPC" . nil))
   :config
   ;; Hide the mode line of the Embark live/completions buffers
   (add-to-list 'display-buffer-alist

@@ -120,6 +120,9 @@
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 (global-set-key [escape] 'keyboard-quit)
 
+(define-key occur-mode-map (kbd "C-c C-p") #'occur-edit-mode)
+(global-set-key [remap dabbrev-expand] #'hippie-expand)
+
 (set-default 'tab-always-indent t)
 ;; no mixed tab space
 ;;(setq-default indent-tabs-mode t)
@@ -145,12 +148,16 @@
 (add-hook 'web-mode-hook 'hs-minor-mode)
 (add-hook 'typescript-mode-hook 'hs-minor-mode)
 
-(add-to-list 'auto-mode-alist '("\\.cjs\\'" . js-mode))
 
 ;; convenient
 (if (>= emacs-major-version 28)
 	(setq use-short-answers t)
   (defalias 'yes-or-no-p 'y-or-n-p))
+
+;;设置treesitter的加载路径和模式
+(if (and (null (version< emacs-version "29")) (eq system-type 'gnu/linux))
+	(require 'default-treesitter)
+	)
 
 (require 'default-frame-font)
 (require 'default-prettify-symbols)
