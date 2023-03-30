@@ -37,6 +37,7 @@
 ;;   ;; Load the theme files before enabling a theme
 ;;   (modus-themes-load-themes)
 ;;   :bind ("<f5>" . modus-themes-toggle))
+
 (use-package doom-modeline
   :hook (after-init . doom-modeline-mode))
 
@@ -67,10 +68,10 @@
 ;;-------------------------custom-----------------------------------
 (defun yzs/emacs-ui-config-theme ()
   ;; (load-theme 'sanityinc-tomorrow-night t)
-  (load-theme 'doom-one t)
+  (load-theme 'doom-material t)
   (custom-set-faces
    ;; '(org-block ((t (:background "gray9"))))
-   '(line-number-current-line ((t (:foreground "gold"))))
+   ;; '(line-number-current-line ((t (:foreground "gold"))))
    ;; `(line-number ((t (:background ,(face-background 'default)))))
    )
   )

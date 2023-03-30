@@ -1,6 +1,6 @@
 (defun yzs/evil-init ()
-  (setq evil-want-C-i-jump nil)
   (setq evil-undo-system 'undo-redo)
+  (setq evil-want-C-i-jump nil)
   (setq evil-want-C-u-scroll t)
   (cond 
    ((string-equal system-type "windows-nt") 
@@ -54,9 +54,9 @@
 		("s j" . evil-avy-goto-line)
 		("s k" . evil-avy-goto-line)
 		("s s" . evil-avy-goto-char-timer)
-		(")" . evil-paste-pop-next)
-		("(" . evil-paste-pop)
 		("g" . nil)
+		("g h" . evil-paste-pop-next)
+		("g l" . evil-paste-pop)
 		("g c c" . comment-line))
   )
 

@@ -75,13 +75,23 @@
 				  (substring estartPath (length edir))) yzs/encode)))))
 
 
-(defun yzs/run-code (prefix file)
+(defun yzs/run-code (file)
   "运行代码,支持javascript,typescript"
-  (interactive "p\nfChoice file:")
+  (interactive "fChoice file:")
   (unless (file-exists-p file)
 	(setq-local file buffer-file-name))
   (message "Run file: %s" file)
   (let ((command (yzs/get-run-code-command file)))
+	(message "Try to run command:%s" command)
+	(if (stringp command)
+		(async-shell-command (encode-coding-string command yzs/encode))
+	  (message "Can't run this file")))
+  )
+
+(defun yzs/run-current-code ()
+  "运行代码,支持javascript,typescript"
+  (interactive)
+  (let ((command (yzs/get-run-code-command (buffer-file-name))))
 	(message "Try to run command:%s" command)
 	(if (stringp command)
 		(async-shell-command (encode-coding-string command yzs/encode))

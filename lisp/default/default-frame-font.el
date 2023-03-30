@@ -30,9 +30,9 @@
 
 			   ((string-equal system-type "gnu/linux")
 				(cond
+				 ((font-info "更纱黑体 Mono SC Nerd") "更纱黑体 Mono SC Nerd")
 				 ((member "VictorMono Nerd Font" (font-family-list)) "VictorMono Nerd Font")
 				 ((member "Noto Sans Mono CJK SC" (font-family-list)) "Noto Sans Mono CJK SC")
-				 ((font-info "等距更紗黑體 CL Nerd Font") "等距更紗黑體 CL Nerd Font")
 				 ((member "JetBrainsMono Nerd Font Mono" (font-family-list)) "JetBrainsMono Nerd Font Mono")
 				 ((member "Sarasa Mono J" (font-family-list)) "Sarasa Mono J")
 				 ((member "DejaVu Sans Mono"  (font-family-list)) "DejaVu Sans Mono")))

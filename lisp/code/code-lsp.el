@@ -24,7 +24,7 @@
   :custom
   (lsp-completion-provider :none)
   (lsp-auto-execute-action nil)
-  (lsp-typescript-suggest-auto-imports nil)
+  ;; (lsp-typescript-suggest-auto-imports nil)
 
   :hook ;; replace XXX-mode with concrete major-mode(e. g. python-mode)
   (web-mode . lsp)
@@ -60,6 +60,7 @@
 		lsp-ui-doc-delay 2)
   :hook
   (lsp-mode . lsp-ui-mode)
+  (lsp-ui-mode . (lambda () (setq lsp-ui-peek-list-width (/ (window-width) 2))))
   :bind
   (:map lsp-mode-map
 		("C-c l T m" . lsp-ui-imenu)
@@ -70,7 +71,8 @@
 		([remap evil-goto-definition] . lsp-ui-peek-find-definitions)
 		)
   (:map evil-normal-state-map
-		("g i" . lsp-ui-peek-find-references)))
+		("g i" . lsp-ui-peek-find-references))
+  )
 
 (use-package lsp-treemacs
   :hook
