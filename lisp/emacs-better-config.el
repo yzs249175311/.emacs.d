@@ -338,8 +338,26 @@ targets."
 		(treemacs-quit)
 	  (treemacs-select-window)))
   (setq treemacs-width 35)
+
+  (treemacs-git-mode 'deferred)
+  (treemacs-indent-guide-mode)
+  (treemacs-git-commit-diff-mode t)
   :bind
-  ("<f12>" . treemacs-toggle))
+  ("<f12>" . treemacs-toggle)
+  )
+(use-package treemacs-evil
+  :after treemacs
+  :init
+  (require 'treemacs-evil))
+(use-package treemacs-projectile
+  :after treemacs
+  :init
+  (require 'treemacs-projectile))
+(use-package treemacs-tab-bar
+  :after treemacs
+  :init
+  (require 'treemacs-tab-bar)
+  )
 
 (use-package which-key
   :init

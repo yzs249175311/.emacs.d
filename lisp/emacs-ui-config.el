@@ -12,7 +12,7 @@
 (use-package visual-fill-column
   :init
   (setq visual-fill-column-width 140 
-        visual-fill-column-center-text t)
+		visual-fill-column-center-text t)
   (global-visual-fill-column-mode 1)
   )
 
@@ -68,7 +68,7 @@
 ;;-------------------------custom-----------------------------------
 (defun yzs/emacs-ui-config-theme ()
   ;; (load-theme 'sanityinc-tomorrow-night t)
-  (load-theme 'doom-material t)
+  (load-theme 'doom-tokyo-night t)
   (custom-set-faces
    ;; '(org-block ((t (:background "gray9"))))
    ;; '(line-number-current-line ((t (:foreground "gold"))))

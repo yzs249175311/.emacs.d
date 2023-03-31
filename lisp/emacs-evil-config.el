@@ -5,7 +5,7 @@
   (cond 
    ((string-equal system-type "windows-nt") 
 	(add-hook 'evil-normal-state-entry-hook (lambda () (w32-set-ime-open-status nil))))
-
+   
    ((string-equal system-type "gnu/linux")
 	(cond
 	 ((yzs/program-exists-p "fcitx5-remote" exec-path)
@@ -45,16 +45,12 @@
   :bind
   (:map evil-window-map
 		("q" . evil-delete-buffer))
-  (:map evil-motion-state-map
-		("RET" . nil))
-
   (:map evil-normal-state-map
 		("s" . nil)
 		("s f" . evil-avy-goto-char-2)
 		("s j" . evil-avy-goto-line)
 		("s k" . evil-avy-goto-line)
 		("s s" . evil-avy-goto-char-timer)
-		("g" . nil)
 		("g h" . evil-paste-pop-next)
 		("g l" . evil-paste-pop)
 		("g c c" . comment-line))

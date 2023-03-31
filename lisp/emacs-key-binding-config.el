@@ -13,6 +13,7 @@
  :states '(normal motion)
  :map 'global-map
  "SPC" 'execute-extended-command
+ "b" '(:whick-key "Buffer")
  "b b" 'consult-buffer
  "b p" 'consult-project-buffer
  "b k" 'kill-current-buffer
@@ -93,10 +94,19 @@
  "o A" 'org-agenda
 
  "p" '(:keymap projectile-command-map :which-key "Projectile" :package projectile)
+
  "t" '(:keymap tab-prefix-map :which-key "Tab")
+
+ "T" '(:which-key "Toggle")
+ "T t" 'treemacs-toggle
+
  "w" '(:keymap evil-window-map :which-key "Window") 
  "w w" 'ace-window
- "&" '(:keymap yas-minor-mode-map :which-key "Yasnippet")
+
+ "&" '(:which-key "Yasnippet")
+ "& i" 'yas-insert-snippet
+ "& n" 'yas-new-snippet
+ "& v" 'yas-visit-snippet-file
  )
 
 
@@ -123,16 +133,6 @@
  :states '(motion normal)
  :keymaps '(org-agenda-mode-map)
  "m" '(:keymap org-agenda-mode-map :which-key "Major")
- )
-
-;;yasnippet
-(general-define-key
- :prefix "SPC"
- :states '(motion normal)
- :keymaps 'yas-minor-mode-map
- "& i" 'yas-insert-snippet
- "& n" 'yas-new-snippet
- "& v" 'yas-visit-snippet-file
  )
 
 (provide 'emacs-key-binding-config)
