@@ -78,12 +78,12 @@
 (use-package all-the-icons
   :if (display-graphic-p))
 
-(use-package all-the-icons-dired
-  :if (display-graphic-p)
-  :after all-the-icons
-  :hook
-  (dired-mode . all-the-icons-dired-mode)
-  )
+;; (use-package all-the-icons-dired
+;;   :if (display-graphic-p)
+;;   :after all-the-icons
+;;   :hook
+;;   (dired-mode . all-the-icons-dired-mode)
+;;   )
 
 (use-package all-the-icons-completion
   :init
@@ -244,7 +244,7 @@
   :init 
   (marginalia-mode))
 
-(use-package embark						;
+(use-package embark
   :bind
   ("M-'" . embark-act)         ;; pick some comfortable binding
   ("M-;" . embark-dwim)        ;; good alternative: M-.
@@ -339,25 +339,19 @@ targets."
 	  (treemacs-select-window)))
   (setq treemacs-width 35)
 
-  (treemacs-git-mode 'deferred)
   (treemacs-indent-guide-mode)
-  (treemacs-git-commit-diff-mode t)
   :bind
   ("<f12>" . treemacs-toggle)
   )
 (use-package treemacs-evil
-  :after treemacs
   :init
   (require 'treemacs-evil))
 (use-package treemacs-projectile
-  :after treemacs
   :init
   (require 'treemacs-projectile))
-(use-package treemacs-tab-bar
-  :after treemacs
+(use-package treemacs-icons-dired
   :init
-  (require 'treemacs-tab-bar)
-  )
+  (treemacs-icons-dired-mode))
 
 (use-package which-key
   :init
@@ -375,9 +369,10 @@ targets."
   )
 
 (use-package magit
-  :hook
-  (magit-status-mode . (lambda ()
-						 (evil-define-key 'motion magit-status-mode-map (kbd "?") 'magit-dispatch))))
+  ;; :hook
+  ;; (magit-status-mode . (lambda ()
+	;; 											 (evil-define-key 'motion magit-status-mode-map (kbd "?") 'magit-dispatch)))
+	)
 
 (use-package git-gutter
   :init (global-git-gutter-mode +1)

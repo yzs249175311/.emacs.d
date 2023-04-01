@@ -13,16 +13,15 @@
 	 ))))
 
 (defun yzs/evil-config () 
-  (setq evil-motion-state-modes 
-		(append '( 
-				  treemacs-mode 
-				  magit-status-mode
-				  helpful-mode
-				  lsp-treemacs-error-list-mode
-				  ) 
-				evil-emacs-state-modes
-				evil-motion-state-modes))
-  (setq evil-emacs-state-modes nil)
+  ;; (setq evil-motion-state-modes 
+	;; 	(append '( 
+	;; 			  treemacs-mode 
+	;; 			  magit-status-mode
+	;; 			  lsp-treemacs-error-list-mode
+	;; 			  ) 
+	;; 			evil-emacs-state-modes
+	;; 			evil-motion-state-modes))
+  ;; (setq evil-emacs-state-modes nil)
   (setq evil-normal-state-modes
 		(append evil-normal-state-modes
 				'(
@@ -30,6 +29,7 @@
 				  occur-edit-mode
 				  grep-mode
 				  shell-mode
+				  helpful-mode
 				  )))
   (setq avy-all-windows nil
 		avy-background t)
