@@ -49,6 +49,9 @@
         (yaml-mode         . yaml-ts-mode)
         (typescript-mode . typescript-ts-mode)))
 
+(customize-set-variable
+ 'typescript-ts-mode-indent-offset 4)
+
 
 
 (provide 'default-treesitter)

@@ -7,6 +7,7 @@
 	(add-hook 'evil-normal-state-entry-hook (lambda () (w32-set-ime-open-status nil))))
    
    ((string-equal system-type "gnu/linux")
+
 	(cond
 	 ((yzs/program-exists-p "fcitx5-remote" exec-path)
 	  (add-hook 'evil-normal-state-entry-hook (lambda () (call-process "fcitx5-remote" nil 0 nil "-c"))))
@@ -54,6 +55,8 @@
 		("g h" . evil-paste-pop-next)
 		("g l" . evil-paste-pop)
 		("g c c" . comment-line))
+	:custom
+	(evil-shift-width 2)
   )
 
 (use-package evil-surround

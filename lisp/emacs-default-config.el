@@ -128,7 +128,7 @@
 ;;(setq-default indent-tabs-mode t)
 ;; gnu emacs 23.1, 24.4.1 default is t
 ;; 4 is more popular than 8.
-(setq-default tab-width 2)
+(setq-default tab-width 4)
 
 (setq sentence-end-double-space nil )
 
