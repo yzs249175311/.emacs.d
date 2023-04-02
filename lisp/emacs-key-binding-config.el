@@ -23,7 +23,7 @@
  ;; "c b" 'yzs/open-file-in-browser
  "c d" 'yzs/open-directory
  "c c" 'yzs/run-current-code
- "c f" 'yzs/run-code
+ "c C" 'yzs/run-code
  "c s" 'yzs/open-file-in-live-server
  "c o" 'yzs/open-file-in-system
  "c p" 'yzs/toggle-proxy
