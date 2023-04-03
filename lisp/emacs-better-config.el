@@ -25,7 +25,7 @@
   (corfu-cycle t)                  ; Allows cycling through candidates
   (corfu-auto t)                   ; Enable auto completion
   (corfu-auto-prefix 2)            ; Enable auto completion
-  (corfu-auto-delay 0)           ; Enable auto completion
+  (corfu-auto-delay 0.5)           ; Enable auto completion
   (corfu-quit-at-boundary 'separator)
   (corfu-echo-documentation 0.25)   ; Enable auto completion
   (corfu-preview-current 'insert)   ; Do not preview current candidate
@@ -143,10 +143,10 @@
   :custom
   (vertico-count 10))
 
-(use-package vertico-posframe
-  :if (display-graphic-p)
-  :init
-  (vertico-posframe-mode 1))
+;; (use-package vertico-posframe
+;;   :if (display-graphic-p)
+;;   :init
+;;   (vertico-posframe-mode 1))
 
 (use-package orderless
   :init
@@ -371,16 +371,17 @@ targets."
 (use-package magit
   ;; :hook
   ;; (magit-status-mode . (lambda ()
-	;; 											 (evil-define-key 'motion magit-status-mode-map (kbd "?") 'magit-dispatch)))
+  ;; 							 (evil-define-key 'motion magit-status-mode-map (kbd "?") 'magit-dispatch)))
 	)
 
 (use-package git-gutter
   :init (global-git-gutter-mode +1)
   :custom
   (git-gutter:window-width 1)
-  (git-gutter:modified-sign "☁")
-  (git-gutter:added-sign "☀")
-  (git-gutter:deleted-sign "☂"))
+  ;; (git-gutter:modified-sign "☁")
+  ;; (git-gutter:added-sign "☀")
+  ;; (git-gutter:deleted-sign "☂")
+  )
 
 (use-package popper
   :bind (("C-`"   . popper-toggle-latest)

@@ -1,11 +1,16 @@
 ;;彩虹括号
 (use-package rainbow-delimiters
   :hook
+  (emacs-lisp-mode . rainbow-delimiters-mode)
   (web-mode . rainbow-delimiters-mode)
   (html-mode . rainbow-delimiters-mode)
+  (html-ts-mode . rainbow-delimiters-mode)
   (css-mode . rainbow-delimiters-mode)
+  (css-ts-mode . rainbow-delimiters-mode)
   (js-mode . rainbow-delimiters-mode)
-  (emacs-lisp-mode . rainbow-delimiters-mode)
+  (js-ts-mode . rainbow-delimiters-mode)
+  (typescript-mode . rainbow-delimiters-mode)
+  (typescript-ts-mode . rainbow-delimiters-mode)
   )
 
 ;;更改内容显示宽度
@@ -67,7 +72,7 @@
 
 ;;-------------------------custom-----------------------------------
 (defun yzs/emacs-ui-config-theme ()
-  ;; (load-theme 'sanityinc-tomorrow-night t)
+  "主题配置"
   (load-theme 'doom-solarized-light t)
   (custom-set-faces
    ;; '(org-block ((t (:background "gray9"))))

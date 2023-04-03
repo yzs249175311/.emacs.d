@@ -1,5 +1,5 @@
 ;;debug
-(setq debugj-on-error nil)
+(setq debug-on-error nil)
 
 (mapc (lambda (dir) (add-to-list 'load-path dir))
 	  '(
@@ -37,7 +37,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(setq yzs/my-packages '(
+(setq-local yzs/my-packages '(
 						use-package
 						))
 
