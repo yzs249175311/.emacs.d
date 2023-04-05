@@ -315,11 +315,7 @@ targets."
   :init
   (yas-global-mode 1)
   :hook
-  (org-mode . yas-minor-mode-on)
-  (js-mode . yas-minor-mode-on)
-  (css-mode . yas-minor-mode-on)
-  (web-mode . yas-minor-mode-on)
-  (typescript-mode . yas-minor-mode-on)
+  (prog-mode . yas-minor-mode-on)
   )
 
 (use-package yasnippet-snippets

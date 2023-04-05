@@ -143,12 +143,7 @@
 
 ;;代码折叠
 ;; (add-to-list 'hs-special-modes-alist '(web-mode  "{\\|<[^/>]+?" "}\\|</[^/>]*[^/]>" "<!--" web-mode-forward-sexp nil))
-(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
-(add-hook 'css-mode-hook 'hs-minor-mode)
-(add-hook 'js-mode-hook 'hs-minor-mode)
-(add-hook 'scss-mode-hook 'hs-minor-mode)
-(add-hook 'web-mode-hook 'hs-minor-mode)
-(add-hook 'typescript-mode-hook 'hs-minor-mode)
+(add-hook 'prog-mode-hook 'hs-minor-mode)
 
 
 ;; convenient

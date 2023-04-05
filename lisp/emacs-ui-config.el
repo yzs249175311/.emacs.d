@@ -1,24 +1,16 @@
 ;;彩虹括号
 (use-package rainbow-delimiters
   :hook
-  (emacs-lisp-mode . rainbow-delimiters-mode)
-  (web-mode . rainbow-delimiters-mode)
-  (html-mode . rainbow-delimiters-mode)
-  (html-ts-mode . rainbow-delimiters-mode)
-  (css-mode . rainbow-delimiters-mode)
-  (css-ts-mode . rainbow-delimiters-mode)
-  (js-mode . rainbow-delimiters-mode)
-  (js-ts-mode . rainbow-delimiters-mode)
-  (typescript-mode . rainbow-delimiters-mode)
-  (typescript-ts-mode . rainbow-delimiters-mode)
+  (prog-mode . rainbow-delimiters-mode)
   )
 
 ;;更改内容显示宽度
-(use-package visual-fill-column
-  :init
-  (setq visual-fill-column-width 140 
-		visual-fill-column-center-text t)
-  (global-visual-fill-column-mode 1)
+(use-package olivetti
+  :hook
+  (prog-mode . olivetti-mode)
+  (find-file . olivetti-mode)
+  :custom
+  (olivetti-body-width 130)
   )
 
 ;; (use-package modus-themes

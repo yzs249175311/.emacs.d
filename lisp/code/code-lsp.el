@@ -42,44 +42,44 @@
   (json-mode . lsp)
   (jsonc-mode . lsp)
   (json-ts-mode . lsp)
-  (lsp-mode . hs-minor-mode)
   ;; (lsp-completion-mode . yzs/lsp-mode-setup-completion)
   ;; if you want which-key integration
   (lsp-mode . lsp-enable-which-key-integration)
   :commands lsp
-  :config
-  (evil-define-key 'normal lsp-mode-map (kbd "g D") 'lsp-find-references)
   :bind
   (:map lsp-mode-map
-   ([remap prog-fill-reindent-defun] . 'lsp-format-buffer))
+		([remap prog-fill-reindent-defun] . lsp-format-buffer)
+		(:map evil-normal-state-map
+			  ("g D" . lsp-find-references))))
+
+(use-package lsp-ui
+  :requires lsp-mode
+  :init
+  (setq lsp-ui-sideline-show-hover nil
+		lsp-ui-sideline-show-code-actions t
+		lsp-ui-sideline-show-diagnostics t
+		lsp-ui-doc-position 'top
+		lsp-ui-doc-show-with-cursor t
+		lsp-ui-imenu-auto-refresh 'after-save
+		lsp-ui-doc-delay 2)
+  :hook
+  (lsp-mode . lsp-ui-mode)
+  ;; (lsp-ui-mode . (lambda () (setq lsp-ui-peek-list-width (/ (window-width) 2))))
+  :bind
+  (:map lsp-mode-map
+		("C-c l T m" . lsp-ui-imenu)
+		)
+  ;; (:map lsp-ui-mode-map
+  ;; 		([remap xref-find-references] . lsp-ui-peek-find-references)
+  ;; 		([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
+  ;; 		([remap evil-goto-definition] . lsp-ui-peek-find-definitions))
+  ;; (:map lsp-ui-mode-map
+  ;; 		(:map evil-normal-state-local-map
+  ;; 			  ("g D" . lsp-ui-peek-find-references)))
   )
 
-;; (use-package lsp-ui
-;;   :init
-;;   (setq lsp-ui-sideline-show-hover nil
-;; 		lsp-ui-sideline-show-code-actions nil
-;; 		lsp-ui-sideline-show-diagnostics nil
-;; 		lsp-ui-doc-position 'top
-;; 		lsp-ui-doc-show-with-cursor t
-;; 		lsp-ui-imenu-auto-refresh 'after-save
-;; 		lsp-ui-doc-delay 2)
-;;   :hook
-;;   (lsp-mode . lsp-ui-mode)
-;;   (lsp-ui-mode . (lambda () (setq lsp-ui-peek-list-width (/ (window-width) 2))))
-;;   :bind
-;;   (:map lsp-mode-map
-;; 		("C-c l T m" . lsp-ui-imenu)
-;; 		)
-;;   (:map lsp-ui-mode-map
-;; 		([remap xref-find-references] . lsp-ui-peek-find-references)
-;; 		([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
-;; 		([remap evil-goto-definition] . lsp-ui-peek-find-definitions)
-;; 		)
-;;   (:map evil-normal-state-map
-;; 		("g i" . lsp-ui-peek-find-references))
-;;   )
-
 (use-package lsp-treemacs
+  :requires (lsp-mode treemacs)
   :hook
   (lsp-mode . lsp-treemacs-sync-mode)
   )
