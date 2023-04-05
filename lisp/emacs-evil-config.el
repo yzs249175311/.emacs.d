@@ -61,8 +61,10 @@
   )
 
 (use-package evil-surround
+  :after evil
   :init
-  (global-evil-surround-mode 1))
+  (global-evil-surround-mode 1)
+  )
 
 (use-package evil-mc
   :after evil
@@ -71,6 +73,7 @@
   )
 
 (use-package  evil-escape
+  :after evil
   :init
   ;; (setq-default evil-escape-key-sequence "jk")
   (setq-default evil-escape-delay 0.2)
@@ -78,6 +81,7 @@
   )
 
 (use-package evil-matchit
+  :after evil
   :init
   (global-evil-matchit-mode 1))
 

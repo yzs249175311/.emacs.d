@@ -312,9 +312,10 @@ targets."
 
 
 (use-package yasnippet
-  :init
-  (yas-global-mode 1)
+  ;; :init
+  ;; (yas-global-mode 1)
   :hook
+  (prog-mode . yas-global-mode)
   (prog-mode . yas-minor-mode-on)
   )
 
@@ -335,19 +336,16 @@ targets."
 	  (treemacs-select-window)))
   (setq treemacs-width 35)
 
-  (treemacs-indent-guide-mode)
   :bind
   ("<f12>" . treemacs-toggle)
   )
 (use-package treemacs-evil
-  :init
-  (require 'treemacs-evil))
-(use-package treemacs-projectile
-  :init
-  (require 'treemacs-projectile))
+  :hook
+  (treemacs-mode . evil-treemacs-state)
+  )
 (use-package treemacs-icons-dired
-  :init
-  (treemacs-icons-dired-mode))
+  :hook
+  (dired-mode . treemacs-icons-dired-mode))
 
 (use-package which-key
   :init
@@ -371,7 +369,9 @@ targets."
 	)
 
 (use-package git-gutter
-  :init (global-git-gutter-mode +1)
+  ;; :init (global-git-gutter-mode +1)
+  :hook
+  (find-file . git-gutter-mode)
   :custom
   (git-gutter:window-width 1)
   ;; (git-gutter:modified-sign "☁")
@@ -430,5 +430,7 @@ targets."
 		("M-;" . nil)
 		("M-'" . nil)
 		("M-`" . nil)))
+
+(use-package esup)
 
 (provide 'emacs-better-config)

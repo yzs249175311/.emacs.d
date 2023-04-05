@@ -51,7 +51,7 @@
 (blink-cursor-mode 0)
 (global-hl-line-mode)
 (auto-save-visited-mode 1)
-(recentf-mode 1)
+;; (recentf-mode 1)
 (electric-indent-mode 1)
 (electric-pair-mode 1)
 
