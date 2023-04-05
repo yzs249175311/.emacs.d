@@ -138,8 +138,8 @@
   :bind (:map vertico-map
 			  ("C-n" . vertico-next)
 			  ("C-p" . vertico-previous)
-			  ("M-n" . vertico-scroll-up)
-			  ("M-p" . vertico-scroll-down))
+			  ("M-n" . vertico-next)
+			  ("M-p" . vertico-previous))
   :custom
   (vertico-count 10))
 

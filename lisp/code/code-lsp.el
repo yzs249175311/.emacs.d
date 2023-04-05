@@ -49,6 +49,9 @@
   :commands lsp
   :config
   (evil-define-key 'normal lsp-mode-map (kbd "g D") 'lsp-find-references)
+  :bind
+  (:map lsp-mode-map
+   ([remap prog-fill-reindent-defun] . 'lsp-format-buffer))
   )
 
 ;; (use-package lsp-ui

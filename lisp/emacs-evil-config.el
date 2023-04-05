@@ -54,7 +54,8 @@
 		("s s" . evil-avy-goto-char-timer)
 		("g h" . evil-paste-pop-next)
 		("g l" . evil-paste-pop)
-		("g c c" . comment-line))
+		("g c c" . comment-line)
+		("C-S-o" . evil-jump-forward))
 	:custom
 	(evil-shift-width 2)
   )
