@@ -7,7 +7,7 @@
   )
 
 (use-package web-mode
-  :mode ("\\.vue\\'" "\\.html?\\'")
+  :mode ("\\.html?\\'" "\\.vue\\'")
   :config
   (add-to-list 'hs-special-modes-alist '(web-mode  "{\\|<[^/>]+?" "}\\|</[^/>]*[^/]>" "<!--" web-mode-forward-sexp nil))
   :bind

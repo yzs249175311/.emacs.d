@@ -9,7 +9,7 @@
     ))
 
 
-;;default is 800 kilobytes. 优化启动速度 
+;;default is 800 kilobytes. 优化启动速度
 (setq gc-cons-threshold (* 20 1000 1000))
 
 (setq inhibit-startup-screen t)
@@ -69,7 +69,7 @@
 (setq-default abbrev-mode t)
 (setq abbrev-file-name (expand-file-name "~/.emacs.d/abbrev_defs"))
 
-;; set 
+
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis)
 

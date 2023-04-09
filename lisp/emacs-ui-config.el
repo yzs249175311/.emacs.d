@@ -96,7 +96,7 @@
 ;;-------------------------custom-----------------------------------
 (defun yzs/emacs-ui-config-theme ()
   "主题配置"
-  (load-theme 'doom-solarized-light t)
+  (load-theme 'doom-one t)
   (custom-set-faces
    ;; '(org-block ((t (:background "gray9"))))
    ;; '(line-number-current-line ((t (:foreground "gold"))))
