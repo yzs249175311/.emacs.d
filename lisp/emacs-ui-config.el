@@ -10,6 +10,7 @@
   (remove-hook 'olivetti-mode-on-hook 'visual-line-mode)
   :hook
   (prog-mode . olivetti-mode)
+  (outline-mode . olivetti-mode)
   (find-file . olivetti-mode)
   :custom
   (olivetti-body-width 130)
