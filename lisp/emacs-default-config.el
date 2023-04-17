@@ -113,9 +113,25 @@
 	  read-buffer-completion-ignore-case t
 	  completion-ignore-case t)
 
-;;; esc always quits
+;; whitespace-mode config
+(progn
+  (setq-default whitespace-style '(face tabs spaces empty newline trailing space-mark tab-mark newline-mark))
+  (setq-default whitespace-display-mappings '(
+											  (space-mark 32 [183] [46])
+											  (newline-mark ?\n [172 ?\n] [36 ?\n])
+											  ;;windows
+											  (newline-mark ?\r [182] [35])
+											  (table-mark ?\t [187 ?\t] [62 ?\t])))
+  (setq-default whitespace-action '(cleanup auto-cleanup))
+  (setq-default whitespace-global-modes '(not org-mode))
+  (global-whitespace-mode 1)
+  )
+
+
+;; esc always quits
 ;; 不知道为什么使用 "ESC" 的方式绑定会导致很多键无法使用
 ;; 参考:https://emacs.stackexchange.com/questions/14755/how-to-remove-bindings-to-the-esc-prefix-key
+
 (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)

@@ -2,10 +2,10 @@
   (setq evil-undo-system 'undo-redo)
   (setq evil-want-C-i-jump nil)
   (setq evil-want-C-u-scroll t)
-  (cond 
-   ((string-equal system-type "windows-nt") 
+  (cond
+   ((string-equal system-type "windows-nt")
 	(add-hook 'evil-normal-state-entry-hook (lambda () (w32-set-ime-open-status nil))))
-   
+
    ((string-equal system-type "gnu/linux")
 
 	(cond
@@ -13,18 +13,20 @@
 	  (add-hook 'evil-normal-state-entry-hook (lambda () (call-process "fcitx5-remote" nil 0 nil "-c"))))
 	 ))))
 
-(defun yzs/evil-config () 
-  ;; (setq evil-motion-state-modes 
-	;; 	(append '( 
-	;; 			  treemacs-mode 
-	;; 			  magit-status-mode
-	;; 			  lsp-treemacs-error-list-mode
-	;; 			  ) 
-	;; 			evil-emacs-state-modes
-	;; 			evil-motion-state-modes))
-  ;; (setq evil-emacs-state-modes nil)
+(defun yzs/evil-config ()
+  ;; (setq evil-motion-state-modes
+  ;; 		(append '(
+  ;; 				  treemacs-mode
+  ;; 				  magit-status-mode
+  ;; 				  lsp-treemacs-error-list-mode
+  ;; 				  )
+  ;; 				evil-emacs-state-modes
+  ;; 				evil-motion-state-modes))
+  (setq evil-emacs-state-modes nil)
+  (setq evil-motion-state-modes nil)
   (setq evil-normal-state-modes
 		(append evil-normal-state-modes
+				evil-motion-state-modes
 				'(
 				  occur-mode
 				  occur-edit-mode
@@ -34,16 +36,22 @@
 				  )))
   (setq avy-all-windows nil
 		avy-background t)
+  (define-key evil-normal-state-map (kbd "SPC") (lookup-key evil-motion-state-map (kbd "SPC")))
+  (define-key evil-motion-state-map (kbd "SPC") nil)
+  (define-key evil-normal-state-map (kbd "RET") (lookup-key evil-motion-state-map (kbd "RET")))
+  (define-key evil-motion-state-map (kbd "RET") nil)
   )
 
 (use-package evil
   :defer nil
-  :init 
+  :init
   (yzs/evil-init)
   :config
   (evil-mode)
   (yzs/evil-config)
   :bind
+  (:map evil-motion-state-map
+		("RET" . nil))
   (:map evil-window-map
 		("q" . evil-delete-buffer))
   (:map evil-normal-state-map
@@ -56,8 +64,8 @@
 		("g l" . evil-paste-pop)
 		("g c c" . comment-line)
 		("C-S-o" . evil-jump-forward))
-	:custom
-	(evil-shift-width 2)
+  :custom
+  (evil-shift-width 2)
   )
 
 (use-package evil-surround
@@ -69,7 +77,7 @@
 (use-package evil-mc
   :after evil
   :init
-  (global-evil-mc-mode 1) 
+  (global-evil-mc-mode 1)
   )
 
 (use-package  evil-escape
