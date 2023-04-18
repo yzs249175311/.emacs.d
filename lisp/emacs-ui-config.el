@@ -97,18 +97,19 @@
 ;;-------------------------custom-----------------------------------
 (defun yzs/emacs-ui-config-theme ()
   "主题配置"
-  (load-theme 'doom-one t)
+  (load-theme 'doom-solarized-light t)
   (custom-set-faces
    ;; '(org-block ((t (:background "gray9"))))
    ;; '(line-number-current-line ((t (:foreground "gold"))))
-   ;; `(line-number ((t (:background ,(face-background 'default)))))
+   ;; `(line-number		((t (:background ,(face-background 'default)))))
+   ;; `(olivetti-fringe	((t (:background ,(face-background 'default)))))
    )
   )
 
 ;;-------------------------hook-----------------------------------
 
 ;; select theme
-(add-hook 'after-init-hook 
+(add-hook 'after-init-hook
 		  #'(lambda ()
 
 			  ;; (cond

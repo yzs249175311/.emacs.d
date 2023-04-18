@@ -1,12 +1,12 @@
 ;;open native-comp
 (when (and (fboundp 'native-comp-available-p)
-           (native-comp-available-p))
+		   (native-comp-available-p))
   (progn
-    (setq native-comp-async-report-warnings-errors nil)
-    (setq comp-deferred-compilation t)
-    (add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory))
-    (setq package-native-compile nil)
-    ))
+	(setq native-comp-async-report-warnings-errors nil)
+	(setq comp-deferred-compilation t)
+	(add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory))
+	(setq package-native-compile nil)
+	))
 
 
 ;;default is 800 kilobytes. 优化启动速度
@@ -27,9 +27,9 @@
 ;; (set-terminal-coding-system 'utf-8-unix)
 ;; (setq locale-coding-system 'utf-8-unix)
 (when (string-equal system-type "windows-nt")
-	(progn
-	  (prefer-coding-system 'utf-8-auto)
-	  ))
+  (progn
+	(prefer-coding-system 'utf-8-auto)
+	))
 
 ;;解决python代码解码错误的问题，与treemacs有关
 (setenv "PYTHONIOENCODING" "utf-8")
@@ -115,15 +115,26 @@
 
 ;; whitespace-mode config
 (progn
-  (setq-default whitespace-style '(face tabs spaces empty newline trailing space-mark tab-mark newline-mark))
+  ;; (setq-default whitespace-style '(face tabs spaces empty newline trailing space-mark tab-mark newline-mark))
+  (setq-default whitespace-style '(face empty newline trailing))
   (setq-default whitespace-display-mappings '(
-											  (space-mark 32 [183] [46])
-											  (newline-mark ?\n [172 ?\n] [36 ?\n])
-											  ;;windows
-											  (newline-mark ?\r [182] [35])
-											  (table-mark ?\t [187 ?\t] [62 ?\t])))
+											  ;; (space-mark 32 [183] [46])
+											  ;; (newline-mark ?\n [172 ?\n] [36 ?\n])
+											  ;; windows
+											  ;; (newline-mark ?\r [182] [35])
+											  ;; (table-mark ?\t [187 ?\t] [62 ?\t])
+											  ))
   (setq-default whitespace-action '(cleanup auto-cleanup))
   (setq-default whitespace-global-modes '(not org-mode))
+  (custom-set-faces
+   `(whitespace-newline					((t (:foreground "#aaaaaa"))))
+   `(whitespace-missing-newline-at-eof	((t (:foreground "#aaaaaa"))))
+   `(whitespace-space					((t (:foreground "#aaaaaa"))))
+   `(whitespace-space-after-tab			((t (:foreground "#aaaaaa"))))
+   `(whitespace-space-before-tab		((t (:foreground "#aaaaaa"))))
+   `(whitespace-tab						((t (:foreground "#aaaaaa"))))
+   `(whitespace-trailing				((t (:foreground "#aaaaaa"))))
+   )
   (global-whitespace-mode 1)
   )
 
@@ -170,7 +181,7 @@
 ;;设置treesitter的加载路径和模式
 (if (and (null (version< emacs-version "29")) (eq system-type 'gnu/linux))
 	(require 'default-treesitter)
-	)
+  )
 
 (require 'default-frame-font)
 (require 'default-prettify-symbols)
