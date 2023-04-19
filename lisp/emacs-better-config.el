@@ -219,7 +219,7 @@
    ("M-s L" . consult-line-multi)
    ("M-s k" . consult-keep-lines)
    ("M-s u" . consult-focus-lines)
-   ([remap isearch-forward] . consult-line)  
+   ([remap isearch-forward] . consult-line)
    ("M-s L" . consult-line-multi)
    ("M-s k" . consult-keep-lines)
    ("M-s u" . consult-focus-lines)
@@ -241,7 +241,7 @@
   :bind
   (:map minibuffer-local-map
 		("M-A" . marginalia-cycle))
-  :init 
+  :init
   (marginalia-mode))
 
 (use-package embark
@@ -329,7 +329,7 @@ targets."
 ;;目录树
 (use-package treemacs
   :config
-  (defun treemacs-toggle () 
+  (defun treemacs-toggle ()
 	(interactive)
 	(if (equal major-mode 'treemacs-mode)
 		(treemacs-quit)
@@ -393,9 +393,9 @@ targets."
 		  compilation-mode
 		  helpful-mode
 		  compilation-mode
-		  "^\\*eshell.*\\*$" eshell-mode 
-		  "^\\*shell.*\\*$"  shell-mode  
-		  "^\\*term.*\\*$"   term-mode   
+		  "^\\*eshell.*\\*$" eshell-mode
+		  "^\\*shell.*\\*$"  shell-mode
+		  "^\\*term.*\\*$"   term-mode
 		  "^\\*vterm.*\\*$"  vterm-mode ))
 
   (popper-mode +1)
@@ -432,5 +432,10 @@ targets."
 		("M-`" . nil)))
 
 (use-package esup)
+
+(use-package find-file-in-project
+  :bind
+  (:map projectile-mode-map
+		([remap projectile-find-file] . find-file-in-project)))
 
 (provide 'emacs-better-config)
