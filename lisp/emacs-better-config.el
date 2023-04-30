@@ -143,10 +143,10 @@
   :custom
   (vertico-count 10))
 
-;; (use-package vertico-posframe
-;;   :if (display-graphic-p)
-;;   :init
-;;   (vertico-posframe-mode 1))
+(use-package vertico-posframe
+  :if (display-graphic-p)
+  :init
+  (vertico-posframe-mode 1))
 
 (use-package orderless
   :init
