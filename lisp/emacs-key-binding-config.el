@@ -58,7 +58,7 @@
  "f r" 'recentf
  "f s" 'save-buffer
  "f h" 'yzs/open-init
- 
+
  "g" '(:which-key "Git")
  "g g" 'magit
  "g n" 'git-gutter:next-hunk
@@ -100,7 +100,7 @@
  "T" '(:which-key "Toggle")
  "T t" 'treemacs-toggle
 
- "w" '(:keymap evil-window-map :which-key "Window") 
+ "w" '(:keymap evil-window-map :which-key "Window")
  "w w" 'ace-window
 
  "&" '(:which-key "Yasnippet")
@@ -119,7 +119,7 @@
  "C-M-<down>" 'evil-window-decrease-height
  )
 
-;; dired 
+;; dired
 (general-define-key
  :states '(motion normal)
  :keymaps 'dired-mode-map

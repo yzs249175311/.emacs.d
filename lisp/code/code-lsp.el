@@ -2,7 +2,7 @@
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l")
-  
+
   ;; (defun yzs/lsp-mode-setup-completion ()
   ;; 	(setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
   ;; 		  '(orderless)))
@@ -16,7 +16,7 @@
   ;; ;; minor changes: saves excursion and uses search-forward instead of re-search-forward
   ;; (advice-add 'json-parse-buffer :around
   ;; 			  (lambda (oldfn &rest args)
-  ;; 				(save-excursion 
+  ;; 				(save-excursion
   ;; 				  (while (search-forward "\\u0000" nil t)
   ;; 					(replace-match "" nil t)))
   ;; 				(apply oldfn args)))

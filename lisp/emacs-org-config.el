@@ -34,11 +34,8 @@
 		;; org-html-head-include-default-style nil
 
 		;; org-html-head-extra "<style>
-		;; 							pre.src{background:#343131;color:white;}
-		;; 							#content{max-width:1800px;}
-		;; 							p{max-width:1600px;}
-		;; 							li{max-width:1600px;}
-		;; 					  </style>"
+		;; 							pre{font-family:monospace!important;}
+		;; 					 </style>"
 
 		)
 
@@ -48,7 +45,7 @@
 							 (org-agenda-files :maxlevel . 2)
 							 ))
 
-  ;;修改无序列表的符号 - 
+  ;;修改无序列表的符号 -
   (if (display-graphic-p)
 	  (font-lock-add-keywords 'org-mode
 							  '(("^ *\\([-]\\) " (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "☛"))))
@@ -76,14 +73,14 @@
 										 ("\\.pdf\\'" . ,yzs/org/org-open-file)
 										 ))))
 
-  :hook 
+  :hook
   (org-mode . org-indent-mode)
   (org-babel-after-execute . org-redisplay-inline-images)
 
   :custom
   (org-enforce-todo-dependencies t)
   (org-track-ordered-property-with-tag t)
-  (org-capture-templates 
+  (org-capture-templates
    '(("r" "Read Books")
 	 ("rb" "Books" entry (file+olp "d:/NutStore/note/GTD/read.org" "读书目录")
 	  "\n** TODO %^{Book name} - %^{Author}" :kill-buffer t)))
@@ -96,7 +93,7 @@
   (setq org-reveal-hlevel 2))
 
 (use-package org-roam
-  :init 
+  :init
   (setq find-file-visit-truename t)
   (setq org-roam-completion-everywhere t)
   :hook
@@ -136,7 +133,7 @@ strings.")
   "Keyword used by `yzs/org-export-setup-files'")
 
 (defun yzs/org-export-setup-files (backend)
-  "Include setup-files automatically.  
+  "Include setup-files automatically.
 
 See also `yzs/setup-file' and `yzs/setup-file-keyword'"
   ;; TODO: Resolve local files.

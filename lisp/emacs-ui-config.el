@@ -5,16 +5,16 @@
   )
 
 ;;更改内容显示宽度
-(use-package olivetti
-  :config
-  (remove-hook 'olivetti-mode-on-hook 'visual-line-mode)
-  :hook
-  (prog-mode . olivetti-mode)
-  (outline-mode . olivetti-mode)
-  (find-file . olivetti-mode)
-  :custom
-  (olivetti-body-width 130)
-  )
+;; (use-package olivetti
+;;   :config
+;;   (remove-hook 'olivetti-mode-on-hook 'visual-line-mode)
+;;   :hook
+;;   (prog-mode . olivetti-mode)
+;;   (outline-mode . olivetti-mode)
+;;   (find-file . olivetti-mode)
+;;   :custom
+;;   (olivetti-body-width 130)
+;;   )
 
 ;; (use-package modus-themes
 ;;   :init
@@ -70,9 +70,9 @@
 (use-package doom-modeline
   :hook (after-init . doom-modeline-mode))
 
-(use-package nyan-mode
-  :init
-  (nyan-mode 1))
+;; (use-package nyan-mode
+;;   :init
+;;   (nyan-mode 1))
 
 (use-package doom-themes
   :config

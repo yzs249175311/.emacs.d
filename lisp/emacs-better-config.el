@@ -143,10 +143,10 @@
   :custom
   (vertico-count 10))
 
-(use-package vertico-posframe
-  :if (display-graphic-p)
-  :init
-  (vertico-posframe-mode 1))
+;; (use-package vertico-posframe
+;;   :if (display-graphic-p)
+;;   :init
+;;   (vertico-posframe-mode 1))
 
 (use-package orderless
   :init
@@ -312,11 +312,12 @@ targets."
 
 
 (use-package yasnippet
-  ;; :init
-  ;; (yas-global-mode 1)
+  :init
+  (yas-global-mode 1)
   :hook
-  (prog-mode . yas-global-mode)
-  (prog-mode . yas-minor-mode-on)
+  ;; (prog-mode . yas-global-mode)
+  (lsp-mode . yas-minor-mode-on)
+  (org-mode . yas-minor-mode-on)
   )
 
 (use-package yasnippet-snippets

@@ -179,7 +179,7 @@
   (defalias 'yes-or-no-p 'y-or-n-p))
 
 ;;设置treesitter的加载路径和模式
-(if (and (null (version< emacs-version "29")) (eq system-type 'gnu/linux))
+(if (and (eq system-type 'gnu/linux) (treesit-available-p))
 	(require 'default-treesitter)
   )
 
