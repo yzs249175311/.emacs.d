@@ -48,7 +48,8 @@
   :commands lsp
   :bind
   (:map lsp-mode-map
-		([remap prog-fill-reindent-defun] . lsp-format-buffer)
+		;; ([remap prog-fill-reindent-defun] . lsp-format-buffer)
+		;; ([remap fill-paragraph] . lsp-format-buffer)
 		(:map evil-normal-state-map
 			  ("g D" . lsp-find-references))))
 
