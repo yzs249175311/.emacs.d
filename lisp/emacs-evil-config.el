@@ -74,10 +74,17 @@
   (global-evil-surround-mode 1)
   )
 
-(use-package evil-mc
+;; (use-package evil-mc
+;;   :after evil
+;;   :init
+;;   (global-evil-mc-mode 1)
+;;   )
+
+(use-package evil-multiedit
   :after evil
+  :commands (evil-multiedit-default-keybinds)
   :init
-  (global-evil-mc-mode 1)
+  (evil-multiedit-default-keybinds)
   )
 
 (use-package  evil-escape

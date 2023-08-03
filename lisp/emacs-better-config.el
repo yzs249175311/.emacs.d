@@ -6,7 +6,7 @@
   (after-init . global-company-mode)
   :bind
   (:map company-mode-map
-        ("C-M-i" . company-complete)
+		("C-M-i" . company-complete)
 		("C-M-/" . company-dabbrev-code))
   (:map company-active-map
 		([remap evil-normal-state] . company-abort)
@@ -59,8 +59,8 @@
   :config
   (add-hook 'eshell-mode-hook
 			(lambda () (setq-local corfu-quit-at-boundary t
-								   corfu-quit-no-match t
-								   corfu-auto nil)
+							  corfu-quit-no-match t
+							  corfu-auto nil)
 			  (corfu-mode))))
 
 (use-package kind-icon
@@ -367,7 +367,7 @@ targets."
   ;; :hook
   ;; (magit-status-mode . (lambda ()
   ;; 							 (evil-define-key 'motion magit-status-mode-map (kbd "?") 'magit-dispatch)))
-	)
+  )
 
 (use-package git-gutter
   ;; :init (global-git-gutter-mode +1)
@@ -438,5 +438,29 @@ targets."
   :bind
   (:map projectile-mode-map
 		([remap projectile-find-file] . find-file-in-project)))
+
+(use-package expand-region
+  :config
+  (advice-add
+   'er/prepare-for-more-expansions-internal
+   :filter-return (lambda (ad-return-value)
+					(let ((msg (car ad-return-value))
+						  (keybindings (cdr ad-return-value))
+						  (selection-region (buffer-substring (region-beginning) (region-end))))
+					  (setq msg (concat msg
+										", l to search word in buffer"
+										", f to search file"
+										))
+					  (add-to-list 'keybindings `("l" (lambda ()
+														(consult-line ,selection-region))))
+					  (add-to-list 'keybindings `("f" (lambda ()
+														(read-file-name "Find file: " (expand-file-name ,selection-region))
+														)))
+					  (cons msg keybindings)
+					  )))
+  :bind
+  (:map evil-normal-state-map
+		("+" . er/expand-region)
+		("-" . er/contract-region)))
 
 (provide 'emacs-better-config)
