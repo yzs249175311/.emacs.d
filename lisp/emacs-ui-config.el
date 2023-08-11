@@ -13,7 +13,7 @@
   (outline-mode . olivetti-mode)
   (find-file . olivetti-mode)
   :custom
-  (olivetti-body-width 130)
+  (olivetti-body-width 150)
   )
 
 ;; (use-package modus-themes

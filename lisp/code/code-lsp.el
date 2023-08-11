@@ -51,14 +51,14 @@
 		;; ([remap prog-fill-reindent-defun] . lsp-format-buffer)
 		;; ([remap fill-paragraph] . lsp-format-buffer)
 		(:map evil-normal-state-map
-			  ("g D" . lsp-find-references))))
+			  ("g r" . lsp-find-references))))
 
 (use-package lsp-ui
   :requires lsp-mode
   :init
   (setq lsp-ui-sideline-show-hover nil
-		lsp-ui-sideline-show-code-actions t
-		lsp-ui-sideline-show-diagnostics t
+		lsp-ui-sideline-show-code-actions nil
+		lsp-ui-sideline-show-diagnostics nil
 		lsp-ui-doc-position 'top
 		lsp-ui-doc-show-with-cursor t
 		lsp-ui-imenu-auto-refresh 'after-save

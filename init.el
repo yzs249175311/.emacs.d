@@ -38,8 +38,8 @@
   (package-refresh-contents))
 
 (setq-local yzs/my-packages '(
-						use-package
-						))
+							  use-package
+							  ))
 
 ;; install packages
 (defun yzs/install-my-packages (my-packages)

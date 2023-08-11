@@ -450,11 +450,17 @@ targets."
 					  (setq msg (concat msg
 										", l to search word in buffer"
 										", f to search file"
+										", r to search word in project"
 										))
 					  (add-to-list 'keybindings `("l" (lambda ()
+														(keyboard-escape-quit)
 														(consult-line ,selection-region))))
 					  (add-to-list 'keybindings `("f" (lambda ()
 														(read-file-name "Find file: " (expand-file-name ,selection-region))
+														)))
+					  (add-to-list 'keybindings `("r" (lambda ()
+														(keyboard-escape-quit)
+														(consult-ripgrep (consult--project-root (project-current)) ,selection-region)
 														)))
 					  (cons msg keybindings)
 					  )))
