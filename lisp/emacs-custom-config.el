@@ -18,11 +18,13 @@
 
 (defun yzs/get-run-code-command (file)
   (let (
-		(command (alist-get 
+		(command (alist-get
 				  (file-name-extension file)
 				  yzs/run-code-command-alist
 				  nil nil 'equal
 				  )))
+	(when (and (listp command) command)
+	  (setq command (intern (completing-read "Select Command:" (mapcar (lambda (item) (format "%s" item)) command)))))
 	(if (fboundp command)
 		(funcall command file)
 	  nil))
@@ -39,14 +41,14 @@
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
-;; (defun yzs/open-file-in-browser () 
+;; (defun yzs/open-file-in-browser ()
 ;;   "使用浏览器打开当前文件"
 ;;   (interactive)
 ;;   (if buffer-file-name
-;; 	  (cond 
-;; 	   ((string-equal system-type "windows-nt") 
+;; 	  (cond
+;; 	   ((string-equal system-type "windows-nt")
 ;; 		(shell-command-to-string (encode-coding-string (format "MicrosoftEdge.exe %s" buffer-file-name) yzs/encode)))
-;; 	   ((string-equal system-type "gnu/linux") 
+;; 	   ((string-equal system-type "gnu/linux")
 ;; 		(shell-command-to-string (encode-coding-string (format "microsoft-edge-stable %s" (yzs/tool/path-wsl-to-windows buffer-file-name)) yzs/encode))))))
 
 (defun yzs/open-file-in-system (file)
@@ -65,7 +67,7 @@
   "创建服务器打开此文件,需要使用npm安装browser-sync"
   (interactive "DChoose a dir for server root:\nfChoose a file for startPath:")
   (message "Start Live Server\nDIR:%s\nstartPath:%s" dir startPath)
-  (if (and dir startPath) 
+  (if (and dir startPath)
 	  (let ((edir (expand-file-name dir)) (estartPath (expand-file-name startPath)))
 		(async-shell-command
 		 (encode-coding-string
@@ -98,21 +100,21 @@
 	  (message "Can't run this file")))
   )
 
-;; (defun yzs/open-directory(path) 
+;; (defun yzs/open-directory(path)
 ;;   "打开目标文件夹"
 ;;   (interactive "DOpen Directory:")
 ;;   (if (not path)
 ;; 	  (setq path default-directory))
 ;;   (message "open directory:%s" (expand-file-name path))
-;;   (cond 
-;;    ((string-equal system-type "windows-nt") 
+;;   (cond
+;;    ((string-equal system-type "windows-nt")
 ;; 	(shell-command-to-string
-;; 	 (encode-coding-string 
+;; 	 (encode-coding-string
 ;; 	  (replace-regexp-in-string "/" "\\\\" (concat "explorer.exe " (expand-file-name path)))
 ;; 	  yzs/encode)))
-;;    ((string-equal system-type "gnu/linux") 
+;;    ((string-equal system-type "gnu/linux")
 ;; 	(shell-command-to-string
-;; 	 (encode-coding-string 
+;; 	 (encode-coding-string
 ;; 	  (replace-regexp-in-string "/" "\\\\\\\\" (concat "explorer.exe " (yzs/tool/path-wsl-to-windows path)))
 ;; 	  yzs/encode)))
 ;;    ))
@@ -141,8 +143,8 @@
   "显示启动时间和垃圾包的数量"
   (interactive)
   (message "Emacs loaded in %s with %d garbage collections"
-		   (format "%.2f secends" 
-				   (float-time 
+		   (format "%.2f secends"
+				   (float-time
 					(time-subtract after-init-time before-init-time)))
 		   gcs-done))
 
@@ -164,12 +166,12 @@
 (defun yzs/resize-frame ()
   "重新调整frame"
   (interactive)
-  (cond 
-   ((string-equal system-type "windows-nt") (progn 
+  (cond
+   ((string-equal system-type "windows-nt") (progn
 											  (set-frame-position (selected-frame) 0 0)
 											  (set-frame-width  (selected-frame) 140)
 											  (set-frame-height (selected-frame) 40)))
-   ((string-equal system-type "gnu/linux") (progn 
+   ((string-equal system-type "gnu/linux") (progn
 											 (set-frame-position (selected-frame) 100 100)
 											 (set-frame-width  (selected-frame) 160)
 											 (set-frame-height (selected-frame) 40)))))

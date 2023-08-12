@@ -446,7 +446,7 @@ targets."
    :filter-return (lambda (ad-return-value)
 					(let ((msg (car ad-return-value))
 						  (keybindings (cdr ad-return-value))
-						  (selection-region (buffer-substring (region-beginning) (region-end))))
+						  )
 					  (setq msg (concat msg
 										", l to search word in buffer"
 										", f to search file"
@@ -454,13 +454,13 @@ targets."
 										))
 					  (add-to-list 'keybindings `("l" (lambda ()
 														(keyboard-escape-quit)
-														(consult-line ,selection-region))))
+														(consult-line (buffer-substring (region-beginning) (region-end))))))
 					  (add-to-list 'keybindings `("f" (lambda ()
-														(read-file-name "Find file: " (expand-file-name ,selection-region))
+														(read-file-name "Find file: " (expand-file-name (buffer-substring (region-beginning) (region-end))))
 														)))
 					  (add-to-list 'keybindings `("r" (lambda ()
 														(keyboard-escape-quit)
-														(consult-ripgrep (consult--project-root (project-current)) ,selection-region)
+														(consult-ripgrep (consult--project-root (project-current)) (buffer-substring (region-beginning) (region-end)))
 														)))
 					  (cons msg keybindings)
 					  )))

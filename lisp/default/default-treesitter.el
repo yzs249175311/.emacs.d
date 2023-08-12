@@ -34,29 +34,30 @@
 ;;         (toml . ("https://github.com/tree-sitter/tree-sitter-toml"))
 ;;         (zig . ("https://github.com/GrayJack/tree-sitter-zig"))))
 
-;; (setq major-mode-remap-alist
-;;       '((c-mode          . c-ts-mode)
-;;         (c++-mode        . c++-ts-mode)
-;;         (cmake-mode      . cmake-ts-mode)
-;;         (conf-toml-mode  . toml-ts-mode)
-;;         (css-mode        . css-ts-mode)
-;;         (js-mode         . js-ts-mode)
-;;         (javascript-mode . js-ts-mode)
-;;         (js-json-mode    . json-ts-mode)
-;;         (json-mode       . json-ts-mode)
-;;         (python-mode     . python-ts-mode)
-;;         (sh-mode         . bash-ts-mode)
-;;         (yaml-mode         . yaml-ts-mode)
-;;         (typescript-mode . typescript-ts-mode)))
+(setq major-mode-remap-alist
+      '((c-mode          . c-ts-mode)
+        (c++-mode        . c++-ts-mode)
+        (cmake-mode      . cmake-ts-mode)
+        (conf-toml-mode  . toml-ts-mode)
+        (css-mode        . css-ts-mode)
+        (js-mode         . js-ts-mode)
+        (javascript-mode . js-ts-mode)
+        (js-json-mode    . json-ts-mode)
+        (json-mode       . json-ts-mode)
+        (python-mode     . python-ts-mode)
+        (sh-mode         . bash-ts-mode)
+        (yaml-mode         . yaml-ts-mode)
+        (typescript-mode . typescript-ts-mode)))
 
 ;; (customize-set-variable
 ;;  'typescript-ts-mode-indent-offset 4)
 
-(use-package treesit-auto
-  :demand t
-  :init
-  (setq treesit-font-lock-level 4)
-  :config
-  (global-treesit-auto-mode))
+;; 启动这个包会导致写javascript一些配置文件没有提示
+;; (use-package treesit-auto
+;;   :demand t
+;;   :init
+;;   (setq treesit-font-lock-level 4)
+;;   :config
+;;   (global-treesit-auto-mode))
 
 (provide 'default-treesitter)
