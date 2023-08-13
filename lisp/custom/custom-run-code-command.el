@@ -3,6 +3,7 @@
 	("c" . yzs/c-run-code-command)
 	("js" . yzs/js-run-code-command)
 	("ts" . (yzs/ts-run-code-command yzs/ts-run-code-command-esm yzs/ts-run-code-command-tsx yzs/ts-run-code-command-tsx-watch))
+	("html" . yzs/open-file-in-live-server)
 	))
 
 (defun yzs/c-run-code-command (file)

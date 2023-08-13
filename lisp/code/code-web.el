@@ -3,7 +3,6 @@
               ("M-." . emmet-expand-line))
   :hook
   (web-mode . emmet-mode)
-  (css-mode . emmet-mode)
   )
 
 (use-package web-mode

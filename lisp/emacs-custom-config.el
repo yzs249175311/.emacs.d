@@ -25,10 +25,11 @@
 				  )))
 	(when (and (listp command) command)
 	  (setq command (intern (completing-read "Select Command:" (mapcar (lambda (item) (format "%s" item)) command)))))
-	(if (fboundp command)
-		(funcall command file)
-	  nil))
-  )
+
+	(cond
+	 ((commandp command) command)
+	 ((fboundp command) (funcall command file)))
+	))
 
 (defun yzs/tool/path-wsl-to-windows (str)
   (if use-wsl-p
@@ -85,20 +86,26 @@
   (message "Run file: %s" file)
   (let ((command (yzs/get-run-code-command file)))
 	(message "Try to run command:%s" command)
-	(if (stringp command)
-		(async-shell-command (encode-coding-string command yzs/encode))
+	(if command
+		(cond
+		 ((stringp command) (async-shell-command (encode-coding-string command yzs/encode)))
+		 ((commandp command) (call-interactively command)))
 	  (message "Can't run this file")))
   )
 
 (defun yzs/run-current-code ()
   "运行代码,支持javascript,typescript"
   (interactive)
-  (let ((command (yzs/get-run-code-command (buffer-file-name))))
-	(message "Try to run command:%s" command)
-	(if (stringp command)
-		(async-shell-command (encode-coding-string command yzs/encode))
-	  (message "Can't run this file")))
-  )
+  (if (buffer-file-name)
+	  (let ((command (yzs/get-run-code-command (buffer-file-name))))
+		(message "Try to run command:%s" command)
+		(if command
+			(cond
+			 ((stringp command) (async-shell-command (encode-coding-string command yzs/encode)))
+			 ((commandp command) (call-interactively command)))
+		  (message "Can't run this file")))
+	(message "Can't run buffer,only file!")
+	))
 
 ;; (defun yzs/open-directory(path)
 ;;   "打开目标文件夹"
