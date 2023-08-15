@@ -49,14 +49,13 @@
         (yaml-mode         . yaml-ts-mode)
         (typescript-mode . typescript-ts-mode)))
 
+(setq treesit-font-lock-level 4)
+
 ;; (customize-set-variable
 ;;  'typescript-ts-mode-indent-offset 4)
 
 ;; 启动这个包会导致写javascript一些配置文件没有提示
 ;; (use-package treesit-auto
-;;   :demand t
-;;   :init
-;;   (setq treesit-font-lock-level 4)
 ;;   :config
 ;;   (global-treesit-auto-mode))
 

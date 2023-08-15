@@ -56,6 +56,7 @@
 ;; (recentf-mode 1)
 (electric-indent-mode 1)
 (electric-pair-mode 1)
+(display-time-mode 1)
 
 ;; (setq-default display-line-numbers-type 'relative)
 (global-display-line-numbers-mode t)

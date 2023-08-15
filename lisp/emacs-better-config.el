@@ -59,37 +59,9 @@
   :config
   (add-hook 'eshell-mode-hook
 			(lambda () (setq-local corfu-quit-at-boundary t
-							  corfu-quit-no-match t
-							  corfu-auto nil)
+								   corfu-quit-no-match t
+								   corfu-auto nil)
 			  (corfu-mode))))
-
-(use-package kind-icon
-  :after corfu
-  :init
-  (setq completion-in-region-function
-   		(kind-icon-enhance-completion completion-in-region-function))
-  :custom
-  (kind-icon-default-face 'corfu-default) ; to compute blended backgrounds correctly
-  (kind-icon-use-icons . nil)
-  (kind-icon-blend-background . nil)
-  :config
-  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
-
-(use-package all-the-icons
-  :if (display-graphic-p))
-
-;; (use-package all-the-icons-dired
-;;   :if (display-graphic-p)
-;;   :after all-the-icons
-;;   :hook
-;;   (dired-mode . all-the-icons-dired-mode)
-;;   )
-
-(use-package all-the-icons-completion
-  :init
-  (all-the-icons-completion-mode)
-  (add-hook 'marginalia-mode-hook #'all-the-icons-completion-marginalia-setup)
-  )
 
 (use-package cape
   ;; Bind dedicated completion commands
@@ -143,10 +115,10 @@
   :custom
   (vertico-count 10))
 
-;; (use-package vertico-posframe
-;;   :if (display-graphic-p)
-;;   :init
-;;   (vertico-posframe-mode 1))
+(use-package vertico-posframe
+  :if (display-graphic-p)
+  :init
+  (vertico-posframe-mode 1))
 
 (use-package orderless
   :init
@@ -344,9 +316,6 @@ targets."
   :hook
   (treemacs-mode . evil-treemacs-state)
   )
-(use-package treemacs-icons-dired
-  :hook
-  (dired-mode . treemacs-icons-dired-mode))
 
 (use-package which-key
   :init
@@ -414,6 +383,10 @@ targets."
   (popwin-mode 1))
 
 (use-package posframe)
+
+;; (use-package flycheck-posframe
+;;   :after flycheck
+;;   :init (add-hook 'flycheck-mode-hook #'flycheck-posframe-mode))
 
 (use-package google-translate
   :custom

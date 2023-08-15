@@ -62,6 +62,7 @@
 		("s s" . evil-avy-goto-char-timer)
 		("g h" . evil-paste-pop-next)
 		("g l" . evil-paste-pop)
+		("g r" . xref-find-references)
 		("g c c" . comment-line)
 		("C-S-o" . evil-jump-forward))
   :custom
