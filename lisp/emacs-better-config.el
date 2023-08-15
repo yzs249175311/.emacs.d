@@ -442,4 +442,11 @@ targets."
 		("+" . er/expand-region)
 		("-" . er/contract-region)))
 
+(use-package dirvish
+  :init
+  (dirvish-override-dired-mode)
+  :bind
+  (:map global-map
+		([remap dired-jump] . dirvish)))
+
 (provide 'emacs-better-config)
