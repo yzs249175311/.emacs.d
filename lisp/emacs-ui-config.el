@@ -142,7 +142,7 @@
 
 (use-package doom-modeline
   :custom
-  (doom-modeline-buffer-file-name-style 'auto)
+  (doom-modeline-buffer-file-name-style 'relative-from-project)
   :hook (after-init . doom-modeline-mode))
 
 (use-package nyan-mode
@@ -172,7 +172,7 @@
 ;;-------------------------custom-----------------------------------
 (defun yzs/emacs-ui-config-theme ()
   "主题配置"
-  (load-theme 'doom-one t)
+  (load-theme 'doom-oceanic-next t)
   (custom-set-faces
    ;; '(org-block ((t (:background "gray9"))))
    ;; '(line-number-current-line ((t (:foreground "gold"))))

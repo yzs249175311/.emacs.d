@@ -301,6 +301,7 @@ targets."
   :after yasnippet)
 
 (use-package projectile
+  :defer nil
   :diminish projectile-mode
   :config (projectile-mode))
 
