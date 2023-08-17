@@ -1,3 +1,8 @@
+;;; code-lsp-bridge.el --- lsp-bridge config -*- lexical-binding:t -*-
+
+;;; Commentary:
+
+;;; Code:
 (use-package lsp-bridge
   :if (display-graphic-p)
   :ensure nil
@@ -23,9 +28,11 @@
   (:map lsp-bridge-mode-map
 		("M-/" . 'lsp-bridge-popup-complete-menu)
 		([remap evil-goto-definition] . 'lsp-bridge-find-def))
-  
+
   (:map acm-mode-map
 		("RET" . nil))
 )
 
 (provide 'code-lsp-bridge)
+
+;;; code-lsp-bridge.el ends here

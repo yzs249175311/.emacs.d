@@ -1,3 +1,8 @@
+;;; code-web.el --- web config -*- lexical-binding:t -*-
+
+;;; Commentary:
+
+;;; Code:
 (use-package emmet-mode
   :bind (:map emmet-mode-keymap
               ("M-." . emmet-expand-line))
@@ -21,3 +26,5 @@
 
 
 (provide 'code-web)
+
+;;; code-web.el ends here

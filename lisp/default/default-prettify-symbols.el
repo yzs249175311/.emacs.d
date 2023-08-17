@@ -1,3 +1,8 @@
+;;; default-prettify-symbols.el --- prettify config -*- lexical-binding:t -*-
+
+;;; Commentary:
+
+;;; Code:
 (setq-default prettify-symbols-alist '(("lambda" . "λ")
 									   ("->" . "→")
 									   ("->>" . "↠")
@@ -53,3 +58,5 @@
   )
 
 (provide 'default-prettify-symbols)
+
+;;; default-prettify-symbols.el ends here

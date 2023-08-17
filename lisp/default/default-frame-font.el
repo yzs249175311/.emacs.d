@@ -1,5 +1,10 @@
+;;; default-frame-font.el --- frame config -*- lexical-binding:t -*-
+
+;;; Commentary:
+
+;;; Code:
 ;;设置窗口
-(cond 
+(cond
  ((string-equal system-type "windows-nt")
   (mapc #'(lambda (elm) (push elm default-frame-alist))
 	'((height . 45)
@@ -13,7 +18,7 @@
 	  (left . 25)
 	  (top . 25)))))
 
-(defun yzs/set-font-faces () 
+(defun yzs/set-font-faces ()
   ;;set font and size
   (set-frame-font
    (font-spec :name
@@ -81,3 +86,5 @@
   )
 
 (provide 'default-frame-font)
+
+;;; default-frame-font.el ends here

@@ -1,3 +1,9 @@
+;;; emacs-ui-config.el --- custom config -*- lexical-binding:t -*-
+
+;;; Commentary:
+
+;;; Code:
+
 ;;彩虹括号
 (use-package rainbow-delimiters
   :hook
@@ -136,7 +142,7 @@
 
 (use-package doom-modeline
   :custom
-  (doom-modeline-buffer-file-name-style 'relative-from-project)
+  (doom-modeline-buffer-file-name-style 'auto)
   :hook (after-init . doom-modeline-mode))
 
 (use-package nyan-mode
@@ -197,3 +203,4 @@
 
 
 (provide 'emacs-ui-config)
+;;; emacs-ui-config.el ends here

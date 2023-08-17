@@ -1,3 +1,8 @@
+;;; emacs-custom-config.el --- custom config -*- lexical-binding:t -*-
+
+;;; Commentary:
+
+;;; Code:
 (require 'custom-run-code-command)
 
 ;;------------------ define variable -------------------------------;;
@@ -16,14 +21,17 @@
 
 ;;------------------ define function -------------------------------;;
 
-(defun yzs/tool/path-wsl-to-windows (str)
+(defun yzs/tool/path-wsl-to-windows (path)
+  "将wsl的路径转换为windows平台的路径.
+PATH 表示路径的字符串。"
   (if use-wsl-p
-	  (replace-regexp-in-string "\/mnt\/\\(\\w+\\)" "\\1\:" str)
+	  (replace-regexp-in-string "\/mnt\/\\(\\w+\\)" "\\1\:" path)
 	str)
   )
 
 ;;open my init.el file
 (defun yzs/open-init ()
+  "打开emacs的init.el文件."
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
@@ -38,7 +46,9 @@
 ;; 		(shell-command-to-string (encode-coding-string (format "microsoft-edge-stable %s" (yzs/tool/path-wsl-to-windows buffer-file-name)) yzs/encode))))))
 
 (defun yzs/open-file-in-system (file)
-  "用操作系统默认的方式打开文件"
+  "用操作系统默认的方式打开文件.
+FILE 表示文件的完整路径."
+
   (interactive "fOpen File In System:")
   (message "Open the file in system:%s" file)
   (if (and (eq system-type 'windows-nt)
@@ -50,7 +60,10 @@
 				  (expand-file-name file))))
 
 (defun yzs/open-file-in-live-server (dir startPath)
-  "创建服务器打开此文件,需要使用npm安装browser-sync"
+  "创建服务器打开此文件,需要使用npm安装browser-sync.
+DIR 表示创建的服务器跟目录.
+STARTPATH 表示启动服务器后,打开的文件."
+
   (interactive "DChoose a dir for server root:\nfChoose a file for startPath:")
   (message "Start Live Server\nDIR:%s\nstartPath:%s" dir startPath)
   (if (and dir startPath)
@@ -64,7 +77,9 @@
 
 
 (defun yzs/run-code (file)
-  "运行代码,支持的文件格式在 `yzs/run-code-command-alist' 中 "
+  "运行代码,支持的文件格式在 `yzs/run-code-command-alist' 中.
+FILE 表示文件的完整路径."
+
   (interactive "fChoice file:")
   (unless (file-exists-p file)
 	(setq-local file buffer-file-name))
@@ -79,7 +94,7 @@
 	  (message "Can't run this file"))))
 
 (defun yzs/run-current-code ()
-  "运行代码,支持的文件格式在 `yzs/run-code-command-alist' 中 "
+  "运行当前文件的代码,支持的文件格式在 `yzs/run-code-command-alist' 中."
   (interactive)
   (if (buffer-file-name)
 	  (let ((command (yzs/get-run-code-command (buffer-file-name))))
@@ -122,17 +137,8 @@
 				  nil 0 nil
 				  (file-name-directory (expand-file-name file)))))
 
-(defun yzs/program-exists-p (program dir-list)
-  (let ((flag nil) (dir (car dir-list)))
-	(unless (not dir)
-	  (if (file-exists-p (concat dir "/" program))
-		  (setq flag t)
-		(setq flag (yzs/program-exists-p program (cdr dir-list)))))
-	flag)
-  )
-
 (defun yzs/display-startup-time ()
-  "显示启动时间和垃圾包的数量"
+  "显示启动时间和垃圾包的数量."
   (interactive)
   (message "Emacs loaded in %s with %d garbage collections"
 		   (format "%.2f secends"
@@ -141,6 +147,7 @@
 		   gcs-done))
 
 (defun yzs/toggle-proxy()
+  "开关代理."
   (interactive)
   (if (bound-and-true-p url-proxy-services)
 	  (progn
@@ -156,7 +163,7 @@
 
 
 (defun yzs/resize-frame ()
-  "重新调整frame"
+  "重新调整frame."
   (interactive)
   (cond
    ((string-equal system-type "windows-nt") (progn
@@ -173,3 +180,4 @@
 
 
 (provide 'emacs-custom-config)
+;;; emacs-custom-config.el ends here

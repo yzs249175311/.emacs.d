@@ -1,3 +1,9 @@
+;;; custom-run-code-command.el --- generate code command  -*- lexical-binding:t -*-
+
+;;; Commentary:
+
+;;; Code:
+
 ;;用于存储文件扩展名和获取生成文件命令函数对应的表
 (defvar yzs/run-code-command-alist
   '(
@@ -5,7 +11,8 @@
 	))
 
 (defun yzs/get-run-code-command (file)
-  "获取运行代码的命令"
+  "获取运行代码的命令.
+FILE 表示文件的完整路径"
   (let ((command (alist-get
 				  (file-name-extension file)
 				  yzs/run-code-command-alist
@@ -21,7 +28,12 @@
 	))
 
 (defmacro yzs/generate-run-code-command-macro (file-extension function-name command option)
-  "生成函数，函数用于生成执行命令"
+  "生成函数，函数用于生成执行命令.
+FILE-EXTENSION 表示文件的后缀名,是字符串.
+FUNCTION-NAME 表示定义的函数的名字名.
+COMMAND 表示可执行的命令.
+OPTION 表示命令的选项."
+
   `(progn
 	 (defun ,function-name (file)
 	   (if (executable-find ,command)
@@ -54,3 +66,5 @@
 (yzs/generate-run-code-command-macro "ts" yzs/ts-run-code-command-tsx-watch "tsx" ("watch " filename))
 
 (provide 'custom-run-code-command)
+
+;;; custom-run-code-command.el ends here

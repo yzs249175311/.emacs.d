@@ -1,3 +1,8 @@
+;;; emacs-evil-config.el --- setup build-in package config -*- lexical-binding: t -*-
+
+;;; Commentary:
+
+;;; Code:
 (defun yzs/evil-init ()
   (setq evil-undo-system 'undo-redo)
   (setq evil-want-C-i-jump nil)
@@ -9,7 +14,7 @@
    ((string-equal system-type "gnu/linux")
 
 	(cond
-	 ((yzs/program-exists-p "fcitx5-remote" exec-path)
+	 ((executable-find "fcitx5-remote")
 	  (add-hook 'evil-normal-state-entry-hook (lambda () (call-process "fcitx5-remote" nil 0 nil "-c"))))
 	 ))))
 
@@ -104,3 +109,5 @@
 
 
 (provide 'emacs-evil-config)
+
+;;; emacs-evil-config.el ends here

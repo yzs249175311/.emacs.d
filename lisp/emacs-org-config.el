@@ -1,3 +1,8 @@
+;;; emacs-org-config.el --- custom config -*- lexical-binding:t -*-
+
+;;; Commentary:
+
+;;; Code:
 (use-package org
   :init
   (let ((dir "~/Nutstore Files/note/GTD/"))
@@ -154,3 +159,5 @@ See also `yzs/setup-file' and `yzs/setup-file-keyword'"
 ;; end
 
 (provide 'emacs-org-config)
+
+;;; emacs-org-config.el ends here

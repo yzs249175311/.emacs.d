@@ -1,3 +1,8 @@
+;;; emacs-pyim-config.el --- pyim config -*- lexical-binding:t -*-
+
+;;; Commentary:
+
+;;; Code:
 (use-package pyim
   :init
   (setq default-input-method "pyim")
@@ -16,7 +21,7 @@
 
 ;; (use-package pyim-cregexp-utils
 ;;  :init
-;;  (progn 
+;;  (progn
 ;;    (pyim-basedict-enable)
 ;;    (pyim-default-scheme 'quanpin)
 ;;    (pyim-isearch-mode 1))
@@ -50,3 +55,5 @@
 ;;  ("C-M-z " . pyim-toggle-input-ascii))
 
 (provide 'emacs-pyim-config)
+
+;;; emacs-pyim-config.el ends here

@@ -1,3 +1,8 @@
+;;; emacs-default-config.el --- setup build-in package config -*- lexical-binding: t -*-
+
+;;; Commentary:
+
+;;; Code:
 ;;open native-comp
 (when (and (fboundp 'native-comp-available-p)
 		   (native-comp-available-p))
@@ -190,3 +195,4 @@
 (require 'default-prettify-symbols)
 
 (provide 'emacs-default-config)
+;;; emacs-default-config.el ends here

@@ -1,3 +1,8 @@
+;;; code-lsp.el --- custom config -*- lexical-binding:t -*-
+
+;;; Commentary:
+
+;;; Code:
 (use-package lsp-mode
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
@@ -93,3 +98,5 @@
 
 
 (provide 'code-lsp)
+
+;;; code-lsp.el ends here

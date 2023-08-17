@@ -1,3 +1,8 @@
+;;; emacs-code-config.el --- code config
+
+;;; Commentary:
+
+;;; Code:
 (use-package flycheck
   :init
   (global-flycheck-mode 1)
@@ -36,3 +41,5 @@
 (require 'code-web)
 
 (provide 'emacs-code-config)
+
+;;; emacs-code-config.el ends here

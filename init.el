@@ -1,3 +1,8 @@
+;;; init.el --- entry of emacs _*_ lexical-binding:t _*_
+
+;;; Commentary:
+
+;;; Code:
 ;;debug
 (setq debug-on-error nil)
 
@@ -8,7 +13,6 @@
 		"~/.emacs.d/lisp/default"
 		"~/.emacs.d/lisp/custom"
 		))
-
 
 ;;解决使用msys2时gun安装包失败的问题
 ;;(setq package-check-signature nil)
@@ -43,6 +47,9 @@
 
 ;; install packages
 (defun yzs/install-my-packages (my-packages)
+  "安装包.
+MY-PACKAGES 是一个需要安装的包的列表."
+
   (if my-packages
 	  (let ((my-package (car my-packages)))
 		(message "install %s" my-package)
@@ -74,3 +81,5 @@
 ;;----------------------------auto-generate-------------------------------------------
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file 'noerror)
+
+;;; init.el ends here

@@ -1,3 +1,9 @@
+;;; default-treesitter.el --- treesit config -*- lexical-binding:t -*-
+
+;;; Commentary:
+
+;;; Code:
+
 ;; (require 'treesit)
 ;; M-x `treesit-install-language-grammar` to install language grammar.
 ;; (setq treesit-extra-load-path '("/usr/lib"))
@@ -60,3 +66,5 @@
 ;;   (global-treesit-auto-mode))
 
 (provide 'default-treesitter)
+
+;;; default-treesitter.el ends here

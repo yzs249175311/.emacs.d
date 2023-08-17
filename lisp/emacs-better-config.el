@@ -1,3 +1,8 @@
+;;; emacs-better-config.el --- make config better
+
+;;; Commentary:
+
+;;; Code:
 (use-package company
   :if (null (display-graphic-p))
   :init
@@ -450,3 +455,5 @@ targets."
 		([remap dired-jump] . dirvish)))
 
 (provide 'emacs-better-config)
+
+;;; emacs-better-config.el ends here
