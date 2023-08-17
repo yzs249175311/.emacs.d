@@ -16,21 +16,6 @@
 
 ;;------------------ define function -------------------------------;;
 
-(defun yzs/get-run-code-command (file)
-  (let (
-		(command (alist-get
-				  (file-name-extension file)
-				  yzs/run-code-command-alist
-				  nil nil 'equal
-				  )))
-	(when (and (listp command) command)
-	  (setq command (intern (completing-read "Select Command:" (mapcar (lambda (item) (format "%s" item)) command)))))
-
-	(cond
-	 ((commandp command) command)
-	 ((fboundp command) (funcall command file)))
-	))
-
 (defun yzs/tool/path-wsl-to-windows (str)
   (if use-wsl-p
 	  (replace-regexp-in-string "\/mnt\/\\(\\w+\\)" "\\1\:" str)
@@ -79,33 +64,33 @@
 
 
 (defun yzs/run-code (file)
-  "运行代码,支持javascript,typescript"
+  "运行代码,支持的文件格式在 `yzs/run-code-command-alist' 中 "
   (interactive "fChoice file:")
   (unless (file-exists-p file)
 	(setq-local file buffer-file-name))
   (message "Run file: %s" file)
   (let ((command (yzs/get-run-code-command file)))
-	(message "Try to run command:%s" command)
 	(if command
-		(cond
-		 ((stringp command) (async-shell-command (encode-coding-string command yzs/encode)))
-		 ((commandp command) (call-interactively command)))
-	  (message "Can't run this file")))
-  )
+		(progn
+		  (message "Try to run command:%s" command)
+		  (cond
+		   ((stringp command) (async-shell-command (encode-coding-string command yzs/encode)))
+		   ((commandp command) (call-interactively command))))
+	  (message "Can't run this file"))))
 
 (defun yzs/run-current-code ()
-  "运行代码,支持javascript,typescript"
+  "运行代码,支持的文件格式在 `yzs/run-code-command-alist' 中 "
   (interactive)
   (if (buffer-file-name)
 	  (let ((command (yzs/get-run-code-command (buffer-file-name))))
-		(message "Try to run command:%s" command)
 		(if command
-			(cond
-			 ((stringp command) (async-shell-command (encode-coding-string command yzs/encode)))
-			 ((commandp command) (call-interactively command)))
+			(progn
+			  (message "Try to run command:%s" command)
+			  (cond
+			   ((stringp command) (async-shell-command (encode-coding-string command yzs/encode)))
+			   ((commandp command) (call-interactively command))))
 		  (message "Can't run this file")))
-	(message "Can't run buffer,only file!")
-	))
+	(message "Can't run buffer,only file!")))
 
 ;; (defun yzs/open-directory(path)
 ;;   "打开目标文件夹"
