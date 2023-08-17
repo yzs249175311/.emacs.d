@@ -30,8 +30,11 @@ FILE 表示文件的完整路径"
 (defmacro yzs/generate-run-code-command-macro (file-extension function-name command option)
   "生成函数，函数用于生成执行命令.
 FILE-EXTENSION 表示文件的后缀名,是字符串.
+
 FUNCTION-NAME 表示定义的函数的名字名.
+
 COMMAND 表示可执行的命令.
+
 OPTION 表示命令的选项."
 
   `(progn

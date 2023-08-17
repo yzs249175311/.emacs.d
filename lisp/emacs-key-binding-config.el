@@ -10,8 +10,7 @@
   (general-define-key
    :states '(motion normal emacs insert)
    "<f5>" '(:which-key "Run")
-   "<f5> r" 'yzs/run-current-code
-   "<f5> f" 'yzs/run-code
+   "<f5> f" 'yzs/run-file
    "SPC" '(:which-key "Custom-Key")
    )
 
@@ -29,8 +28,7 @@
    "c" '(:which-key "Custom")
    ;; "c b" 'yzs/open-file-in-browser
    "c d" 'yzs/open-directory
-   "c c" 'yzs/run-current-code
-   "c C" 'yzs/run-code
+   "c c" 'yzs/run-file
    "c s" 'yzs/open-file-in-live-server
    "c o" 'yzs/open-file-in-system
    "c p" 'yzs/toggle-proxy

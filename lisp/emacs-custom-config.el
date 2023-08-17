@@ -45,25 +45,28 @@ PATH 表示路径的字符串。"
 ;; 	   ((string-equal system-type "gnu/linux")
 ;; 		(shell-command-to-string (encode-coding-string (format "microsoft-edge-stable %s" (yzs/tool/path-wsl-to-windows buffer-file-name)) yzs/encode))))))
 
-(defun yzs/open-file-in-system (file)
+(defun yzs/open-file-in-system (prefix)
   "用操作系统默认的方式打开文件.
-FILE 表示文件的完整路径."
-
-  (interactive "fOpen File In System:")
-  (message "Open the file in system:%s" file)
-  (if (and (eq system-type 'windows-nt)
-		   (fboundp 'w32-shell-execute))
-	  (shell-command-to-string (encode-coding-string (replace-regexp-in-string "/" "\\\\"
-																			   (format "%s" (expand-file-name file))) 'gbk))
-	(call-process yzs/which-system-open-command
-				  nil 0 nil
-				  (expand-file-name file))))
+PREFIX 表示文件打开的方式:nil:表示直接打开，1:表示选择文件打开."
+  (interactive "P")
+  (let ((filepath buffer-file-name))
+	(cond
+	 ((equal prefix 1) (setq filepath (expand-file-name (read-file-name "Open File In System:")))))
+	(if (and filepath (file-exists-p filepath) )
+		(progn
+		  (message "Open the file in system:%s" filepath)
+		  (if (and (eq system-type 'windows-nt)
+				   (fboundp 'w32-shell-execute))
+			  (shell-command-to-string (encode-coding-string (replace-regexp-in-string "/" "\\\\" (format "%s" (expand-file-name file))) 'gbk))
+			(call-process yzs/which-system-open-command
+						  nil 0 nil
+						  (expand-file-name filepath))))
+	  (message "Can't open"))))
 
 (defun yzs/open-file-in-live-server (dir startPath)
   "创建服务器打开此文件,需要使用npm安装browser-sync.
 DIR 表示创建的服务器跟目录.
 STARTPATH 表示启动服务器后,打开的文件."
-
   (interactive "DChoose a dir for server root:\nfChoose a file for startPath:")
   (message "Start Live Server\nDIR:%s\nstartPath:%s" dir startPath)
   (if (and dir startPath)
@@ -76,10 +79,36 @@ STARTPATH 表示启动服务器后,打开的文件."
 				  (substring estartPath (length edir))) yzs/encode)))))
 
 
+
+(defun yzs/run-file (prefix)
+  "运行当前文件,支持的文件格式在 `yzs/run-code-command-alist' 中.
+PREFIX 表示代码的运行方式: nil:直接运行当前文件,1:选择文件运行."
+  (interactive "P")
+  (cond
+   ((equal prefix 1) (call-interactively 'yzs/run-code))
+   (t (call-interactively 'yzs/run-current-code))))
+
+(defun yzs/open-directory(prefix)
+  "Open FILE externally using the default application of the system.
+PREFIX 表示文件的打开方式: nil:直接打开当前文件的所在的文件夹,1:选择文件夹打开."
+  (interactive "P")
+  (let  ((directory-path default-directory))
+	(cond
+	 ((equal prefix 1) (setq directory-path (read-directory-name "Choice Directory:"))))
+
+	(if (and (eq system-type 'windows-nt)
+			 (fboundp 'w32-shell-execute))
+		(shell-command-to-string (encode-coding-string
+								  (replace-regexp-in-string "/" "\\\\"
+															(format "explorer.exe %s"
+																	(expand-file-name directory-path))) 'gbk))
+	  (call-process yzs/which-system-open-command
+					nil 0 nil
+					(expand-file-name directory-path)))))
+
 (defun yzs/run-code (file)
   "运行代码,支持的文件格式在 `yzs/run-code-command-alist' 中.
 FILE 表示文件的完整路径."
-
   (interactive "fChoice file:")
   (unless (file-exists-p file)
 	(setq-local file buffer-file-name))
@@ -107,35 +136,7 @@ FILE 表示文件的完整路径."
 		  (message "Can't run this file")))
 	(message "Can't run buffer,only file!")))
 
-;; (defun yzs/open-directory(path)
-;;   "打开目标文件夹"
-;;   (interactive "DOpen Directory:")
-;;   (if (not path)
-;; 	  (setq path default-directory))
-;;   (message "open directory:%s" (expand-file-name path))
-;;   (cond
-;;    ((string-equal system-type "windows-nt")
-;; 	(shell-command-to-string
-;; 	 (encode-coding-string
-;; 	  (replace-regexp-in-string "/" "\\\\" (concat "explorer.exe " (expand-file-name path)))
-;; 	  yzs/encode)))
-;;    ((string-equal system-type "gnu/linux")
-;; 	(shell-command-to-string
-;; 	 (encode-coding-string
-;; 	  (replace-regexp-in-string "/" "\\\\\\\\" (concat "explorer.exe " (yzs/tool/path-wsl-to-windows path)))
-;; 	  yzs/encode)))
-;;    ))
 
-(defun yzs/open-directory(file)
-  "Open FILE externally using the default application of the system."
-  (interactive "fOpen externally: ")
-  (if (and (eq system-type 'windows-nt)
-		   (fboundp 'w32-shell-execute))
-	  (shell-command-to-string (encode-coding-string (replace-regexp-in-string "/" "\\\\"
-																			   (format "explorer.exe %s" (file-name-directory (expand-file-name file)))) 'gbk))
-	(call-process yzs/which-system-open-command
-				  nil 0 nil
-				  (file-name-directory (expand-file-name file)))))
 
 (defun yzs/display-startup-time ()
   "显示启动时间和垃圾包的数量."
