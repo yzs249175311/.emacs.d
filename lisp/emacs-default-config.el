@@ -36,6 +36,7 @@
 	(prefer-coding-system 'utf-8-auto)
 	(modify-coding-system-alist 'process "[cC][mM][dD][pP][rR][oO][xX][yY]" '(gbk . utf-8))
 	(modify-coding-system-alist 'process "[rR][gG]" '(utf-8-dos . windows-1251-dos))
+	(modify-coding-system-alist 'process "[nN][oO][dD][eE]" '(utf-8-dos . windows-1251-dos))
 	))
 
 ;;解决python代码解码错误的问题，与treemacs有关
