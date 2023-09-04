@@ -14,7 +14,7 @@
   (after-init . #'global-prettier-mode)
   :bind
   (:map global-prettier-mode
-		([remap fill-paragraph] . prettier-prettify))
+		("M-F" . prettier-prettify))
   )
 
 (use-package yaml-mode)

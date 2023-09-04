@@ -67,7 +67,7 @@
 ;; (setq-default display-line-numbers-type 'relative)
 (global-display-line-numbers-mode t)
 ;;用于设置行数三位数以和四位以上,行的位置不匹配的情况
-(setq display-line-numbers-width-start 1)
+(customize-set-variable 'display-line-numbers-width-start 1)
 
 
 ;;(global-linum-mode 1)

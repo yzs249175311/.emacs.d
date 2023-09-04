@@ -291,10 +291,6 @@ targets."
 (use-package yasnippet
   :init
   (yas-global-mode 1)
-  :hook
-  ;; (prog-mode . yas-global-mode)
-  (lsp-mode . yas-minor-mode-on)
-  (org-mode . yas-minor-mode-on)
   )
 
 (use-package yasnippet-snippets
