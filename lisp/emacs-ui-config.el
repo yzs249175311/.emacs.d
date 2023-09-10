@@ -79,8 +79,8 @@
 
 ;;更改内容显示宽度
 (use-package olivetti
-  ;; :config
-  ;; (remove-hook 'olivetti-mode-on-hook 'visual-line-mode)
+  :config
+  (remove-hook 'olivetti-mode-on-hook 'visual-line-mode)
   :hook
   (prog-mode . olivetti-mode)
   (outline-mode . olivetti-mode)
