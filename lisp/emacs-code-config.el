@@ -26,6 +26,14 @@
 (use-package typescript-mode
   :if (version< emacs-version "29")
   :mode "\\.ts\\'")
+(use-package js-jsx-mode
+  :ensure nil
+  :mode "\\.jsx?$"
+  :hook
+  (js-jsx-mode . emmet-mode)
+  :custom
+  (js-jsx-indent-level 2)
+  )
 
 (add-to-list 'auto-mode-alist '("\\.cjs\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.mjs\\'" . js-mode))

@@ -8,10 +8,12 @@
               ("M-." . emmet-expand-line))
   :hook
   (web-mode . emmet-mode)
+  :custom
+  (emmet-indent-after-insert nil)
   )
 
 (use-package web-mode
-  :mode ("\\.html?\\'" "\\.vue\\'" "\\.jsx?$")
+  :mode ("\\.html?\\'" "\\.vue\\'")
   :config
   (add-to-list 'hs-special-modes-alist '(web-mode  "{\\|<[^/>]+?" "}\\|</[^/>]*[^/]>" "<!--" web-mode-forward-sexp nil))
   (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
