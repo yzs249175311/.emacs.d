@@ -18,6 +18,9 @@
   :bind
   (:map web-mode-map
 		("M-;" . nil))
+  :custom
+  (web-mode-code-indent-offset 2)
+  (web-mode-markup-indent-offset 2)
   )
 
 ;; (use-package auto-rename-tag
