@@ -78,8 +78,6 @@ STARTPATH 表示启动服务器后,打开的文件."
 				  estartPath
 				  (substring estartPath (length edir))) yzs/encode)))))
 
-
-
 (defun yzs/run-file (prefix)
   "运行当前文件,支持的文件格式在 `yzs/run-code-command-alist' 中.
 PREFIX 表示代码的运行方式: nil:直接运行当前文件,1:选择文件运行."
@@ -87,6 +85,17 @@ PREFIX 表示代码的运行方式: nil:直接运行当前文件,1:选择文件�
   (cond
    ((equal prefix 1) (call-interactively 'yzs/run-code))
    (t (call-interactively 'yzs/run-current-code))))
+
+(defun yzs/run-js-project ()
+  "运行npm项目."
+  (interactive)
+  (let* ((root (project-root (project-current)))
+		 (json-alist (json-read-file (f-join root "package.json"))))
+	(if-let* ((json-alist-p json-alist)
+			  (script-alist (alist-get 'scripts json-alist))
+			  (command (completing-read "Select Run Command:" (mapcar (lambda (items) (car items)) script-alist))))
+		(async-shell-command (encode-coding-string (concat "npm run " command)  yzs/encode))
+	  )))
 
 (defun yzs/open-directory(prefix)
   "Open FILE externally using the default application of the system.

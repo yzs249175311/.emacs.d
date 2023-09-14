@@ -29,6 +29,7 @@
    ;; "c b" 'yzs/open-file-in-browser
    "c d" 'yzs/open-directory
    "c c" 'yzs/run-file
+   "c C" 'yzs/run-js-project
    "c s" 'yzs/open-file-in-live-server
    "c o" 'yzs/open-file-in-system
    "c p" 'yzs/toggle-proxy

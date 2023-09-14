@@ -39,6 +39,9 @@
 (add-to-list 'auto-mode-alist '("\\.mjs\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
 (add-to-list 'auto-mode-alist '("\\.toml\\'" . toml-mode))
+(when (fboundp 'tsx-ts-mode)
+	  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
+	  (add-hook 'tsx-ts-mode-hook (lambda () (emmet-mode 1))))
 
 ;; (if (display-graphic-p)
 ;; 	(require 'code-lsp-bridge)
