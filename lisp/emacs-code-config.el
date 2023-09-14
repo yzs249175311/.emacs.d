@@ -14,7 +14,7 @@
   (after-init . #'global-prettier-mode)
   :bind
   (:map global-prettier-mode
-		("M-F" . prettier-prettify))
+				("M-F" . prettier-prettify))
   )
 
 (use-package yaml-mode)
@@ -31,8 +31,6 @@
   :mode "\\.jsx?$"
   :hook
   (js-jsx-mode . emmet-mode)
-  :custom
-  (js-jsx-indent-level 2)
   )
 
 (add-to-list 'auto-mode-alist '("\\.cjs\\'" . js-mode))
@@ -40,13 +38,17 @@
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
 (add-to-list 'auto-mode-alist '("\\.toml\\'" . toml-mode))
 (when (fboundp 'tsx-ts-mode)
-	  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
-	  (add-hook 'tsx-ts-mode-hook (lambda () (emmet-mode 1))))
+	(add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
+	(add-hook 'tsx-ts-mode-hook (lambda () (emmet-mode 1))))
 
-;; (if (display-graphic-p)
-;; 	(require 'code-lsp-bridge)
-;;   (require 'code-lsp)
-;;   )
+;;All major mode indent offset config
+(mapc #'(lambda (offset) (defvaralias offset 'tab-width) )
+			'(css-indent-offset
+				js-jsx-indent-level
+				js-indent-level
+				web-mode-code-indent-offset
+				web-mode-markup-indent-offset))
+
 
 (require 'code-lsp)
 (require 'code-web)

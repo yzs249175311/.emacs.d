@@ -8,8 +8,8 @@
 
 ;;将存有了el文件的文件夹路径添加到load-path中
 (mapc (lambda (dir) (add-to-list 'load-path dir))
-	  (cons (expand-file-name "~/.emacs.d/lisp")
-			(seq-filter #'file-directory-p  (directory-files-recursively (expand-file-name  "~/.emacs.d/lisp") "" t t))))
+			(cons (expand-file-name "~/.emacs.d/lisp")
+						(seq-filter #'file-directory-p  (directory-files-recursively (expand-file-name  "~/.emacs.d/lisp") "" t t))))
 
 ;;解决使用msys2时gun安装包失败的问题
 ;;(setq package-check-signature nil)
@@ -19,18 +19,18 @@
 (when (>= emacs-major-version 24)
   (require 'package)
   (setq package-archives
-		'(
-		  ;; ("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-		  ;; ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-		  ;; ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-		  ;; ("melpa-cn" . "http://1.15.88.122/melpa/")
-		  ;; ("org-cn"   . "http://1.15.88.122/org/")
-		  ;; ("gnu-cn"   . "http://1.15.88.122/gnu/")
-		  ("nongnu" . "http://1.15.88.122/nongnu/")
-		  ("melpa" . "https://melpa.org/packages/")
-		  ("gnu" . "http://elpa.gnu.org/packages/")
-		  ;; ("org" . "http://1.15.88.122/org/")
-		  ))
+				'(
+					;; ("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+					;; ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+					;; ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+					;; ("melpa-cn" . "http://1.15.88.122/melpa/")
+					;; ("org-cn"   . "http://1.15.88.122/org/")
+					;; ("gnu-cn"   . "http://1.15.88.122/gnu/")
+					("nongnu" . "http://1.15.88.122/nongnu/")
+					("melpa" . "https://melpa.org/packages/")
+					("gnu" . "http://elpa.gnu.org/packages/")
+					;; ("org" . "http://1.15.88.122/org/")
+					))
   (package-initialize)
   )
 
@@ -39,8 +39,8 @@
   (package-refresh-contents))
 
 (setq-local yzs/my-packages '(
-							  use-package
-							  ))
+															use-package
+															))
 
 ;; install packages
 (defun yzs/install-my-packages (my-packages)
@@ -48,11 +48,11 @@
 MY-PACKAGES 是一个需要安装的包的列表."
 
   (if my-packages
-	  (let ((my-package (car my-packages)))
-		(message "install %s" my-package)
-		(unless (package-installed-p my-package)
-		  (package-install my-package))
-		(yzs/install-my-packages (cdr my-packages)))))
+			(let ((my-package (car my-packages)))
+				(message "install %s" my-package)
+				(unless (package-installed-p my-package)
+					(package-install my-package))
+				(yzs/install-my-packages (cdr my-packages)))))
 
 (yzs/install-my-packages yzs/my-packages)
 

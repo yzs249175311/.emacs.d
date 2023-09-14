@@ -19,11 +19,7 @@
   (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
   :bind
   (:map web-mode-map
-		("M-;" . nil))
-  :custom
-  (web-mode-code-indent-offset 2)
-  (web-mode-markup-indent-offset 2)
-  )
+		("M-;" . nil)))
 
 ;; (use-package auto-rename-tag
 ;;   :hook

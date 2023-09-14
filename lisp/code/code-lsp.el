@@ -35,6 +35,8 @@
   (web-mode . lsp)
   (js-mode . lsp)
   (js-ts-mode . lsp)
+  (tsx-ts-mode . lsp)
+  (js-jsx-mode . lsp)
   (javascript-mode . lsp)
   (css-mode . lsp)
   (css-ts-mode . lsp)
