@@ -29,9 +29,9 @@
 						(filename (buffer-file-name))
 						(match (string-match-p "tsx\\|jsx\\|js\\|ts" (file-name-extension filename))))
 			(cond
-			 ((string-equal "prettier" command-name) (call-process command nil new-buffer nil "--write" filename))
-			 ((string-equal "npx" command-name) (call-process command nil new-buffer nil "prettier" "--write" filename))
-			 ((string-equal "yarn" command-name) (call-process command nil new-buffer nil "prettier" "--write" filename)))
+			 ((string-equal "prettier" command-name) (call-process command nil nil nil "--write" filename))
+			 ((string-equal "npx" command-name) (call-process command nil nil nil "prettier" "--write" filename))
+			 ((string-equal "yarn" command-name) (call-process command nil nil nil "prettier" "--write" filename)))
 		(message "Run prettier fail!")
 		))
 

@@ -61,9 +61,11 @@
 ;;  'typescript-ts-mode-indent-offset 4)
 
 ;; 启动这个包会导致写javascript一些配置文件没有提示
-;; (use-package treesit-auto
-;;   :config
-;;   (global-treesit-auto-mode))
+(use-package treesit-auto
+	:init
+	(require 'treesit-auto)
+  :config
+  (global-treesit-auto-mode))
 
 (provide 'default-treesitter)
 
