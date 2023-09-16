@@ -12,6 +12,7 @@
    "<f5>" '(:which-key "Run")
    "<f5> f" 'yzs/run-file
    "SPC" '(:which-key "Custom-Key")
+	 "M-F" 'yzs/preitter
    )
 
   (general-define-key

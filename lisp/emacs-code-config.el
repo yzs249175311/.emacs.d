@@ -9,14 +9,6 @@
   :hook
   (org-mode . (lambda () (flycheck-mode -1))))
 
-(use-package prettier
-  :hook
-  (after-init . #'global-prettier-mode)
-  :bind
-  (:map global-prettier-mode
-				("M-F" . prettier-prettify))
-  )
-
 (use-package yaml-mode)
 (use-package markdown-mode)
 (use-package yuck-mode)
