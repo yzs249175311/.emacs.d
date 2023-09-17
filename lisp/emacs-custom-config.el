@@ -28,10 +28,13 @@
 						(command-name (f-filename command))
 						(filename (buffer-file-name))
 						(match (string-match-p "tsx\\|jsx\\|js\\|ts" (file-name-extension filename))))
-			(cond
-			 ((string-equal "prettier" command-name) (call-process command nil nil nil "--write" filename))
-			 ((string-equal "npx" command-name) (call-process command nil nil nil "prettier" "--write" filename))
-			 ((string-equal "yarn" command-name) (call-process command nil nil nil "prettier" "--write" filename)))
+			(with-current-buffer (current-buffer)
+				(basic-save-buffer)
+				(cond
+				 ((string-equal "prettier" command-name) (call-process command nil nil nil "--write" filename))
+				 ((string-equal "npx" command-name) (call-process command nil nil nil "prettier" "--write" filename))
+				 ((string-equal "yarn" command-name) (call-process command nil nil nil "prettier" "--write" filename)))
+				)
 		(message "Run prettier fail!")
 		))
 
@@ -158,8 +161,6 @@ FILE 表示文件的完整路径."
 							 ((commandp command) (call-interactively command))))
 					(message "Can't run this file")))
 		(message "Can't run buffer,only file!")))
-
-
 
 (defun yzs/display-startup-time ()
   "显示启动时间和垃圾包的数量."
