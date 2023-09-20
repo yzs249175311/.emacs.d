@@ -27,7 +27,7 @@
 						(command (or (executable-find "prettier") (executable-find "npx") (executable-find "yarn")))
 						(command-name (f-filename command))
 						(filename (buffer-file-name))
-						(match (string-match-p "tsx\\|jsx\\|js\\|ts" (file-name-extension filename))))
+						(match (string-match-p "tsx\\|jsx\\|js\\|ts\\|css\\|scss\\|less" (file-name-extension filename))))
 			(with-current-buffer (current-buffer)
 				(basic-save-buffer)
 				(cond

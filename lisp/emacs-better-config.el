@@ -287,10 +287,9 @@ targets."
   :init
   (setq wgrep-auto-save-buffer t))
 
-
 (use-package yasnippet
   :init
-  (yas-global-mode 1)
+	(run-with-idle-timer 5 nil (lambda () (yas-global-mode 1)))
   )
 
 (use-package yasnippet-snippets

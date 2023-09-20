@@ -8,6 +8,7 @@
               ("M-." . emmet-expand-line))
   :hook
   (web-mode . emmet-mode)
+  (scss-mode . emmet-mode)
   :custom
   (emmet-indent-after-insert nil)
   )
