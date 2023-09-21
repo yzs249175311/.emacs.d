@@ -20,7 +20,7 @@
   :mode "\\.ts\\'")
 (use-package js-jsx-mode
   :ensure nil
-  :mode ("\\.jsx$" "\\.tsx\\'")
+  :mode ("\\.jsx?$" "\\.tsx?$")
   :hook
   (js-jsx-mode . emmet-mode)
   )
@@ -28,7 +28,7 @@
 (use-package typescript-ts-mode
 	:ensure nil
 	:config
-	(add-hook 'tsx-ts-mode-hook (lambda () (setf (alist-get "\\.tsx\\'" auto-mode-alist nil 'remove #'equal) nil)))
+	(setf (alist-get "\\.tsx\\'" auto-mode-alist nil 'remove #'equal) nil)
 	)
 
 (add-to-list 'auto-mode-alist '("\\.cjs\\'" . js-mode))
