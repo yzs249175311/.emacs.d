@@ -20,7 +20,6 @@
   :mode "\\.ts\\'")
 (use-package js-jsx-mode
   :ensure nil
-  :mode ("\\.jsx?$" "\\.tsx?$")
   :hook
   (js-jsx-mode . emmet-mode)
   )
