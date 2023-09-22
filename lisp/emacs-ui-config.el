@@ -179,7 +179,7 @@
    ;; '(line-number-current-line ((t (:foreground "gold"))))
    ;; `(line-number		((t (:background ,(face-background 'default)))))
    ;; `(olivetti-fringe	((t (:background ,(face-background 'default)))))
-   `(tab-bar-tab ((t (:underline t))))
+   `(tab-bar-tab ((t (:overline t))))
    )
   )
 
