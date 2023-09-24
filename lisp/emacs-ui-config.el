@@ -173,7 +173,8 @@
 ;;-------------------------custom-----------------------------------
 (defun yzs/emacs-ui-config-theme ()
   "主题配置"
-  (load-theme 'doom-tomorrow-night t)
+  (load-theme 'doom-material-dark t)
+
   (custom-set-faces
    ;; '(org-block ((t (:background "gray9"))))
    ;; '(line-number-current-line ((t (:foreground "gold"))))
