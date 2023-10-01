@@ -49,6 +49,7 @@
 (setq visible-bell 0)
 (setq scroll-step 1 scroll-margin 3)
 (setq use-dialog-box nil)
+(setq dabbrev-case-replace nil)
 
 
 (winner-mode 1)

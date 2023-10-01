@@ -173,7 +173,7 @@
 ;;-------------------------custom-----------------------------------
 (defun yzs/emacs-ui-config-theme ()
   "主题配置"
-  (load-theme 'doom-material-dark t)
+  (load-theme 'doom-monokai-octagon t)
 
   (custom-set-faces
    ;; '(org-block ((t (:background "gray9"))))
