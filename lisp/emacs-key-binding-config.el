@@ -142,7 +142,29 @@
    :states '(motion normal)
    :keymaps '(org-agenda-mode-map)
    "m" '(:keymap org-agenda-mode-map :which-key "Major")
-   ))
+   )
+
+  ;; web-mode
+  (general-define-key
+   :prefix "SPC"
+   :states '(motion normal)
+   :keymaps 'web-mode-map
+	 "m" '(:wk "web-mode")
+	 "m r" 'web-mode-element-rename
+	 "m R" `((lambda () (interactive) (web-mode-element-rename (car kill-ring))) :wk "web-mode-element-rename-yank-pop")
+	 "m p" 'web-mode-element-previous
+	 "m n" 'web-mode-element-next
+	 "m k" 'web-mode-attribute-kill
+	 "m u" 'web-mode-element-parent
+   )
+  (general-define-key
+   :states '(motion normal insert)
+   :keymaps 'web-mode-map
+	 [remap backward-up-list] 'web-mode-element-parent
+	 [remap forward-list] 'web-mode-element-sibling-next
+	 [remap backward-list] 'web-mode-element-sibling-previous
+   )
+	)
 
 (provide 'emacs-key-binding-config)
 

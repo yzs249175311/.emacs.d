@@ -289,7 +289,7 @@ targets."
 
 (use-package yasnippet
   :init
-	(run-with-idle-timer 5 nil (lambda () (yas-global-mode 1)))
+	(run-with-idle-timer 2 nil (lambda () (yas-global-mode 1)))
   )
 
 (use-package yasnippet-snippets
