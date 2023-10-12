@@ -155,6 +155,7 @@
 	 "m p" 'web-mode-element-previous
 	 "m n" 'web-mode-element-next
 	 "m k" 'web-mode-attribute-kill
+	 "m s" 'web-mode-attribute-select
 	 "m u" 'web-mode-element-parent
    )
   (general-define-key
