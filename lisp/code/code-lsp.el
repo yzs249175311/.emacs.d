@@ -10,9 +10,9 @@
 		(setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
 					'(orderless)))
 	:custom
-	(lsp-completion-provider :none)
+	;; (lsp-completion-provider :none)
 	(lsp-auto-execute-action nil)
-	(lsp-typescript-suggest-auto-imports nil)
+	(lsp-typescript-suggest-auto-imports t)
   :hook ;; replace XXX-mode with concrete major-mode(e. g. python-mode)
 	(lsp-completion-mode . my/lsp-mode-setup-completion)
   (web-mode . lsp)

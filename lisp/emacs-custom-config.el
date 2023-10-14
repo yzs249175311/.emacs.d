@@ -23,13 +23,13 @@
 (defun yzs/preitter ()
 	"运行prettier."
 	(interactive)
+	(basic-save-buffer)
 	(if-let* (
 						(command (or (executable-find "prettier") (executable-find "npx") (executable-find "yarn")))
 						(command-name (f-filename command))
 						(filename (buffer-file-name))
 						(match (string-match-p "tsx\\|jsx\\|js\\|ts\\|css\\|scss\\|less\\|html" (file-name-extension filename))))
 			(with-current-buffer (current-buffer)
-				(basic-save-buffer)
 				(cond
 				 ((string-equal "prettier" command-name) (call-process command nil nil nil "--write" filename))
 				 ((string-equal "npx" command-name) (call-process command nil nil nil "prettier" "--write" filename))

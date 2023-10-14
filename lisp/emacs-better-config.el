@@ -4,7 +4,7 @@
 
 ;;; Code:
 (use-package company
-  :if (null (display-graphic-p))
+  ;; :if (null (display-graphic-p))
   :init
   (setq orderless-component-separator "[ &]")
   :hook
@@ -21,11 +21,11 @@
 		("RET" . nil)
 		("<return>" . nil))
   :config
-  (setq company-minimum-prefix-length 2)
+  (setq company-minimum-prefix-length 1)
 	)
 
 (use-package corfu
-  :if (display-graphic-p)
+  :if nil
   ;; Optional customizations
   :custom
   (corfu-cycle t)                  ; Allows cycling through candidates
@@ -99,7 +99,7 @@
   ;;(add-to-list 'completion-at-point-functions #'cape-tex)
   ;;(add-to-list 'completion-at-point-functions #'cape-sgml)
   ;; (add-to-list 'completion-at-point-functions #'cape-rfc1345)
-  ;; (add-to-list 'completion-at-point-functions #'cape-abbrev)
+  (add-to-list 'completion-at-point-functions #'cape-abbrev)
   ;;(add-to-list 'completion-at-point-functions #'cape-ispell)
   ;;(add-to-list 'completion-at-point-functions #'cape-dict)
   ;; (add-to-list 'completion-at-point-functions #'cape-symbol)
@@ -213,7 +213,7 @@
    ("M-s" . consult-history)                 ;; orig. next-matching-history-element
    ("M-r" . consult-history))                ;; orig. previous-matching-history-element
   )
-(use-package consult-yasnippet)
+;; (use-package consult-yasnippet)
 
 (use-package marginalia
   :bind
@@ -288,13 +288,13 @@ targets."
   :init
   (setq wgrep-auto-save-buffer t))
 
-(use-package yasnippet
-  :init
-	(run-with-idle-timer 2 nil (lambda () (yas-global-mode 1)))
-  )
+;; (use-package yasnippet
+;;   :init
+;; 	(run-with-idle-timer 2 nil (lambda () (yas-global-mode 1)))
+;;   )
 
-(use-package yasnippet-snippets
-  :after yasnippet)
+;; (use-package yasnippet-snippets
+;;   :after yasnippet)
 
 (use-package projectile
   :defer nil
