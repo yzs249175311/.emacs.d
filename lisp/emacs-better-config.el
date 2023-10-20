@@ -213,7 +213,7 @@
    ("M-s" . consult-history)                 ;; orig. next-matching-history-element
    ("M-r" . consult-history))                ;; orig. previous-matching-history-element
   )
-;; (use-package consult-yasnippet)
+(use-package consult-yasnippet)
 
 (use-package marginalia
   :bind
@@ -288,13 +288,13 @@ targets."
   :init
   (setq wgrep-auto-save-buffer t))
 
-;; (use-package yasnippet
-;;   :init
-;; 	(run-with-idle-timer 2 nil (lambda () (yas-global-mode 1)))
-;;   )
+(use-package yasnippet
+  :init
+	(run-with-idle-timer 2 nil (lambda () (yas-global-mode 1)))
+  )
 
-;; (use-package yasnippet-snippets
-;;   :after yasnippet)
+(use-package yasnippet-snippets
+  :after yasnippet)
 
 (use-package projectile
   :defer nil

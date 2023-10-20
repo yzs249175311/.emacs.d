@@ -9,8 +9,9 @@
   :hook
   (web-mode . emmet-mode)
   (scss-mode . emmet-mode)
+  ;; (emmet-mode . emmet-preview-mode)
   :custom
-  (emmet-indent-after-insert nil)
+  (emmet-indent-after-insert t)
   )
 
 (use-package web-mode
