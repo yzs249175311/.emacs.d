@@ -128,7 +128,7 @@
 (use-package auctex)
 
 ;; add "#+setupfile:" to every .org buffer
-(defcustom yzs/setup-file '("https://yzs249175311.github.io/org-html-theme-dull/org-html-theme-dull.setup")
+(defcustom yzs/setup-file '("https://yzs249175311.github.io/org-html-theme-dull-pro/org-html-theme-dull-pro.setup")
   "list of string with setup file or functions.
 
 Functions must take care of keyword themselves and must return
