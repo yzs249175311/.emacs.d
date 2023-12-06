@@ -4,7 +4,7 @@
 
 ;;; Code:
 ;;open native-comp
-(when (and (fboundp 'native-comp-available-p)
+(when (and (not (version< emacs-version "29")) (fboundp 'native-comp-available-p)
 		   (native-comp-available-p))
   (progn
 	(setq native-comp-async-report-warnings-errors nil)
