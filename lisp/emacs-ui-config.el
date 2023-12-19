@@ -174,7 +174,7 @@
 ;;-------------------------custom-----------------------------------
 (defun yzs/emacs-ui-config-theme ()
   "主题配置"
-  (load-theme 'doom-oceanic-next t)
+  (load-theme 'doom-one t)
 
   (custom-set-faces
    ;; '(org-block ((t (:background "gray9"))))
