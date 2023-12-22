@@ -5,3 +5,4 @@
 !.gitignore
 !snippets/
 !site-lisp/
+!extra-lisp/

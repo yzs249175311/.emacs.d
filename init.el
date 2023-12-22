@@ -7,9 +7,8 @@
 (setq debug-on-error nil)
 
 ;;将存有了el文件的文件夹路径添加到load-path中
-(mapc (lambda (dir) (add-to-list 'load-path dir))
-			(cons (expand-file-name "~/.emacs.d/lisp")
-						(seq-filter #'file-directory-p  (directory-files-recursively (expand-file-name  "~/.emacs.d/lisp") "" t t))))
+(let ((default-directory "~/.emacs.d/"))
+  (normal-top-level-add-subdirs-to-load-path))
 
 ;;解决使用msys2时gun安装包失败的问题
 ;;(setq package-check-signature nil)
