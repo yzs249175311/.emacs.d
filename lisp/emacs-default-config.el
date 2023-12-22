@@ -189,8 +189,8 @@
   (defalias 'yes-or-no-p 'y-or-n-p))
 
 ;;设置treesitter的加载路径和模式
-(if (and (eq system-type 'gnu/linux) (treesit-available-p))
-	(require 'default-treesitter)
+(if (and (eq system-type 'gnu/linux) (not (version< "29" emacs-version)) (functionp 'treesit-available-p) (treesit-available-p))
+		(require 'default-treesitter)
   )
 
 (require 'default-frame-font)
