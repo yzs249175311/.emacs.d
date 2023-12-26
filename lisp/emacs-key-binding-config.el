@@ -12,7 +12,7 @@
    "<f5>" '(:which-key "Run")
    "<f5> f" 'yzs/run-file
    "SPC" '(:which-key "Custom-Key")
-	 "M-F" 'yzs/preitter
+	 "M-F" 'prettier-prettify
    )
 
   (general-define-key
@@ -148,8 +148,8 @@
   (general-define-key
    :prefix "SPC"
    :states '(motion normal)
-   :keymaps 'web-mode-map
-	 "m" '(:wk "web-mode")
+   :keymaps '(js-jsx-mode-map web-mode-map tsx-ts-mode-map)
+	 "m" '(:wk "major-mode")
 	 "m r" 'web-mode-element-rename
 	 "m R" `((lambda () (interactive) (web-mode-element-rename (car kill-ring))) :wk "web-mode-element-rename-yank-pop")
 	 "m p" 'web-mode-element-previous

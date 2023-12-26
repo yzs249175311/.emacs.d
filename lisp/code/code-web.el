@@ -9,6 +9,9 @@
   :hook
   (web-mode . emmet-mode)
   (scss-mode . emmet-mode)
+  (css-mode . emmet-mode)
+  (tsx-ts-mode . emmet-mode)
+  (js-ts-mode . emmet-mode)
   ;; (emmet-mode . emmet-preview-mode)
   :custom
   (emmet-indent-after-insert t)
@@ -18,7 +21,7 @@
   :mode ("\\.html?\\'" "\\.vue\\'" "\\.jsx" "\\.tsx")
   :config
   (add-to-list 'hs-special-modes-alist '(web-mode  "{\\|<[^/>]+?" "}\\|</[^/>]*[^/]>" "<!--" web-mode-forward-sexp nil))
-  (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
+  ;; (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
   :bind
   (:map web-mode-map
 		("M-;" . nil)))

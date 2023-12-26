@@ -8,6 +8,7 @@
   (global-flycheck-mode 1)
   :hook
   (org-mode . (lambda () (flycheck-mode -1))))
+(use-package prettier)
 
 (use-package yaml-mode)
 (use-package markdown-mode)
@@ -25,9 +26,11 @@
   )
 
 (use-package typescript-ts-mode
-	:ensure nil
-	:config
+	:if (version< emacs-version "29")
+	:init
 	(setf (alist-get "\\.tsx\\'" auto-mode-alist nil 'remove #'equal) nil)
+	:hook
+	(tsx-ts-mode . (lambda () (setq-local treesit-font-lock-level 4)))
 	)
 
 (add-to-list 'auto-mode-alist '("\\.cjs\\'" . js-mode))
@@ -44,6 +47,7 @@
 			'(css-indent-offset
 				js-jsx-indent-level
 				js-indent-level
+				typescript-indent-level
 				web-mode-code-indent-offset
 				web-mode-markup-indent-offset))
 

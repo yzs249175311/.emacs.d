@@ -41,36 +41,35 @@
 				;; ([remap prog-fill-reindent-defun] . lsp-format-buffer)
 				;; ([remap fill-paragraph] . lsp-format-buffer)
 				([remap xref-find-references] . lsp-find-references)
+				([remap evil-goto-definition] . lsp-find-definition)
 				))
 
 (use-package lsp-ui
-  :requires lsp-mode
+	:after lsp-mode
   :init
   (setq lsp-ui-sideline-show-hover nil
-				lsp-ui-sideline-show-code-actions t
+				lsp-ui-sideline-show-code-actions nil
 				lsp-ui-sideline-show-diagnostics t
 				lsp-ui-doc-position 'top
 				lsp-ui-doc-show-with-cursor t
 				lsp-ui-imenu-auto-refresh 'after-save
 				lsp-ui-doc-delay 2)
-  :hook
-  (lsp-mode . lsp-ui-mode)
-  ;; (lsp-ui-mode . (lambda () (setq lsp-ui-peek-list-width (/ (window-width) 2))))
-  :bind
-  (:map lsp-mode-map
+	:hook
+	(lsp-mode . lsp-ui-mode)
+	:bind
+	(:map lsp-mode-map
 				("C-c l T m" . lsp-ui-imenu)
 				)
-  (:map lsp-ui-mode-map
+	(:map lsp-ui-mode-map
 				([remap xref-find-references] . lsp-ui-peek-find-references)
-				([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
-				([remap evil-goto-definition] . lsp-ui-peek-find-definitions))
-  )
+				([remap evil-goto-definition] . lsp-ui-peek-find-definitions)))
 
-;; (use-package lsp-treemacs
-;;   :requires (lsp-mode treemacs)
-;;   :hook
-;;   (lsp-mode . lsp-treemacs-sync-mode)
-;;   )
+
+(use-package lsp-treemacs
+  :after (lsp-mode treemacs)
+  :hook
+  (lsp-mode . lsp-treemacs-sync-mode)
+  )
 
 (use-package consult-lsp
   :after lsp-mode
