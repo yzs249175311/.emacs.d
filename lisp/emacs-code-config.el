@@ -13,17 +13,17 @@
 (use-package yaml-mode)
 (use-package markdown-mode)
 (use-package yuck-mode)
-(use-package json-mode
-  :if (version< emacs-version "29"))
+;; (use-package json-mode
+;; 	:if (version< emacs-version "29"))
 (use-package dockerfile-mode)
 (use-package typescript-mode
-  :if (version< emacs-version "29")
-  :mode "\\.ts\\'")
+	:if (version< emacs-version "29")
+	:mode "\\.ts\\'")
 (use-package js-jsx-mode
-  :ensure nil
-  :hook
-  (js-jsx-mode . emmet-mode)
-  )
+	:ensure nil
+	:hook
+	(js-jsx-mode . emmet-mode)
+	)
 
 (use-package typescript-ts-mode
 	:if (version< emacs-version "29")
