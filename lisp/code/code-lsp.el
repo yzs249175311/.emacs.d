@@ -9,35 +9,50 @@
 	(defun my/lsp-mode-setup-completion ()
 		(setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
 					'(orderless)))
+
+
+	(add-hook 'lsp-completion-mode-hook
+						(lambda () (setq completion-at-point-functions
+												(list
+												 (lambda ()
+													 (cape-wrap-super
+														#'lsp-completion-at-point
+														#'cape-file
+														(cape-company-to-capf
+														 (apply-partially
+															#'company--multi-backend-adapter
+															'(company-dabbrev
+																company-yasnippet)))))))))
+
 	:custom
 	;; (lsp-completion-provider :none)
 	(lsp-auto-execute-action nil)
 	(lsp-typescript-suggest-auto-imports t)
-  :hook ;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+	:hook ;; replace XXX-mode with concrete major-mode(e. g. python-mode)
 	(lsp-completion-mode . my/lsp-mode-setup-completion)
-  (web-mode . lsp)
-  (js-mode . lsp)
-  (js-ts-mode . lsp)
-  (tsx-ts-mode . lsp)
-  (js-jsx-mode . lsp)
-  (javascript-mode . lsp)
-  (css-mode . lsp)
-  (css-ts-mode . lsp)
-  (typescript-mode . lsp)
-  (typescript-ts-mode . lsp)
-  (c-mode . lsp)
-  (c-ts-mode . lsp)
-  (c++-mode . lsp)
-  (c++-ts-mode . lsp)
-  (json-mode . lsp)
-  (jsonc-mode . lsp)
-  (json-ts-mode . lsp)
-  ;; (lsp-completion-mode . yzs/lsp-mode-setup-completion)
-  ;; if you want which-key integration
-  (lsp-mode . lsp-enable-which-key-integration)
-  :commands lsp
-  :bind
-  (:map lsp-mode-map
+	(web-mode . lsp)
+	(js-mode . lsp)
+	(js-ts-mode . lsp)
+	(tsx-ts-mode . lsp)
+	(js-jsx-mode . lsp)
+	(javascript-mode . lsp)
+	(css-mode . lsp)
+	(css-ts-mode . lsp)
+	(typescript-mode . lsp)
+	(typescript-ts-mode . lsp)
+	(c-mode . lsp)
+	(c-ts-mode . lsp)
+	(c++-mode . lsp)
+	(c++-ts-mode . lsp)
+	(json-mode . lsp)
+	(jsonc-mode . lsp)
+	(json-ts-mode . lsp)
+	;; (lsp-completion-mode . yzs/lsp-mode-setup-completion)
+	;; if you want which-key integration
+	(lsp-mode . lsp-enable-which-key-integration)
+	:commands lsp
+	:bind
+	(:map lsp-mode-map
 				;; ([remap prog-fill-reindent-defun] . lsp-format-buffer)
 				;; ([remap fill-paragraph] . lsp-format-buffer)
 				([remap xref-find-references] . lsp-find-references)

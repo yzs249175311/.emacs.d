@@ -24,6 +24,11 @@
   (setq company-minimum-prefix-length 1)
 	)
 
+;; 启用补全预览
+(use-package company-quickhelp
+  :init
+  (company-quickhelp-mode))
+
 (use-package corfu
   :if nil
   ;; Optional customizations
