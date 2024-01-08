@@ -6,9 +6,14 @@
 (use-package flycheck
   :init
   (global-flycheck-mode 1)
-  :hook
-  (org-mode . (lambda () (flycheck-mode -1))))
-(use-package prettier)
+	:hook
+	(org-mode . (lambda () (flycheck-mode -1))))
+
+(use-package prettier
+	:hook
+	(lsp-mode . (lambda () (when (string-match-p "jsx?$\\|tsx?$\\|html$\\|s?css$\\|json$\\|vue$" (file-name-extension (buffer-file-name)))
+											(prettier-mode 1)
+											(keymap-local-set "<remap> <fill-paragraph>" 'prettier-prettify)))))
 
 (use-package yaml-mode)
 (use-package markdown-mode)

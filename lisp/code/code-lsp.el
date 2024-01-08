@@ -10,7 +10,7 @@
 		(setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
 					'(orderless))
 
-		(lambda () (setq completion-at-point-functions
+		(setq-local completion-at-point-functions
 								(list
 								 (lambda ()
 									 (cape-wrap-super
@@ -20,7 +20,6 @@
 										 (apply-partially
 											#'company--multi-backend-adapter
 											'(company-yasnippet))))))))
-		)
 
 	:custom
 	;; (lsp-completion-provider :none)
