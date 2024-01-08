@@ -8,21 +8,19 @@
 	(setq lsp-keymap-prefix "C-c l")
 	(defun my/lsp-mode-setup-completion ()
 		(setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
-					'(orderless)))
+					'(orderless))
 
-
-	(add-hook 'lsp-completion-mode-hook
-						(lambda () (setq completion-at-point-functions
-												(list
-												 (lambda ()
-													 (cape-wrap-super
-														#'lsp-completion-at-point
-														#'cape-file
-														(cape-company-to-capf
-														 (apply-partially
-															#'company--multi-backend-adapter
-															'(company-dabbrev
-																company-yasnippet)))))))))
+		(lambda () (setq completion-at-point-functions
+								(list
+								 (lambda ()
+									 (cape-wrap-super
+										#'lsp-completion-at-point
+										#'cape-file
+										(cape-company-to-capf
+										 (apply-partially
+											#'company--multi-backend-adapter
+											'(company-yasnippet))))))))
+		)
 
 	:custom
 	;; (lsp-completion-provider :none)

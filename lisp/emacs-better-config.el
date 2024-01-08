@@ -9,6 +9,7 @@
   (setq orderless-component-separator "[ &]")
   :hook
   (after-init . global-company-mode)
+	(lsp-mode . (lambda () (add-to-list 'company-frontends 'company-preview-frontend)))
   :bind
   (:map company-mode-map
 				("C-M-i" . company-complete)
@@ -27,7 +28,10 @@
 ;; 启用补全预览
 (use-package company-quickhelp
   :init
-  (company-quickhelp-mode))
+  (company-quickhelp-mode)
+	:custom
+	(company-quickhelp-delay 1)
+	)
 
 (use-package corfu
   :if nil
