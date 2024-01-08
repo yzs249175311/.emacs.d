@@ -11,7 +11,7 @@
 
 (use-package prettier
 	:hook
-	(lsp-mode . (lambda () (when (string-match-p "jsx?$\\|tsx?$\\|html$\\|s?css$\\|json$\\|vue$" (file-name-extension (buffer-file-name)))
+	(lsp-mode . (lambda () (when (and (string-match-p "jsx?$\\|tsx?$\\|html$\\|s?css$\\|json$\\|vue$" (file-name-extension (buffer-file-name))) (featurep 'prettier) (executable-find "prettier"))
 											(prettier-mode 1)
 											(keymap-local-set "<remap> <fill-paragraph>" 'prettier-prettify)))))
 
