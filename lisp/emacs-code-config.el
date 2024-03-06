@@ -31,7 +31,7 @@
 	)
 
 (use-package typescript-ts-mode
-	:if (version< emacs-version "29")
+	:if (version< "29" emacs-version)
 	:init
 	(setf (alist-get "\\.tsx\\'" auto-mode-alist nil 'remove #'equal) nil)
 	:hook
