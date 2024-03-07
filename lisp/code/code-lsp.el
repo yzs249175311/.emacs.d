@@ -72,9 +72,10 @@
 	(:map lsp-mode-map
 				("C-c l T m" . lsp-ui-imenu)
 				)
-	(:map lsp-ui-mode-map
-				([remap xref-find-references] . lsp-ui-peek-find-references)
-				([remap evil-goto-definition] . lsp-ui-peek-find-definitions)))
+	;; (:map lsp-ui-mode-map
+	;; 			([remap xref-find-references] . lsp-ui-peek-find-references)
+	;; 			([remap evil-goto-definition] . lsp-ui-peek-find-definitions))
+	)
 
 
 (use-package lsp-treemacs

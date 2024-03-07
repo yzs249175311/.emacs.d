@@ -19,6 +19,7 @@
 				("TAB" . company-complete-selection)
 				("<tab>" . company-complete-selection)
 				("C-h" . nil)
+				("C-f" . company-filter-candidates)
 				("RET" . nil)
 				("<return>" . nil))
   :config

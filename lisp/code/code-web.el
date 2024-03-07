@@ -6,6 +6,8 @@
 (use-package emmet-mode
   :bind (:map emmet-mode-keymap
               ("M-." . emmet-expand-line))
+	:config
+	(add-to-list 'emmet-jsx-major-modes 'web-mode)
   :hook
   (web-mode . emmet-mode)
   (scss-mode . emmet-mode)

@@ -43,6 +43,8 @@
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
 (add-to-list 'auto-mode-alist '("\\.toml\\'" . toml-mode))
 
+(add-hook 'typescript-ts-mode-hook (lambda () (setf (alist-get "\\.tsx\\'" auto-mode-alist nil 'remove #'equal) nil)))
+
 ;; (when (fboundp 'tsx-ts-mode)
 ;; 	(add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
 ;; 	(add-hook 'tsx-ts-mode-hook (lambda () (emmet-mode 1))))

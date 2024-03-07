@@ -45,7 +45,7 @@
         (c++-mode        . c++-ts-mode)
         (cmake-mode      . cmake-ts-mode)
         (conf-toml-mode  . toml-ts-mode)
-        (css-mode        . css-ts-mode)
+        ;; (css-mode        . css-ts-mode)
         (js-mode         . js-ts-mode)
         (javascript-mode . js-ts-mode)
         (js-json-mode    . json-ts-mode)
@@ -59,11 +59,11 @@
  'treesit-font-lock-level 4)
 
 ;; 启动这个包会导致写javascript一些配置文件没有提示
-(use-package treesit-auto
-	:init
-	(require 'treesit-auto)
-  :config
-  (global-treesit-auto-mode))
+;; (use-package treesit-auto
+;; 	:init
+;; 	(require 'treesit-auto)
+;;   :config
+;;   (global-treesit-auto-mode))
 
 (provide 'default-treesitter)
 
