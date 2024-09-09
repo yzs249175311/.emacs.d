@@ -62,6 +62,7 @@ OPTION 表示命令的选项."
   )
 
 (yzs/generate-run-code-command-macro "c" yzs/run--c "gcc" (filename " -o " filepath  filebase " && " filepath filebase))
+(yzs/generate-run-code-command-macro "cpp" yzs/run--c "g++" (filename " -o " filepath  filebase " && " filepath filebase))
 (yzs/generate-run-code-command-macro "js" yzs/run--js "node" (filename))
 (yzs/generate-run-code-command-macro "ts" yzs/run--ts "ts-node" (filename))
 (yzs/generate-run-code-command-macro "ts" yzs/run--ts-esm "ts-node-esm" (filename))

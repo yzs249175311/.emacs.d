@@ -16,7 +16,13 @@
 	'((height . 45)
 	  (width . 200)
 	  (left . 25)
-	  (top . 25)))))
+	  (top . 25))))
+ ((string-equal system-type "darwin")
+  (mapc #'(lambda (elm) (push elm default-frame-alist))
+	'((height . 150)
+	  (width . 150)
+	  (left . 50)
+	  (top . 50)))))
 
 (defun yzs/set-font-faces ()
   ;;set font and size

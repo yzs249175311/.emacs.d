@@ -26,7 +26,7 @@
 	(lsp-auto-execute-action nil)
 	(lsp-typescript-suggest-auto-imports t)
 	:hook ;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-	(lsp-completion-mode . my/lsp-mode-setup-completion)
+	;; (lsp-completion-mode . my/lsp-mode-setup-completion)
 	(web-mode . lsp)
 	(js-mode . lsp)
 	(js-ts-mode . lsp)
