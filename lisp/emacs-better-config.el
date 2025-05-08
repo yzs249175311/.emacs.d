@@ -320,10 +320,14 @@ targets."
 				(treemacs-quit)
 			(treemacs-select-window)))
   (setq treemacs-width 35)
+	(setq treemacs-position 'right)
+	(keymap-global-set "<remap> <prog-fill-reindent-defun>"  'treemacs-toggle)
 
   :bind
   ("<f12>" . treemacs-toggle)
+  ("M-q" . treemacs-toggle)
   )
+
 (use-package treemacs-evil
   :hook
   (treemacs-mode . evil-treemacs-state)
