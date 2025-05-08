@@ -349,10 +349,12 @@ targets."
   )
 
 (use-package magit
-  ;; :hook
-  ;; (magit-status-mode . (lambda ()
-  ;; 							 (evil-define-key 'motion magit-status-mode-map (kbd "?") 'magit-dispatch)))
-  )
+  :hook
+  (magit-status-mode . (lambda ()
+												 (evil-define-key '(motion normal) magit-status-mode-map (kbd "?") 'magit-dispatch)
+												 (evil-define-key '(motion normal) magit-status-mode-map (kbd "g") 'magit-refresh)
+												 ))
+	)
 
 (use-package git-gutter
   ;; :init (global-git-gutter-mode +1)
