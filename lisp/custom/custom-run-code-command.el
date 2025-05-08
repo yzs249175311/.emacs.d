@@ -70,6 +70,8 @@ OPTION 表示命令的选项."
 (yzs/generate-run-code-command-macro "ts" yzs/run--ts-tsx-watch "tsx" ("watch " filename))
 (yzs/generate-run-code-command-macro "ts" yzs/run--ts-bun "bun" (filename))
 (yzs/generate-run-code-command-macro "ts" yzs/run--ts-bun-watch "bun" ("--watch " filename))
+(yzs/generate-run-code-command-macro "ts" yzs/run--ts-deno "deno" (filename))
+(yzs/generate-run-code-command-macro "ts" yzs/run--ts-deno-watch "deno" ("--watch " filename))
 (yzs/generate-run-code-command-macro "py" yzs/run--py "python" (filename))
 
 (provide 'custom-run-code-command)
