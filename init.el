@@ -25,7 +25,7 @@
 					;; ("melpa-cn" . "http://1.15.88.122/melpa/")
 					;; ("org-cn"   . "http://1.15.88.122/org/")
 					;; ("gnu-cn"   . "http://1.15.88.122/gnu/")
-					("nongnu" . "http://1.15.88.122/nongnu/")
+					;; ("nongnu" . "http://1.15.88.122/nongnu/")
 					("melpa" . "https://melpa.org/packages/")
 					("gnu" . "http://elpa.gnu.org/packages/")
 					;; ("org" . "http://1.15.88.122/org/")

@@ -193,6 +193,9 @@
 		(require 'default-treesitter)
   )
 
+(use-package exec-path-from-shell
+	:init (exec-path-from-shell-initialize))
+
 (require 'default-frame-font)
 (require 'default-prettify-symbols)
 
